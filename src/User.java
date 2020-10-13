@@ -1,3 +1,3 @@
 public abstract class User {
-  private int pk;
+  UserType permissions;
 }

@@ -8,6 +8,7 @@ public class CodeSnippet {
   Date dateCreated;
   Date lastModified;
   String content;
-  List tags;
-  boolean priv;
+  List<String> tags;
+  List<Comment> comments;
+  String shareableUrl;
 }
