@@ -12,3 +12,6 @@ Utilizing the previously-existing API from GitHub’s Gist, we plan to extend th
 ### One of the main requirements is to work with data available from some public, free, Web API. Provide a brief description of the Web API you intend to use
 We will be using Github’s Gists API provided here. This API will provide the storage and core functionality that our product’s GUI will interact with. The API allows for full REST interactions allowing for data to be both retrieved and stored. Additional features will be implemented using a relational database. 
 
+####
+Github OAuth app client id: be6df06a30f90f7386f9
+Github OAuth app client secret: 82022dfb78848ddf16a31afc20e25f9777d1b001
