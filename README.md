@@ -2,6 +2,8 @@
 
 #### Link to Project Description: https://docs.google.com/document/d/1HNgkga5b5QaIDwB88s8lOXTS17sbORyj_jSKOKZuZdk/edit
 
+### React app name: codesaver
+
 ### State the problem you are trying to solve
 The use of code-based applications within the workplace has seen a surge over the recent years allowing for increased efficiency amongst employees. This surge has created a gap when it comes to the communication of best practices and information sharing in the form of code-snippets and scripts. Keeping track of small, infrequently-used but efficient and important elements of code is difficult and often left to trawling through browser history or old projects. Current platforms are either cost prohibitive or lacking in necessary functionality a company may require. 
 ### State the overall strategy of how you intend to solve the problem
