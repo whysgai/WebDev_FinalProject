@@ -5,10 +5,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {combineReducers, createStore} from "redux";
+import userReducer from "./TestSnippetDisplayPage/UserReducer";
 import {Provider} from "react-redux"
 import TestSnippetDisplayPageContainer from "./TestSnippetDisplayPage/TestSnippetDisplayPageContainer"
 
-const reducers = combineReducers({})
+const reducers = combineReducers({
+    userReducer
+})
 
 const store = createStore(reducers)
 

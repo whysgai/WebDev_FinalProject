@@ -2,7 +2,7 @@ const url = "https://github.com/login/oauth/authorize"
 const client_id ="be6df06a30f90f7386f9" //WC registered an OAuth app with github?
 const redirect_uri = "localhost:3000"
 const login =""
-const scope = gist
+const scope = "gist"
 const state = "thisisabadsatestring"
 
 export const loginToGithub = () =>
