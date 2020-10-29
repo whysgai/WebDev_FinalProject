@@ -1,4 +1,4 @@
-import {LOGIN_GITHUB} from "./UserActions"
+import {LOGIN_GITHUB, GET_ISSUES} from "./UserActions"
 
 const initialState = {
     response: {}
@@ -7,6 +7,11 @@ const initialState = {
 const userReducer = (state = initialState, action = action) => {
     switch (action.type) {
         case LOGIN_GITHUB:
+            return {
+                ...state,
+                response: action.response
+            }
+        case GET_ISSUES:
             return {
                 ...state,
                 response: action.response
