@@ -7,6 +7,6 @@ export const loginGithub = (dispatch) =>
     UserService.loginToGithub()
         .then(response => dispatch({type: LOGIN_GITHUB, response}))
 
-export const getIssuesForRepo = (dispatch) =>
-    UserService.getIssuesForRepo()
+export const getGistsForUser = (dispatch) =>
+    UserService.getGistsForUser()
         .then(response => dispatch({type: GET_ISSUES, response}))

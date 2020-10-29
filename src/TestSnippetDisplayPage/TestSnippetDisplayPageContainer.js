@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import {loginGithub, getIssuesForRepo} from "./UserActions"
+import {loginGithub, getGistsForUser} from "./UserActions"
 import TestSnippetDisplayPageComponent from "./TestSnippetDisplayPageComponent"
 
 const stateToPropertyMapper = (state) => ({
@@ -9,7 +9,7 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     loginGithub: () => loginGithub(dispatch),
-    getIssuesForRepo: () => getIssuesForRepo(dispatch)
+    getGistsForUser: () => getGistsForUser(dispatch)
 })
 
 export default connect
