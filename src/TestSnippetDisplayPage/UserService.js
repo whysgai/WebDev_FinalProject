@@ -9,7 +9,7 @@ const username = "nicshepard"
 const password = "*Xaijianai7!"
 
 const headers = {
-    "Authorization" : "Basic " + btoa(username + ":" +password)
+    "Authorization" : `Token 2769a767d1a1f814083208530256fcc2339f863d`
 }
 
 export const loginToGithub = () =>
