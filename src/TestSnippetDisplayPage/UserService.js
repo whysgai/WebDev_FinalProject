@@ -5,11 +5,11 @@ const login = ""
 const scope = "gist"
 const state = "thisisabadsatestring"
 
-const username = ""
-const password = ""
+const username = "group3person"
+const password = "nicsalehwill3"
 
 const headers = {
-    "Authorization" : `Token 2769a767d1a1f814083208530256fcc2339f863d`
+    "Authorization" : `Token 70f143af3d540e77de91e721e5c4e8960a181663`
 }
 
 export const loginToGithub = () =>

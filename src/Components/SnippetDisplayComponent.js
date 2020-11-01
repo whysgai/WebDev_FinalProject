@@ -9,14 +9,17 @@ const SnippetDisplayComponent = () =>
         <div>
             <ol>
                 <li>
-                    <pre>Some code like a function() =></pre>
+                    <pre>Some code like a function() =>
+                           console.log("Hello, world!");
+                           return "Hello, world!"
+                    </pre>
                 </li>
-                <li>
-                    <pre>   console.log("Hello, world!");</pre>
-                </li>
-                <li>
-                    <pre>   return "Hello, world!"</pre>
-                </li>
+                {/*<li>*/}
+                {/*    <pre>   console.log("Hello, world!");</pre>*/}
+                {/*</li>*/}
+                {/*<li>*/}
+                {/*    <pre>   return "Hello, world!"</pre>*/}
+                {/*</li>*/}
             </ol>
         </div>
         <div>
