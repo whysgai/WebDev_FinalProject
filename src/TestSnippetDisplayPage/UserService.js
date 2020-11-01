@@ -5,6 +5,8 @@ const login = ""
 const scope = "gist"
 const state = "thisisabadsatestring"
 
+const gistId = "3ca80de89acfaac051414ac0c308359b"
+
 const username = "group3person"
 const password = "nicsalehwill3"
 
@@ -20,5 +22,13 @@ export const getGistsForUser = () =>
     fetch("https://api.github.com/gists",
           {"method":"GET",
           "headers": headers})
+        .then(response => response.json())
 
-export default {loginToGithub, getGistsForUser}
+export const getGistById = () =>
+    fetch(`https://api.github.com/gists/${gistId}`,
+        {"method":"GET",
+            "headers": headers})
+        .then(response => response.json())
+
+
+export default {getGistsForUser, getGistById}

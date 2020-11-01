@@ -1,20 +1,26 @@
-import {LOGIN_GITHUB, GET_ISSUES} from "./UserActions"
+import {GET_GISTS, GET_GIST} from "./UserActions"
 
 const initialState = {
-    response: {}
+    response: [],
+    gist: {}
 }
 
 const userReducer = (state = initialState, action = action) => {
     switch (action.type) {
-        case LOGIN_GITHUB:
+        // case LOGIN_GITHUB:
+        //     return {
+        //         ...state,
+        //         response: action.response
+        //     }
+        case GET_GISTS:
             return {
                 ...state,
                 response: action.response
             }
-        case GET_ISSUES:
+        case GET_GIST:
             return {
                 ...state,
-                response: action.response
+                gist: action.response
             }
         default :
             return state;
