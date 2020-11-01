@@ -8,6 +8,7 @@ import {combineReducers, createStore} from "redux";
 import userReducer from "./TestSnippetDisplayPage/UserReducer";
 import {Provider} from "react-redux"
 import TestSnippetDisplayPageContainer from "./TestSnippetDisplayPage/TestSnippetDisplayPageContainer"
+import SnippetContainer from "./Containers/SnippetContainer";
 
 const reducers = combineReducers({
     userReducer
@@ -22,6 +23,7 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <TestSnippetDisplayPageContainer username="NameOfUser"/>
+            <SnippetContainer/>
         </BrowserRouter>
     </Provider>,
   document.getElementById('root')
