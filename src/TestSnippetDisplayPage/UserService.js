@@ -30,5 +30,12 @@ export const getGistById = () =>
             "headers": headers})
         .then(response => response.json())
 
+export const getGistFile = (fileUrl) =>
+    fetch(`${fileUrl}`,
+        // {"method":"GET",
+        //     "headers": headers}
+            )
+        .then(response => response.text())
 
-export default {getGistsForUser, getGistById}
+
+export default {getGistsForUser, getGistById, getGistFile}
