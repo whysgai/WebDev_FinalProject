@@ -22,8 +22,8 @@ ReactDOM.render(
   // </React.StrictMode>
     <Provider store={store}>
         <BrowserRouter>
-            <TestSnippetDisplayPageContainer username="NameOfUser"/>
-            <SnippetContainer/>
+            {/*<TestSnippetDisplayPageContainer username="NameOfUser"/>*/}
+            {/*<SnippetContainer/>*/}
         </BrowserRouter>
     </Provider>,
   document.getElementById('root')
