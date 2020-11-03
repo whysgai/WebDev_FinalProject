@@ -8,7 +8,7 @@ const NavbarComponent = () =>
                 <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
                 <i className="fa fa-code fa-stack-1x text-white" aria-hidden="true"/>
             </span>
-            <a className="navbar-brand" href="#">CodeSaver</a>
+            <Link className="navbar-brand" to="#">CodeSaver</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"/>
@@ -16,18 +16,24 @@ const NavbarComponent = () =>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <a className="nav-link" href="#">Search <span className="sr-only">(current)</span></a>
+                        <Link className="nav-link" to="#">Search <span className="sr-only">(current)</span></Link>
                     </li>
-                    <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Snippets
-                        </a>
-                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a className="dropdown-item" href="#">My Snippets</a>
-                            <a className="dropdown-item" href="#">Starred</a>
-                        </div>
+                    <li className="nav-item active">
+                        <Link className="nav-link" to="#">My Snippets</Link>
                     </li>
+                    <li className="nav-item active">
+                        <Link className="nav-link" to="#">Starred</Link>
+                    </li>
+                    {/*<li className="nav-item dropdown">*/}
+                    {/*    <span className="nav-link dropdown-toggle"  id="navbarDropdown" role="button"*/}
+                    {/*       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}
+                    {/*        Snippets*/}
+                    {/*    </span>*/}
+                    {/*    <div className="dropdown-menu" aria-labelledby="navbarDropdown">*/}
+                    {/*        <a className="dropdown-item" href="#">My Snippets</a>*/}
+                    {/*        <a className="dropdown-item" href="#">Starred</a>*/}
+                    {/*    </div>*/}
+                    {/*</li>*/}
                 </ul>
             </div>
         </div>
