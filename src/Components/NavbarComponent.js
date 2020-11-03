@@ -4,9 +4,9 @@ import {Link} from "react-router-dom";
 const NavbarComponent = () =>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
-            <span>
-                <i className="fa fa-code" aria-hidden="true"/>
-                <i className="fa fa-bookmark" aria-hidden="true"/>
+            <span className="fa-stack fa-lg">
+                <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
+                <i className="fa fa-code fa-stack-1x text-white" aria-hidden="true"/>
             </span>
             <a className="navbar-brand" href="#">CodeSaver</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
