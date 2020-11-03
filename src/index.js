@@ -12,6 +12,7 @@ import {Provider} from "react-redux"
 import NavBarContainer from "./Containers/NavbarContainer";
 import TestSnippetDisplayPageContainer from "./TestSnippetDisplayPage/TestSnippetDisplayPageContainer"
 import SnippetContainer from "./Containers/SnippetContainer";
+import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
 const reducers = combineReducers({
     userReducer
 })
@@ -25,8 +26,21 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <NavBarContainer/>
-            <TestSnippetDisplayPageContainer username="NameOfUser"/>
-            <SnippetContainer/>
+            <div className="container">
+                <Route path={[
+                    '/',
+                    '/search'
+                ]} exact>
+                    <SnippetSearchContainer/>
+                </Route>
+                <Route path="/concept_proof" exact>
+                    <TestSnippetDisplayPageContainer username="NameOfUser"/>
+                </Route>
+                <Route path="/demo_snippet" exact>
+                    <SnippetContainer/>
+                </Route>
+            {/*End of container*/}
+            </div>
         </BrowserRouter>
     </Provider>,
   document.getElementById('root')

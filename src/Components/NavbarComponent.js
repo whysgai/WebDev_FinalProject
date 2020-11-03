@@ -8,7 +8,7 @@ const NavbarComponent = () =>
                 <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
                 <i className="fa fa-code fa-stack-1x text-white" aria-hidden="true"/>
             </span>
-            <Link className="navbar-brand" to="#">CodeSaver</Link>
+            <Link className="navbar-brand" to="/">CodeSaver</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"/>
@@ -16,13 +16,19 @@ const NavbarComponent = () =>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <Link className="nav-link" to="#">Search <span className="sr-only">(current)</span></Link>
+                        <Link className="nav-link" to="/search">Search <span className="sr-only">(current)</span></Link>
                     </li>
-                    <li className="nav-item active">
+                    <li className="nav-item">
                         <Link className="nav-link" to="#">My Snippets</Link>
                     </li>
-                    <li className="nav-item active">
+                    <li className="nav-item">
                         <Link className="nav-link" to="#">Starred</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/concept_proof">Demo</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/demo_snippet">Snippet</Link>
                     </li>
                     {/*<li className="nav-item dropdown">*/}
                     {/*    <span className="nav-link dropdown-toggle"  id="navbarDropdown" role="button"*/}
