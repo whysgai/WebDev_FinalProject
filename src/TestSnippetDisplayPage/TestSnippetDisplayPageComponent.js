@@ -4,8 +4,15 @@ const TestSnippetDisplayPageComponent = ({loginGithub, getGistsForUser, getGistB
     <div>
         <h1>Show a list of snippets here!</h1>
         <button onClick={getGistsForUser}>Get User Gists</button>
-        <p>{!gists[0]? "nothing here" : gists[0].id}</p>
-        <p>{!gists[0]? "nothing here" : gists[0].owner.login}</p>
+        <ul>
+                {
+                        gists[0] &&
+                            gists.map((gist, index) =>
+                                <li>Gist Id: {gist.id} Owner: {gist.owner.login}</li>
+                            )
+
+                }
+        </ul>
         <button onClick={getGistById}>Get One Gist</button>
         <p>{!gist? "nothing here" : gist.id}</p>
         <button onClick={() => getGistFile(gist.files["Private Gist Test 1"].raw_url)}>Get Gist File</button>
