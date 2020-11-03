@@ -23,8 +23,8 @@ ReactDOM.render(
   //   <App />
   // </React.StrictMode>
     <Provider store={store}>
-        <NavBarContainer/>
         <BrowserRouter>
+            <NavBarContainer/>
             <TestSnippetDisplayPageContainer username="NameOfUser"/>
             <SnippetContainer/>
         </BrowserRouter>
