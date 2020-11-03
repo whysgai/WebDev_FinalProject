@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Link, Route} from 'react-router-dom'
+import "font-awesome/css/font-awesome.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {combineReducers, createStore} from "redux";
 import userReducer from "./TestSnippetDisplayPage/UserReducer";
 import {Provider} from "react-redux"
+import NavBarContainer from "./Containers/NavbarContainer";
 import TestSnippetDisplayPageContainer from "./TestSnippetDisplayPage/TestSnippetDisplayPageContainer"
 import SnippetContainer from "./Containers/SnippetContainer";
-
 const reducers = combineReducers({
     userReducer
 })
@@ -21,9 +23,10 @@ ReactDOM.render(
   //   <App />
   // </React.StrictMode>
     <Provider store={store}>
+        <NavBarContainer/>
         <BrowserRouter>
-            {/*<TestSnippetDisplayPageContainer username="NameOfUser"/>*/}
-            {/*<SnippetContainer/>*/}
+            <TestSnippetDisplayPageContainer username="NameOfUser"/>
+            <SnippetContainer/>
         </BrowserRouter>
     </Provider>,
   document.getElementById('root')
