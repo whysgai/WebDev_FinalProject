@@ -17,3 +17,12 @@ const initialState = {
     ],
 
 }
+
+const snippetReducer = (state = initialState, action = action) => {
+    switch(action.type) {
+        default:
+            return state;
+    }
+}
+
+export default snippetReducer;
