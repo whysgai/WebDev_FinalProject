@@ -27,7 +27,6 @@ const SnippetEditComponent = ({snippet}) =>
             <label htmlFor="code_editor" />
             <CodeMirror
                 id="code_editor"
-
                 value={snippet.codeText}
                 options={{
                     mode: 'xml',
