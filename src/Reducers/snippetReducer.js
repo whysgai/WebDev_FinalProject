@@ -1,6 +1,5 @@
 const initialState = {
-    widgets: [
-        {
+    snippet: {
             id: 1,
             gistId: "1a",
             creator: "somedude",
@@ -14,7 +13,6 @@ const initialState = {
             privacy: false,
             recommended: false
         }
-    ],
 
 }
 

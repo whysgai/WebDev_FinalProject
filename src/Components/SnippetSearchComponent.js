@@ -1,5 +1,6 @@
 import React from "react"
 import {Link} from "react-router-dom";
+import TagComponent from "./TagComponent";
 
 const SnippetSearchComponent = () =>
     <div>
@@ -117,27 +118,33 @@ const SnippetSearchComponent = () =>
                 <div class="col-6 text-secondary float-right">
                     <div class="float-right mr-4">
                         <div class="tagBackground rounded row ">
-                            <h5>
-                            <span class="badge badge-primary m-2">
-                                 <i class="fas fa-times-circle"></i>
-                                Python3
-                            </span>
-                            </h5>
-                            <h5>
-                    <span class="badge badge-primary m-2">
-                    <i class="fas fa-times-circle"></i>
-                     Login</span>
-                            </h5>
-                            <h5>
-                    <span class="badge badge-primary m-2">
-                    <i class="fas fa-times-circle"></i>
-                     Microsoft</span>
-                            </h5>
-                            <h5>
-                    <span class="badge badge-primary m-2 ">
-                    <i class="fas fa-times-circle"></i>
-                     Azure</span>
-                            </h5>
+                            {
+                                ['Python 3', 'Login', 'Azure'].map((tag, index) =>
+                                    <TagComponent tag={tag}/>
+                                )
+                            }
+                            {/*<h5>*/}
+                            {/*    <span class="badge badge-primary m-2">*/}
+                            {/*         <i class="fas fa-times-circle"></i>*/}
+                            {/*        Python3*/}
+                            {/*    </span>*/}
+                            {/*</h5>*/}
+                            {/*<h5>*/}
+                            {/*    <span class="badge badge-primary m-2">*/}
+                            {/*    <i class="fas fa-times-circle"></i>*/}
+                            {/*     Login</span>*/}
+                            {/*</h5>*/}
+                            {/*<h5>*/}
+                            {/*    <span class="badge badge-primary m-2">*/}
+                            {/*    <i class="fas fa-times-circle"></i>*/}
+                            {/*     Microsoft</span>*/}
+                            {/*</h5>*/}
+                            {/*<h5>*/}
+                            {/*    <span class="badge badge-primary m-2 ">*/}
+                            {/*        <i class="fas fa-times-circle"></i>*/}
+                            {/*         Azure*/}
+                            {/*    </span>*/}
+                            {/*</h5>*/}
                         </div>
                     </div>
 

@@ -8,13 +8,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {combineReducers, createStore} from "redux";
 import userReducer from "./TestSnippetDisplayPage/UserReducer";
+import snippetReducer from "./Reducers/snippetReducer";
 import {Provider} from "react-redux"
 import NavBarContainer from "./Containers/NavbarContainer";
 import TestSnippetDisplayPageContainer from "./TestSnippetDisplayPage/TestSnippetDisplayPageContainer"
 import SnippetContainer from "./Containers/SnippetContainer";
 import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
+
 const reducers = combineReducers({
-    userReducer
+    userReducer,
+    snippetReducer
 })
 
 const store = createStore(reducers)

@@ -2,12 +2,12 @@ import React from "react"
 import SnippetEditComponent from "./SnippetEditComponent";
 import SnippetDisplayComponent from "./SnippetDisplayComponent";
 
-const SnippetComponent = () =>
+const SnippetComponent = ({snippet}) =>
     <div>
         <h2>Edit Component</h2>
-        <SnippetEditComponent/>
+        <SnippetEditComponent snippet={snippet}/>
         <h2>Display Component</h2>
-        <SnippetDisplayComponent/>
+        <SnippetDisplayComponent snippet={snippet}/>
     </div>
 
 export default SnippetComponent
