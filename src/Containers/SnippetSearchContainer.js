@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import SnippetSearchComponent from "../Components/SnippetSearchComponent";
+import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent";
 
 const stateToPropertyMapper = (state) => ({
+    snippets: state.snippetReducer.snippets
 
 })
 
