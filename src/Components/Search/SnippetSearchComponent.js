@@ -1,77 +1,12 @@
 import React from "react"
 import {Link} from "react-router-dom";
+import SnippetSearchBarComponent from "./SnippetSearchBarComponent";
 import TagComponent from "../TagComponent";
 
 const SnippetSearchComponent = () =>
     <div>
         <h2>SnippetSearchHere</h2>
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group row mt-4">
-                    <label class="col-3 col-form-label" for="usernameFld">
-                        Username </label>
-                    <div class="col-9">
-                        <input class="form-control" placeholder="Search Username"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-3 col-form-label wbdv-field wbdv-dob" for="dobFld">
-                        Date Range </label>
-
-                    <div class="col-4">
-                        <input class="form-control" type="date" value="2020-01-01"/>
-                    </div>
-
-                    <div class="col-5">
-                        <input class="form-control" type="date" value="2020-12-31"/>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="col-6 form-group row mt-4">
-                <label class="col-2 col-form-label" for="usernameFld">
-                    Tags </label>
-                <div class="col-10 tagBackground rounded row">
-                    <h5>
-                    <span class="badge badge-primary m-2">
-                    <i class="fas fa-times-circle"></i>
-                     Python3</span>
-                    </h5>
-                    <h5>
-                    <span class="badge badge-primary m-2">
-                    <i class="fas fa-times-circle"></i>
-                     Login</span>
-                    </h5>
-                    <h5>
-                    <span class="badge badge-primary m-2">
-                    <i class="fas fa-times-circle"></i>
-                     Microsoft</span>
-                    </h5>
-                    <h5>
-                    <span class="badge badge-primary m-2">
-                    <i class="fas fa-times-circle"></i>
-                     Azure</span>
-                    </h5>
-                    <h5>
-                    <span class="badge badge-primary m-2">
-                    <i class="fas fa-times-circle"></i>
-                     OAuth</span>
-                    </h5>
-                    <h5>
-                    <span class="badge badge-primary m-2">
-                    <i class="fas fa-times-circle"></i>
-                     Credentials</span>
-                    </h5>
-                    <h5>
-                    <span class="badge badge-primary m-2">
-                    <i class="fas fa-times-circle"></i>
-                     Credentials</span>
-                    </h5>
-                </div>
-            </div>
-        </div>
+        <SnippetSearchBarComponent/>
 
         <div class="tagBackground rounded p-3 mb-5">
             <div class="row">
