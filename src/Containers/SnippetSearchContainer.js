@@ -4,7 +4,6 @@ import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent"
 
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets
-
 })
 
 const propertyToDispatchMapper =(dispatch) => ({

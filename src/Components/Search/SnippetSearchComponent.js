@@ -1,12 +1,14 @@
 import React from "react"
 import {Link} from "react-router-dom";
 import SnippetSearchBarComponent from "./SnippetSearchBarComponent";
+import SnippetSearchListComponent from "./SnippetSearchListComponent";
 import TagComponent from "../TagComponent";
 
-const SnippetSearchComponent = () =>
+const SnippetSearchComponent = ({snippets}) =>
     <div>
         <h2>SnippetSearchHere</h2>
         <SnippetSearchBarComponent/>
+        <SnippetSearchListComponent snippets={snippets}/>
 
         <div class="tagBackground rounded p-3 mb-5">
             <div class="row">

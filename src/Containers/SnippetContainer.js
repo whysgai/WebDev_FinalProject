@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import SnippetComponent from "../Components/SnippetComponent";
 
 const stateToPropertyMapper = (state) => ({
-    snippet: state.snippetReducer.snippet
+    snippet: this.props.snippet
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
