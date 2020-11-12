@@ -1,9 +1,10 @@
 import React from 'react'
-import SnippetSearchListComponent from "./Search/SnippetSearchListComponent";
+import SnippetSearchListComponent from "../Search/SnippetSearchListComponent";
+import UserProfileComponent from "./UserProfileComponent";
 
 const UserSnippetsComponent = ({snippets, user}) =>
     <div>
-        {/*UserProfileComponent*/}
+        <UserProfileComponent/>
         <SnippetSearchListComponent snippets={snippets.filter(snippet => snippet.creator === user.username)}/>
     </div>
 

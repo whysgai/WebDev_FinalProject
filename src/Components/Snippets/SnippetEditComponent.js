@@ -1,7 +1,7 @@
 import React from "react"
 import {UnControlled as CodeMirror} from 'react-codemirror2'
-import "../styles/codemirror.css"
-import TagComponent from "./TagComponent";
+import "../../styles/codemirror.css"
+import TagComponent from "../TagComponent";
 
 const SnippetEditComponent = ({snippet}) =>
     <div className="card-body">

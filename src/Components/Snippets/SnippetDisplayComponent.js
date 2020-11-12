@@ -1,5 +1,5 @@
 import React from "react"
-import TagComponent from "./TagComponent";
+import TagComponent from "../TagComponent";
 
 const SnippetDisplayComponent = ({snippet}) =>
     <div className="card-body">

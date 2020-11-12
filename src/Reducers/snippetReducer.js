@@ -3,7 +3,7 @@ const initialState = {
         {
             id: 1,
             gistId: "1a",
-            creator: "somedude",
+            creator: "Ms. Pac-Man",
             dateCreated: "Yesterday",
             lastModified: "Today",
             title: "LocalTestSnippet1",
@@ -17,7 +17,7 @@ const initialState = {
         {
             id: 2,
             gistId: "2b",
-            creator: "somedude",
+            creator: "Ms. Pac-Man",
             dateCreated: "Earlier",
             lastModified: "A while ago",
             title: "LocalTestSnippet2",
@@ -31,7 +31,7 @@ const initialState = {
         {
             id: 3,
             gistId: "3c",
-            creator: "anotherdude",
+            creator: "Pac-Man",
             dateCreated: "Today",
             lastModified: "Today",
             title: "LocalTestSnippet3",
@@ -43,7 +43,7 @@ const initialState = {
             recommended: false
         }
     ],
-    user: {id:"uid001", username:"somedude"}
+    user: {id:"uid001", username:"Ms. Pac-Man"}
 
 }
 

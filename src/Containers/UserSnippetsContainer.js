@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import UserSnippetsComponent from "../Components/UserSnippetsComponent";
+import UserSnippetsComponent from "../Components/Users/UserSnippetsComponent";
 
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets,
