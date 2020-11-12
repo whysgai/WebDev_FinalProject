@@ -42,7 +42,8 @@ const initialState = {
             privacy: false,
             recommended: false
         }
-    ]
+    ],
+    user: {id:"uid001", username:"somedude"}
 
 }
 

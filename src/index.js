@@ -14,6 +14,7 @@ import NavBarContainer from "./Containers/NavbarContainer";
 import TestSnippetDisplayPageContainer from "./TestSnippetDisplayPage/TestSnippetDisplayPageContainer"
 import SnippetContainer from "./Containers/SnippetContainer";
 import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
+import UserSnippetsContainer from "./Containers/UserSnippetsContainer";
 
 const reducers = combineReducers({
     userReducer,
@@ -28,7 +29,7 @@ ReactDOM.render(
   // </React.StrictMode>
     <Provider store={store}>
         <BrowserRouter>
-            <div className="bg-dark mh-100">
+            <div className="">
                 <NavBarContainer/>
                 <div className="container">
                     <Route path={[
@@ -36,6 +37,9 @@ ReactDOM.render(
                         '/search'
                     ]} exact>
                         <SnippetSearchContainer/>
+                    </Route>
+                    <Route path="/users_snippets" exact>
+                        <UserSnippetsContainer/>
                     </Route>
                     <Route path="/concept_proof" exact>
                         <TestSnippetDisplayPageContainer username="NameOfUser"/>
@@ -52,7 +56,7 @@ ReactDOM.render(
                                     title: "LocalTestSnippet0",
                                     description: "A locally saved snippet to demo",
                                     codeText: "console.log('Hello, world.')",
-                                    tags: ['JavaScript', 'Output'],
+                                    tags: 'JavaScript,Output',
                                     shareableURL: "",
                                     privacy: false,
                                     recommended: false
