@@ -4,7 +4,7 @@ const SnippetSearchBarComponent = () =>
     <div className="row">
         <div className="col-12">
             <div className="row mt-4">
-                <label className="col-1 col-form-label d-none" htmlFor="searchtags">
+                <label className="col-form-label d-none" htmlFor="searchtags">
                     Search by Tag
                 </label>
                 <div className="input-group col-12">
