@@ -1,3 +1,5 @@
+import {CREATE_SNIPPET} from '../Actions/SnippetActions'
+
 const initialState = {
     snippets: [
         {
@@ -62,6 +64,10 @@ const initialState = {
 
 const snippetReducer = (state = initialState, action = action) => {
     switch(action.type) {
+        case CREATE_SNIPPET:
+            return {
+                snippets: [...state.snippets, action.snippet]
+            }
         default:
             return state;
     }

@@ -1,6 +1,6 @@
 import React from "react"
 
-const MySnippetsComponent = ({snippets}) =>
+const MySnippetsComponent = ({snippets, createSnippet}) =>
     <div>
         <h1>
             My snippets
@@ -13,6 +13,7 @@ const MySnippetsComponent = ({snippets}) =>
             {
                 console.log(snippets)
             }
+            <button onClick={() => createSnippet()}>Create Snippet</button>
         </h4>
     </div>
 

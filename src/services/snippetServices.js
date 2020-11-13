@@ -56,3 +56,5 @@ export const deleteSnippet = (snippetId) =>
     fetch(`${SNIPPET_URL}/${snippetId}`, {
         method: "DELETE"
     })
+
+export default {createSnippet}
