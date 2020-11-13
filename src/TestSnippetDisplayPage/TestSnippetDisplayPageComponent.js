@@ -16,10 +16,10 @@ const TestSnippetDisplayPageComponent = ({loginGithub, getGistsForUser, getGistB
         </ul>
         <button onClick={getGistById}>Get One Gist</button>
         <p>{!gist ? "nothing here" : gist.id}</p>
-
-
+            <div>
             {(typeof Object.keys(gist) !== 'undefined' && Object.keys(gist).length > 0) ?
              fileName = Object.keys(gist.files) : "No gist file to pull" }
+            </div>
             <button onClick={() => getGistFile(gist.files[fileName].raw_url)}>Get Gist File</button>
             <p>{!file? "nothing here" : file}</p>
     </div>
