@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import MySnippetsComponent from "../Components/MySnippetsComponent";
 import {findSnippetsForCreator} from "../services/snippetServices";
-import {createSnippet} from "../Actions/SnippetActions";
+import {createSnippet, findAllSnippets} from "../Actions/SnippetActions";
 
 class MySnippetsContainer extends React.Component{
 
@@ -16,13 +16,7 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     createSnippet: () => createSnippet(dispatch),
-
-    // findSnippetsForCreator: (userId) =>
-    //     snippetServices.findSnippetsForCreator(userId)
-    //         .then(widgets => dispatch({
-    //                                       type: "FIND_WIDGETS_FOR_TOPIC",
-    //                                       widgets
-    //                                   })),
+    findAllSnippets: () => findAllSnippets(dispatch)
 })
 
 export default connect

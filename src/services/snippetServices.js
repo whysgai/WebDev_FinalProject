@@ -57,4 +57,4 @@ export const deleteSnippet = (snippetId) =>
         method: "DELETE"
     })
 
-export default {createSnippet}
+export default {createSnippet, findAllSnippets}
