@@ -1,4 +1,8 @@
-import {CREATE_SNIPPET, FIND_ALL_SNIPPETS} from '../Actions/SnippetActions'
+import {
+    CREATE_SNIPPET,
+    FIND_ALL_PUBLIC_SNIPPETS,
+    FIND_ALL_SNIPPETS
+} from '../Actions/SnippetActions'
 
 const initialState = {
     snippets: [
@@ -69,6 +73,10 @@ const snippetReducer = (state = initialState, action = action) => {
                 snippets: [...state.snippets, action.snippet]
             }
         case FIND_ALL_SNIPPETS:
+            return {
+                snippets: [action.snippets]
+            }
+        case FIND_ALL_PUBLIC_SNIPPETS:
             return {
                 snippets: [action.snippets]
             }

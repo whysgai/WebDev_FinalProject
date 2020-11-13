@@ -1,19 +1,18 @@
 const SNIPPET_URL = "https://cs5610-project-java-server.herokuapp.com/api/snippets"
-const CREATOR_URL  = "https://cs5610-project-java-server.herokuapp.com/api/creators"
+const CREATOR_URL = "https://cs5610-project-java-server.herokuapp.com/api/creators"
 
 export const findAllSnippets = () =>
     fetch(SNIPPET_URL)
         .then(response => response.json());
 
 export const findAllPublicSnippets = () =>
-    fetch(`${SNIPPET_URL}/snippets/public`)
+    fetch(`${SNIPPET_URL}/public`)
         .then(response => response.json());
 
 // Not working yet.
 export const searchAllPublicSnippets = () =>
     fetch(`${SNIPPET_URL}/snippets/public`)
         .then(response => response.json());
-
 
 export const findSnippetsForCreator = (creatorId) =>
     fetch(`${CREATOR_URL}/${creatorId}/snippets`)
@@ -22,9 +21,10 @@ export const findSnippetsForCreator = (creatorId) =>
 export const createSnippet = () =>
     fetch(SNIPPET_URL, {
         method: "POST",
-        body: JSON.stringify({title: "New Snippet",
-                                    publicPost : false,
-                                    recommended: false
+        body: JSON.stringify({
+                                 title: "New Snippet",
+                                 publicPost: false,
+                                 recommended: false
                              }),
         headers: {
             "content-type": "application/json"
@@ -57,4 +57,4 @@ export const deleteSnippet = (snippetId) =>
         method: "DELETE"
     })
 
-export default {createSnippet, findAllSnippets}
+export default {createSnippet, findAllSnippets, findAllPublicSnippets}
