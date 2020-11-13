@@ -74,7 +74,7 @@ const snippetReducer = (state = initialState, action = action) => {
             }
         case DELETE_SNIPPET:
             return {
-                snippets: state.snippets.filter(snippet => snippet.id !== action.snippet.id)
+                snippets: state.snippets.filter(snippet => snippet.id !== action.snippetId)
             }
         case FIND_ALL_SNIPPETS:
             return {
