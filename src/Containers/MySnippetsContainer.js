@@ -2,11 +2,10 @@ import React from "react"
 import { connect } from "react-redux"
 import MySnippetsComponent from "../Components/MySnippetsComponent";
 import {createSnippet, findAllPublicSnippets, findAllSnippets} from "../Actions/SnippetActions";
+import {deleteSnippet} from "../services/snippetServices";
 
 class MySnippetsContainer extends React.Component{
 
-    componentDidMount() {
-    }
 }
 
 const stateToPropertyMapper = (state) => ({
@@ -16,7 +15,9 @@ const stateToPropertyMapper = (state) => ({
 const propertyToDispatchMapper = (dispatch) => ({
     createSnippet: () => createSnippet(dispatch),
     findAllSnippets: () => findAllSnippets(dispatch),
-    findAllPublicSnippets: () => findAllPublicSnippets(dispatch)
+    findAllPublicSnippets: () => findAllPublicSnippets(dispatch),
+    deleteSnippet: (snippetId) => deleteSnippet(snippetId, dispatch)
+
 })
 
 export default connect

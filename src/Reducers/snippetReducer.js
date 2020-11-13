@@ -1,5 +1,5 @@
 import {
-    CREATE_SNIPPET,
+    CREATE_SNIPPET, DELETE_SNIPPET,
     FIND_ALL_PUBLIC_SNIPPETS,
     FIND_ALL_SNIPPETS
 } from '../Actions/SnippetActions'
@@ -71,6 +71,10 @@ const snippetReducer = (state = initialState, action = action) => {
         case CREATE_SNIPPET:
             return {
                 snippets: [...state.snippets, action.snippet]
+            }
+        case DELETE_SNIPPET:
+            return {
+                snippets: state.snippets.filter(snippet => snippet.id !== action.snippet.id)
             }
         case FIND_ALL_SNIPPETS:
             return {
