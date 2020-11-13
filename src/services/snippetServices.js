@@ -19,13 +19,22 @@ export const findSnippetsForCreator = (creatorId) =>
         .then(response => response.json());
 
 export const createSnippet = () =>
-    fetch(SNIPPET_URL, {
+    fetch(`${CREATOR_URL}/testCreator/snippets`, {
         method: "POST",
-        body: JSON.stringify({
-                                 title: "New Snippet",
-                                 publicPost: false,
-                                 recommended: false
-                             }),
+        body: JSON.stringify(
+            {
+                "gistId": "1",
+                "creatorId": "alkhalifas",
+                "dateCreated": "11/7/2020",
+                "lastModified": "11/7/2020",
+                "title": "This is how to import pandas",
+                "description": "You can import pandas in python using the following command",
+                "codeText": "import pandas as pd",
+                "tags": "python, pandas, data science",
+                "shareableURL": "www.codesnippers.com/alkhalifas/45678ghj567fg78",
+                "publicPost": true,
+                "recommended": true
+            }),
         headers: {
             "content-type": "application/json"
         }
