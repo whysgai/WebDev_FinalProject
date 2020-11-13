@@ -7,11 +7,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {combineReducers, createStore} from "redux";
-import userReducer from "./TestSnippetDisplayPage/UserReducer";
+import userReducer from "./Reducers/UserReducer";
 import snippetReducer from "./Reducers/snippetReducer";
 import {Provider} from "react-redux"
 import NavBarContainer from "./Containers/NavbarContainer";
-import TestSnippetDisplayPageContainer from "./TestSnippetDisplayPage/TestSnippetDisplayPageContainer"
+import TestSnippetDisplayPageContainer from "./Containers/TestSnippetDisplayPageContainer"
 import SnippetContainer from "./Containers/SnippetContainer";
 import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
 import MySnippetsContainer from "./Containers/MySnippetsContainer";
