@@ -14,6 +14,8 @@ import NavBarContainer from "./Containers/NavbarContainer";
 import TestSnippetDisplayPageContainer from "./TestSnippetDisplayPage/TestSnippetDisplayPageContainer"
 import SnippetContainer from "./Containers/SnippetContainer";
 import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
+import MySnippetsContainer from "./Containers/MySnippetsContainer";
+
 
 const reducers = combineReducers({
     userReducer,
@@ -41,6 +43,9 @@ ReactDOM.render(
                 </Route>
                 <Route path="/demo_snippet" exact>
                     <SnippetContainer/>
+                </Route>
+                <Route path="/mysnippets" exact>
+                    <MySnippetsContainer/>
                 </Route>
             {/*End of container*/}
             </div>

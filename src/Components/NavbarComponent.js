@@ -19,7 +19,7 @@ const NavbarComponent = () =>
                         <Link className="nav-link" to="/search">Search <span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="#">My Snippets</Link>
+                        <Link className="nav-link" to="/mysnippets">My Snippets</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="#">Starred</Link>
