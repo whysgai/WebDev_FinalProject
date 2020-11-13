@@ -3,29 +3,34 @@ data = [
     {
         id : "123",
         tags : "Python, Pandas, Textract",
+        title : "THis is a title about Python"
     },
     {
         id : "234",
-        tags : "Python, Pandas, Textract",
+        tags : "Java, AWS, Suicide",
+        title : "THis is a title about Javascript"
+
     },
     {
         id : "345",
-        tags : "Python, Pandas, Textract",
+        tags : "Javascript, AWS, Heaven",
+        title : "THis is a title about AWS"
+
     },
 ];
 
-let search_tags = ['track','artist','album'];
+let search_tags = ['tags'];
 
-function search(keyword){
+const search = (keyword) => {
     if(keyword.length<1)
         return;
 
     let results = [];
-    console.log("results: ", results);
 
     for(let i in data){
+
         for(let u=0;u<search_tags.length;u++){
-            let rel = getRelevance(data[i][search_tags[u]],keyword);
+            let rel = getRelevance(data[i][search_tags[u]], keyword);
             if(rel === 0)
                 continue;
             results.push({relevance:rel,entry:data[i]})
@@ -36,12 +41,13 @@ function search(keyword){
     for(i=0; i<results.length; i++){
         results[i] = results[i].entry
     }
-
+    console.log(results)
     return results
-}
+};
 
-function getRelevance(value,keyword){
-    console.log(value);
+const getRelevance = (value, keyword) => {
+    // console.log(value);
+    // console.log(keyword);
     value = value.toLowerCase() ;
     keyword = keyword.toLowerCase();
 
@@ -58,9 +64,10 @@ function getRelevance(value,keyword){
         return 0
 }
 
-function compareRelevance(a, b) {
+const compareRelevance = (a, b) => {
     return b.relevance - a.relevance
 }
 
 
-search("Textract")
+search("aws");
+
