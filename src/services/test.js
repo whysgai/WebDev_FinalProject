@@ -19,7 +19,7 @@ data = [
     },
 ];
 
-let search_tags = ['tags'];
+let search_tags = ['tags']; // THe snippet attributes we want to search within, limited to tags right now.
 
 const search = (keyword) => {
     if(keyword.length<1)
@@ -68,6 +68,6 @@ const compareRelevance = (a, b) => {
     return b.relevance - a.relevance
 }
 
-
+// call this function with a keyword to search for
 search("aws");
 
