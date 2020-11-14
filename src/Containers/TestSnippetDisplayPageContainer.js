@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
-import {getGistsForUser, getGistById, getGistFile} from "./UserActions"
-import TestSnippetDisplayPageComponent from "./TestSnippetDisplayPageComponent"
+import {getGistsForUser, getGistById, getGistFile} from "../Actions/UserActions"
+import TestSnippetDisplayPageComponent from "../Components/TestSnippetDisplayPageComponent"
 
 const stateToPropertyMapper = (state) => ({
     gists: state.userReducer.gists,

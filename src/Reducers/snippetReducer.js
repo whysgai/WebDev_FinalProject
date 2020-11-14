@@ -1,3 +1,9 @@
+import {
+    CREATE_SNIPPET, DELETE_SNIPPET,
+    FIND_ALL_PUBLIC_SNIPPETS,
+    FIND_ALL_SNIPPETS
+} from '../Actions/SnippetActions'
+
 const initialState = {
     snippets: [
         {
@@ -49,6 +55,22 @@ const initialState = {
 
 const snippetReducer = (state = initialState, action = action) => {
     switch(action.type) {
+        case CREATE_SNIPPET:
+            return {
+                snippets: [...state.snippets, action.snippet]
+            }
+        case DELETE_SNIPPET:
+            return {
+                snippets: state.snippets.filter(snippet => snippet.id !== action.snippetId)
+            }
+        case FIND_ALL_SNIPPETS:
+            return {
+                snippets: [action.snippets]
+            }
+        case FIND_ALL_PUBLIC_SNIPPETS:
+            return {
+                snippets: [action.snippets]
+            }
         default:
             return state;
     }
