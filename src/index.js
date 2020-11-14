@@ -14,7 +14,11 @@ import NavBarContainer from "./Containers/NavbarContainer";
 import TestSnippetDisplayPageContainer from "./Containers/TestSnippetDisplayPageContainer"
 import SnippetContainer from "./Containers/SnippetContainer";
 import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
+
+import UserSnippetsContainer from "./Containers/UserSnippetsContainer";
+
 import MySnippetsContainer from "./Containers/MySnippetsContainer";
+
 
 
 const reducers = combineReducers({
@@ -30,24 +34,45 @@ ReactDOM.render(
   // </React.StrictMode>
     <Provider store={store}>
         <BrowserRouter>
-            <NavBarContainer/>
-            <div className="container">
-                <Route path={[
-                    '/',
-                    '/search'
-                ]} exact>
-                    <SnippetSearchContainer/>
-                </Route>
-                <Route path="/concept_proof" exact>
-                    <TestSnippetDisplayPageContainer username="NameOfUser"/>
-                </Route>
-                <Route path="/demo_snippet" exact>
-                    <SnippetContainer/>
-                </Route>
-                <Route path="/mysnippets" exact>
+
+            <div className="">
+                <NavBarContainer/>
+                <div className="container">
+                    <Route path={[
+                        '/',
+                        '/search'
+                    ]} exact>
+                        <SnippetSearchContainer/>
+                    </Route>
+                     <Route path="/mysnippets" exact>
                     <MySnippetsContainer/>
-                </Route>
-            {/*End of container*/}
+                    </Route>
+                    <Route path="/concept_proof" exact>
+                        <TestSnippetDisplayPageContainer username="NameOfUser"/>
+                    </Route>
+                    <Route path="/demo_snippet" exact>
+                        <SnippetContainer
+                            snippet={
+                                {
+                                    id: 1,
+                                    gistId: "1a",
+                                    creator: "somedude",
+                                    dateCreated: "Yesterday",
+                                    lastModified: "Today",
+                                    title: "LocalTestSnippet0",
+                                    description: "A locally saved snippet to demo",
+                                    codeText: "console.log('Hello, world.')",
+                                    tags: 'JavaScript,Output',
+                                    shareableURL: "",
+                                    privacy: false,
+                                    recommended: false
+                                }
+                            }
+                            edit={true}
+                        />
+                    </Route>
+                {/*End of container*/}
+                </div>
             </div>
         </BrowserRouter>
     </Provider>,

@@ -1,8 +1,8 @@
 import React from "react"
-import TagComponent from "./TagComponent";
+import TagComponent from "../TagComponent";
 
 const SnippetDisplayComponent = ({snippet}) =>
-    <div>
+    <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
             <div className="col-8">
@@ -16,7 +16,7 @@ const SnippetDisplayComponent = ({snippet}) =>
         </div>
         {/*Snippet Description*/}
         <div className="row col-12">
-            <p>{snippet.description}</p>
+            <p className="col-12">{snippet.description}</p>
         </div>
         {/*Snippet Content*/}
         <div className="p-3 col-12">
@@ -41,7 +41,7 @@ const SnippetDisplayComponent = ({snippet}) =>
                 <div className="float-right">
                     <div className="tagBackground rounded row ">
                         {
-                            snippet.tags.map((tag, index) =>
+                            snippet.tags.split(',').map((tag, index) =>
                                 <TagComponent tag={tag}/>
                             )
                         }
