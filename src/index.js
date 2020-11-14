@@ -46,6 +46,9 @@ ReactDOM.render(
                     </Route>
                      <Route path="/mysnippets" exact>
                     <MySnippetsContainer/>
+                     </Route>
+                    <Route path="/user_snippets" exact>
+                        <UserSnippetsContainer/>
                     </Route>
                     <Route path="/concept_proof" exact>
                         <TestSnippetDisplayPageContainer username="NameOfUser"/>
