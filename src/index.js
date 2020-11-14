@@ -7,7 +7,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {combineReducers, createStore} from "redux";
-import userReducer from "./Reducers/UserReducer";
+import gistReducer from "./Reducers/GistReducer";
 import snippetReducer from "./Reducers/snippetReducer";
 import {Provider} from "react-redux"
 import NavBarContainer from "./Containers/NavbarContainer";
@@ -22,7 +22,7 @@ import MySnippetsContainer from "./Containers/MySnippetsContainer";
 
 
 const reducers = combineReducers({
-    userReducer,
+    userReducer: gistReducer,
     snippetReducer
 })
 
