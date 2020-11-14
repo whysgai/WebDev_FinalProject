@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent";
+import UserSnippetsComponent from "../Components/Users/UserSnippetsComponent";
 
 const stateToPropertyMapper = (state) => ({
-    snippets: state.snippetReducer.snippets
+    snippets: state.snippetReducer.snippets,
+    user: state.snippetReducer.user
 })
 
 const propertyToDispatchMapper =(dispatch) => ({
@@ -14,4 +15,4 @@ export default connect (
     stateToPropertyMapper,
     propertyToDispatchMapper
 )
-(SnippetSearchComponent)
+(UserSnippetsComponent)

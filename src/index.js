@@ -7,13 +7,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {combineReducers, createStore} from "redux";
-import userReducer from "./TestSnippetDisplayPage/UserReducer";
+import userReducer from "./Reducers/UserReducer";
 import snippetReducer from "./Reducers/snippetReducer";
 import {Provider} from "react-redux"
 import NavBarContainer from "./Containers/NavbarContainer";
-import TestSnippetDisplayPageContainer from "./TestSnippetDisplayPage/TestSnippetDisplayPageContainer"
+import TestSnippetDisplayPageContainer from "./Containers/TestSnippetDisplayPageContainer"
 import SnippetContainer from "./Containers/SnippetContainer";
 import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
+
+import UserSnippetsContainer from "./Containers/UserSnippetsContainer";
+
+import MySnippetsContainer from "./Containers/MySnippetsContainer";
+
+
 
 const reducers = combineReducers({
     userReducer,
@@ -28,21 +34,48 @@ ReactDOM.render(
   // </React.StrictMode>
     <Provider store={store}>
         <BrowserRouter>
-            <NavBarContainer/>
-            <div className="container">
-                <Route path={[
-                    '/',
-                    '/search'
-                ]} exact>
-                    <SnippetSearchContainer/>
-                </Route>
-                <Route path="/concept_proof" exact>
-                    <TestSnippetDisplayPageContainer username="NameOfUser"/>
-                </Route>
-                <Route path="/demo_snippet" exact>
-                    <SnippetContainer/>
-                </Route>
-            {/*End of container*/}
+
+            <div className="">
+                <NavBarContainer/>
+                <div className="container">
+                    <Route path={[
+                        '/',
+                        '/search'
+                    ]} exact>
+                        <SnippetSearchContainer/>
+                    </Route>
+                     <Route path="/mysnippets" exact>
+                    <MySnippetsContainer/>
+                     </Route>
+                    <Route path="/user_snippets" exact>
+                        <UserSnippetsContainer/>
+                    </Route>
+                    <Route path="/concept_proof" exact>
+                        <TestSnippetDisplayPageContainer username="NameOfUser"/>
+                    </Route>
+                    <Route path="/demo_snippet" exact>
+                        <SnippetContainer
+                            snippet={
+                                {
+                                    id: 1,
+                                    gistId: "1a",
+                                    creator: "somedude",
+                                    dateCreated: "Yesterday",
+                                    lastModified: "Today",
+                                    title: "LocalTestSnippet0",
+                                    description: "A locally saved snippet to demo",
+                                    codeText: "console.log('Hello, world.')",
+                                    tags: 'JavaScript,Output',
+                                    shareableURL: "",
+                                    privacy: false,
+                                    recommended: false
+                                }
+                            }
+                            edit={true}
+                        />
+                    </Route>
+                {/*End of container*/}
+                </div>
             </div>
         </BrowserRouter>
     </Provider>,
