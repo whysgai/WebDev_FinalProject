@@ -18,11 +18,12 @@ import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
 import UserSnippetsContainer from "./Containers/UserSnippetsContainer";
 
 import MySnippetsContainer from "./Containers/MySnippetsContainer";
+import GistReducer from "./Reducers/GistReducer";
 
 
 
 const reducers = combineReducers({
-    userReducer: gistReducer,
+    gistReducer: GistReducer,
     snippetReducer
 })
 
