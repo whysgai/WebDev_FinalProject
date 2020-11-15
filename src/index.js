@@ -45,7 +45,7 @@ ReactDOM.render(
                         <SnippetSearchContainer/>
                     </Route>
                      <Route path="/mysnippets" exact>
-                    <MySnippetsContainer/>
+                        <MySnippetsContainer/>
                      </Route>
                     <Route path="/user_snippets" exact>
                         <UserSnippetsContainer/>
