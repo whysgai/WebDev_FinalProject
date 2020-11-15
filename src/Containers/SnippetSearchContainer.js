@@ -1,8 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent";
 import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
-
+import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent";
+import {connect} from "react-redux";
 
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets,
@@ -10,14 +8,11 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    getGistsForUser: console.log("hello"),
+    getGistsForUser: () => getGistsForUser(dispatch),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl)
 })
 
 
-export default connect (
-    stateToPropertyMapper,
-    propertyToDispatchMapper
-)
+export default connect (stateToPropertyMapper, propertyToDispatchMapper)
 (SnippetSearchComponent)
