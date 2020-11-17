@@ -10,7 +10,6 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    // loginGithub: () => loginGithub(dispatch),
     getGistsForUser: () => getGistsForUser(dispatch),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl)

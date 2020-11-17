@@ -1,13 +1,14 @@
-import React from "react"
-import {Link} from "react-router-dom";
 import SnippetSearchBarComponent from "./SnippetSearchBarComponent";
 import SnippetSearchListComponent from "./SnippetSearchListComponent";
-import TagComponent from "../TagComponent";
 
-const SnippetSearchComponent = ({snippets}) =>
+const SnippetSearchComponent = ({snippets, gists, getGistsForUser, users, findAllUsers}) =>
     <div>
         <h2>SnippetSearchHere</h2>
-        <SnippetSearchBarComponent/>
+        <button onClick={getGistsForUser}>Get User Gists</button>
+        <button onClick={() => console.log(gists)}>Log Gists</button>
+            <button onClick={() => findAllUsers().then(console.log(users))}>Log Users</button>
+
+            <SnippetSearchBarComponent/>
         <SnippetSearchListComponent snippets={snippets}/>
     </div>
 

@@ -1,3 +1,5 @@
+import UserService from "../services/GistService";
+
 // export const LOGIN_GITHUB = "LOGIN_GITHUB"
 import GistService from "../services/GistService";
 
@@ -15,4 +17,6 @@ export const getGistById = (dispatch) =>
 
 export const getGistFile = (dispatch, fileUrl) =>
     GistService.getGistFile(fileUrl)
+
     .then(gistfile => dispatch({type: GET_FILE, gistfile}))
+

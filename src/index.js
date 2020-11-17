@@ -18,12 +18,15 @@ import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
 import UserSnippetsContainer from "./Containers/UserSnippetsContainer";
 
 import MySnippetsContainer from "./Containers/MySnippetsContainer";
+import GistReducer from "./Reducers/GistReducer";
+import UserReducer from "./Reducers/UserReducer";
 
 
 
 const reducers = combineReducers({
-    userReducer: gistReducer,
-    snippetReducer
+    gistReducer: GistReducer,
+    snippetReducer,
+    userReducer: UserReducer
 })
 
 const store = createStore(reducers)

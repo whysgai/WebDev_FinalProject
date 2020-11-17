@@ -1,8 +1,15 @@
 // const username = "group3person"
 // const password = "nicsalehwill3"
-
 const gistId = "3ca80de89acfaac051414ac0c308359b"
 
 const headers = {
     "Authorization" : `Token 70f143af3d540e77de91e721e5c4e8960a181663`
 }
+
+const USER_URL = "https://cs5610-project-java-server.herokuapp.com/api/users"
+
+export const findAllUsers = () =>
+    fetch(USER_URL)
+        .then(response => response.json());
+
+export default { findAllUsers }
