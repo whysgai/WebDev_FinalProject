@@ -1,8 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import MySnippetsComponent from "../Components/MySnippetsComponent";
-import {createSnippet, findAllPublicSnippets, findAllSnippets} from "../Actions/SnippetActions";
-import { deleteSnippet } from "../Services/snippetServices";
+import {createSnippet, deleteSnippet, findAllPublicSnippets, findAllSnippets} from "../Actions/SnippetActions";
 
 class MySnippetsContainer extends React.Component{
 

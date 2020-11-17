@@ -1,4 +1,4 @@
-import snippetServices from "../Services/snippetServices";
+import snippetServices from "../services/snippetServices";
 
 export const CREATE_SNIPPET = "CREATE_SNIPPET"
 export const DELETE_SNIPPET = "DELETE_SNIPPET"
