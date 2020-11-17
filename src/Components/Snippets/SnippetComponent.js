@@ -13,7 +13,6 @@ const SnippetComponent = ({snippet, edit}) =>
                 <SnippetDisplayComponent snippet={snippet}/>
         }
 
-
     </div>
 
 export default SnippetComponent
