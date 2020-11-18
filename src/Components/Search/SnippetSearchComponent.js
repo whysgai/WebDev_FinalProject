@@ -12,7 +12,7 @@ class SnippetSearchComponent extends React.Component {
     }
 
     componentDidMount() {
-        this.props.findAllSnippets()
+        // this.props.findAllSnippets()
     };
 
     componentDidUpdate() {
