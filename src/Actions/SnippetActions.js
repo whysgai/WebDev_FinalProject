@@ -2,6 +2,7 @@ import snippetServices from "../services/snippetServices";
 
 export const CREATE_SNIPPET = "CREATE_SNIPPET"
 export const DELETE_SNIPPET = "DELETE_SNIPPET"
+export const FIND_SNIPPET = "FIND_SNIPPET"
 export const FIND_ALL_SNIPPETS = "FIND_ALL_SNIPPETS"
 export const FIND_ALL_PUBLIC_SNIPPETS = "FIND_ALL_PUBLIC_SNIPPETS"
 
@@ -35,6 +36,14 @@ export const findAllSnippets = (dispatch) =>
                                        type: FIND_ALL_PUBLIC_SNIPPETS,
                                        snippets: snippets
                                    }
+        ))
+
+    export const findSnippetById = (dispatch, snippetId) =>
+    snippetServices.findSnippetById(snippetId)
+        .then(snippet => dispatch({
+                                        type: FIND_SNIPPET,
+                                        snippet: snippet
+                                    }
         ))
 
 

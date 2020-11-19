@@ -1,7 +1,8 @@
 import {
     CREATE_SNIPPET, DELETE_SNIPPET,
     FIND_ALL_PUBLIC_SNIPPETS,
-    FIND_ALL_SNIPPETS
+    FIND_ALL_SNIPPETS,
+    FIND_SNIPPET
 } from '../Actions/SnippetActions'
 
 const initialState = {
@@ -50,6 +51,7 @@ const initialState = {
     //         recommended: false
     //     }
     // ],
+    snippet: {},
     user: {id:"uid001", username:"Ms. Pac-Man"}
 
 }
@@ -71,6 +73,15 @@ const snippetReducer = (state = initialState, action = action) => {
         case FIND_ALL_PUBLIC_SNIPPETS:
             return {
                 snippets: action.snippets
+            }
+        case FIND_SNIPPET:
+            console.log("Reducer!");
+            console.log(action.snippet);
+            // let array = [];
+            // array.push(action.snippet)
+            return {
+                ...state,
+                snippet: action.snippet
             }
         default:
             return state;
