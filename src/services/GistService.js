@@ -13,7 +13,6 @@ export const getGistsForUser = () =>
           "headers": headers})
         .then(response => response.json())
 
-
 export const createGistForUser = () =>
     fetch("https://api.github.com/gists", {
             method: "POST",
@@ -37,6 +36,13 @@ export const createGistForUser = () =>
             }),
             headers: headers})
         .then(response => response.json())
+
+export const deleteGist = (id) =>
+    fetch(`https://api.github.com/gists/${id}`,
+        {method:"DELETE",
+            headers: headers
+        })
+
 export const getGistById = () =>
     fetch(`https://api.github.com/gists/${gistId}`,
         {"method":"GET",
@@ -51,4 +57,4 @@ export const getGistFile = (fileUrl) =>
         .then(response => response.text())
 
 
-export default {getGistsForUser, getGistById, getGistFile, createGistForUser}
+export default {getGistsForUser, getGistById, getGistFile, createGistForUser, deleteGist}
