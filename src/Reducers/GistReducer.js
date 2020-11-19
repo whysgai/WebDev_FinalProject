@@ -1,4 +1,4 @@
-import {GET_GISTS, GET_GIST, GET_FILE} from "../Actions/GistActions"
+import {GET_GISTS, GET_GIST, GET_FILE, CREATE_GIST} from "../Actions/GistActions"
 
 const initialState = {
     gists: [],
@@ -13,6 +13,11 @@ const gistReducer = (state = initialState, action = action) => {
             return {
                 ...state,
                 gists: action.response
+            }
+        case CREATE_GIST:
+            return {
+                ...state,
+                gists: [...state.gists, action.gist]
             }
         case GET_GIST:
             return {
