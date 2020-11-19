@@ -37,6 +37,30 @@ export const createGistForUser = () =>
             headers: headers})
         .then(response => response.json())
 
+export const updateGist = (gistId) =>
+    fetch(`https://api.github.com/gists/${gistId}`, {
+        method: "PATCH",
+        body: JSON.stringify( {
+            "description": "Updated Hello World Examples",
+            "public": true,
+            "files": {
+                "hello_world.rb": {
+                    "content": "class HelloWorld\n   def initialize(name)\n      @name = name.capitalize\n   end\n   def sayHi\n      puts \"Hello !\"\n   end\nend\n\nhello = HelloWorld.new(\"World\")\nhello.sayHi"
+                },
+                "hello_world.py": {
+                    "content": "class HelloWorld:\n\n    def __init__(self, name):\n        self.name = name.capitalize()\n       \n    def sayHi(self):\n        print \"Hello \" + self.name + \"!\"\n\nhello = HelloWorld(\"world\")\nhello.sayHi()"
+                },
+                "hello_world_ruby.txt": {
+                    "content": "Run `ruby hello_world.rb` to print Hello World"
+                },
+                "hello_world_python.txt": {
+                    "content": "Run `python hello_world.py` to print Hello World"
+                }
+            }
+        }),
+        headers: headers})
+        .then(response => response.json())
+
 export const deleteGist = (id) =>
     fetch(`https://api.github.com/gists/${id}`,
         {method:"DELETE",
@@ -57,4 +81,4 @@ export const getGistFile = (fileUrl) =>
         .then(response => response.text())
 
 
-export default {getGistsForUser, getGistById, getGistFile, createGistForUser, deleteGist}
+export default {getGistsForUser, getGistById, getGistFile, createGistForUser, deleteGist, updateGist}

@@ -8,7 +8,7 @@ export const CREATE_GIST = "CREATE_GIST"
 export const GET_GIST = "GET_GIST"
 export const GET_FILE = "GET_FILE"
 export const DELETE_GIST = "DELETE_GIST"
-
+export const UPDATE_GIST = "UPDATE_GIST"
 
 export const getGistsForUser = (dispatch) =>
     GistService.getGistsForUser()
@@ -21,6 +21,10 @@ export const createGistForUser = (dispatch) =>
 export const deleteGist = (dispatch, id) =>
     GistService.deleteGist(id)
         .then(response => dispatch({type: DELETE_GIST, response}))
+
+export const updateGist = (dispatch, id) =>
+    GistService.updateGist(id)
+        .then(response => dispatch({type: UPDATE_GIST, response}))
 
 export const getGistById = (dispatch) =>
     GistService.getGistById()

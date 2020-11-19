@@ -1,7 +1,7 @@
 import React from "react"
 
 const MySnippetsComponent = ({snippets, createSnippet, findAllSnippets, findAllPublicSnippets,
-                                 deleteSnippet, createGistForUser, deleteGist}) =>
+                                 deleteSnippet, createGistForUser, deleteGist, updateGist}) =>
     <div>
         <h1>
             My snippets
@@ -21,6 +21,8 @@ const MySnippetsComponent = ({snippets, createSnippet, findAllSnippets, findAllP
                 <button onClick={() => console.log(snippets)}>Log Snippets</button>
                 <button onClick={() => createGistForUser()}>createGistForUser</button>
                 <button onClick={() => deleteGist( "68dcb1fde7d5b7ed832bb3759fb3ad64")}>deleteGist</button>
+                <button onClick={() => updateGist( "43c7e5bc0c9fc1cfa6814de02232769c")}>updateGist</button>
+
             </div>
 
 
