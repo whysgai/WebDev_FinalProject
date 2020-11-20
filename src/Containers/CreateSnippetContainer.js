@@ -13,19 +13,19 @@ class SingleSnippetContainer extends React.Component {
         super();
         this.state = {
             snippetTemplate: {
-                        id: 0,
-                        gistId: "newGist",
-                        creator: "UserFromReducer",
-                        dateCreated: "Yesterday",
-                        lastModified: "Today",
-                        title: "Snippet title",
-                        description: "Description and context of code",
-                        codeText: "Add your snippet here...",
-                        tags: '',
-                        shareableURL: "",
-                        privacy: false,
-                        recommended: false
-                    },
+                id: 0,
+                gistId: "newGist",
+                creator: "UserFromReducer",
+                dateCreated: "Yesterday",
+                lastModified: "Today",
+                title: "Snippet title",
+                description: "Description and context of code",
+                codeText: "Add your snippet here...",
+                tags: '',
+                shareableURL: "",
+                privacy: false,
+                recommended: false
+            },
         };
     }
 

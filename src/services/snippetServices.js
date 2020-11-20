@@ -27,7 +27,7 @@ export const createSnippet = () =>
         method: "POST",
         body: JSON.stringify(
             {
-                "gistId": "1",
+                "gistId": "0",
                 "creatorId": "alkhalifas",
                 "dateCreated": "11/7/2020",
                 "lastModified": "11/7/2020",
