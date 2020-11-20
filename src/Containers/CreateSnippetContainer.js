@@ -30,7 +30,7 @@ class SingleSnippetContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.createLocalSnippet(snippetTemplate)
+        // this.props.createLocalSnippet(this.state.snippetTemplate)
         const snippetId = this.props.match.params.snippetId
         this.props.findSnippetById(snippetId)
         console.log("Mount for snippet:", snippetId)
@@ -67,7 +67,7 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
-    createLocalSnippet: (snippet) => createLocalSnippet(dispatch, snippet),
+    // createLocalSnippet: (snippet) => createLocalSnippet(dispatch, snippet),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),
