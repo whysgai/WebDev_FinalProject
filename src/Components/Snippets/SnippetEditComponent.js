@@ -3,7 +3,7 @@ import {UnControlled as CodeMirror} from 'react-codemirror2'
 import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
 
-const SnippetEditComponent = ({snippet}) =>
+const SnippetEditComponent = ({snippet, edit, create}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -62,7 +62,15 @@ const SnippetEditComponent = ({snippet}) =>
                 </div>
             </div>
         </div>
-        <button className="btn btn-outline-info float-right">Save</button>
+        {
+            edit &&
+                <button className="btn btn-outline-info float-right">Save</button>
+        }
+        {
+            create &&
+                <button className="btn btn-outline-info float-right">Create</button>
+        }
+
     </div>
 
 export default SnippetEditComponent

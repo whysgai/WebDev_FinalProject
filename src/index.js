@@ -22,6 +22,7 @@ import GistReducer from "./Reducers/GistReducer";
 import UserReducer from "./Reducers/UserReducer";
 // import SingleSnippetContainer from "./Containers/SingleSnippetContainer-Seprate";
 import SingleSnippetContainer from "./Containers/SingleSnippetContainer";
+import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
 
 
 
@@ -54,9 +55,8 @@ ReactDOM.render(
                     <Route path="/concept_proof" exact>
                         <TestSnippetDisplayPageContainer username="NameOfUser"/>
                     </Route>
-                    <Route path="/snippet/:snippetId" exact component={SingleSnippetContainer}>
-                        {/*<SingleSnippetContainer/>*/}
-                    </Route>
+                    <Route path="/snippet/:snippetId" exact component={SingleSnippetContainer}/>
+                    <Route path="/newsnippet/" exact component={CreateSnippetContainer}/>
                 {/*End of container*/}
                 </div>
             </div>
