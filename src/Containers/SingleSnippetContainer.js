@@ -25,7 +25,6 @@ class SingleSnippetContainer extends React.Component {
     };
 
     render () {
-
         return (
             <div>
                 {

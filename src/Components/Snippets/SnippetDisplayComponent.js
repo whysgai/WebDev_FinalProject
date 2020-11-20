@@ -1,4 +1,5 @@
 import React from "react"
+import {Link} from "react-router-dom";
 import TagComponent from "../TagComponent";
 
 const SnippetDisplayComponent = ({snippet}) =>
@@ -6,7 +7,7 @@ const SnippetDisplayComponent = ({snippet}) =>
         {/*Title and Timestamp*/}
         <div className="row col-12">
             <div className="col-8">
-                <h5>{snippet.title}</h5>
+                <Link to={`/snippet/${snippet.id}`} className="h5">{snippet.title}</Link>
             </div>
             <div className="col-4 text-secondary">
                 <div className=" float-right ">
