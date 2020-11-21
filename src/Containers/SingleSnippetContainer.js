@@ -28,7 +28,7 @@ class SingleSnippetContainer extends React.Component {
         return (
             <div>
                 {
-                    this.props.snippet &&
+                    this.props.snippets &&
                         <SnippetContainer
                             snippet={this.props.snippet}
                             edit={true}

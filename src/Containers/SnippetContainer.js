@@ -7,6 +7,7 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
 })
+// add class, render <SnippetComponent>
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)

@@ -5,6 +5,9 @@ import UserProfileComponent from "./UserProfileComponent";
 const UserSnippetsComponent = ({snippets, user}) =>
     <div>
         <UserProfileComponent/>
+        {
+            console.log(user)
+        }
         <SnippetSearchListComponent snippets={snippets.length > 0 && snippets.filter(snippet => snippet.creator === user.username)}/>
     </div>
 
