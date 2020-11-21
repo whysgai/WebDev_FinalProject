@@ -7,9 +7,10 @@ const SnippetSearchListComponent = ({snippets}) =>
             console.log(snippets)
         }
         {
-            snippets.map((snippet, index)=>
-                <SnippetContainer snippet={snippet}/>
-            )
+            snippets.length > 0 &&
+                snippets.map((snippet, index)=>
+                    <SnippetContainer snippet={snippet}/>
+                )
         }
 
     </div>
