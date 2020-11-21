@@ -1,4 +1,4 @@
-import {GET_GISTS, GET_GIST, GET_FILE} from "../Actions/GistActions"
+import {GET_GISTS, GET_GIST, GET_FILE, CREATE_GIST, DELETE_GIST, UPDATE_GIST} from "../Actions/GistActions"
 
 const initialState = {
     gists: [],
@@ -14,6 +14,22 @@ const gistReducer = (state = initialState, action = action) => {
                 ...state,
                 gists: action.response
             }
+        case CREATE_GIST:
+            return {
+                ...state,
+                gists: [...state.gists, action.gist]
+            }
+        case UPDATE_GIST:
+            return {
+                ...state,
+                // gists: state.gists.map(gist => gist.id === action.gist.id ? action.gist : gist)
+            }
+        case DELETE_GIST:
+            return {
+                ...state,
+                gists: state.gists.filter(gist => gist.id !== action.gist.id)
+            }
+
         case GET_GIST:
             return {
                 ...state,
