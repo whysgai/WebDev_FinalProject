@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SnippetSearchBarComponent = () =>
+const SnippetSearchBarComponent = ({findAllSnippets, snippets}) =>
     <div className="row">
         <div className="col-12">
             <div className="row mt-4">
@@ -10,7 +10,7 @@ const SnippetSearchBarComponent = () =>
                 <div className="input-group col-12">
                     <input id="searchtags" className="form-control col-12" placeholder="Search by tag"/>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button">Search</button>
+                        <button className="btn btn-outline-secondary" type="button" onClick={() => findAllSnippets()}>Search</button>
                     </div>
                 </div>
             </div>

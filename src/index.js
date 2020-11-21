@@ -20,6 +20,9 @@ import UserSnippetsContainer from "./Containers/UserSnippetsContainer";
 import MySnippetsContainer from "./Containers/MySnippetsContainer";
 import GistReducer from "./Reducers/GistReducer";
 import UserReducer from "./Reducers/UserReducer";
+// import SingleSnippetContainer from "./Containers/SingleSnippetContainer-Seprate";
+import SingleSnippetContainer from "./Containers/SingleSnippetContainer";
+import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
 
 
 
@@ -32,12 +35,8 @@ const reducers = combineReducers({
 const store = createStore(reducers)
 
 ReactDOM.render(
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>
     <Provider store={store}>
         <BrowserRouter>
-
             <div className="">
                 <NavBarContainer/>
                 <div className="container">
@@ -56,27 +55,8 @@ ReactDOM.render(
                     <Route path="/concept_proof" exact>
                         <TestSnippetDisplayPageContainer username="NameOfUser"/>
                     </Route>
-                    <Route path="/demo_snippet" exact>
-                        <SnippetContainer
-                            snippet={
-                                {
-                                    id: 1,
-                                    gistId: "1a",
-                                    creator: "somedude",
-                                    dateCreated: "Yesterday",
-                                    lastModified: "Today",
-                                    title: "LocalTestSnippet0",
-                                    description: "A locally saved snippet to demo",
-                                    codeText: "console.log('Hello, world.')",
-                                    tags: 'JavaScript,Output',
-                                    shareableURL: "",
-                                    privacy: false,
-                                    recommended: false
-                                }
-                            }
-                            edit={true}
-                        />
-                    </Route>
+                    <Route path="/snippet/:snippetId" exact component={SingleSnippetContainer}/>
+                    <Route path="/newsnippet/" exact component={CreateSnippetContainer}/>
                 {/*End of container*/}
                 </div>
             </div>
