@@ -2,12 +2,13 @@ import {
     CREATE_SNIPPET, DELETE_SNIPPET,
     FIND_ALL_PUBLIC_SNIPPETS,
     FIND_ALL_SNIPPETS,
-    FIND_SNIPPET
+    FIND_SNIPPET,
+    EDIT_LOCAL_SNIPPET
 } from '../Actions/SnippetActions'
 
 const initialState = {
     snippets: [],
-    snippet: {},
+    currentSnippet: null,
     user: {id:"uid001", username:"Ms. Pac-Man"}
 
 }
@@ -15,10 +16,18 @@ const initialState = {
 const snippetReducer = (state = initialState, action = action) => {
     switch(action.type) {
         case CREATE_SNIPPET:
+            console.log("Reducer: ", action.snippet);
             return {
                 ...state,
-                snippets: [...state.snippets, action.snippet]
+                currentSnippet: action.snippet
+
             }
+        case EDIT_LOCAL_SNIPPET:
+            return {
+                ...state,
+                currentSnippet: action.snippet
+            }
+
         case DELETE_SNIPPET:
             return {
                 ...state,
@@ -37,7 +46,7 @@ const snippetReducer = (state = initialState, action = action) => {
         case FIND_SNIPPET:
             return {
                 ...state,
-                snippet: action.snippet
+                currentSnippet: action.snippet
             }
         default:
             return state;

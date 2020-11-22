@@ -5,15 +5,35 @@ export const DELETE_SNIPPET = "DELETE_SNIPPET"
 export const FIND_SNIPPET = "FIND_SNIPPET"
 export const FIND_ALL_SNIPPETS = "FIND_ALL_SNIPPETS"
 export const FIND_ALL_PUBLIC_SNIPPETS = "FIND_ALL_PUBLIC_SNIPPETS"
-export const UPDATE_LOCAL_SNIPPET = "UPDATE_LOCAL_SNIPPET"
+export const EDIT_LOCAL_SNIPPET = "EDIT_LOCAL_SNIPPET"
 
-export const createSnippet = (dispatch) =>
-    snippetServices.createSnippet()
+export const createSnippet = (dispatch, snippet) =>
+    snippetServices.createSnippet(snippet)
         .then(snippet => dispatch({
                                       type: CREATE_SNIPPET,
                                       snippet
                                   }
         ))
+export const createLocalSnippet = (dispatch, snippet) => {
+    console.log("Action!", snippet);
+    dispatch({
+            type: CREATE_SNIPPET,
+            snippet
+    })}
+
+export const editLocalSnippet = (dispatch, snippet) =>
+    dispatch({
+            type: EDIT_LOCAL_SNIPPET,
+            snippet
+    })
+export const updateSnippet = (dispatch, snippet) =>
+    snippetServices.updateSnippet(snippet)
+        .then(snippet => dispatch({
+                type: CREATE_SNIPPET,
+                snippet
+            }
+        ))
+
 export const deleteSnippet = (dispatch, snippetId) =>
     snippetServices.deleteSnippet(snippetId)
         .then(snippet => dispatch({

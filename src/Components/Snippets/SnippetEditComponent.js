@@ -3,7 +3,7 @@ import {UnControlled as CodeMirror} from 'react-codemirror2'
 import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
 
-const SnippetEditComponent = ({snippet, edit, create}) =>
+const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippet, edit, create}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -11,7 +11,14 @@ const SnippetEditComponent = ({snippet, edit, create}) =>
                 <div className="input-group-prepend">
                     <label className="input-group-text" htmlFor="snippet_title">Title:</label>
                 </div>
-                <input className="form-control" id="snippet_title" type="text" placeholder={snippet.title}/>
+                <input className="form-control" id="snippet_title"
+                       type="text"
+                       placeholder={snippet.title}
+                       onChange={(event) => editLocalSnippet({
+                           ...snippet,
+                           title: event.target.value
+                       })}
+                />
             </div>
             <div className="col-4 text-secondary">
                 <div className=" float-right ">
@@ -24,7 +31,13 @@ const SnippetEditComponent = ({snippet, edit, create}) =>
             <div className="input-group-prepend">
                 <label className="input-group-text" htmlFor="snippet_description">Description:</label>
             </div>
-            <input className="form-control" id="snippet_description" placeholder={snippet.description}/>
+            <input className="form-control" id="snippet_description"
+                   placeholder={snippet.description}
+                   onChange={(event) => editLocalSnippet({
+                       ...snippet,
+                       description: event.target.value
+                   })}
+            />
         </div>
         {/*Snippet Content*/}
         <div className="row col-12">
@@ -38,8 +51,12 @@ const SnippetEditComponent = ({snippet, edit, create}) =>
                     theme: 'material',
                     lineNumbers: true
                 }}
-                onChange={(editor, data, value) => {
-                }}
+                // onChange={(editor, data, value) => {
+                // }}
+                onChange={(event) => editLocalSnippet({
+                    ...snippet,
+                    codeText: event.target.value
+                })}
             />
         </div>
         {/*Tags*/}
@@ -62,14 +79,24 @@ const SnippetEditComponent = ({snippet, edit, create}) =>
                 </div>
             </div>
         </div>
-        {
-            edit &&
-                <button className="btn btn-outline-info float-right">Save</button>
-        }
-        {
-            create &&
-                <button className="btn btn-outline-info float-right">Create</button>
-        }
+        <div className="col-12">
+            <button className="btn btn-outline-dark float-right"
+                    onClick={() => null}
+            >
+                Export
+            </button>
+            {
+                edit &&
+                    <button className="btn btn-outline-info float-right">Save</button>
+            }
+            {
+                create &&
+                    <button className="btn btn-outline-info float-right"
+                            onClick={() => createSnippet(snippet)}
+                    >Create</button>
+            }
+        </div>
+
 
     </div>
 
