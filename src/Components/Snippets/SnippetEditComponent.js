@@ -79,22 +79,24 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippet, edit, c
                 </div>
             </div>
         </div>
-        <div className="col-12">
-            <button className="btn btn-outline-dark float-right"
+        <div className="row col-12">
+            <div className="col-5"></div>
+            {
+                edit &&
+                    <button className="btn btn-outline-info float-right col-2">Save</button>
+            }
+            {
+                create &&
+                    <button className="btn btn-outline-info float-right col-2"
+                            onClick={() => createSnippet(snippet)}
+                    >Create</button>
+            }
+            <button className="btn btn-outline-dark float-right col-2"
                     onClick={() => null}
             >
                 Export
             </button>
-            {
-                edit &&
-                    <button className="btn btn-outline-info float-right">Save</button>
-            }
-            {
-                create &&
-                    <button className="btn btn-outline-info float-right"
-                            onClick={() => createSnippet(snippet)}
-                    >Create</button>
-            }
+
         </div>
 
 
