@@ -8,9 +8,18 @@ const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByT
                     Search by Tag
                 </label>
                 <div className="input-group col-12">
-                    <input id="searchtags" className="form-control col-12" value = "" placeholder="Search by tag"/>
+                    <input
+                        id="searchtags"
+                        className="form-control col-12"
+                        value = ""
+                        placeholder="Search by tag"
+                    />
                     <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" onClick={() => findAllSnippets()}>Search</button>
+                        <button
+                            className="btn btn-outline-secondary"
+                            type="button"
+                            onClick={() => findAllSnippets()}>Search
+                        </button>
                     </div>
                 </div>
             </div>
