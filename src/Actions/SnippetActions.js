@@ -6,6 +6,8 @@ export const FIND_SNIPPET = "FIND_SNIPPET"
 export const FIND_ALL_SNIPPETS = "FIND_ALL_SNIPPETS"
 export const FIND_ALL_PUBLIC_SNIPPETS = "FIND_ALL_PUBLIC_SNIPPETS"
 export const EDIT_LOCAL_SNIPPET = "EDIT_LOCAL_SNIPPET"
+export const ADD_TAG = "ADD_TAG"
+export const REMOVE_TAG = "REMOVE_TAG"
 
 export const createSnippet = (dispatch, snippet) =>
     snippetServices.createSnippet(snippet)
@@ -17,7 +19,6 @@ export const createSnippet = (dispatch, snippet) =>
 export const createSnippetForCreator = (dispatch, creatorId, snippet) =>
     snippetServices.createSnippetForCreator(creatorId, snippet)
         .then(snippet => {
-                console.log("Response from server: ", snippet);
                 dispatch({
                     type: CREATE_SNIPPET,
                     snippet
@@ -25,8 +26,21 @@ export const createSnippetForCreator = (dispatch, creatorId, snippet) =>
             }
 
         )
+export const addTagToSnippet = (dispatch, snippet, tag) => {
+    console.log("Tag from action:", tag)
+    dispatch({
+        type: ADD_TAG,
+        snippet,
+        tag
+    })
+}
+export const removeTagFromSnippet = (dispatch, snippet, tag) =>
+    dispatch({
+        type: REMOVE_TAG,
+        snippet,
+        tag
+    })
 export const createLocalSnippet = (dispatch, snippet) => {
-    console.log("Action!", snippet);
     dispatch({
             type: CREATE_SNIPPET,
             snippet

@@ -76,10 +76,7 @@ const stateToPropertyMapper = (state) => ({
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
     createSnippet: (snippet) => createSnippet(dispatch, snippet),
-    createSnippetForCreator: (creatorId, snippet) => {
-        console.log("Container!", creatorId);
-        createSnippetForCreator(dispatch, creatorId, snippet)
-    },
+    createSnippetForCreator: (creatorId, snippet) => createSnippetForCreator(dispatch, creatorId, snippet),
     createLocalSnippet: (snippet) => {createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     getGistById: () => getGistById(dispatch),

@@ -3,7 +3,7 @@ import {UnControlled as CodeMirror} from 'react-codemirror2'
 import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
 
-const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreator, edit, create, activeUser}) =>
+const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreator, addTagToSnippet, edit, create, activeUser}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -66,6 +66,11 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
                     <label className="input-group-text" htmlFor="tag_input">Add tag:</label>
                 </div>
                 <input className="form-control" id="tag_input"/>
+                <div className="input-group-append">
+                    <button className="btn btn-outline-secondary" type="button" onClick={() => addTagToSnippet(snippet, document.getElementById("tag_input").value)}>
+                        <i className="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
             </div>
             <div className="col-8 text-secondary float-right">
                 <div className="float-right">
