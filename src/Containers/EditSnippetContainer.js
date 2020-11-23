@@ -28,11 +28,15 @@ class EditSnippetContainer extends React.Component {
         return (
             <div>
                 {
+                    console.log("Active user from edit container", this.props.activeUser)
+                }
+                {
                     this.props.currentSnippet &&
                         <SnippetContainer
                             snippet={this.props.currentSnippet}
                             edit={true}
                             editLocalSnippet={this.props.editLocalSnippet}
+                            activeUser={this.props.activeUser}
 
                         />
                 }
@@ -45,7 +49,7 @@ const stateToPropertyMapper = (state) => ({
     currentSnippet: state.snippetReducer.currentSnippet,
     snippets: state.snippetReducer.snippets,
     gists: state.gistReducer.gists,
-    users: state.userReducer.users
+    activeUser: state.userReducer.activeUser
 })
 
 const propertyToDispatchMapper = (dispatch) => ({

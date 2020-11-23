@@ -5,20 +5,24 @@ import SnippetDisplayComponent from "./SnippetDisplayComponent";
 // classify this to enable componentDidMount and combine in
 // On Component did mount call find Gist by ID
 // Use that to then also pass gist info down into sub-component
-const SnippetComponent = ({snippet, editLocalSnippet, createSnippet, edit, create}) =>
+const SnippetComponent = ({snippet, editLocalSnippet, createSnippetForCreator, edit, create, activeUser}) =>
     <div className="card mt-4">
         {
-            (edit || create) &&
+            console.log("ActiveUser from Snippet Component:", activeUser)
+        }
+        {
+            ((edit || create) && activeUser.username === snippet.creator) &&
                 <SnippetEditComponent
                     snippet={snippet}
                     editLocalSnippet={editLocalSnippet}
-                    createSnippet={createSnippet}
+                    createSnippetForCreator={createSnippetForCreator}
                     edit={edit}
                     create={create}
+                    activeUser={activeUser}
                 />
         }
         {
-            (!edit && !create) &&
+            ((!edit && !create) || activeUser.username !== snippet.creator) &&
                 <SnippetDisplayComponent snippet={snippet}/>
         }
 

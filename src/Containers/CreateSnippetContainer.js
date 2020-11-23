@@ -1,6 +1,6 @@
 import React from "react";
 import SnippetContainer from "./SnippetContainer";
-import {createSnippet, createLocalSnippet, findSnippetById, editLocalSnippet} from "../Actions/SnippetActions";
+import {createSnippet, createSnippetForCreator, createLocalSnippet, findSnippetById, editLocalSnippet} from "../Actions/SnippetActions";
 import {connect} from "react-redux";
 import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
 import {findAllUsers} from "../Actions/UserActions";
@@ -12,9 +12,9 @@ class SingleSnippetContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            snippetTemplate: {
+            newSnippetTemplate: {
                 gistId: "newGist",
-                creator: "UserFromReducer",
+                creator: "",
                 dateCreated: "Yesterday",
                 lastModified: "Today",
                 title: "Snippet title",
@@ -24,12 +24,14 @@ class SingleSnippetContainer extends React.Component {
                 shareableURL: "",
                 privacy: false,
                 recommended: false
-            },
+            }
         };
     }
 
     componentDidMount() {
-        this.props.createLocalSnippet(this.state.snippetTemplate)
+        console.log("compdidmount", this.props.activeUser)
+        this.state.newSnippetTemplate.creator = this.props.activeUser.username
+        this.props.createLocalSnippet(this.state.newSnippetTemplate)
         // const snippetId = this.props.match.params.snippetId
         // this.props.findSnippetById(snippetId)
         // console.log("Mount for snippet:", snippetId)
@@ -54,7 +56,8 @@ class SingleSnippetContainer extends React.Component {
                             snippet={this.props.currentSnippet}
                             create={true}
                             editLocalSnippet={this.props.editLocalSnippet}
-                            createSnippet={this.props.createSnippet}
+                            createSnippetForCreator={this.props.createSnippetForCreator}
+                            activeUser={this.props.activeUser}
                         />
                 }
             </div>
@@ -64,6 +67,7 @@ class SingleSnippetContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => ({
     currentSnippet: state.snippetReducer.currentSnippet,
+    activeUser: state.userReducer.activeUser,
     // snippets: state.snippetReducer.snippets,
     gists: state.gistReducer.gists,
     users: state.userReducer.users
@@ -72,7 +76,11 @@ const stateToPropertyMapper = (state) => ({
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
     createSnippet: (snippet) => createSnippet(dispatch, snippet),
-    createLocalSnippet: (snippet) => {console.log("Container!", snippet); createLocalSnippet(dispatch, snippet)},
+    createSnippetForCreator: (creatorId, snippet) => {
+        console.log("Container!", creatorId);
+        createSnippetForCreator(dispatch, creatorId, snippet)
+    },
+    createLocalSnippet: (snippet) => {createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),

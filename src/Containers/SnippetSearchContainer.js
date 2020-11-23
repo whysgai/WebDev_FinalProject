@@ -7,7 +7,7 @@ import {findAllSnippets} from "../Actions/SnippetActions";
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets,
     gists: state.gistReducer.gists,
-    users: state.userReducer.users
+    activeUser: state.userReducer.activeUser
 })
 
 const propertyToDispatchMapper = (dispatch) => ({

@@ -14,6 +14,13 @@ export const createSnippet = (dispatch, snippet) =>
                                       snippet
                                   }
         ))
+export const createSnippetForCreator = (dispatch, creatorId, snippet) =>
+    snippetServices.createSnippetForCreator(creatorId, snippet)
+        .then(snippet => dispatch({
+                type: CREATE_SNIPPET,
+                snippet
+            }
+        ))
 export const createLocalSnippet = (dispatch, snippet) => {
     console.log("Action!", snippet);
     dispatch({
