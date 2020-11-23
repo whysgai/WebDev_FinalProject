@@ -2,7 +2,7 @@ import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions"
 import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent";
 import {connect} from "react-redux";
 import {findAllUsers} from "../Actions/UserActions";
-import {findAllSnippets} from "../Actions/SnippetActions";
+import {findAllSnippets, searchSnippetsByTags} from "../Actions/SnippetActions";
 
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets,
@@ -16,6 +16,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),
+    searchSnippetsByTags: (tags) => searchSnippetsByTags(dispatch, tags)
 })
 
 

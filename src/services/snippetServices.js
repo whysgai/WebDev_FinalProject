@@ -1,5 +1,6 @@
 const SNIPPET_URL = "https://cs5610-project-java-server.herokuapp.com/api/snippets"
 const CREATOR_URL = "https://cs5610-project-java-server.herokuapp.com/api/creators"
+const SNIPPET_NODE_URL = "https://cs5610-server-node-project.herokuapp.com/api"
 
 export const findSnippetById = (snippetId) =>
     fetch(`${SNIPPET_URL}/${snippetId}`)
@@ -12,6 +13,10 @@ export const findAllSnippets = () =>
 export const findAllPublicSnippets = () =>
     fetch(`${SNIPPET_URL}/public`)
         .then(response => response.json());
+
+export const searchSnippetsByTags = (tags) =>
+    fetch(`${SNIPPET_NODE_URL}/search/snippets/${tags}`)
+    .then(response => response.json());
 
 // Not working yet.
 export const searchAllPublicSnippets = () =>
@@ -75,6 +80,7 @@ export default {
     findSnippetById,
     findAllSnippets,
     findAllPublicSnippets,
-    deleteSnippet
+    deleteSnippet,
+    searchSnippetsByTags
 }
 
