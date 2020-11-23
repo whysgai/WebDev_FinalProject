@@ -1,10 +1,46 @@
-import UserProfileComponent from "./Users/UserProfileComponent";
-import SnippetSearchListComponent from "./Search/SnippetSearchListComponent";
+import UserAdminContainer from "../Containers/UserAdminContainer";
 import React from "react";
 
-const UserAdminComponent = ({snippets, user}) =>
-    <div>
+class UserAdminComponent extends React.Component {
 
-    </div>
+    constructor(props) {
+        super(props);
+        this.state = {isToggleOn: true};
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidMount() {
+        // this.props.findAllUsers()
+    };
+
+    componentDidUpdate() {
+        // this.props.findAllUsers()
+    };
+
+    handleClick() {
+        this.setState(state => ({
+            isToggleOn: !state.isToggleOn
+        }));
+    }
+
+    render () {
+        return (
+            <div>
+                <div>
+                    <h2>User Search</h2>
+                </div>
+                <div>
+                    <button onClick={this.handleClick}>
+                        {this.state.isToggleOn ? 'ON' : 'OFF'}
+                    </button>
+                </div>
+            </div>
+
+        )
+    }
+
+}
+
 
 export default UserAdminComponent
