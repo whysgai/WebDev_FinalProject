@@ -71,9 +71,10 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
                 <div className="float-right">
                     <div className="tagBackground rounded row ">
                         {
-                            snippet.tags.split(',').map((tag, index) =>
-                                <TagComponent tag={tag}/>
-                            )
+                            (snippet !== null && snippet.tags !== null && snippet.tags !== "") &&
+                                snippet.tags.split(',').map((tag, index) =>
+                                    <TagComponent tag={tag}/>
+                                )
                         }
                     </div>
                 </div>

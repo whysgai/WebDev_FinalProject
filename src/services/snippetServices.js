@@ -32,18 +32,15 @@ export const createSnippet = (snippet) =>
     })
         .then(response => response.json());
 
-export const createSnippetForCreator = (creatorId, snippet) => {
-    console.log("Sending snippet to server:", snippet);
-    fetch(`${CREATOR_URL}/${creatorId}/snippets`,
-        {
-            method: "POST",
-            body: JSON.stringify(snippet),
-            headers: {
-                "content-type": "application/json"
-            }
-        })
+export const createSnippetForCreator = (creatorId, snippet) =>
+    fetch(`${CREATOR_URL}/${creatorId}/snippets`, {
+        method: "POST",
+        body: JSON.stringify(snippet),
+        headers: {
+            "content-type": "application/json"
+        }
+    })
         .then(response => response.json());
-}
 
 export const updateSnippet = (snippetId, newSnippet) =>
     fetch(`${SNIPPET_URL}/${snippetId}`, {
