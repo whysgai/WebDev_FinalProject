@@ -33,6 +33,9 @@ const NavbarComponent = () =>
                     <li className="nav-item">
                         <Link className="nav-link" to="/snippet/11">Snippet</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/admin">Admin</Link>
+                    </li>
                     {/*<li className="nav-item dropdown">*/}
                     {/*    <span className="nav-link dropdown-toggle"  id="navbarDropdown" role="button"*/}
                     {/*       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}
