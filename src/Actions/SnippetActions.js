@@ -27,19 +27,18 @@ export const createSnippetForCreator = (dispatch, creatorId, snippet) =>
 
         )
 export const addTagToSnippet = (dispatch, snippet, tag) => {
-    console.log("Tag from action:", tag)
     dispatch({
         type: ADD_TAG,
         snippet,
         tag
     })
 }
-export const removeTagFromSnippet = (dispatch, snippet, tag) =>
+export const removeTagFromSnippet = (dispatch, tag) => {
     dispatch({
         type: REMOVE_TAG,
-        snippet,
         tag
     })
+}
 export const createLocalSnippet = (dispatch, snippet) => {
     dispatch({
             type: CREATE_SNIPPET,

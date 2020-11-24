@@ -1,6 +1,6 @@
 import React from "react";
 import SnippetContainer from "./SnippetContainer";
-import {addTagToSnippet, editLocalSnippet, findSnippetById} from "../Actions/SnippetActions";
+import {addTagToSnippet, editLocalSnippet, findSnippetById, removeTagFromSnippet} from "../Actions/SnippetActions";
 import {connect} from "react-redux";
 import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
 import {findAllUsers} from "../Actions/UserActions";
@@ -36,6 +36,7 @@ class EditSnippetContainer extends React.Component {
                             edit={true}
                             editLocalSnippet={this.props.editLocalSnippet}
                             addTagToSnippet={this.props.addTagToSnippet}
+                            removeTagFromSnippet={this.props.removeTagFromSnippet}
                             activeUser={this.props.activeUser}
 
                         />
@@ -58,6 +59,10 @@ const propertyToDispatchMapper = (dispatch) => ({
     addTagToSnippet: (snippet, tag) => {
         console.log("Tag from edit container:", tag)
         addTagToSnippet(dispatch, snippet, tag)
+    },
+    removeTagFromSnippet: (tag) => {
+        console.log("Tag from edit container:", tag)
+        removeTagFromSnippet(dispatch, tag)
     },
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),

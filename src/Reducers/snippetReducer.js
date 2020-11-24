@@ -42,7 +42,19 @@ const snippetReducer = (state = initialState, action = action) => {
                 }
             }
         case REMOVE_TAG:
-            return state
+            let newTags;
+            if (state.currentSnippet.tags !== "" || state.currentSnippet.tags !== null) {
+                newTags = state.currentSnippet.tags.replace(action.tag, '');
+            } else {
+                newTags = state.currentSnippet.tags;
+            }
+            return {
+                ...state,
+                currentSnippet: {
+                    ...state.currentSnippet,
+                    tags: newTags
+                }
+            }
         case DELETE_SNIPPET:
             return {
                 ...state,

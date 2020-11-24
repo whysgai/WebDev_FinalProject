@@ -3,7 +3,7 @@ import {UnControlled as CodeMirror} from 'react-codemirror2'
 import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
 
-const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreator, addTagToSnippet, edit, create, activeUser}) =>
+const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreator, addTagToSnippet, removeTagFromSnippet, edit, create, activeUser}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -68,18 +68,22 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
                 <input className="form-control" id="tag_input"/>
                 <div className="input-group-append">
                     <button className="btn btn-outline-secondary" type="button" onClick={() => addTagToSnippet(snippet, document.getElementById("tag_input").value)}>
-                        <i className="fa fa-plus" aria-hidden="true"></i>
+                        <i className="fa fa-plus" aria-hidden="true"/>
                     </button>
                 </div>
             </div>
             <div className="col-8 text-secondary float-right">
                 <div className="float-right">
-                    <span>{snippet.tags}</span>
                     <div className="tagBackground rounded row ">
                         {
-                            (snippet !== null && snippet.tags !== null && snippet.tags !== "") &&
+                            (snippet.tags !== null && snippet.tags !== "") &&
                                 snippet.tags.split(',').map((tag, index) =>
-                                    <TagComponent tag={tag}/>
+                                    <TagComponent
+                                        tag={tag}
+                                        snippet={snippet}
+                                        edit={true}
+                                        removeTagFromSnippet={removeTagFromSnippet}
+                                    />
                                 )
                         }
                     </div>
@@ -87,7 +91,7 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
             </div>
         </div>
         <div className="row col-12">
-            <div className="col-5"></div>
+            <div className="col-5"/>
             {
                 edit &&
                     <button className="btn btn-outline-info float-right col-2">Save</button>

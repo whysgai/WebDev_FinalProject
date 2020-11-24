@@ -39,9 +39,13 @@ const SnippetDisplayComponent = ({snippet}) =>
                             console.log("Snippet tags: ", snippet)
                         }
                         {
-                            (snippet !== null && snippet.tags !== null && snippet.tags !== "") &&
+                            (snippet.tags !== null && snippet.tags !== "") &&
                                 snippet.tags.split(',').map((tag, index) =>
-                                    <TagComponent tag={tag}/>
+                                    <TagComponent
+                                        tag={tag}
+                                        snippet={snippet}
+                                        edit={false}
+                                    />
                                 )
                         }
                     </div>
