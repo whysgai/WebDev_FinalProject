@@ -14,8 +14,8 @@ export const getGistsForUser = (dispatch) =>
     GistService.getGistsForUser()
         .then(response => dispatch({type: GET_GISTS, response}))
 
-export const createGistForUser = (dispatch) =>
-    GistService.createGistForUser()
+export const createGistForUser = (dispatch, token, title, description, content) =>
+    GistService.createGistForUser(token,title, description, content)
         .then(response => dispatch({type: CREATE_GIST, response}))
 
 export const deleteGist = (dispatch, id) =>

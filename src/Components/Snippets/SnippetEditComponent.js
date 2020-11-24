@@ -3,7 +3,7 @@ import {UnControlled as CodeMirror} from 'react-codemirror2'
 import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
 
-const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreator, addTagToSnippet, removeTagFromSnippet, edit, create, activeUser}) =>
+const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreator, addTagToSnippet, removeTagFromSnippet, createGistForUser, edit, create, activeUser}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -106,7 +106,7 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
                     >Create</button>
             }
             <button className="btn btn-outline-dark float-right col-2"
-                    onClick={() => null}
+                    onClick={() => createGistForUser(activeUser.token, snippet.title, snippet.description, snippet.codeText)}
             >
                 Export
             </button>
