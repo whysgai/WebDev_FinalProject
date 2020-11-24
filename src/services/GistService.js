@@ -13,15 +13,15 @@ export const getGistsForUser = () =>
           "headers": headers})
         .then(response => response.json())
 
-export const createGistForUser = (token) =>
+export const createGistForUser = (token, title, description, content) =>
     fetch("https://api.github.com/gists", {
             method: "POST",
             body: JSON.stringify( {
-                "description": "Hello World Example",
+                "description": `${description}`,
                 "public": true,
                 "files": {
-                    "hello_world_python.txt": {
-                        "content": "Run `python hello_world.py` to print Hello World"
+                    [title]: {
+                        "content": `${content}`
                     }
                 }
             }),
@@ -37,7 +37,7 @@ export const updateGist = (gistId, title, description, content) =>
             "description": `${description}`,
             "public": true,
             "files": {
-                "snippet": {
+                [title]: {
                     "content": `${content}`
                 }
             }
