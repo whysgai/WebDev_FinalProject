@@ -19,6 +19,8 @@ class SnippetSearchComponent extends React.Component {
         // this.props.findAllSnippets()
     };
 
+
+
     render () {
         return (
                 <div>
