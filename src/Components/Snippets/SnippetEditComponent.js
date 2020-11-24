@@ -40,6 +40,17 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
             />
         </div>
         {/*Snippet Content*/}
+        {/*<div className="form-group row col-12">*/}
+        {/*    <label htmlFor="exampleFormControlSelect1">Set Language:</label>*/}
+        {/*    <select className="form-control" id="exampleFormControlSelect1">*/}
+        {/*        <option>HTML</option>*/}
+        {/*        <option>CSS</option>*/}
+        {/*        <option>JavaScript</option>*/}
+        {/*        <option>Java</option>*/}
+        {/*        <option>Python</option>*/}
+        {/*        <option>SQL</option>*/}
+        {/*    </select>*/}
+        {/*</div>*/}
         <div className="row col-12">
             <label htmlFor="code_editor" />
             <CodeMirror
@@ -47,16 +58,16 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
                 id="code_editor"
                 value={snippet.codeText}
                 options={{
-                    mode: 'xml',
+                    mode: 'JavaScript',
                     theme: 'material',
                     lineNumbers: true
                 }}
                 // onChange={(editor, data, value) => {
                 // }}
-                onChange={(event) => editLocalSnippet({
-                    ...snippet,
-                    codeText: event.target.value
-                })}
+                // onChange={(event) => editLocalSnippet({
+                //     ...snippet,
+                //     codeText: event.target.value
+                // })}
             />
         </div>
         {/*Tags*/}
