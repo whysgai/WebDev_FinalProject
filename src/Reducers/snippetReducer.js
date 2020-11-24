@@ -29,13 +29,17 @@ const snippetReducer = (state = initialState, action = action) => {
                 currentSnippet: action.snippet
             }
         case ADD_TAG:
-            //console.log("Current snippet tags:", this.state.currentSnippet.tags)
-            console.log("New tag:", action.tag)
-            action.snippet.tags = action.snippet.tags + "," + action.tag
-            console.log("New snippet tags:", action.snippet.tags)
+            if (action.snippet.tags === "" || action.snippet.tags === null) {
+                action.snippet.tags = action.tag
+            } else {
+                action.snippet.tags = action.snippet.tags + "," + action.tag
+            }
             return {
                 ...state,
-                currentSnippet: action.snippet
+                currentSnippet: {
+                    ...state.currentSnippet,
+                    tags: action.snippet.tags
+                }
             }
         case REMOVE_TAG:
             return state

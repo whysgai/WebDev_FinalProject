@@ -74,6 +74,7 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
             </div>
             <div className="col-8 text-secondary float-right">
                 <div className="float-right">
+                    <span>{snippet.tags}</span>
                     <div className="tagBackground rounded row ">
                         {
                             (snippet !== null && snippet.tags !== null && snippet.tags !== "") &&
