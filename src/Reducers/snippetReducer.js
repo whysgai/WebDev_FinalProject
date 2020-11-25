@@ -41,6 +41,7 @@ const snippetReducer = (state = initialState, action = action) => {
                 snippet: action.snippet
             };
         case SEARCH_SNIPPET:
+        console.log("Reducer Search: ", action.snippets)
             return {
                 ...state,
             snippets: action.snippets

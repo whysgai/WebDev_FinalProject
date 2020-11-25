@@ -32,8 +32,8 @@ export const findAllSnippets = (dispatch) =>
                                    }
         ))
 
-export const searchSnippetsByTags = (dispatch) =>
-    snippetServices.searchSnippetsByTags()
+export const searchSnippetsByTags = (dispatch, tags) =>
+    snippetServices.searchSnippetsByTags(tags)
         .then(snippets => dispatch({
                                         type: SEARCH_SNIPPET,
                                         snippets: snippets

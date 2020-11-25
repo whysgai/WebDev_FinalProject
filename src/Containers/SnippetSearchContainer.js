@@ -16,7 +16,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),
-    searchSnippetsByTags: (tags) => searchSnippetsByTags(dispatch, tags)
+    searchSnippetsByTags: (tags) => {console.log(tags); searchSnippetsByTags(dispatch, tags)}
 })
 
 
