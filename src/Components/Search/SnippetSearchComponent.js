@@ -13,6 +13,7 @@ class SnippetSearchComponent extends React.Component {
 
     componentDidMount() {
         // this.props.findAllSnippets()
+        console.log("Mount: ", document.getElementById("searchtags").value)
     };
 
     componentDidUpdate() {

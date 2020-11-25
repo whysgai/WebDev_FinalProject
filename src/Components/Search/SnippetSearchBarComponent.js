@@ -1,5 +1,9 @@
 import React from 'react'
 
+// const tempTags = "Python+SQL"
+//
+// const tagFromField = document.getElementById('searchtags')
+
 const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByTags}) =>
     <div className="row">
         <div className="col-12">
@@ -18,10 +22,11 @@ const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByT
                         <button
                             className="btn btn-outline-secondary"
                             type="button"
-                            onClick={() => {console.log(document.getElementById("searchTags")); searchSnippetsByTags(document.getElementById("searchTags"))}}>Search
+                            onClick={() => {searchSnippetsByTags(document.getElementById("searchtags"))}}>Search
                         </button>
-
+                        {console.log(("Component: ", document.getElementById("searchtags")))}
                     </div>
+                    {console.log(("Component: ", document.getElementById("searchtags")))}
                 </div>
             </div>
         </div>
