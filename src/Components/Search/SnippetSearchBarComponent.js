@@ -22,7 +22,7 @@ const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByT
                         <button
                             className="btn btn-outline-secondary"
                             type="button"
-                            onClick={() => {searchSnippetsByTags(document.getElementById("searchtags"))}}>Search
+                            onClick={() => {searchSnippetsByTags(document.getElementById("searchtags").value)}}>Search
                         </button>
                         {console.log(("Component: ", document.getElementById("searchtags")))}
                     </div>

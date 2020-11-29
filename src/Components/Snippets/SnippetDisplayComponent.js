@@ -37,7 +37,7 @@ const SnippetDisplayComponent = ({snippet}) =>
                     <div className="tagBackground rounded row ">
                         {
                             snippet &&
-                                snippet.tags.split(',').map((tag, index) =>
+                                snippet.tags.map((tag, index) =>
                                     <TagComponent tag={tag}/>
                                 )
                         }

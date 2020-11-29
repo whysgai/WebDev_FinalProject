@@ -17,7 +17,7 @@ export const findAllPublicSnippets = () =>
 
 export const searchSnippetsByTags = (tags) =>
     fetch(`${LOCAL}/search/snippets/${tags}`)
-    .then(response => {response.json()});
+    .then(response => response.json());
 
 // Not working yet.
 export const searchAllPublicSnippets = () =>
