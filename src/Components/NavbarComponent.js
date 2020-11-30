@@ -24,12 +24,12 @@ const NavbarComponent = () =>
                     <li>
                         <Link className="nav-link" to="/mysnippets">My Snippets</Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="#">Starred</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/concept_proof">Demo</Link>
-                    </li>
+                    {/*<li className="nav-item">*/}
+                    {/*    <Link className="nav-link" to="#">Starred</Link>*/}
+                    {/*</li>*/}
+                    {/*<li className="nav-item">*/}
+                    {/*    <Link className="nav-link" to="/concept_proof">Demo</Link>*/}
+                    {/*</li>*/}
                     {/*<li className="nav-item">*/}
                     {/*    <Link className="nav-link" to="/snippet/11">Snippet</Link>*/}
                     {/*</li>*/}
