@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import UserAdminComponent from "./UserAdminComponent";
 import UserAdminRowComponent from "./UserAdminRowComponent";
+import {currentUser, db} from "../../config/db";
 
 export default class UserAdminListComponent extends React.Component {
 
@@ -75,7 +76,13 @@ export default class UserAdminListComponent extends React.Component {
                             <th>email</th>
                             <th>username</th>
                             <th>Manage:</th>
-                            <th> </th>
+                            <th>{<btn className="fa fa-plus" onClick={() => {
+                                db.ref('users/' + currentUser.uid).set({
+                                    username: currentUser.displayName,
+                                    email: currentUser.email,
+                                    type : "ADMIN"
+                                });
+                            }}></btn>}</th>
                         </tr>
 
                         {console.log(this.state.usersList)}
