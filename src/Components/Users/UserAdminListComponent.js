@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import UserAdminComponent from "../Components/UserAdminComponent";
-import UserAdminRowComponent from "../Components/Users/UserAdminRowComponent";
+import UserAdminComponent from "./UserAdminComponent";
+import UserAdminRowComponent from "./UserAdminRowComponent";
 
-export default class UserAdminContainer extends React.Component {
+export default class UserAdminListComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -35,6 +35,7 @@ export default class UserAdminContainer extends React.Component {
                 },
             ],
             columns : [],
+            userBeingEdited : {}
         }
     }
 
@@ -46,7 +47,17 @@ export default class UserAdminContainer extends React.Component {
     //             })
     //         })
     // }
-    usersList;
+
+    deleteUser = (user) => {
+        //something happens
+    };
+
+    addUser = (user) => {
+        //something happens
+    };
+
+
+
 
     render() {
         return (
@@ -58,12 +69,13 @@ export default class UserAdminContainer extends React.Component {
                     <table className="table">
                         <tr>
                             <th>ID</th>
+                            <th>userType</th>
                             <th>firstName</th>
                             <th>lastName</th>
                             <th>email</th>
                             <th>username</th>
-                            <th>userType</th>
                             <th>Manage:</th>
+                            <th> </th>
                         </tr>
 
                         {console.log(this.state.usersList)}
@@ -71,10 +83,18 @@ export default class UserAdminContainer extends React.Component {
                         {
                             this.state.usersList.map(user =>
                                 <UserAdminRowComponent
-                                    user={user}/>
+                                    key={user._id}
+                                    user={user}
+                                    deleteUser={this.deleteUser()}
+                                />
                             )
                         }
                     </table>
+                    <button
+                        onClick={this.addUser}
+                        className="btn btn-success">
+                        Add User
+                    </button>
                 </div>
 
             </div>

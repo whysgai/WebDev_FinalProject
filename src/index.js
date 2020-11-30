@@ -23,7 +23,7 @@ import UserReducer from "./Reducers/UserReducer";
 // import SingleSnippetContainer from "./Containers/SingleSnippetContainer-Seprate";
 import SingleSnippetContainer from "./Containers/SingleSnippetContainer";
 import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
-import UserAdminContainer from "./Containers/UserAdminContainer";
+import UserAdminListComponent from "./Components/Users/UserAdminListComponent";
 
 
 
@@ -51,7 +51,7 @@ ReactDOM.render(
                         <MySnippetsContainer/>
                      </Route>
                     <Route path="/admin" exact>
-                        <UserAdminContainer/>
+                        <UserAdminListComponent/>
                     </Route>
                     <Route path="/user_snippets" exact>
                         <UserSnippetsContainer/>
