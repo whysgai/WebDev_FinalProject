@@ -14,16 +14,16 @@ export const getGistsForUser = (dispatch) =>
     GistService.getGistsForUser()
         .then(response => dispatch({type: GET_GISTS, response}))
 
-export const createGistForUser = (dispatch) =>
-    GistService.createGistForUser()
+export const createGistForUser = (dispatch, token, title, description, content) =>
+    GistService.createGistForUser(token,title, description, content)
         .then(response => dispatch({type: CREATE_GIST, response}))
 
 export const deleteGist = (dispatch, id) =>
     GistService.deleteGist(id)
         .then(response => dispatch({type: DELETE_GIST, response}))
 
-export const updateGist = (dispatch, id) =>
-    GistService.updateGist(id)
+export const updateGist = (dispatch, id, title, description, content) =>
+    GistService.updateGist(id, title, description, content)
         .then(response => dispatch({type: UPDATE_GIST, response}))
 
 export const getGistById = (dispatch) =>
