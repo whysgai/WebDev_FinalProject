@@ -28,12 +28,6 @@ const NavbarComponent = () =>
                         <Link className="nav-link" to="#">Starred</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/concept_proof">Demo</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/snippet/11">Snippet</Link>
-                    </li>
-                    <li className="nav-item">
                         <Link className="nav-link" to="/admin">Admin</Link>
                     </li>
                     {/*<li className="nav-item dropdown">*/}
@@ -48,7 +42,9 @@ const NavbarComponent = () =>
                     {/*</li>*/}
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
+                    <Link className="nav-link" to="/login">
                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">User</button>
+                    </Link>
                 </form>
             </div>
         </div>
