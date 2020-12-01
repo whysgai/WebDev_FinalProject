@@ -13,7 +13,6 @@ let config = {
     appId: "1:496491430565:web:64a31d0d34b85203ef434c"
 };
 
-firebase.initializeApp(config);
-export const db = firebase.database();
-export const currentUser = firebase.auth().currentUser;
+const fire = firebase.initializeApp(config);
+export default fire
 

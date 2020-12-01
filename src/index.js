@@ -24,6 +24,7 @@ import UserReducer from "./Reducers/UserReducer";
 import SingleSnippetContainer from "./Containers/SingleSnippetContainer";
 import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
 import UserAdminListComponent from "./Components/Users/UserAdminListComponent";
+import LoginComponent from "./Components/LoginComponent";
 
 
 
@@ -61,7 +62,9 @@ ReactDOM.render(
                     </Route>
                     <Route path="/snippet/:snippetId" exact component={SingleSnippetContainer}/>
                     <Route path="/newsnippet/" exact component={CreateSnippetContainer}/>
-                {/*End of container*/}
+                    <Route path="/login" exact component={LoginComponent}/>
+
+                    {/*End of container*/}
                 </div>
             </div>
         </BrowserRouter>
