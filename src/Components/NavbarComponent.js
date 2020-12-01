@@ -30,16 +30,6 @@ const NavbarComponent = () =>
                     <li className="nav-item">
                         <Link className="nav-link" to="/admin">Admin</Link>
                     </li>
-                    {/*<li className="nav-item dropdown">*/}
-                    {/*    <span className="nav-link dropdown-toggle"  id="navbarDropdown" role="button"*/}
-                    {/*       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}
-                    {/*        Snippets*/}
-                    {/*    </span>*/}
-                    {/*    <div className="dropdown-menu" aria-labelledby="navbarDropdown">*/}
-                    {/*        <a className="dropdown-item" href="#">My Snippets</a>*/}
-                    {/*        <a className="dropdown-item" href="#">Starred</a>*/}
-                    {/*    </div>*/}
-                    {/*</li>*/}
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     <Link className="nav-link" to="/login">

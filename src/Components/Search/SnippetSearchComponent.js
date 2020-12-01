@@ -25,6 +25,7 @@ class SnippetSearchComponent extends React.Component {
     render () {
         return (
                 <div>
+                    {console.log("Active user from search comp: ", this.props.activeUser)}
                     <h2>SnippetSearchHere</h2>
                     <button onClick={this.props.getGistsForUser}>Get User Gists</button>
                     <button onClick={() => console.log(this.props.gists)}>Log Gists</button>

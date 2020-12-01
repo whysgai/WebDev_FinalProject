@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from "react-router-dom";
 
 // const tempTags = "Python+SQL"
 //
@@ -44,6 +45,13 @@ const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByT
                 <input id="filtersearch" className="form-control" placeholder="Filter results"/>
             </div>
         </div>
+
+        <div className="col-6 row mt-4 ml-1">
+            <Link className="btn btn-primary float-right" to="/newsnippet">
+                New Snippet <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </Link>
+        </div>
+
     </div>
 
 export default SnippetSearchBarComponent

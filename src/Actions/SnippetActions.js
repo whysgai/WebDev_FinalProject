@@ -6,15 +6,60 @@ export const FIND_SNIPPET = "FIND_SNIPPET";
 export const FIND_ALL_SNIPPETS = "FIND_ALL_SNIPPETS";
 export const FIND_ALL_PUBLIC_SNIPPETS = "FIND_ALL_PUBLIC_SNIPPETS";
 export const UPDATE_LOCAL_SNIPPET = "UPDATE_LOCAL_SNIPPET";
+export const EDIT_LOCAL_SNIPPET = "EDIT_LOCAL_SNIPPET"
 export const SEARCH_SNIPPET = "SEARCH_SNIPPET";
+export const ADD_TAG = "ADD_TAG"
+export const REMOVE_TAG = "REMOVE_TAG"
 
-export const createSnippet = (dispatch) =>
-    snippetServices.createSnippet()
+export const createSnippet = (dispatch, snippet) =>
+    snippetServices.createSnippet(snippet)
         .then(snippet => dispatch({
                                       type: CREATE_SNIPPET,
                                       snippet
                                   }
         ))
+export const createSnippetForCreator = (dispatch, creatorId, snippet) =>
+    snippetServices.createSnippetForCreator(creatorId, snippet)
+        .then(snippet => {
+                dispatch({
+                    type: CREATE_SNIPPET,
+                    snippet
+                });
+            }
+
+        )
+export const addTagToSnippet = (dispatch, snippet, tag) => {
+    dispatch({
+        type: ADD_TAG,
+        snippet,
+        tag
+    })
+}
+export const removeTagFromSnippet = (dispatch, tag) => {
+    dispatch({
+        type: REMOVE_TAG,
+        tag
+    })
+}
+export const createLocalSnippet = (dispatch, snippet) => {
+    dispatch({
+            type: CREATE_SNIPPET,
+            snippet
+    })}
+
+export const editLocalSnippet = (dispatch, snippet) =>
+    dispatch({
+            type: EDIT_LOCAL_SNIPPET,
+            snippet
+    })
+export const updateSnippet = (dispatch, snippet) =>
+    snippetServices.updateSnippet(snippet)
+        .then(snippet => dispatch({
+                type: CREATE_SNIPPET,
+                snippet
+            }
+        ))
+
 export const deleteSnippet = (dispatch, snippetId) =>
     snippetServices.deleteSnippet(snippetId)
         .then(snippet => dispatch({

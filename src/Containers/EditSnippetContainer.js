@@ -1,11 +1,11 @@
 import React from "react";
 import SnippetContainer from "./SnippetContainer";
-import {findSnippetById} from "../Actions/SnippetActions";
+import {addTagToSnippet, editLocalSnippet, findSnippetById, removeTagFromSnippet} from "../Actions/SnippetActions";
 import {connect} from "react-redux";
 import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
 import {findAllUsers} from "../Actions/UserActions";
 
-class SingleSnippetContainer extends React.Component {
+class EditSnippetContainer extends React.Component {
     // snippets, gists, getGistsForUser, users, findAllUsers, findAllSnippets
 
 
@@ -17,7 +17,6 @@ class SingleSnippetContainer extends React.Component {
     componentDidMount() {
         const snippetId = this.props.match.params.snippetId
         this.props.findSnippetById(snippetId)
-        console.log("Mount for snippet:", snippetId)
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -28,10 +27,18 @@ class SingleSnippetContainer extends React.Component {
         return (
             <div>
                 {
-                    this.props.snippets &&
+                    console.log("Active user from edit container", this.props.activeUser)
+                }
+                {
+                    this.props.currentSnippet &&
                         <SnippetContainer
-                            snippet={this.props.snippet}
+                            snippet={this.props.currentSnippet}
                             edit={true}
+                            editLocalSnippet={this.props.editLocalSnippet}
+                            addTagToSnippet={this.props.addTagToSnippet}
+                            removeTagFromSnippet={this.props.removeTagFromSnippet}
+                            activeUser={this.props.activeUser}
+
                         />
                 }
             </div>
@@ -40,14 +47,23 @@ class SingleSnippetContainer extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    snippet: state.snippetReducer.snippet,
+    currentSnippet: state.snippetReducer.currentSnippet,
     snippets: state.snippetReducer.snippets,
     gists: state.gistReducer.gists,
-    users: state.userReducer.users
+    activeUser: state.userReducer.activeUser
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
+    editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
+    addTagToSnippet: (snippet, tag) => {
+        console.log("Tag from edit container:", tag)
+        addTagToSnippet(dispatch, snippet, tag)
+    },
+    removeTagFromSnippet: (tag) => {
+        console.log("Tag from edit container:", tag)
+        removeTagFromSnippet(dispatch, tag)
+    },
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),
@@ -56,4 +72,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
-(SingleSnippetContainer)
+(EditSnippetContainer)

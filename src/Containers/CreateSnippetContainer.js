@@ -1,6 +1,13 @@
 import React from "react";
 import SnippetContainer from "./SnippetContainer";
-import {createSnippet, findSnippetById} from "../Actions/SnippetActions";
+import {
+    createSnippet,
+    createSnippetForCreator,
+    createLocalSnippet,
+    findSnippetById,
+    editLocalSnippet,
+    addTagToSnippet, removeTagFromSnippet
+} from "../Actions/SnippetActions";
 import {connect} from "react-redux";
 import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
 import {findAllUsers} from "../Actions/UserActions";
@@ -12,10 +19,9 @@ class SingleSnippetContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            snippetTemplate: {
-                id: 0,
+            newSnippetTemplate: {
                 gistId: "newGist",
-                creator: "UserFromReducer",
+                creator: "",
                 dateCreated: "Yesterday",
                 lastModified: "Today",
                 title: "Snippet title",
@@ -25,15 +31,17 @@ class SingleSnippetContainer extends React.Component {
                 shareableURL: "",
                 privacy: false,
                 recommended: false
-            },
+            }
         };
     }
 
     componentDidMount() {
-        // this.props.createLocalSnippet(this.state.snippetTemplate)
-        const snippetId = this.props.match.params.snippetId
-        this.props.findSnippetById(snippetId)
-        console.log("Mount for snippet:", snippetId)
+        console.log("compdidmount", this.props.activeUser)
+        this.state.newSnippetTemplate.creatorId = this.props.activeUser.username
+        this.props.createLocalSnippet(this.state.newSnippetTemplate)
+        // const snippetId = this.props.match.params.snippetId
+        // this.props.findSnippetById(snippetId)
+        // console.log("Mount for snippet:", snippetId)
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -44,13 +52,21 @@ class SingleSnippetContainer extends React.Component {
         {
             console.log("Hello from create snippet!");
         }
+        {
+            console.log(this.props.currentSnippet);
+        }
         return (
             <div>
                 {
-                    this.state.snippetTemplate &&
+                    this.props.currentSnippet &&
                         <SnippetContainer
-                            snippet={this.state.snippetTemplate}
+                            snippet={this.props.currentSnippet}
                             create={true}
+                            editLocalSnippet={this.props.editLocalSnippet}
+                            addTagToSnippet={this.props.addTagToSnippet}
+                            removeTagFromSnippet={this.props.removeTagFromSnippet}
+                            createSnippetForCreator={this.props.createSnippetForCreator}
+                            activeUser={this.props.activeUser}
                         />
                 }
             </div>
@@ -59,7 +75,8 @@ class SingleSnippetContainer extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    // snippet: state.snippetReducer.snippet,
+    currentSnippet: state.snippetReducer.currentSnippet,
+    activeUser: state.userReducer.activeUser,
     // snippets: state.snippetReducer.snippets,
     gists: state.gistReducer.gists,
     users: state.userReducer.users
@@ -67,7 +84,18 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
-    // createLocalSnippet: (snippet) => createLocalSnippet(dispatch, snippet),
+    createSnippet: (snippet) => createSnippet(dispatch, snippet),
+    createSnippetForCreator: (creatorId, snippet) => createSnippetForCreator(dispatch, creatorId, snippet),
+    createLocalSnippet: (snippet) => {createLocalSnippet(dispatch, snippet)},
+    editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
+    addTagToSnippet: (snippet, tag) => {
+        console.log("Tag from edit container:", tag)
+        addTagToSnippet(dispatch, snippet, tag)
+    },
+    removeTagFromSnippet: (tag) => {
+        console.log("Tag from edit container:", tag)
+        removeTagFromSnippet(dispatch, tag)
+    },
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),
