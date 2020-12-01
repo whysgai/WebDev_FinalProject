@@ -36,11 +36,8 @@ const SnippetDisplayComponent = ({snippet}) =>
                 <div className="float-right">
                     <div className="tagBackground rounded row ">
                         {
-                            console.log("Snippet tags: ", snippet)
-                        }
-                        {
-                            (snippet.tags !== null && snippet.tags !== "") &&
-                                snippet.tags.split(',').map((tag, index) =>
+                            (snippet.tags !== null && snippet.tags.length !== 0) &&
+                                snippet.tags.map((tag, index) =>
                                     <TagComponent
                                         tag={tag}
                                         snippet={snippet}

@@ -12,4 +12,14 @@ export const findAllUsers = () =>
     fetch(USER_URL)
         .then(response => response.json());
 
+export const updateUser = (userId, newUser) =>
+    fetch(`${USER_URL}/${userId}`, {
+        method: 'PUT',
+        body: JSON.stringify(newUser),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+
 export default { findAllUsers }
