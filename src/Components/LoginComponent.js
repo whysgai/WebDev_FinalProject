@@ -11,12 +11,15 @@ class LoginComponent extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.signup = this.signup.bind(this);
         this.state = {
+            name: '',
             email: '',
-            password: ''
+            password: '',
+            type: ''
         };
     }
 
-    logout() {
+    logout(e) {
+        e.preventDefault();
         fire.auth().signOut().then(() => alert("You've been logged out"));
     }
 
@@ -35,15 +38,30 @@ class LoginComponent extends Component {
 
     signup(e){
         e.preventDefault();
-        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{alert("User created")})
+        fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .then((u)=>{
+                fire.database().ref('users/' + fire.auth().currentUser.uid).set({
+                    username: this.state.name,
+                    email: this.state.email,
+                    type: this.state.type
+                });
+
+            })
+            .then(() => {alert("User created")})
             .catch((error) => {
-                console.log(error);
+                alert(error);
             })
     }
     render() {
         return (
             <div className="col-md-6">
                 <form>
+                    <div className="form-group">
+                        <label htmlFor="name">Name</label>
+                        <input value={this.state.name} onChange={this.handleChange} name="name"
+                               className="form-control" id="name"
+                               placeholder="Eva Tardis"/>
+                    </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input value={this.state.email} onChange={this.handleChange} type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
@@ -52,6 +70,11 @@ class LoginComponent extends Component {
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input value={this.state.password} onChange={this.handleChange} type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="type">Type</label>
+                        <input value={this.state.type} onChange={this.handleChange} name="type"
+                               className="form-control" id="type" placeholder="USER, ADMIN, MOD"/>
                     </div>
                     <button type="submit" onClick={this.login} class="btn btn-primary">Login</button>
                     <button type="submit" onClick={this.logout} className="btn btn-secondary">Logout</button>

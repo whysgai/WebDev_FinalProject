@@ -75,13 +75,7 @@ export default class UserAdminListComponent extends React.Component {
                             <th>email</th>
                             <th>username</th>
                             <th>Manage:</th>
-                            {/*<th>{<btn className="fa fa-plus" onClick={() => {*/}
-                            {/*    db.ref('users/' + currentUser.uid).set({*/}
-                            {/*        username: currentUser.displayName,*/}
-                            {/*        email: currentUser.email,*/}
-                            {/*        type : "ADMIN"*/}
-                            {/*    });*/}
-                            {/*}}></btn>}</th>*/}
+                            <th></th>
                         </tr>
 
                         {console.log(this.state.usersList)}
