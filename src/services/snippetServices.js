@@ -40,7 +40,6 @@ export const createSnippet = (snippet) =>
 
 export const createSnippetForCreator = (creatorId, snippet) => {
     console.log("Post to node server", "CreatorId:", creatorId, "Snippet:", snippet);
-
     fetch(`${SNIPPET_NODE_URL}/snippets/${creatorId}/snippets`, {
         method: "POST",
         body: JSON.stringify(snippet),
