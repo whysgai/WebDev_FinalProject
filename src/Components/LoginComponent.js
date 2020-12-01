@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fire from "../config/db";
 
+//All firebase code *heavily* adapted from https://www.bennettnotes.com/react-login-with-google-firebase/
+
 class LoginComponent extends Component {
     constructor(props) {
         super(props);
