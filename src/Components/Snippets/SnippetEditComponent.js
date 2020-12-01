@@ -54,20 +54,16 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
         <div className="row col-12">
             <label htmlFor="code_editor" />
             <CodeMirror
-                className="col-12 border pl-0"
-                id="code_editor"
                 value={snippet.codeText}
                 options={{
                     mode: 'JavaScript',
                     theme: 'material',
                     lineNumbers: true
                 }}
-                // onChange={(editor, data, value) => {
-                // }}
-                // onChange={(event) => editLocalSnippet({
-                //     ...snippet,
-                //     codeText: event.target.value
-                // })}
+                onChange={(editor, data, value) => editLocalSnippet({
+                    ...snippet,
+                    codeText: value
+                })}
             />
         </div>
         {/*Tags*/}
