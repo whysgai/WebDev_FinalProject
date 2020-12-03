@@ -52,6 +52,14 @@ const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByT
             </Link>
         </div>
 
+        <div className="">
+            <button
+                className="btn btn-outline-primary"
+                type="button"
+                onClick={() => findAllSnippets()}>Search
+            </button>
+        </div>
+
     </div>
 
 export default SnippetSearchBarComponent

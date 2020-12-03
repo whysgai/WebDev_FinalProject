@@ -4,7 +4,7 @@ const SNIPPET_NODE_URL = "https://cs5610-server-node-project.herokuapp.com/api"
 const LOCAL = "i"
 
 export const findSnippetById = (snippetId) =>
-    fetch(`${SNIPPET_URL}/${snippetId}`)
+    fetch(`${SNIPPET_NODE_URL}/snippets/id/${snippetId}`)
         .then(response => response.json());
 
 export const findAllSnippets = () =>
@@ -38,8 +38,9 @@ export const createSnippet = (snippet) =>
     })
         .then(response => response.json());
 
-export const createSnippetForCreator = (creatorId, snippet) =>
-    fetch(`${CREATOR_URL}/${creatorId}/snippets`, {
+export const createSnippetForCreator = (creatorId, snippet) => {
+    console.log("Post to node server", "CreatorId:", creatorId, "Snippet:", snippet);
+    fetch(`${SNIPPET_NODE_URL}/snippets/${creatorId}/snippets`, {
         method: "POST",
         body: JSON.stringify(snippet),
         headers: {
@@ -47,6 +48,7 @@ export const createSnippetForCreator = (creatorId, snippet) =>
         }
     })
         .then(response => response.json());
+}
 
 export const updateSnippet = (snippetId, newSnippet) =>
     fetch(`${SNIPPET_URL}/${snippetId}`, {
