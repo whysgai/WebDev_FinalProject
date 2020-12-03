@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import UserAdminComponent from "./UserAdminComponent";
 import UserAdminRowComponent from "./UserAdminRowComponent";
 import fire from "../../config/db";
+import {findAllUsers} from "../../Actions/UserActions";
 
 export default class UserAdminListComponent extends React.Component {
 
@@ -41,14 +42,14 @@ export default class UserAdminListComponent extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     findAllUsers()
-    //         .then(users => {
-    //             this.setState({
-    //                 users: users
-    //             })
-    //         })
-    // }
+    componentDidMount() {
+        findAllUsers()
+            .then(users => {
+                this.setState({
+                    users: users
+                })
+            })
+    }
 
     deleteUser = (user) => {
         //something happens
@@ -80,25 +81,7 @@ export default class UserAdminListComponent extends React.Component {
 
                         {/*{console.log(this.state.usersList)}*/}
 
-                        {(fire.database().ref("/users").on('value',
-                            (snapshot) => {
-                                let data = snapshot.val()
-                                let keys = snapshot.key
-                                console.log(data)
-                                // console.log(keys)
-                                snapshot.forEach((child) => {
 
-                                    let childData = child.val()
-                                    console.log(childData.email)
-
-                                    // return (
-                                    //     <UserAdminRowComponent
-                                    //         // key={childData.email}
-                                    //         user={childData}
-                                    //         deleteUser={this.deleteUser()}
-                                    //     />)
-                                })
-                            }))}
 
 
                         {/*{*/}

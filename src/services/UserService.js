@@ -1,5 +1,7 @@
 // const username = "group3person"
 // const password = "nicsalehwill3"
+import fire from "../config/db";
+
 const gistId = "3ca80de89acfaac051414ac0c308359b"
 
 const headers = {
@@ -9,8 +11,14 @@ const headers = {
 const USER_URL = "https://cs5610-project-java-server.herokuapp.com/api/users"
 
 export const findAllUsers = () =>
-    fetch(USER_URL)
-        .then(response => response.json());
+    fire.database().ref("/users").on('value',
+        (snapshot) => {
+            let data = snapshot.val();
+            let keys = snapshot.key;
+            console.log(Object.values(data));
+            // console.log(keys)
+
+        })
 
 export const updateUser = (userId, newUser) =>
     fetch(`${USER_URL}/${userId}`, {
@@ -21,5 +29,8 @@ export const updateUser = (userId, newUser) =>
         }
     })
         .then(response => response.json())
+
+
+
 
 export default { findAllUsers }
