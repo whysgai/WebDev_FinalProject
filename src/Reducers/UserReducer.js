@@ -9,11 +9,11 @@ const initialState = {
 
 }
 
-const UserReducer = (state = initialState, action = action) => {
+const UserReducer = (state = initialState, action) => {
     switch(action.type) {
         case FIND_ALL_USERS:
             return {
-                users: [action.users]
+                users: action.users
             }
         default:
             return state;

@@ -5,42 +5,35 @@ import UserAdminRowComponent from "./UserAdminRowComponent";
 import fire from "../../config/db";
 import {findAllUsers} from "../../Actions/UserActions";
 
-export default class UserAdminListComponent extends React.Component {
+class UserAdminListComponent extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-
-            xusersList: [],
-            columns: [],
-            userBeingEdited: {}
-        }
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //
+    //         xusersList: [],
+    //         columns: [],
+    //         userBeingEdited: {}
+    //     }
+    // }
 
 
     usersList = []
 
     componentDidMount() {
-        fire.database().ref("/users").once('value').then(
-            (snapshot) => {
-                let data = snapshot.val();
-                let keys = snapshot.key;
-                console.log(Object.values(data));
-                this.usersList = Object.values(data)
-                console.log(this.usersList);
-
-                // console.log(keys)
-
-            })
+        findAllUsers().then(users => this.usersList = users)
+        console.log("Hit Mount")
+        console.log(this.usersList)
+        // this.usersList = this.props.users
         this.render()
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-
-        if(this.usersList !== []) {
-            console.log("Youve reached Updated")
-        }
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //
+    //     // if(this.usersList !== []) {
+    //     //     console.log("Youve reached Updated")
+    //     // }
+    // }
 
 
     deleteUser = (user) => {
@@ -74,23 +67,20 @@ export default class UserAdminListComponent extends React.Component {
 
                         {console.log("Find this statement")}
 
+                        {/*{*/}
 
+                        {/*    this.props.users.map(user =>*/}
+                        {/*        <div>*/}
+                        {/*            <h1>something</h1>*/}
+                        {/*            <UserAdminRowComponent*/}
+                        {/*                key={user._id}*/}
+                        {/*                user={user}*/}
+                        {/*                deleteUser={this.deleteUser()}*/}
+                        {/*            />*/}
+                        {/*        </div>*/}
 
-
-                        {
-
-                            this.usersList.map(user =>
-                                <div>
-                                    <h1>something</h1>
-                                    <UserAdminRowComponent
-                                        key={user._id}
-                                        user={user}
-                                        deleteUser={this.deleteUser()}
-                                    />
-                                </div>
-
-                            )
-                        }
+                        {/*    )*/}
+                        {/*}*/}
                     </table>
                     <button
                         onClick={this.addUser}
@@ -108,8 +98,12 @@ export default class UserAdminListComponent extends React.Component {
 
 
 const stateToPropertyMapper = (state) => ({
-    users: state.snippetReducer.users
+    users: state.userReducer.users
 })
 
-const propertyToDispatchMapper = (dispatch) => ({})
+const propertyToDispatchMapper = (dispatch) => ({
+    findAllUsers: () => findAllUsers(dispatch)
+})
 
+export default connect(stateToPropertyMapper, propertyToDispatchMapper)
+(UserAdminListComponent)

@@ -11,14 +11,13 @@ const headers = {
 const USER_URL = "https://cs5610-project-java-server.herokuapp.com/api/users"
 
 export const findAllUsers = () =>
-    fire.database().ref("/users").on('value',
-        (snapshot) => {
-            let data = snapshot.val();
-            let keys = snapshot.key;
-            // console.log(Object.values(data));
-            // console.log(keys)
-
-        }).then(response => response.json())
+    fire.database().ref("/users").once('value')
+        .then((snapshot) => {
+            // let data = snapshot.val();
+            // let keys = snapshot.key;
+            console.log("Hit Service")
+            return Object.values(snapshot.val())
+        })
 
 export const updateUser = (userId, newUser) =>
     fetch(`${USER_URL}/${userId}`, {
@@ -29,7 +28,6 @@ export const updateUser = (userId, newUser) =>
         }
     })
         .then(response => response.json())
-
 
 
 
