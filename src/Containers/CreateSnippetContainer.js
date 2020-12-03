@@ -20,10 +20,11 @@ class SingleSnippetContainer extends React.Component {
         super();
         this.state = {
             newSnippetTemplate: {
+                id: "",
                 gistId: "newGist",
                 creator: "",
-                dateCreated: "Yesterday",
-                lastModified: "Today",
+                dateCreated: "",
+                lastModified: "",
                 title: "Snippet title",
                 description: "Description and context of code",
                 codeText: "Add your snippet here...",
@@ -37,7 +38,7 @@ class SingleSnippetContainer extends React.Component {
 
     componentDidMount() {
         console.log("compdidmount", this.props.activeUser)
-        this.state.newSnippetTemplate.creatorId = this.props.activeUser.username
+        // this.state.newSnippetTemplate.creatorId = this.props.activeUser.username
         this.props.createLocalSnippet(this.state.newSnippetTemplate)
         // const snippetId = this.props.match.params.snippetId
         // this.props.findSnippetById(snippetId)

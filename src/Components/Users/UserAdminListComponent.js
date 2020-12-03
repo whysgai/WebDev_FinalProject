@@ -33,7 +33,7 @@ class UserAdminListComponent extends React.Component {
             .then((snapshot) => {
                 // let data = snapshot.val();
                 // let keys = snapshot.key;
-                console.log("Hit Mount")
+                console.log("Hit Mount", snapshot.val())
                 console.log(Object.values(snapshot.val()))
                 this.usersList = Object.values(snapshot.val())
                 console.log(this.usersList)
@@ -71,36 +71,34 @@ class UserAdminListComponent extends React.Component {
                         </tr>
 
                         {console.log("Find this statement")}
-                        {console.log(this.usersList.length)}
-
+                        {console.log("User Lenght", this.usersList.length)}
+                        {console.log("Users List: ", this.usersList)}
+                        {/*{console.log("Users List [1]: ", this.usersList[1].username)}*/}
                         {
-                          this.usersList.map((user) => alert(user.username))
 
-                            // this.usersList ? this.usersList.map(user =>
-                            //     <div>
-                            //         <h1>{user.username}</h1>
-                            //         {console.log(user.username)}
-                            //         <UserAdminRowComponent
-                            //             // key={user._id}
-                            //             user={user}
-                            //             deleteUser={this.deleteUser()}
-                            //         />
-                            //     </div>)
-                            //
-                            //     : <h1>No users</h1>
+                            (this.usersList && this.usersList.length > 0) &&
+                                this.usersList.map((user, index) =>
+                                    <tr key={index}>
+                                        {console.log("Hello from TR:" + index)}
+                                        <td>test</td>
+                                        <td>{user.username}</td>
+                                        {/*<div>*/}
+                                        {/*    <h1>{user.username}</h1>*/}
+                                        {/*    {console.log("USER:", user.username)}*/}
+                                        {/*    <UserAdminRowComponent*/}
+                                        {/*        // key={user._id}*/}
+                                        {/*        user={user}*/}
+                                        {/*        deleteUser={this.deleteUser()}*/}
+                                        {/*    />*/}
+                                        {/*</div>*/}
+                                    </tr>
 
-                            // this.usersList ? this.usersList.map(user =>
-                            //         <div>
-                            //             <h1>{user.username}</h1>
-                            //             {console.log(user.username)}
-                            //             <UserAdminRowComponent
-                            //                 // key={user._id}
-                            //                 user={user}
-                            //                 deleteUser={this.deleteUser()}
-                            //             />
-                            //         </div>)
-                            //
-                            //     : <h1>No users</h1>
+                                )
+
+                        }
+                        {
+                            (!this.usersList || this.usersList.length <= 0) &&
+                                <span><h1>Changed NO users</h1></span>
                         }
                     </table>
                     <button
