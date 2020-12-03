@@ -11,45 +11,37 @@ export default class UserAdminListComponent extends React.Component {
         super(props);
         this.state = {
 
-            usersList: [
-                {
-                    "_id": "123",
-                    "firstName": "Saleh",
-                    "lastName": "Alkhalifa",
-                    "email": "salkhalifa@gmail.com",
-                    "username": "alkhalifas",
-                    "userType": "ADMIN"
-                },
-                {
-                    "_id": "345",
-                    "firstName": "Nicholas",
-                    "lastName": "Shepard",
-                    "email": "nshepard@gmail.com",
-                    "username": "nshepard",
-                    "userType": "ADMIN"
-                },
-                {
-                    "_id": "567",
-                    "firstName": "Will",
-                    "lastName": "Cohen",
-                    "email": "wcohen@gmail.com",
-                    "username": "wcohen",
-                    "userType": "ADMIN"
-                },
-            ],
+            xusersList: [],
             columns: [],
             userBeingEdited: {}
         }
     }
 
+
+    usersList = []
+
     componentDidMount() {
-        findAllUsers()
-            .then(users => {
-                this.setState({
-                    users: users
-                })
+        fire.database().ref("/users").once('value').then(
+            (snapshot) => {
+                let data = snapshot.val();
+                let keys = snapshot.key;
+                console.log(Object.values(data));
+                this.usersList = Object.values(data)
+                console.log(this.usersList);
+
+                // console.log(keys)
+
             })
+        this.render()
     }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+        if(this.usersList !== []) {
+            console.log("Youve reached Updated")
+        }
+    }
+
 
     deleteUser = (user) => {
         //something happens
@@ -65,6 +57,7 @@ export default class UserAdminListComponent extends React.Component {
             <div>
                 <h1>User Admin Page</h1>
                 <div>
+
                     {/*{console.log(this.state.usersList)}*/}
 
                     <table className="table">
@@ -79,21 +72,25 @@ export default class UserAdminListComponent extends React.Component {
                             <th></th>
                         </tr>
 
-                        {/*{console.log(this.state.usersList)}*/}
+                        {console.log("Find this statement")}
 
 
 
 
-                        {/*{*/}
+                        {
 
-                        {/*    this.state.usersList.map(user =>*/}
-                        {/*        <UserAdminRowComponent*/}
-                        {/*            key={user._id}*/}
-                        {/*            user={user}*/}
-                        {/*            deleteUser={this.deleteUser()}*/}
-                        {/*        />*/}
-                        {/*    )*/}
-                        {/*}*/}
+                            this.usersList.map(user =>
+                                <div>
+                                    <h1>something</h1>
+                                    <UserAdminRowComponent
+                                        key={user._id}
+                                        user={user}
+                                        deleteUser={this.deleteUser()}
+                                    />
+                                </div>
+
+                            )
+                        }
                     </table>
                     <button
                         onClick={this.addUser}

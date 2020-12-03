@@ -15,10 +15,10 @@ export const findAllUsers = () =>
         (snapshot) => {
             let data = snapshot.val();
             let keys = snapshot.key;
-            console.log(Object.values(data));
+            // console.log(Object.values(data));
             // console.log(keys)
 
-        })
+        }).then(response => response.json())
 
 export const updateUser = (userId, newUser) =>
     fetch(`${USER_URL}/${userId}`, {
