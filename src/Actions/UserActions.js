@@ -3,7 +3,7 @@ import {CREATE_SNIPPET} from "./SnippetActions";
 
 export const FIND_ALL_USERS = "FIND_ALL_USERS"
 
-export const findAllUsers = (dispatch) =>
+export const findAllUsers = (dispatch) => {
     UserService.findAllUsers()
         .then(users => {
             console.log("Hit Action")
@@ -14,3 +14,4 @@ export const findAllUsers = (dispatch) =>
                 users: users
             })
         })
+}

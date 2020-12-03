@@ -7,34 +7,38 @@ import {findAllUsers} from "../../Actions/UserActions";
 
 class UserAdminListComponent extends React.Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //
-    //         xusersList: [],
-    //         columns: [],
-    //         userBeingEdited: {}
-    //     }
-    // }
+    constructor(props) {
+        super(props);
+        // this.state = {
+        //
+        //     xusersList: [],
+        //     columns: [],
+        //     userBeingEdited: {}
+        // }
+    }
 
 
     usersList = []
 
-    componentDidMount() {
-        findAllUsers().then(users => this.usersList = users)
-        console.log("Hit Mount")
-        console.log(this.usersList)
-        // this.usersList = this.props.users
-        this.render()
-    }
-
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //
-    //     // if(this.usersList !== []) {
-    //     //     console.log("Youve reached Updated")
-    //     // }
+    // componentDidMount() {
+    //     findAllUsers()
+    //     console.log("Hit Mount")
+    //     console.log(this.usersList)
+    //     // this.usersList = this.props.users
+    //     this.render()
     // }
 
+    componentDidMount() {
+        fire.database().ref("/users").once('value')
+            .then((snapshot) => {
+                // let data = snapshot.val();
+                // let keys = snapshot.key;
+                console.log("Hit Mount")
+                console.log(Object.values(snapshot.val()))
+                this.usersList = Object.values(snapshot.val())
+                console.log(this.usersList)
+            }).then(() => this.render())
+    }
 
     deleteUser = (user) => {
         //something happens
@@ -46,6 +50,7 @@ class UserAdminListComponent extends React.Component {
 
 
     render() {
+
         return (
             <div>
                 <h1>User Admin Page</h1>
@@ -66,21 +71,37 @@ class UserAdminListComponent extends React.Component {
                         </tr>
 
                         {console.log("Find this statement")}
+                        {console.log(this.usersList.length)}
 
-                        {/*{*/}
+                        {
+                          this.usersList.map((user) => alert(user.username))
 
-                        {/*    this.props.users.map(user =>*/}
-                        {/*        <div>*/}
-                        {/*            <h1>something</h1>*/}
-                        {/*            <UserAdminRowComponent*/}
-                        {/*                key={user._id}*/}
-                        {/*                user={user}*/}
-                        {/*                deleteUser={this.deleteUser()}*/}
-                        {/*            />*/}
-                        {/*        </div>*/}
+                            // this.usersList ? this.usersList.map(user =>
+                            //     <div>
+                            //         <h1>{user.username}</h1>
+                            //         {console.log(user.username)}
+                            //         <UserAdminRowComponent
+                            //             // key={user._id}
+                            //             user={user}
+                            //             deleteUser={this.deleteUser()}
+                            //         />
+                            //     </div>)
+                            //
+                            //     : <h1>No users</h1>
 
-                        {/*    )*/}
-                        {/*}*/}
+                            // this.usersList ? this.usersList.map(user =>
+                            //         <div>
+                            //             <h1>{user.username}</h1>
+                            //             {console.log(user.username)}
+                            //             <UserAdminRowComponent
+                            //                 // key={user._id}
+                            //                 user={user}
+                            //                 deleteUser={this.deleteUser()}
+                            //             />
+                            //         </div>)
+                            //
+                            //     : <h1>No users</h1>
+                        }
                     </table>
                     <button
                         onClick={this.addUser}
@@ -102,7 +123,7 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    findAllUsers: () => findAllUsers(dispatch)
+    // findAllUsers: () => findAllUsers(dispatch)
 })
 
 export default connect(stateToPropertyMapper, propertyToDispatchMapper)
