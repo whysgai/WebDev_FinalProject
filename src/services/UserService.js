@@ -15,7 +15,7 @@ export const findAllUsers = () =>
         .then((snapshot) => {
             // let data = snapshot.val();
             // let keys = snapshot.key;
-            console.log("Hit Service", snapshot.val())
+            console.log("Hit User Service", snapshot.val())
             return Object.values(snapshot.val())
         })
 
