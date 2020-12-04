@@ -22,18 +22,17 @@ const snippetReducer = (state = initialState, action = action) => {
             return {
                 ...state,
                 currentSnippet: action.snippet
-
-            }
+            };
         case EDIT_LOCAL_SNIPPET:
             return {
                 ...state,
                 currentSnippet: action.snippet
-            }
+            };
         case ADD_TAG:
             if (action.snippet.tags === "" || action.snippet.tags === null) {
                 action.snippet.tags = action.tag
             } else {
-                action.snippet.tags = action.snippet.tags + "," + action.tag
+                action.snippet.tags = action.snippet.tags.push(action.tag)
             }
             return {
                 ...state,
@@ -41,7 +40,7 @@ const snippetReducer = (state = initialState, action = action) => {
                     ...state.currentSnippet,
                     tags: action.snippet.tags
                 }
-            }
+            };
         case REMOVE_TAG:
             let newTags;
             if (state.currentSnippet.tags !== "" || state.currentSnippet.tags !== null) {
@@ -55,7 +54,7 @@ const snippetReducer = (state = initialState, action = action) => {
                     ...state.currentSnippet,
                     tags: newTags
                 }
-            }
+            };
         case DELETE_SNIPPET:
             return {
                 ...state,

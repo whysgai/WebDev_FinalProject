@@ -28,7 +28,7 @@ class SingleSnippetContainer extends React.Component {
                 title: "Snippet title",
                 description: "Description and context of code",
                 codeText: "Add your snippet here...",
-                tags: '',
+                tags: [],
                 shareableURL: "",
                 privacy: false,
                 recommended: false

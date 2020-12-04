@@ -86,9 +86,11 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
             <div className="col-8 text-secondary float-right">
                 <div className="float-right">
                     <div className="tagBackground rounded row ">
+                        {console.log("Reached Editor: ", snippet.tags)}
                         {
-                            (snippet.tags !== null && snippet.tags !== "") &&
-                                snippet.tags.split(',').map((tag, index) =>
+
+                            (snippet.tags !== null && snippet.tags !== []) &&
+                                snippet.tags.map((tag, index) =>
                                     <TagComponent
                                         tag={tag}
                                         snippet={snippet}
