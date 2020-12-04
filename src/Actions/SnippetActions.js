@@ -19,7 +19,6 @@ export const createSnippet = (dispatch, snippet) =>
                                   }
         ))
 
-
 export const createSnippetForCreator = (dispatch, creatorId, snippet) =>
     snippetServices.createSnippet(snippet)
         .then(snippet => {

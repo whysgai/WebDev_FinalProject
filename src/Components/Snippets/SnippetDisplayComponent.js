@@ -46,16 +46,6 @@ const SnippetDisplayComponent = ({snippet}) =>
                                     />
                                 )
                         }
-                        {/*{*/}
-                        {/*    (snippet.tags !== null && snippet.tags.length !== "") &&*/}
-                        {/*        snippet.tags.split(',').map((tag, index) =>*/}
-                        {/*            <TagComponent*/}
-                        {/*                tag={tag}*/}
-                        {/*                snippet={snippet}*/}
-                        {/*                edit={false}*/}
-                        {/*            />*/}
-                        {/*        )*/}
-                        {/*}*/}
                     </div>
                 </div>
             </div>

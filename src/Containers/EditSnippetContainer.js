@@ -59,11 +59,9 @@ const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     addTagToSnippet: (snippet, tag) => {
-        console.log("Tag from edit container:", tag)
         addTagToSnippet(dispatch, snippet, tag)
     },
     removeTagFromSnippet: (tag) => {
-        console.log("Tag from edit container:", tag)
         removeTagFromSnippet(dispatch, tag)
     },
     getGistById: () => getGistById(dispatch),
