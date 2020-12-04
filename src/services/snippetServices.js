@@ -1,7 +1,7 @@
 const SNIPPET_URL = "https://cs5610-project-java-server.herokuapp.com/api/snippets"
 const CREATOR_URL = "https://cs5610-project-java-server.herokuapp.com/api/creators"
 const SNIPPET_NODE_URL = "https://cs5610-server-node-project.herokuapp.com/api"
-const LOCAL = "i"
+const LOCAL_POST = "http://localhost:3003/api/"
 
 export const findSnippetById = (snippetId) =>
     fetch(`${SNIPPET_NODE_URL}/snippets/id/${snippetId}`)
@@ -29,7 +29,7 @@ export const findSnippetsForCreator = (creatorId) =>
         .then(response => response.json());
 
 export const createSnippet = (snippet) =>
-    fetch(`${CREATOR_URL}/testCreator/snippets`, {
+    fetch(`${LOCAL_POST}snippets`, {
         method: "POST",
         body: JSON.stringify(snippet),
         headers: {

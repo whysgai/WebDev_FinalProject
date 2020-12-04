@@ -18,8 +18,10 @@ export const createSnippet = (dispatch, snippet) =>
                                       snippet
                                   }
         ))
+
+
 export const createSnippetForCreator = (dispatch, creatorId, snippet) =>
-    snippetServices.createSnippetForCreator(creatorId, snippet)
+    snippetServices.createSnippet(snippet)
         .then(snippet => {
                 dispatch({
                     type: CREATE_SNIPPET,
@@ -28,6 +30,8 @@ export const createSnippetForCreator = (dispatch, creatorId, snippet) =>
             }
 
         )
+
+
 export const addTagToSnippet = (dispatch, snippet, tag) => {
     dispatch({
         type: ADD_TAG,
