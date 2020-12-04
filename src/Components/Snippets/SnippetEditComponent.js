@@ -78,7 +78,15 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
                 </div>
                 <input className="form-control" id="tag_input"/>
                 <div className="input-group-append">
-                    <button className="btn btn-outline-secondary" type="button" onClick={() => addTagToSnippet(snippet, document.getElementById("tag_input").value)}>
+                    <button
+                        className="btn btn-outline-secondary"
+                        type="button"
+                        onClick={
+                            () => {
+                                addTagToSnippet(snippet, document.getElementById("tag_input").value);
+                                document.getElementById("tag_input").value = "";
+                            }
+                        }>
                         <i className="fa fa-plus" aria-hidden="true"/>
                     </button>
                 </div>
@@ -86,12 +94,13 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
             <div className="col-8 text-secondary float-right">
                 <div className="float-right">
                     <div className="tagBackground rounded row ">
-                        {console.log("Reached Editor: ", snippet.tags)}
+                        {console.log("Reached Editor Tags: ", snippet.tags)}
                         {
 
                             (snippet.tags !== null && snippet.tags !== []) &&
                                 snippet.tags.map((tag, index) =>
                                     <TagComponent
+                                        key={index}
                                         tag={tag}
                                         snippet={snippet}
                                         edit={true}

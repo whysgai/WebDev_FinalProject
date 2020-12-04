@@ -38,25 +38,15 @@ class SingleSnippetContainer extends React.Component {
 
     componentDidMount() {
         console.log("compdidmount", this.props.activeUser)
-        // this.state.newSnippetTemplate.creatorId = this.props.activeUser.username
         let temp = this.state.newSnippetTemplate
         temp.creatorId = this.props.activeUser.username
         this.props.createLocalSnippet(temp)
-        // const snippetId = this.props.match.params.snippetId
-        // this.props.findSnippetById(snippetId)
-        // console.log("Mount for snippet:", snippetId)
     };
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-
-    };
 
     render () {
         {
-            console.log("Hello from create snippet!");
-        }
-        {
-            console.log(this.props.currentSnippet);
+            console.log("Hello from create snippet!", this.props.currentSnippet);
         }
         return (
             <div>

@@ -30,6 +30,8 @@ class EditSnippetContainer extends React.Component {
                     console.log("Active user from edit container", this.props.activeUser)
                 }
                 {
+                    console.log("Current snippet from edit container", this.props.currentSnippet)}
+                {
                     this.props.currentSnippet &&
                         <SnippetContainer
                             snippet={this.props.currentSnippet}

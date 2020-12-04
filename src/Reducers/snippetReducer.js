@@ -19,6 +19,7 @@ const initialState = {
 const snippetReducer = (state = initialState, action = action) => {
     switch(action.type) {
         case CREATE_SNIPPET:
+            console.log("Reducer setting current snippet", action.snippet)
             return {
                 ...state,
                 currentSnippet: action.snippet
@@ -29,11 +30,10 @@ const snippetReducer = (state = initialState, action = action) => {
                 currentSnippet: action.snippet
             };
         case ADD_TAG:
-            if (action.snippet.tags === "" || action.snippet.tags === null) {
-                action.snippet.tags = action.tag
-            } else {
-                action.snippet.tags = action.snippet.tags.push(action.tag)
+            if (action.snippet.tags === null) {
+                action.snippet.tags = [];
             }
+            action.snippet.tags.push(action.tag);
             return {
                 ...state,
                 currentSnippet: {
@@ -42,17 +42,17 @@ const snippetReducer = (state = initialState, action = action) => {
                 }
             };
         case REMOVE_TAG:
-            let newTags;
-            if (state.currentSnippet.tags !== "" || state.currentSnippet.tags !== null) {
-                newTags = state.currentSnippet.tags.replace(action.tag, '');
-            } else {
-                newTags = state.currentSnippet.tags;
-            }
+            // let newTags;
+            // if (state.currentSnippet.tags !== [] || state.currentSnippet.tags !== null) {
+            //     newTags =
+            // } else {
+            //     newTags = state.currentSnippet.tags;
+            // }
             return {
                 ...state,
                 currentSnippet: {
                     ...state.currentSnippet,
-                    tags: newTags
+                    tags: state.currentSnippet.tags.filter(tag => action.tag !== tag)
                 }
             };
         case DELETE_SNIPPET:
