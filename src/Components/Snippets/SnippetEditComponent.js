@@ -53,6 +53,7 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
         {/*</div>*/}
         <div className="row col-12">
             <label htmlFor="code_editor" />
+            {/*CodeMirror2*/}
             <CodeMirror
                 value={snippet.codeText}
                 options={{
