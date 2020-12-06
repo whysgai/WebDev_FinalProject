@@ -13,10 +13,13 @@ const USER_URL = "https://cs5610-project-java-server.herokuapp.com/api/users"
 export const findAllUsers = () =>
     fire.database().ref("/users").once('value')
         .then((snapshot) => {
-            // let data = snapshot.val();
-            // let keys = snapshot.key;
-            console.log("Hit User Service", snapshot.val())
             return Object.values(snapshot.val())
+        })
+
+export const getTokenForUser = () =>
+    fire.database().ref("/users/" + fire.auth().currentUser.uid).once('value')
+        .then((snapshot) => {
+            return snapshot.val()["paToken"]
         })
 
 export const updateUser = (userId, newUser) =>
