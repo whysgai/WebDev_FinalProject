@@ -74,12 +74,18 @@ export default class UserAdminRowComponent extends React.Component {
                     {
                         this.state.user.locked ?
                             <button
-                                onClick={() => this.props.unlockUser(this.props.user)}
+                                onClick={() => {
+                                    this.state.user["locked"]= false
+                                    this.props.unlockUser(this.props.user)
+                                }}
                                 className="btn btn-danger">
                                 Lock
                             </button> :
                             <button
-                                onClick={() => this.props.lockUser(this.props.user)}
+                                onClick={() => {
+                                    this.state.user["locked"]= true
+                                    this.props.lockUser(this.props.user)
+                                }}
                                 className="btn btn-danger">
                                 Unlock
                             </button>

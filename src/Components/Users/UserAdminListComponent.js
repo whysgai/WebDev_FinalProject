@@ -24,12 +24,10 @@ class UserAdminListComponent extends React.Component {
     }
 
     lockUser = (user) => {
-        user["locked"]= true
         UserService.updateUser(user.uid,user)
     };
 
     unlockUser = (user) => {
-        user["locked"]= false
         UserService.updateUser(user.uid,user)
     };
 
