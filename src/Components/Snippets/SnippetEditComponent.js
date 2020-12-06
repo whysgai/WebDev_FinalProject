@@ -123,6 +123,8 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
                     <button className="btn btn-outline-info float-right col-2"
                             onClick={() => {
                                 console.log("Creating snippet for:", activeUser.username)
+                                console.log("Created Snippet:", snippet)
+
                                 createSnippetForCreator(activeUser.username, snippet)
                             }}
                     >Create</button>
