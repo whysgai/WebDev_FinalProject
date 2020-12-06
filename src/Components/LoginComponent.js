@@ -14,6 +14,7 @@ class LoginComponent extends Component {
             name: '',
             email: '',
             password: '',
+            paToken: '',
             type: ''
         };
     }
@@ -42,8 +43,11 @@ class LoginComponent extends Component {
             .then((u)=>{
                 fire.database().ref('users/' + fire.auth().currentUser.uid).set({
                     username: this.state.name,
+                    uid: fire.auth().currentUser.uid,
                     email: this.state.email,
-                    type: this.state.type
+                    paToken: this.state.paToken,
+                    type: this.state.type,
+                    locked: false
                 });
 
             })
@@ -57,10 +61,10 @@ class LoginComponent extends Component {
             <div className="col-md-6">
                 <form>
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name">Username</label>
                         <input value={this.state.name} onChange={this.handleChange} name="name"
                                className="form-control" id="name"
-                               placeholder="Eva Tardis"/>
+                               placeholder="etardis123"/>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
@@ -70,6 +74,11 @@ class LoginComponent extends Component {
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input value={this.state.password} onChange={this.handleChange} type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="paToken">Personal Access Token</label>
+                        <input value={this.state.paToken} onChange={this.handleChange} type="password" name="paToken"
+                               className="form-control" id="paToken" placeholder="Personal Access Token"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="type">Type</label>
