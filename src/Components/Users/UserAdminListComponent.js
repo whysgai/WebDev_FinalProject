@@ -14,20 +14,28 @@ class UserAdminListComponent extends React.Component {
         this.state = {};
     }
 
-
     componentDidMount() {
         this.props.findAllUsers()
         this.render();
     }
+    componentDidUpdate() {
+        this.props.findAllUsers()
+        this.render();
+    }
 
-    deleteUser = (user) => {
-        //something happens
+    lockUser = (user) => {
+        user["locked"]= true
+        UserService.updateUser(user.uid,user)
+    };
+
+    unlockUser = (user) => {
+        user["locked"]= false
+        UserService.updateUser(user.uid,user)
     };
 
     updateUserRow = (uid, user) => {
         UserService.updateUser(uid,user)
-        this.props.findAllUsers()
-        this.render()
+
     };
 
 
@@ -53,7 +61,8 @@ class UserAdminListComponent extends React.Component {
                                 <UserAdminRowComponent
                                     user={user}
                                     updateUserRow={this.updateUserRow}
-                                    deleteUser={this.deleteUser}
+                                    lockUser={this.lockUser}
+                                    unlockUser={this.unlockUser}
                                 />
                             )
 

@@ -46,7 +46,8 @@ class LoginComponent extends Component {
                     uid: fire.auth().currentUser.uid,
                     email: this.state.email,
                     paToken: this.state.paToken,
-                    type: this.state.type
+                    type: this.state.type,
+                    locked: false
                 });
 
             })

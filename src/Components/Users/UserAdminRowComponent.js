@@ -1,7 +1,4 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {updateUser} from "../../services/UserService";
-
 
 export default class UserAdminRowComponent extends React.Component {
     state = {
@@ -31,16 +28,63 @@ export default class UserAdminRowComponent extends React.Component {
                             value={this.state.user.type}/>
                     }
                 </td>
-                <td>{this.props.user.username}</td>
-                <td>{this.props.user.email}</td>
+                <td>
+                    {
+                        !this.state.editing &&
+                        <p>{this.props.user.username}</p>
+                    }
+                    {
+                        this.state.editing &&
+                        <input
+                            className="form-control"
+                            onChange={(event) => {
+                                const newUsername = event.target.value;
+                                this.setState(prevState => ({
+                                    user: {...prevState.user, username: newUsername}
+                                }))
+                            }
+                            }
+                            value={this.state.user.username}/>
+                    }
+                </td>
+                {/*<td>{*/}
+                {/*    !this.state.editing &&*/}
+                {/*    <p>{this.props.user.email}</p>*/}
+                {/*}*/}
+                {/*    {*/}
+                {/*        this.state.editing &&*/}
+                {/*        <input*/}
+                {/*            className="form-control"*/}
+                {/*            onChange={(event) => {*/}
+                {/*                const newEmail = event.target.value;*/}
+                {/*                this.setState(prevState => ({*/}
+                {/*                    user: {...prevState.user, email: newEmail}*/}
+                {/*                }))*/}
+                {/*            }*/}
+                {/*            }*/}
+                {/*            value={this.state.user.email}/>*/}
+                {/*    }</td>*/}
+
+
+                <td><p>{this.props.user.email}</p></td>
 
                 {/*//------------------------------------------- Delete Button -------------------------------------//*/}
                 <td>
-                    <button
-                        onClick={() => this.props.deleteUser(this.props.user)}
-                        className="btn btn-light">
-                        Delete
-                    </button>
+
+                    {
+                        this.state.user.locked ?
+                            <button
+                                onClick={() => this.props.unlockUser(this.props.user)}
+                                className="btn btn-danger">
+                                Lock
+                            </button> :
+                            <button
+                                onClick={() => this.props.lockUser(this.props.user)}
+                                className="btn btn-danger">
+                                Unlock
+                            </button>
+                    }
+
 
                     {
                         !this.state.editing &&

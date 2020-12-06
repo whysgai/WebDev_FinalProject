@@ -21,6 +21,7 @@ export const getTokenForUser = (uid) =>
 
 export const updateUser = (uid, newUser) =>
     fire.database().ref("/users/" + uid).set({
+        locked: newUser.locked,
         username: newUser.username,
         uid: newUser.uid,
         email: newUser.email,
