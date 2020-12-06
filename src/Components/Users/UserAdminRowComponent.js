@@ -8,8 +8,9 @@ export default class UserAdminRowComponent extends React.Component {
         editing: false,
         user: this.props.user
     }
+
     render() {
-        return(
+        return (
             <tr>
                 <td>
                     {
@@ -24,7 +25,8 @@ export default class UserAdminRowComponent extends React.Component {
                                 const newUserType = event.target.value;
                                 this.setState(prevState => ({
                                     user: {...prevState.user, type: newUserType}
-                                }))}
+                                }))
+                            }
                             }
                             value={this.state.user.type}/>
                     }
@@ -39,10 +41,7 @@ export default class UserAdminRowComponent extends React.Component {
                         className="btn btn-light">
                         Delete
                     </button>
-                </td>
 
-                {/*//------------------------------------------- Edit/Save Button -------------------------------------//*/}
-                <td>
                     {
                         !this.state.editing &&
                         <button
@@ -52,12 +51,14 @@ export default class UserAdminRowComponent extends React.Component {
                     {
                         this.state.editing &&
                         <button className="btn btn-light" onClick={() => {
-                            // updateUser(this.state.user._id, this.state.user).then(status => {})//todo:change me
+                            this.props.updateUserRow(this.state.user.uid, this.state.user)
+
                             this.setState({
-                                editing : false
+                                editing: false
                             })
-                        }}>
-                            Save
+
+
+                        }}>Save
 
                         </button>
                     }

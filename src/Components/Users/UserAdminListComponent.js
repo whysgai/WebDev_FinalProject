@@ -3,7 +3,9 @@ import {connect} from "react-redux";
 import UserAdminComponent from "./UserAdminComponent";
 import UserAdminRowComponent from "./UserAdminRowComponent";
 import fire from "../../config/db";
+import Loader from 'react-loader-spinner'
 import {findAllUsers} from "../../Actions/UserActions";
+import UserService, {updateUser} from "../../services/UserService";
 
 class UserAdminListComponent extends React.Component {
 
@@ -22,8 +24,10 @@ class UserAdminListComponent extends React.Component {
         //something happens
     };
 
-    addUser = (user) => {
-        //something happens
+    updateUserRow = (uid, user) => {
+        UserService.updateUser(uid,user)
+        this.props.findAllUsers()
+        this.render()
     };
 
 
@@ -32,56 +36,39 @@ class UserAdminListComponent extends React.Component {
             <div>
                 <h1>User Admin Page</h1>
                 <div>
-                    {
-                        (this.props.users && this.props.users > 0) &&
-                            <div>
-                                {console.log("Users", this.props.users)}
-                                {/*<span>this.props.user</span>*/}
-                            </div>
-                    }
-
                     <table className="table">
                         <thead>
-                            <tr>
-                                <th>User Type</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Manage:</th>
-                                <th></th>
-                            </tr>
+                        <tr>
+                            <th>User Type</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Manage:</th>
+                        </tr>
                         </thead>
-
-                        {console.log("Find this statement")}
-                        {console.log("User Lenght", this.props.users.length)}
-                        {console.log("Users List: ", this.props.users)}
-                        {/*{console.log("Users List [1]: ", this.props.users[1].username)}*/}
                         <tbody>
-                            {
+                        {
 
-                                (this.props.users && this.props.users.length > 0) &&
-                                this.props.users.map((user, index) =>
-                                                <UserAdminRowComponent
-                                                    user={user}
-                                                    deleteUser={this.deleteUser()}
-                                                />
+                            (this.props.users && this.props.users.length > 0) &&
+                            this.props.users.map((user, index) =>
+                                <UserAdminRowComponent
+                                    user={user}
+                                    updateUserRow={this.updateUserRow}
+                                    deleteUser={this.deleteUser}
+                                />
+                            )
 
-                                    )
+                        }
 
-                            }
-                            {
-                                (!this.props.users || this.props.users.length <= 0) &&
-                                <tr><td><span><h1>Changed NO users</h1></span></td></tr>
-                            }
                         </tbody>
                     </table>
-
+                    {
+                        (!this.props.users || this.props.users.length <= 0) &&
+                        <Loader type="audio" color="#00BFFF" height={80} width={80}/>
+                    }
                 </div>
-
             </div>
         );
     }
-
-
 }
 
 

@@ -43,6 +43,7 @@ class LoginComponent extends Component {
             .then((u)=>{
                 fire.database().ref('users/' + fire.auth().currentUser.uid).set({
                     username: this.state.name,
+                    uid: fire.auth().currentUser.uid,
                     email: this.state.email,
                     paToken: this.state.paToken,
                     type: this.state.type
@@ -62,7 +63,7 @@ class LoginComponent extends Component {
                         <label htmlFor="name">Username</label>
                         <input value={this.state.name} onChange={this.handleChange} name="name"
                                className="form-control" id="name"
-                               placeholder="Eva Tardis"/>
+                               placeholder="etardis123"/>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
