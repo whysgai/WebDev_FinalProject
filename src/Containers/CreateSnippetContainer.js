@@ -20,14 +20,15 @@ class SingleSnippetContainer extends React.Component {
         super();
         this.state = {
             newSnippetTemplate: {
+                id: "",
                 gistId: "newGist",
-                creator: "",
-                dateCreated: "Yesterday",
-                lastModified: "Today",
+                creatorId: "",
+                dateCreated: "",
+                lastModified: "",
                 title: "Snippet title",
                 description: "Description and context of code",
                 codeText: "Add your snippet here...",
-                tags: '',
+                tags: [],
                 shareableURL: "",
                 privacy: false,
                 recommended: false
@@ -36,25 +37,13 @@ class SingleSnippetContainer extends React.Component {
     }
 
     componentDidMount() {
-        console.log("compdidmount", this.props.activeUser)
-        this.state.newSnippetTemplate.creatorId = this.props.activeUser.username
-        this.props.createLocalSnippet(this.state.newSnippetTemplate)
-        // const snippetId = this.props.match.params.snippetId
-        // this.props.findSnippetById(snippetId)
-        // console.log("Mount for snippet:", snippetId)
+        let temp = this.state.newSnippetTemplate
+        temp.creatorId = this.props.activeUser.username
+        this.props.createLocalSnippet(temp)
     };
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-
-    };
 
     render () {
-        {
-            console.log("Hello from create snippet!");
-        }
-        {
-            console.log(this.props.currentSnippet);
-        }
         return (
             <div>
                 {
@@ -77,7 +66,6 @@ class SingleSnippetContainer extends React.Component {
 const stateToPropertyMapper = (state) => ({
     currentSnippet: state.snippetReducer.currentSnippet,
     activeUser: state.userReducer.activeUser,
-    // snippets: state.snippetReducer.snippets,
     gists: state.gistReducer.gists,
     users: state.userReducer.users
 })
@@ -89,11 +77,9 @@ const propertyToDispatchMapper = (dispatch) => ({
     createLocalSnippet: (snippet) => {createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     addTagToSnippet: (snippet, tag) => {
-        console.log("Tag from edit container:", tag)
         addTagToSnippet(dispatch, snippet, tag)
     },
     removeTagFromSnippet: (tag) => {
-        console.log("Tag from edit container:", tag)
         removeTagFromSnippet(dispatch, tag)
     },
     getGistById: () => getGistById(dispatch),

@@ -30,6 +30,8 @@ class EditSnippetContainer extends React.Component {
                     console.log("Active user from edit container", this.props.activeUser)
                 }
                 {
+                    console.log("Current snippet from edit container", this.props.currentSnippet)}
+                {
                     this.props.currentSnippet &&
                         <SnippetContainer
                             snippet={this.props.currentSnippet}
@@ -57,11 +59,9 @@ const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     addTagToSnippet: (snippet, tag) => {
-        console.log("Tag from edit container:", tag)
         addTagToSnippet(dispatch, snippet, tag)
     },
     removeTagFromSnippet: (tag) => {
-        console.log("Tag from edit container:", tag)
         removeTagFromSnippet(dispatch, tag)
     },
     getGistById: () => getGistById(dispatch),

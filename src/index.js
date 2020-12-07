@@ -23,6 +23,8 @@ import UserReducer from "./Reducers/UserReducer";
 // import SingleSnippetContainer from "./Containers/SingleSnippetContainer-Seprate";
 import SingleSnippetContainer from "./Containers/EditSnippetContainer";
 import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
+import UserAdminListComponent from "./Components/Users/UserAdminListComponent";
+import LoginComponent from "./Components/LoginComponent";
 
 
 
@@ -49,6 +51,9 @@ ReactDOM.render(
                      <Route path="/mysnippets" exact>
                         <MySnippetsContainer/>
                      </Route>
+                    <Route path="/admin" exact>
+                        <UserAdminListComponent/>
+                    </Route>
                     <Route path="/user_snippets" exact>
                         <UserSnippetsContainer/>
                     </Route>
@@ -56,7 +61,8 @@ ReactDOM.render(
                         <TestSnippetDisplayPageContainer username="NameOfUser"/>
                     </Route>
                     <Route path="/snippet/:snippetId" exact component={SingleSnippetContainer}/>
-                    <Route path="/newsnippet" exact component={CreateSnippetContainer}/>
+                    <Route path="/newsnippet/" exact component={CreateSnippetContainer}/>
+                    <Route path="/login" exact component={LoginComponent}/>
                 {/*End of container*/}
                 </div>
             </div>

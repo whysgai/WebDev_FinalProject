@@ -13,11 +13,14 @@ class SnippetSearchComponent extends React.Component {
 
     componentDidMount() {
         // this.props.findAllSnippets()
+        console.log("Mount: ", document.getElementById("searchtags").value)
     };
 
     componentDidUpdate() {
         // this.props.findAllSnippets()
     };
+
+
 
     render () {
         return (
@@ -31,6 +34,7 @@ class SnippetSearchComponent extends React.Component {
                     <SnippetSearchBarComponent
                         findAllSnippets={this.props.findAllSnippets}
                         snippets={this.props.snippets}
+                        searchSnippetsByTags={this.props.searchSnippetsByTags}
                     />
                     <SnippetSearchListComponent snippets={this.props.snippets}/>
                 </div>

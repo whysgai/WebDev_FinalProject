@@ -1,15 +1,34 @@
 // const username = "group3person"
 // const password = "nicsalehwill3"
-const gistId = "3ca80de89acfaac051414ac0c308359b"
+
+import fire from "../config/db";
 
 const headers = {
     "Authorization" : `Token 70f143af3d540e77de91e721e5c4e8960a181663`
 }
 
-const USER_URL = "https://cs5610-project-java-server.herokuapp.com/api/users"
-
 export const findAllUsers = () =>
-    fetch(USER_URL)
-        .then(response => response.json());
+    fire.database().ref("/users").once('value')
+        .then((snapshot) => {
+            return Object.values(snapshot.val())
+        })
 
-export default { findAllUsers }
+export const getTokenForUser = (uid) =>
+    fire.database().ref("/users/" + uid).once('value')
+        .then((snapshot) => {
+            return snapshot.val()["paToken"]
+        })
+
+export const updateUser = (uid, newUser) =>
+    fire.database().ref("/users/" + uid).set({
+        locked: newUser.locked,
+        username: newUser.username,
+        uid: newUser.uid,
+        email: newUser.email,
+        paToken: newUser.paToken,
+        type: newUser.type
+    })
+
+
+
+export default { findAllUsers, getTokenForUser, updateUser }
