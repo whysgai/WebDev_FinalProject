@@ -14,10 +14,10 @@ const SnippetComponent = ({snippet, editLocalSnippet, createSnippetForCreator, a
             console.log("ActiveUser from Snippet Component:", activeUser.username)
         }
         {
-            console.log("Creator from Snippet:", snippet.creatorId)
+            console.log("Creator from Snippet:", snippet.creator)
         }
         {
-            ((edit || create) && activeUser.username === snippet.creatorId) &&
+            ((edit || create) && activeUser.username === snippet.creator) &&
                 <SnippetEditComponent
                     snippet={snippet}
                     editLocalSnippet={editLocalSnippet}
@@ -31,7 +31,7 @@ const SnippetComponent = ({snippet, editLocalSnippet, createSnippetForCreator, a
                 />
         }
         {
-            ((!edit && !create) || activeUser.username !== snippet.creatorId) &&
+            ((!edit && !create) || activeUser.username !== snippet.creator) &&
                 <SnippetDisplayComponent snippet={snippet}/>
         }
 

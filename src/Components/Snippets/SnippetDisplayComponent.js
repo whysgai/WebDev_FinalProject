@@ -29,7 +29,7 @@ const SnippetDisplayComponent = ({snippet}) =>
         <div className="row col-12">
             {/*Creator*/}
             <div className="col-3">
-                <h6>Created By: <a href="#">{snippet.creatorId}</a></h6>
+                <h6>Created By: <a href="#">{snippet.creator}</a></h6>
             </div>
             {/*Tags*/}
             <div className="col-9 text-secondary float-right">
