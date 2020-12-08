@@ -17,7 +17,7 @@ const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByT
                         id="searchtags"
                         className="form-control col-12"
                         // value = ""
-                        //placeholder="Search by tag"
+                        placeholder="Search by tags (eg: python+js+import)"
                     />
                     <div className="input-group-append">
                         <button
