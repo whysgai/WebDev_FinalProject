@@ -65,8 +65,8 @@ const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     updateSnippet: (snippet) => updateSnippet(dispatch, snippet),
-    addTagToSnippet: (snippet, tag) => {
-        addTagToSnippet(dispatch, snippet, tag)
+    addTagToSnippet: (tag) => {
+        addTagToSnippet(dispatch, tag)
     },
     removeTagFromSnippet: (tag) => {
         removeTagFromSnippet(dispatch, tag)

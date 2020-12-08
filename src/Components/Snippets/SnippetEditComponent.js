@@ -80,7 +80,7 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createS
                         type="button"
                         onClick={
                             () => {
-                                addTagToSnippet(snippet, document.getElementById("tag_input").value);
+                                addTagToSnippet(document.getElementById("tag_input").value);
                                 document.getElementById("tag_input").value = "";
                             }
                         }>
@@ -99,7 +99,6 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createS
                                     <TagComponent
                                         key={index}
                                         tag={tag}
-                                        snippet={snippet}
                                         edit={true}
                                         removeTagFromSnippet={removeTagFromSnippet}
                                     />

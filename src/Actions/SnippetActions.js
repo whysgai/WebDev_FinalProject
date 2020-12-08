@@ -31,10 +31,10 @@ export const createSnippetForCreator = (dispatch, creator, snippet) =>
         )
 
 
-export const addTagToSnippet = (dispatch, snippet, tag) => {
+export const addTagToSnippet = (dispatch, tag) => {
+    console.log("Action adding tag", tag);
     dispatch({
         type: ADD_TAG,
-        snippet,
         tag
     })
 }
