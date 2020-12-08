@@ -30,13 +30,31 @@ class LandingPageContainer extends React.Component {
     }
 
     render() {
+        function currentTime() {
+            let n =  new Date();
+            let y = n.getFullYear();
+            let m = n.getMonth() + 1;
+            let d = n.getDate();
+            let h = n.getHours();
+            let min = n.getMinutes();
+            let s = n.getSeconds();
+
+            return  m + "/" + d + "/" + y + " " + h + ":" + min + ":" + s;
+        }
+
         return (
             <div>
                 {console.log(this.state.snippets)}
                 {
                     this.state.user !== null &&
-                    <div className="jumbotron text-center" style={{height: 200}}>
-                        <h1 className="display-4">Welcome back to CodeSaver!</h1>
+
+                    <div>
+                        <div className="jumbotron text-center" style={{height: 200}}>
+                            <h1 className="display-4">Welcome back to CodeSaver, {this.state.user}!</h1>
+                        </div>
+                        <div>
+                            <h6 class="text-secondary">Updated On: {currentTime()}</h6>
+                        </div>
                     </div>
                 }
                 {
@@ -51,6 +69,11 @@ class LandingPageContainer extends React.Component {
                         </p>
                     </div>
                 }
+                <div>
+                    <div className=" text-center">
+                        <h1 className="display-4">Coming Soon!</h1>
+                    </div>
+                </div>
 
             </div>
         )

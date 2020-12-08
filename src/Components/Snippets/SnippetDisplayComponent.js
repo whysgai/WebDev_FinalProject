@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import TagComponent from "../TagComponent";
 
 const SnippetDisplayComponent = ({snippet}) =>
-    <div className="card-body shadow">
+    <div className="card-body shadow hoverDiv">
         {/*Title and Timestamp*/}
         <div className="row col-12">
             <div className="col-8">
