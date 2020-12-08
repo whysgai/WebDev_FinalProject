@@ -3,7 +3,7 @@ import React from "react"
 const TagComponent = ({tag, snippet, edit, removeTagFromSnippet}) =>
     <div>
         <span className="badge badge-primary m-2">
-            {tag}
+            <h6>{tag}</h6>
             {
                 edit === true &&
                     <i className="fa fa-times-circle ml-2" onClick={() => removeTagFromSnippet(tag)}/>
