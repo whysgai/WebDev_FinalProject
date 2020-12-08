@@ -25,6 +25,7 @@ import SingleSnippetContainer from "./Containers/EditSnippetContainer";
 import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
 import UserAdminListComponent from "./Components/Users/UserAdminListComponent";
 import LoginComponent from "./Components/LoginComponent";
+import LandingPageContainer from "./Containers/LandingPageContainer";
 
 
 
@@ -42,8 +43,10 @@ ReactDOM.render(
             <div className="">
                 <NavBarContainer/>
                 <div className="container">
+                    <Route path="/" exact>
+                        <LandingPageContainer/>
+                    </Route>
                     <Route path={[
-                        '/',
                         '/search'
                     ]} exact>
                         <SnippetSearchContainer/>
