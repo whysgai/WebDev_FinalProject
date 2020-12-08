@@ -3,7 +3,7 @@ import {UnControlled as CodeMirror} from 'react-codemirror2'
 import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
 
-const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreator, addTagToSnippet, removeTagFromSnippet, createGistForUser, edit, create, activeUser}) =>
+const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createSnippetForCreator, addTagToSnippet, removeTagFromSnippet, createGistForUser, edit, create, activeUser}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -113,7 +113,13 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
             <div className="col-5"/>
             {
                 edit &&
-                    <button className="btn btn-outline-info float-right col-2">Save</button>
+                    <button className="btn btn-outline-info float-right col-2"
+                            onClick={() => {
+                                // console.log("Creating snippet for:", activeUser.username)
+                                console.log("Updating Snippet:", snippet)
+                                updateSnippet(snippet)
+                            }}
+                    >Save</button>
             }
             {
                 create &&

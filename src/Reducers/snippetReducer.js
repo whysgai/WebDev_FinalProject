@@ -13,7 +13,6 @@ const initialState = {
     snippets: [],
     currentSnippet: null,
     user: {id:"uid001", username:"Ms. Pac-Man"}
-
 }
 
 const snippetReducer = (state = initialState, action = action) => {
@@ -25,6 +24,7 @@ const snippetReducer = (state = initialState, action = action) => {
                 currentSnippet: action.snippet
             };
         case EDIT_LOCAL_SNIPPET:
+            console.log("Reducer editing current snippet", action.snippet)
             return {
                 ...state,
                 currentSnippet: action.snippet
@@ -52,7 +52,7 @@ const snippetReducer = (state = initialState, action = action) => {
         case DELETE_SNIPPET:
             return {
                 ...state,
-                snippets: state.snippets.filter(snippet => snippet.id !== action.snippetId)
+                snippets: state.snippets.filter(snippet => snippet._id !== action.snippetId)
             };
         case FIND_ALL_SNIPPETS:
             return {

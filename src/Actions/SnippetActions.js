@@ -50,18 +50,16 @@ export const createLocalSnippet = (dispatch, snippet) => {
             snippet
     })}
 
-export const editLocalSnippet = (dispatch, snippet) =>
+export const editLocalSnippet = (dispatch, snippet) => {
+    console.log("Changed snippet ACTION", snippet);
     dispatch({
-            type: EDIT_LOCAL_SNIPPET,
-            snippet
+        type: EDIT_LOCAL_SNIPPET,
+        snippet
     })
+}
+
 export const updateSnippet = (dispatch, snippet) =>
     snippetServices.updateSnippet(snippet)
-        .then(snippet => dispatch({
-                type: CREATE_SNIPPET,
-                snippet
-            }
-        ))
 
 export const deleteSnippet = (dispatch, snippetId) =>
     snippetServices.deleteSnippet(snippetId)
