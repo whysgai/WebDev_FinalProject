@@ -19,20 +19,18 @@ export const createSnippet = (dispatch, snippet) =>
                                   }
         ))
 
-export const createSnippetForCreator = (dispatch, creator, snippet) =>
-    snippetServices.createSnippet(snippet)
-        .then(snippet => {
-                dispatch({
-                    type: CREATE_SNIPPET,
-                    snippet
-                });
-            }
-
-        )
-
+// export const createSnippetForCreator = (dispatch, creator, snippet) =>
+//     snippetServices.createSnippet(snippet)
+//         .then(snippet => {
+//                 dispatch({
+//                     type: CREATE_SNIPPET,
+//                     snippet
+//                 });
+//             }
+//
+//         )
 
 export const addTagToSnippet = (dispatch, tag) => {
-    console.log("Action adding tag", tag);
     dispatch({
         type: ADD_TAG,
         tag

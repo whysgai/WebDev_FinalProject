@@ -24,13 +24,11 @@ const snippetReducer = (state = initialState, action = action) => {
                 currentSnippet: action.snippet
             };
         case EDIT_LOCAL_SNIPPET:
-            console.log("Reducer setting current snippet", action.snippet)
             return {
                 ...state,
                 currentSnippet: action.snippet
             };
         case ADD_TAG:
-            console.log("Reducer add tag", action.tag)
             let tags = []
             if (state.currentSnippet.tags !== null) {
                 tags = state.currentSnippet.tags;
@@ -72,7 +70,6 @@ const snippetReducer = (state = initialState, action = action) => {
                 currentSnippet: action.snippet
             }
         case SEARCH_SNIPPET:
-            console.log("Reducer Search: ", action.snippets)
             return {
                 ...state,
             snippets: action.snippets
