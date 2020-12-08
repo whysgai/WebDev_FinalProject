@@ -1,7 +1,7 @@
 import React from "react";
 import SnippetContainer from "./SnippetContainer";
 import {
-    addTagToSnippet,
+    addTagToSnippet, deleteSnippet,
     editLocalSnippet,
     findSnippetById,
     removeTagFromSnippet,
@@ -46,6 +46,7 @@ class EditSnippetContainer extends React.Component {
                             updateSnippet={this.props.updateSnippet}
                             addTagToSnippet={this.props.addTagToSnippet}
                             removeTagFromSnippet={this.props.removeTagFromSnippet}
+                            deleteSnippet={this.props.deleteSnippet}
                             activeUser={this.props.activeUser}
                         />
                 }
@@ -71,6 +72,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     removeTagFromSnippet: (tag) => {
         removeTagFromSnippet(dispatch, tag)
     },
+    deleteSnippet: (snippetId) => deleteSnippet(dispatch, snippetId),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),

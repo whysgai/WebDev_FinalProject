@@ -73,7 +73,7 @@ export const updateSnippet = (newSnippet) =>
     }).then(response => response.json());
 
 export const deleteSnippet = (snippetId) =>
-    fetch(`${SNIPPET_NODE_URL_2}/snippets/${snippetId}`, {
+    fetch(`${SNIPPET_NODE_URL_2}/snippets/id/${snippetId}`, {
         method: "DELETE"
     })
 

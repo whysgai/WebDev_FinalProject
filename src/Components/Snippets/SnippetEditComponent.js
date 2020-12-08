@@ -2,8 +2,9 @@ import React from "react"
 import {UnControlled as CodeMirror} from 'react-codemirror2'
 import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
+import {Link} from "react-router-dom";
 
-const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, edit, create, activeUser}) =>
+const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, deleteSnippet, edit, create, activeUser}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -118,11 +119,18 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createS
                     >Save</button>
             }
             {
+                edit &&
+                    <Link className="btn btn-outline-danger float-right col-2"
+                          to={"/search"}
+                          onClick={() => {
+                              deleteSnippet(snippet._id)
+                          }}
+                    >Delete</Link>
+            }
+            {
                 create &&
                     <button className="btn btn-outline-info float-right col-2"
                             onClick={() => {
-                                console.log("Creating snippet for:", activeUser.username)
-                                console.log("Created Snippet:", snippet)
                                 createSnippet(snippet)
                             }}
                     >Create</button>
