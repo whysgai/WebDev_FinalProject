@@ -19,7 +19,6 @@ const initialState = {
 const snippetReducer = (state = initialState, action = action) => {
     switch(action.type) {
         case CREATE_SNIPPET:
-            console.log("Reducer setting current snippet", action.snippet)
             return {
                 ...state,
                 currentSnippet: action.snippet
