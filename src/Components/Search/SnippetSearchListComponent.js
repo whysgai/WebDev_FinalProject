@@ -3,16 +3,15 @@ import SnippetContainer from "../../Containers/SnippetContainer";
 
 const SnippetSearchListComponent = ({snippets}) =>
     <div>
-        {
-            console.log(snippets)
-        }
+        {/*{*/}
+        {/*    console.log(snippets)*/}
+        {/*}*/}
         {
             snippets.length > 0 &&
                 snippets.map((snippet, index)=>
-                    <SnippetContainer snippet={snippet}/>
+                    <div key={index}><SnippetContainer snippet={snippet}/></div>
                 )
         }
-
     </div>
 
 export default SnippetSearchListComponent

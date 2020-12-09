@@ -12,8 +12,6 @@ import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions"
 import {findAllUsers} from "../Actions/UserActions";
 
 class EditSnippetContainer extends React.Component {
-    // snippets, gists, getGistsForUser, users, findAllUsers, findAllSnippets
-
 
     constructor() {
         super();
@@ -56,7 +54,7 @@ class EditSnippetContainer extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    currentSnippet: state.snippetReducer.currentSnippet,
+    currentSnippet: state.snippetReducer.snippets[0],
     snippets: state.snippetReducer.snippets,
     gists: state.gistReducer.gists,
     activeUser: state.userReducer.activeUser

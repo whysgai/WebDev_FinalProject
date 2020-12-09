@@ -21,7 +21,7 @@ class SingleSnippetContainer extends React.Component {
         this.state = {
             newSnippetTemplate: {
                 id: "",
-                gistId: "newGist",
+                gistId: "newGist3",
                 creator: "",
                 dateCreated: "",
                 lastModified: "",
@@ -29,6 +29,7 @@ class SingleSnippetContainer extends React.Component {
                 description: "Description and context of code",
                 codeText: "Add your snippet here...",
                 tags: [],
+                likes: [],
                 shareableURL: "",
                 privacy: false,
                 recommended: false
@@ -65,7 +66,7 @@ class SingleSnippetContainer extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    currentSnippet: state.snippetReducer.currentSnippet,
+    currentSnippet: state.snippetReducer.snippets[0],
     activeUser: state.userReducer.activeUser,
     gists: state.gistReducer.gists,
     users: state.userReducer.users
