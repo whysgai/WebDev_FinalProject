@@ -44,7 +44,7 @@ class LandingPageContainer extends React.Component {
 
         return (
             <div>
-                {console.log(this.state.snippets)}
+                {console.log(this.props.snippets)}
                 {
                     this.state.user !== null &&
 

@@ -13,7 +13,7 @@ class SnippetSearchComponent extends React.Component {
 
     componentDidMount() {
         // this.props.findAllSnippets()
-        console.log("Mount: ", document.getElementById("searchtags").value)
+        // console.log("Mount: ", document.getElementById("searchtags").value)
     };
 
     componentDidUpdate() {
@@ -25,7 +25,7 @@ class SnippetSearchComponent extends React.Component {
     render () {
         return (
                 <div>
-                    {console.log("Active user from search comp: ", this.props.activeUser)}
+                    {/*{console.log("Active user from search comp: ", this.props.activeUser)}*/}
                     <h2 className="mt-3 m-3">Search for Snippets</h2>
                     {/*<button*/}
                     {/*    className="btn btn-outline-secondary mr-1"*/}

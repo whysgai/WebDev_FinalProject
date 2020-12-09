@@ -13,7 +13,6 @@ export const REMOVE_TAG = "REMOVE_TAG"
 export const TOGGLE_LIKE = "TOGGLE_LIKE"
 
 export const createSnippet = (dispatch, snippet) => {
-    console.log("Create new snippet", snippet)
     snippetServices.createSnippet(snippet)
         .then(snippet => dispatch({
                 type: CREATE_SNIPPET,
@@ -63,19 +62,17 @@ export const updateSnippet = (dispatch, snippet) =>
     snippetServices.updateSnippet(snippet)
 
 export const toggleLike = (dispatch, activeUser, likedSnippet) => {
-    console.log("In Action User", activeUser.username, "liked snippet", likedSnippet);
     if (likedSnippet.likes.includes(activeUser.username)) {
-        likedSnippet.likes.filter(user => user !== activeUser.username);
+        likedSnippet.likes = likedSnippet.likes.filter(user => user !== activeUser.username);
     } else {
         likedSnippet.likes.push(activeUser.username);
     }
-    console.log("Action liked snippet", likedSnippet);
     snippetServices.updateSnippet(likedSnippet)
-        // .then(() => dispatch({
-        //         type: TOGGLE_LIKE,
-        //         snippet: likedSnippet
-        //     }
-        // ))
+        .then(() => dispatch({
+                type: TOGGLE_LIKE,
+                snippet: likedSnippet
+            }
+        ))
 }
 
 export const deleteSnippet = (dispatch, snippetId) =>
