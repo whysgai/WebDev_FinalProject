@@ -14,7 +14,7 @@ const _ = require('lodash');
 
 const initialState = {
     snippets: [],
-    currentSnippet: null,
+    // currentSnippet: null,
     user: {id:"uid001", username:"Ms. Pac-Man"}
 }
 
@@ -23,7 +23,7 @@ const snippetReducer = (state = initialState, action = action) => {
         case CREATE_SNIPPET:
             return {
                 ...state,
-                currentSnippet: action.snippet
+                snippets: [action.snippet]
             };
         case TOGGLE_LIKE:
             console.log("New snippet in reducer:", action.snippet);
@@ -39,28 +39,28 @@ const snippetReducer = (state = initialState, action = action) => {
         case EDIT_LOCAL_SNIPPET:
             return {
                 ...state,
-                currentSnippet: action.snippet
+                snippets: [action.snippet]
             };
         case ADD_TAG:
             let tags = []
-            if (state.currentSnippet.tags !== null) {
-                tags = state.currentSnippet.tags;
+            if (state.snippets[0].tags !== null) {
+                tags = state.snippets[0].tags;
             }
             tags.push(action.tag);
             return {
                 ...state,
-                currentSnippet: {
-                    ...state.currentSnippet,
+                snippets: [{
+                    ...state.snippets[0],
                     tags: tags
-                }
+                }]
             };
         case REMOVE_TAG:
             return {
                 ...state,
-                currentSnippet: {
-                    ...state.currentSnippet,
-                    tags: state.currentSnippet.tags.filter(tag => action.tag !== tag)
-                }
+               snippets: [{
+                    ...state.snippets[0],
+                    tags: state.snippets[0].tags.filter(tag => action.tag !== tag)
+                }]
             };
         case DELETE_SNIPPET:
             return {
@@ -80,7 +80,7 @@ const snippetReducer = (state = initialState, action = action) => {
         case FIND_SNIPPET:
             return {
                 ...state,
-                currentSnippet: action.snippet
+                snippets: [action.snippet]
             }
         case SEARCH_SNIPPET:
             return {

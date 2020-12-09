@@ -66,7 +66,7 @@ class SingleSnippetContainer extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    currentSnippet: state.snippetReducer.currentSnippet,
+    currentSnippet: state.snippetReducer.snippets[0],
     activeUser: state.userReducer.activeUser,
     gists: state.gistReducer.gists,
     users: state.userReducer.users
