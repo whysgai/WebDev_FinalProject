@@ -6,7 +6,8 @@ import {
     SEARCH_SNIPPET,
     EDIT_LOCAL_SNIPPET,
     ADD_TAG,
-    REMOVE_TAG
+    REMOVE_TAG,
+    TOGGLE_LIKE
 } from '../Actions/SnippetActions'
 
 const initialState = {
@@ -23,6 +24,17 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
                 currentSnippet: action.snippet
             };
+        case TOGGLE_LIKE:
+            let snippets = state.snippets
+            for (let snippet of snippets) {
+                if (snippet._id === action.snippet._id){
+                    snippet.likes = action.snippet.likes
+                }
+            }
+            return {
+                ...state,
+                snippets: snippets
+            }
         case EDIT_LOCAL_SNIPPET:
             return {
                 ...state,
