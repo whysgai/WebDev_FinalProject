@@ -13,7 +13,6 @@ const initialState = {
     snippets: [],
     currentSnippet: null,
     user: {id:"uid001", username:"Ms. Pac-Man"}
-
 }
 
 const snippetReducer = (state = initialState, action = action) => {
@@ -30,15 +29,16 @@ const snippetReducer = (state = initialState, action = action) => {
                 currentSnippet: action.snippet
             };
         case ADD_TAG:
-            if (action.snippet.tags === null) {
-                action.snippet.tags = [];
+            let tags = []
+            if (state.currentSnippet.tags !== null) {
+                tags = state.currentSnippet.tags;
             }
-            action.snippet.tags.push(action.tag);
+            tags.push(action.tag);
             return {
                 ...state,
                 currentSnippet: {
                     ...state.currentSnippet,
-                    tags: action.snippet.tags
+                    tags: tags
                 }
             };
         case REMOVE_TAG:
@@ -52,7 +52,7 @@ const snippetReducer = (state = initialState, action = action) => {
         case DELETE_SNIPPET:
             return {
                 ...state,
-                snippets: state.snippets.filter(snippet => snippet.id !== action.snippetId)
+                snippets: state.snippets.filter(snippet => snippet._id !== action.snippetId)
             };
         case FIND_ALL_SNIPPETS:
             return {
@@ -70,7 +70,6 @@ const snippetReducer = (state = initialState, action = action) => {
                 currentSnippet: action.snippet
             }
         case SEARCH_SNIPPET:
-            console.log("Reducer Search: ", action.snippets)
             return {
                 ...state,
             snippets: action.snippets

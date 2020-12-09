@@ -19,22 +19,20 @@ export const createSnippet = (dispatch, snippet) =>
                                   }
         ))
 
-export const createSnippetForCreator = (dispatch, creatorId, snippet) =>
-    snippetServices.createSnippet(snippet)
-        .then(snippet => {
-                dispatch({
-                    type: CREATE_SNIPPET,
-                    snippet
-                });
-            }
+// export const createSnippetForCreator = (dispatch, creator, snippet) =>
+//     snippetServices.createSnippet(snippet)
+//         .then(snippet => {
+//                 dispatch({
+//                     type: CREATE_SNIPPET,
+//                     snippet
+//                 });
+//             }
+//
+//         )
 
-        )
-
-
-export const addTagToSnippet = (dispatch, snippet, tag) => {
+export const addTagToSnippet = (dispatch, tag) => {
     dispatch({
         type: ADD_TAG,
-        snippet,
         tag
     })
 }
@@ -50,18 +48,16 @@ export const createLocalSnippet = (dispatch, snippet) => {
             snippet
     })}
 
-export const editLocalSnippet = (dispatch, snippet) =>
+export const editLocalSnippet = (dispatch, snippet) => {
+    console.log("Changed snippet ACTION", snippet);
     dispatch({
-            type: EDIT_LOCAL_SNIPPET,
-            snippet
+        type: EDIT_LOCAL_SNIPPET,
+        snippet
     })
+}
+
 export const updateSnippet = (dispatch, snippet) =>
     snippetServices.updateSnippet(snippet)
-        .then(snippet => dispatch({
-                type: CREATE_SNIPPET,
-                snippet
-            }
-        ))
 
 export const deleteSnippet = (dispatch, snippetId) =>
     snippetServices.deleteSnippet(snippetId)

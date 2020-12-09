@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 import TagComponent from "../TagComponent";
 
 const SnippetDisplayComponent = ({snippet}) =>
-    <div className="card-body">
+    <div className="card-body shadow hoverDiv">
         {/*Title and Timestamp*/}
         <div className="row col-12">
             <div className="col-8">
-                <Link to={`/snippet/${snippet.id}`} className="h5">{snippet.title}</Link>
+                <Link to={`/snippet/${snippet._id}`} className="h5">{snippet.title}</Link>
             </div>
             <div className="col-4 text-secondary">
                 <div className=" float-right ">
@@ -23,13 +23,12 @@ const SnippetDisplayComponent = ({snippet}) =>
         <div className="p-3 col-12">
             <pre className="text-wrap">
                 {snippet.codeText}
-
             </pre>
         </div>
         <div className="row col-12">
             {/*Creator*/}
             <div className="col-3">
-                <h6>Created By: <a href="#">{snippet.creatorId}</a></h6>
+                <h6>Created By: <a href="#">{snippet.creator}</a></h6>
             </div>
             {/*Tags*/}
             <div className="col-9 text-secondary float-right">

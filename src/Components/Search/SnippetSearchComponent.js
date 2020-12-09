@@ -26,11 +26,16 @@ class SnippetSearchComponent extends React.Component {
         return (
                 <div>
                     {console.log("Active user from search comp: ", this.props.activeUser)}
-                    <h2>SnippetSearchHere</h2>
-                    <button onClick={this.props.getGistsForUser}>Get User Gists</button>
-                    <button onClick={() => console.log(this.props.gists)}>Log Gists</button>
-                    <button onClick={() => this.props.findAllUsers().then(console.log(this.props.users))}>Log Users</button>
-
+                    <h2 className="mt-3 m-3">Search for Snippets</h2>
+                    {/*<button*/}
+                    {/*    className="btn btn-outline-secondary mr-1"*/}
+                    {/*    onClick={this.props.getGistsForUser}>Get User Gists</button>*/}
+                    {/*<button*/}
+                    {/*    className="btn btn-outline-secondary mr-1"*/}
+                    {/*    onClick={() => console.log(this.props.gists)}>Log Gists</button>*/}
+                    {/*<button*/}
+                    {/*    className="btn btn-outline-secondary"*/}
+                    {/*    onClick={() => this.props.findAllUsers().then(console.log(this.props.users))}>Log Users</button>*/}
                     <SnippetSearchBarComponent
                         findAllSnippets={this.props.findAllSnippets}
                         snippets={this.props.snippets}

@@ -22,7 +22,7 @@ class SingleSnippetContainer extends React.Component {
             newSnippetTemplate: {
                 id: "",
                 gistId: "newGist",
-                creatorId: "",
+                creator: "",
                 dateCreated: "",
                 lastModified: "",
                 title: "Snippet title",
@@ -38,7 +38,7 @@ class SingleSnippetContainer extends React.Component {
 
     componentDidMount() {
         let temp = this.state.newSnippetTemplate
-        temp.creatorId = this.props.activeUser.username
+        temp.creator = this.props.activeUser.username
         this.props.createLocalSnippet(temp)
     };
 
@@ -54,7 +54,8 @@ class SingleSnippetContainer extends React.Component {
                             editLocalSnippet={this.props.editLocalSnippet}
                             addTagToSnippet={this.props.addTagToSnippet}
                             removeTagFromSnippet={this.props.removeTagFromSnippet}
-                            createSnippetForCreator={this.props.createSnippetForCreator}
+                            createSnippet={this.props.createSnippet}
+                            // createSnippetForCreator={this.props.createSnippetForCreator}
                             activeUser={this.props.activeUser}
                         />
                 }
@@ -73,7 +74,7 @@ const stateToPropertyMapper = (state) => ({
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
     createSnippet: (snippet) => createSnippet(dispatch, snippet),
-    createSnippetForCreator: (creatorId, snippet) => createSnippetForCreator(dispatch, creatorId, snippet),
+    // createSnippetForCreator: (creator, snippet) => createSnippetForCreator(dispatch, creator, snippet),
     createLocalSnippet: (snippet) => {createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     addTagToSnippet: (snippet, tag) => {

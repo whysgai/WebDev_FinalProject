@@ -40,7 +40,7 @@ class UserAdminListComponent extends React.Component {
     render() {
         return (
             <div>
-                <h1>User Admin Page</h1>
+                <h2 className="m-3">User Admin Page</h2>
                 <div>
                     <table className="table">
                         <thead>

@@ -5,7 +5,7 @@ import SnippetDisplayComponent from "./SnippetDisplayComponent";
 // classify this to enable componentDidMount and combine in
 // On Component did mount call find Gist by ID
 // Use that to then also pass gist info down into sub-component
-const SnippetComponent = ({snippet, editLocalSnippet, createSnippetForCreator, addTagToSnippet, removeTagFromSnippet, createGistForUser, edit, create, activeUser}) =>
+const SnippetComponent = ({snippet, editLocalSnippet, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, deleteSnippet, createGistForUser, edit, create, activeUser}) =>
     <div className="card mt-4">
         {
             console.log("Snippet:", snippet)
@@ -14,16 +14,18 @@ const SnippetComponent = ({snippet, editLocalSnippet, createSnippetForCreator, a
             console.log("ActiveUser from Snippet Component:", activeUser.username)
         }
         {
-            console.log("Creator from Snippet:", snippet.creatorId)
+            console.log("Creator from Snippet:", snippet.creator)
         }
         {
-            ((edit || create) && activeUser.username === snippet.creatorId) &&
+            ((edit || create) && activeUser.username === snippet.creator) &&
                 <SnippetEditComponent
                     snippet={snippet}
                     editLocalSnippet={editLocalSnippet}
-                    createSnippetForCreator={createSnippetForCreator}
+                    updateSnippet={updateSnippet}
+                    createSnippet={createSnippet}
                     addTagToSnippet={addTagToSnippet}
                     removeTagFromSnippet={removeTagFromSnippet}
+                    deleteSnippet={deleteSnippet}
                     createGistForUser={createGistForUser}
                     edit={edit}
                     create={create}
@@ -31,7 +33,7 @@ const SnippetComponent = ({snippet, editLocalSnippet, createSnippetForCreator, a
                 />
         }
         {
-            ((!edit && !create) || activeUser.username !== snippet.creatorId) &&
+            ((!edit && !create) || activeUser.username !== snippet.creator) &&
                 <SnippetDisplayComponent snippet={snippet}/>
         }
 

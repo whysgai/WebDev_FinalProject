@@ -2,8 +2,9 @@ import React from "react"
 import {UnControlled as CodeMirror} from 'react-codemirror2'
 import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
+import {Link} from "react-router-dom";
 
-const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreator, addTagToSnippet, removeTagFromSnippet, createGistForUser, edit, create, activeUser}) =>
+const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, deleteSnippet, edit, create, activeUser}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -80,7 +81,7 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
                         type="button"
                         onClick={
                             () => {
-                                addTagToSnippet(snippet, document.getElementById("tag_input").value);
+                                addTagToSnippet(document.getElementById("tag_input").value);
                                 document.getElementById("tag_input").value = "";
                             }
                         }>
@@ -91,7 +92,6 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
             <div className="col-8 text-secondary float-right">
                 <div className="float-right">
                     <div className="tagBackground rounded row ">
-                        {console.log("Reached Editor Tags: ", snippet.tags)}
                         {
 
                             (snippet.tags !== null && snippet.tags !== []) &&
@@ -99,7 +99,6 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
                                     <TagComponent
                                         key={index}
                                         tag={tag}
-                                        snippet={snippet}
                                         edit={true}
                                         removeTagFromSnippet={removeTagFromSnippet}
                                     />
@@ -113,16 +112,26 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, createSnippetForCreato
             <div className="col-5"/>
             {
                 edit &&
-                    <button className="btn btn-outline-info float-right col-2">Save</button>
+                    <button className="btn btn-outline-info float-right col-2"
+                            onClick={() => {
+                                updateSnippet(snippet)
+                            }}
+                    >Save</button>
+            }
+            {
+                edit &&
+                    <Link className="btn btn-outline-danger float-right col-2"
+                          to={"/search"}
+                          onClick={() => {
+                              deleteSnippet(snippet._id)
+                          }}
+                    >Delete</Link>
             }
             {
                 create &&
                     <button className="btn btn-outline-info float-right col-2"
                             onClick={() => {
-                                console.log("Creating snippet for:", activeUser.username)
-                                console.log("Created Snippet:", snippet)
-
-                                createSnippetForCreator(activeUser.username, snippet)
+                                createSnippet(snippet)
                             }}
                     >Create</button>
             }
