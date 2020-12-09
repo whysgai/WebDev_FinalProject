@@ -10,31 +10,31 @@ export const EDIT_LOCAL_SNIPPET = "EDIT_LOCAL_SNIPPET"
 export const SEARCH_SNIPPET = "SEARCH_SNIPPET";
 export const ADD_TAG = "ADD_TAG"
 export const REMOVE_TAG = "REMOVE_TAG"
+export const TOGGLE_LIKE = "TOGGLE_LIKE"
 
-export const createSnippet = (dispatch, snippet) =>
+export const createSnippet = (dispatch, snippet) => {
     snippetServices.createSnippet(snippet)
         .then(snippet => dispatch({
-                                      type: CREATE_SNIPPET,
-                                      snippet
-                                  }
-        ))
-
-export const createSnippetForCreator = (dispatch, creator, snippet) =>
-    snippetServices.createSnippet(snippet)
-        .then(snippet => {
-                dispatch({
-                    type: CREATE_SNIPPET,
-                    snippet
-                });
+                type: CREATE_SNIPPET,
+                snippet
             }
+        ))
+}
 
-        )
+// export const createSnippetForCreator = (dispatch, creator, snippet) =>
+//     snippetServices.createSnippet(snippet)
+//         .then(snippet => {
+//                 dispatch({
+//                     type: CREATE_SNIPPET,
+//                     snippet
+//                 });
+//             }
+//
+//         )
 
-
-export const addTagToSnippet = (dispatch, snippet, tag) => {
+export const addTagToSnippet = (dispatch, tag) => {
     dispatch({
         type: ADD_TAG,
-        snippet,
         tag
     })
 }
@@ -50,18 +50,30 @@ export const createLocalSnippet = (dispatch, snippet) => {
             snippet
     })}
 
-export const editLocalSnippet = (dispatch, snippet) =>
+export const editLocalSnippet = (dispatch, snippet) => {
+    console.log("Changed snippet ACTION", snippet);
     dispatch({
-            type: EDIT_LOCAL_SNIPPET,
-            snippet
+        type: EDIT_LOCAL_SNIPPET,
+        snippet
     })
+}
+
 export const updateSnippet = (dispatch, snippet) =>
     snippetServices.updateSnippet(snippet)
-        .then(snippet => dispatch({
-                type: CREATE_SNIPPET,
-                snippet
+
+export const toggleLike = (dispatch, activeUser, likedSnippet) => {
+    if (likedSnippet.likes.includes(activeUser.username)) {
+        likedSnippet.likes = likedSnippet.likes.filter(user => user !== activeUser.username);
+    } else {
+        likedSnippet.likes.push(activeUser.username);
+    }
+    snippetServices.updateSnippet(likedSnippet)
+        .then(() => dispatch({
+                type: TOGGLE_LIKE,
+                snippet: likedSnippet
             }
         ))
+}
 
 export const deleteSnippet = (dispatch, snippetId) =>
     snippetServices.deleteSnippet(snippetId)

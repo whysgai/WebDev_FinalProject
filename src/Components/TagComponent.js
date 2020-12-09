@@ -1,16 +1,13 @@
 import React from "react"
 
-const TagComponent = ({tag, snippet, edit, removeTagFromSnippet}) =>
+const TagComponent = ({tag, edit, removeTagFromSnippet}) =>
     <div>
         <span className="badge badge-primary m-2">
-            <h6>{tag}</h6>
+            <h6 className="d-inline">{tag}</h6>
             {
                 edit === true &&
                     <i className="fa fa-times-circle ml-2" onClick={() => removeTagFromSnippet(tag)}/>
             }
-
-            {/*When clicking the x, run a snippet-level action*/}
-            {/*Remove substring from snippet.tags === tag*/}
         </span>
     </div>
 

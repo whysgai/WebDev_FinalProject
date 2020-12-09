@@ -2,15 +2,41 @@ import React from "react"
 import {Link} from "react-router-dom";
 import TagComponent from "../TagComponent";
 
-const SnippetDisplayComponent = ({snippet}) =>
+const SnippetDisplayComponent = ({snippet, toggleLike, activeUser}) =>
     <div className="card-body shadow hoverDiv">
         {/*Title and Timestamp*/}
         <div className="row col-12">
             <div className="col-8">
-                <Link to={`/snippet/${snippet.id}`} className="h5">{snippet.title}</Link>
+                <Link to={`/snippet/${snippet._id}`} className="h5">{snippet.title}</Link>
             </div>
             <div className="col-4 text-secondary">
-                <div className=" float-right ">
+                <div className="float-right">
+                    {
+                        (!snippet.likes.includes(activeUser.username)) &&
+                            <button className="btn btn-outline-dark btn-like ml-2" onClick={() => {
+                                console.log("In component User", activeUser.username, "liked snippet", snippet);
+                                toggleLike(activeUser, snippet)
+                            }}>
+                                <span className="fa-stack">
+                                    <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
+                                    <i className="fa fa-code fa-stack-1x text-white" aria-hidden="true"/>
+                                </span>
+                            </button>
+                    }
+                    {
+                        (snippet.likes.includes(activeUser.username)) &&
+                            <button className="btn btn-dark btn-like ml-2" onClick={() => {
+                                console.log("In component User", activeUser.username, "liked snippet", snippet);
+                                toggleLike(activeUser, snippet)
+                            }}>
+                                <span className="fa-stack">
+                                    <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
+                                    <i className="fa fa-code fa-stack-1x text-dark font-weight-bold" aria-hidden="true"/>
+                                </span>
+                            </button>
+                    }
+                </div>
+                <div className="float-right">
                     <h6>Published: {snippet.dateCreated}</h6>
                 </div>
             </div>
@@ -23,7 +49,6 @@ const SnippetDisplayComponent = ({snippet}) =>
         <div className="p-3 col-12">
             <pre className="text-wrap">
                 {snippet.codeText}
-
             </pre>
         </div>
         <div className="row col-12">

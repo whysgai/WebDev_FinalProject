@@ -63,8 +63,8 @@ export const createSnippet = (snippet) =>
 //         .then(response => response.json());
 // }
 
-export const updateSnippet = (snippetId, newSnippet) =>
-    fetch(`${SNIPPET_NODE_URL_2}/snippets/${snippetId}`, {
+export const updateSnippet = (newSnippet) =>
+    fetch(`${SNIPPET_NODE_URL_2}/snippets/id/${newSnippet._id}`, {
         method: "PUT",
         body: JSON.stringify(newSnippet),
         headers: {
@@ -72,8 +72,9 @@ export const updateSnippet = (snippetId, newSnippet) =>
         }
     }).then(response => response.json());
 
+
 export const deleteSnippet = (snippetId) =>
-    fetch(`${SNIPPET_NODE_URL_2}/snippets/${snippetId}`, {
+    fetch(`${SNIPPET_NODE_URL_2}/snippets/id/${snippetId}`, {
         method: "DELETE"
     })
 

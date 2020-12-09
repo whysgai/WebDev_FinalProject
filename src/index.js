@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Link, Route} from 'react-router-dom'
 import "font-awesome/css/font-awesome.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import './index.css';
+import './styles/index.css';
+import './styles/style.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {combineReducers, createStore} from "redux";
@@ -14,20 +15,15 @@ import NavBarContainer from "./Containers/NavbarContainer";
 import TestSnippetDisplayPageContainer from "./Containers/TestSnippetDisplayPageContainer"
 import SnippetContainer from "./Containers/SnippetContainer";
 import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
-
 import UserSnippetsContainer from "./Containers/UserSnippetsContainer";
-
 import MySnippetsContainer from "./Containers/MySnippetsContainer";
 import GistReducer from "./Reducers/GistReducer";
 import UserReducer from "./Reducers/UserReducer";
-// import SingleSnippetContainer from "./Containers/SingleSnippetContainer-Seprate";
 import SingleSnippetContainer from "./Containers/EditSnippetContainer";
 import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
 import UserAdminListComponent from "./Components/Users/UserAdminListComponent";
 import LoginComponent from "./Components/LoginComponent";
 import LandingPageContainer from "./Containers/LandingPageContainer";
-
-
 
 const reducers = combineReducers({
     gistReducer: GistReducer,
