@@ -10,6 +10,8 @@ import {
     TOGGLE_LIKE
 } from '../Actions/SnippetActions'
 
+const _ = require('lodash');
+
 const initialState = {
     snippets: [],
     currentSnippet: null,
@@ -24,13 +26,16 @@ const snippetReducer = (state = initialState, action = action) => {
                 currentSnippet: action.snippet
             };
         case TOGGLE_LIKE:
-            console.log("New snippet in reducer", action.snippet);
-            return {
+            console.log("New snippet in reducer:", action.snippet);
+            let newSnippets = state.snippets.map(
+                (snippet) => snippet._id === action.snippet._id ? action.snippet : snippet
+            )
+            let nextState = {
                 ...state,
-                snippets: state.snippets.map(
-                    snippet => snippet._id === action.snippet._id ? action.snippet : snippet
-                )
+                snippets: _.cloneDeep(newSnippets)
             }
+            console.log("Next State", nextState);
+            return nextState;
         case EDIT_LOCAL_SNIPPET:
             return {
                 ...state,
