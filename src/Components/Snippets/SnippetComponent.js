@@ -26,6 +26,7 @@ const SnippetComponent = ({snippet, editLocalSnippet, updateSnippet, createSnipp
                     addTagToSnippet={addTagToSnippet}
                     removeTagFromSnippet={removeTagFromSnippet}
                     deleteSnippet={deleteSnippet}
+                    toggleLike={toggleLike}
                     createGistForUser={createGistForUser}
                     edit={edit}
                     create={create}
