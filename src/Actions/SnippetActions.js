@@ -10,6 +10,7 @@ export const EDIT_LOCAL_SNIPPET = "EDIT_LOCAL_SNIPPET"
 export const SEARCH_SNIPPET = "SEARCH_SNIPPET";
 export const ADD_TAG = "ADD_TAG"
 export const REMOVE_TAG = "REMOVE_TAG"
+export const TOGGLE_LIKE = "TOGGLE_LIKE"
 
 export const createSnippet = (dispatch, snippet) =>
     snippetServices.createSnippet(snippet)
@@ -58,6 +59,20 @@ export const editLocalSnippet = (dispatch, snippet) => {
 
 export const updateSnippet = (dispatch, snippet) =>
     snippetServices.updateSnippet(snippet)
+
+export const toggleLike = (dispatch, activeUser, snippet) => {
+    if (snippet.likes.includes(activeUser.username)) {
+        snippet.likes.filter(user => user !== activeUser.username);
+    } else {
+        snippet.likes.push(activeUser.username);
+    }
+    snippetServices.updateSnippet(snippet)
+        .then(snippet => dispatch({
+                type: TOGGLE_LIKE,
+                snippet
+            }
+        ))
+}
 
 export const deleteSnippet = (dispatch, snippetId) =>
     snippetServices.deleteSnippet(snippetId)
