@@ -24,6 +24,7 @@ const snippetReducer = (state = initialState, action = action) => {
                 currentSnippet: action.snippet
             };
         case TOGGLE_LIKE:
+            console.log("New snippet in reducer", action.snippet);
             let snippets = state.snippets
             for (let snippet of snippets) {
                 if (snippet._id === action.snippet._id){

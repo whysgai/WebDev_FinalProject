@@ -13,7 +13,10 @@ const SnippetDisplayComponent = ({snippet, toggleLike, activeUser}) =>
                 <div className="float-right">
                     {
                         (!snippet.likes.includes(activeUser.username)) &&
-                            <button className="btn btn-outline-dark btn-like ml-2" onClick={() => toggleLike(activeUser, snippet)}>
+                            <button className="btn btn-outline-dark btn-like ml-2" onClick={() => {
+                                console.log("In component User", activeUser.username, "liked snippet", snippet);
+                                toggleLike(activeUser, snippet)
+                            }}>
                                 <span className="fa-stack">
                                     <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
                                     <i className="fa fa-code fa-stack-1x text-white" aria-hidden="true"/>

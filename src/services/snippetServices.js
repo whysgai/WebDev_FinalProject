@@ -63,7 +63,8 @@ export const createSnippet = (snippet) =>
 //         .then(response => response.json());
 // }
 
-export const updateSnippet = (newSnippet) =>
+export const updateSnippet = (newSnippet) => {
+    console.log("Like from Service", newSnippet);
     fetch(`${SNIPPET_NODE_URL_2}/snippets/id/${newSnippet._id}`, {
         method: "PUT",
         body: JSON.stringify(newSnippet),
@@ -71,6 +72,7 @@ export const updateSnippet = (newSnippet) =>
             "content-type": "application/json"
         }
     }).then(response => response.json());
+}
 
 export const deleteSnippet = (snippetId) =>
     fetch(`${SNIPPET_NODE_URL_2}/snippets/id/${snippetId}`, {
