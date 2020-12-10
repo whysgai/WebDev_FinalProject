@@ -112,6 +112,7 @@ class ImportGistContainer extends React.Component {
                     (this.props.currentSnippet && this.state.requested) &&
                         <SnippetContainer
                             snippet={this.props.currentSnippet}
+                            text={this.props.text}
                             create={true}
                             singleview={true}
                             editLocalSnippet={this.props.editLocalSnippet}
@@ -131,6 +132,7 @@ class ImportGistContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => ({
     currentSnippet: state.snippetReducer.snippets[0],
+    text: state.snippetReducer.text,
     gist: state.gistReducer.gist,
     gistContent: state.gistReducer.file,
     gists: state.gistReducer.gists,
@@ -138,7 +140,7 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    createSnippet: (snippet) => createSnippet(dispatch, snippet),
+    createSnippet: (snippet, text) => createSnippet(dispatch, snippet, text),
     createLocalSnippet: (snippet) => {console.log("Creating from import", snippet); createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     editLocalText: (text) => editLocalText(dispatch, text),

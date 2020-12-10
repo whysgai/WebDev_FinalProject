@@ -69,8 +69,12 @@ export const editLocalText = (dispatch, text) => {
     })
 }
 
-export const updateSnippet = (dispatch, snippet) =>
+export const updateSnippet = (dispatch, snippet, text) => {
+    console.log("Adding update text", text, "to snippet", snippet);
+    snippet.codeText = text
+    console.log("All done", snippet)
     snippetServices.updateSnippet(snippet)
+}
 
 export const toggleLike = (dispatch, activeUser, likedSnippet) => {
     if (likedSnippet.likes.includes(activeUser.username)) {
