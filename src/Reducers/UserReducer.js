@@ -1,4 +1,4 @@
-import {FIND_ALL_USERS} from "../Actions/UserActions";
+import {FIND_ALL_USERS, GET_USERNAME} from "../Actions/UserActions";
 
 const initialState = {
     activeUser: {
@@ -16,6 +16,12 @@ const UserReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: action.users
+            }
+        case GET_USERNAME:
+            return {
+                ...state,
+
+                username: action.username
             }
         default:
             return state;

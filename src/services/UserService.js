@@ -7,15 +7,20 @@ const headers = {
     "Authorization": `Token 70f143af3d540e77de91e721e5c4e8960a181663`
 }
 
-export const getUserUsername = () => {
-    if (!fire.auth().currentUser) {
-        return "Anonymous"
-    }
+export const getUserUsername = (uid) => {
+//         fire.database().ref("/users/" + uid).once('value')
+//             .then((snapshot) => {
+//                 return Promise.resolve(snapshot.val().username)
+//             })
+}
+
+export const getUserData = () => {
     fire.database().ref("/users/" + fire.auth().currentUser.uid).once('value')
         .then((snapshot) => {
-            return (snapshot.val()["username"] === undefined ? "Anonymous" : snapshot.val()["username"] )
+            return (snapshot.val()["username"] === undefined ? null : snapshot.val())
         })
 }
+
 
 export const findAllUsers = () =>
     fire.database().ref("/users").once('value')
@@ -40,4 +45,4 @@ export const updateUser = (uid, newUser) =>
     })
 
 
-export default {findAllUsers, getTokenForUser, updateUser}
+export default {findAllUsers, getTokenForUser, updateUser, getUserUsername}

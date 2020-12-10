@@ -16,10 +16,10 @@ class UserAdminListComponent extends React.Component {
 
     componentDidMount() {
         this.props.findAllUsers()
-        this.render();
+        // this.render();
     }
     componentDidUpdate() {
-        this.props.findAllUsers()
+        // this.props.findAllUsers()
         this.render();
     }
 
@@ -33,7 +33,6 @@ class UserAdminListComponent extends React.Component {
 
     updateUserRow = (uid, user) => {
         UserService.updateUser(uid,user)
-
     };
 
 
