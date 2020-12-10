@@ -34,12 +34,14 @@ class LandingPageContainer extends React.Component {
     componentDidMount() {
         // this.getUserName()
 
-        this.props.getUserUsername()
         this.props.findAllPublicSnippets()
+        isLoggedIn().then(() => this.props.getUserUsername()
+        )
+
 
         // console.log(isLoggedIn())
         // if (isLoggedIn()) {
-        //     // alert("Logged in")
+        //     alert("Logged in")
         //     this.state.loggedIn = true
         //     // this.getUserName()
         //     this.render()
@@ -75,7 +77,7 @@ class LandingPageContainer extends React.Component {
 
                     <div>
                         <div className="jumbotron text-center" style={{height: 200}}>
-                            <h1 className="display-4">Welcome back to CodeSaver{" " + this.state.username}!</h1>
+                            <h1 className="display-4">Welcome back to CodeSaver{" " + this.props.username}!</h1>
                         </div>
                         <div>
                             <h6 class="text-secondary">Updated On: {currentTime()}</h6>
