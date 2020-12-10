@@ -2,7 +2,7 @@ import React from "react";
 import SnippetContainer from "./SnippetContainer";
 import {
     addTagToSnippet, createLocalSnippet, createSnippet, deleteSnippet,
-    editLocalSnippet,
+    editLocalSnippet, editLocalText,
     removeTagFromSnippet,
     updateSnippet
 } from "../Actions/SnippetActions";
@@ -115,6 +115,7 @@ class ImportGistContainer extends React.Component {
                             create={true}
                             singleview={true}
                             editLocalSnippet={this.props.editLocalSnippet}
+                            editLocalText={this.props.editLocalText}
                             updateSnippet={this.props.updateSnippet}
                             addTagToSnippet={this.props.addTagToSnippet}
                             removeTagFromSnippet={this.props.removeTagFromSnippet}
@@ -140,6 +141,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     createSnippet: (snippet) => createSnippet(dispatch, snippet),
     createLocalSnippet: (snippet) => {console.log("Creating from import", snippet); createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
+    editLocalText: (text) => editLocalText(dispatch, text),
     updateSnippet: (snippet) => updateSnippet(dispatch, snippet),
     addTagToSnippet: (tag) => {
         addTagToSnippet(dispatch, tag)

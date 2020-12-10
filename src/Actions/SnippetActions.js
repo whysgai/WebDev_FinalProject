@@ -8,11 +8,15 @@ export const FIND_ALL_PUBLIC_SNIPPETS = "FIND_ALL_PUBLIC_SNIPPETS";
 export const UPDATE_LOCAL_SNIPPET = "UPDATE_LOCAL_SNIPPET";
 export const EDIT_LOCAL_SNIPPET = "EDIT_LOCAL_SNIPPET"
 export const SEARCH_SNIPPET = "SEARCH_SNIPPET";
-export const ADD_TAG = "ADD_TAG"
-export const REMOVE_TAG = "REMOVE_TAG"
-export const TOGGLE_LIKE = "TOGGLE_LIKE"
+export const ADD_TAG = "ADD_TAG";
+export const REMOVE_TAG = "REMOVE_TAG";
+export const TOGGLE_LIKE = "TOGGLE_LIKE";
+export const EDIT_LOCAL_TEXT ="EDIT_LOCAL_TEXT";
 
-export const createSnippet = (dispatch, snippet) => {
+export const createSnippet = (dispatch, snippet, text) => {
+    console.log("Adding text", text, "to snippet", snippet);
+    snippet.codeText = text
+    console.log("All done", snippet)
     snippetServices.createSnippet(snippet)
         .then(snippet => dispatch({
                 type: CREATE_SNIPPET,
@@ -51,10 +55,17 @@ export const createLocalSnippet = (dispatch, snippet) => {
     })}
 
 export const editLocalSnippet = (dispatch, snippet) => {
-    console.log("Changed snippet ACTION", snippet);
     dispatch({
         type: EDIT_LOCAL_SNIPPET,
         snippet
+    })
+}
+
+export const editLocalText = (dispatch, text) => {
+    console.log("Action new text", text)
+    dispatch({
+        type: EDIT_LOCAL_TEXT,
+        text
     })
 }
 

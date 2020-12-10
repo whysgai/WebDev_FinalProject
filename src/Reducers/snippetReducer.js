@@ -7,13 +7,15 @@ import {
     EDIT_LOCAL_SNIPPET,
     ADD_TAG,
     REMOVE_TAG,
-    TOGGLE_LIKE
+    TOGGLE_LIKE,
+    EDIT_LOCAL_TEXT
 } from '../Actions/SnippetActions'
 
 const _ = require('lodash');
 
 const initialState = {
     snippets: [],
+    text: "",
     // currentSnippet: null,
     user: {id:"uid001", username:"Ms. Pac-Man"}
 }
@@ -41,6 +43,12 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
                 snippets: [action.snippet]
             };
+        case EDIT_LOCAL_TEXT:
+            console.log("Reducer", action.text)
+            return {
+                ...state,
+                text: action.text
+            }
         case ADD_TAG:
             let tags = []
             if (state.snippets[0].tags !== null) {

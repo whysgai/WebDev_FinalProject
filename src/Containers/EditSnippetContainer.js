@@ -2,7 +2,7 @@ import React from "react";
 import SnippetContainer from "./SnippetContainer";
 import {
     addTagToSnippet, deleteSnippet,
-    editLocalSnippet,
+    editLocalSnippet, editLocalText,
     findSnippetById,
     removeTagFromSnippet,
     updateSnippet
@@ -42,6 +42,7 @@ class EditSnippetContainer extends React.Component {
                             edit={true}
                             singleview={true}
                             editLocalSnippet={this.props.editLocalSnippet}
+                            editLocalText={this.props.editLocalText}
                             updateSnippet={this.props.updateSnippet}
                             addTagToSnippet={this.props.addTagToSnippet}
                             removeTagFromSnippet={this.props.removeTagFromSnippet}
@@ -64,6 +65,7 @@ const stateToPropertyMapper = (state) => ({
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
+    editLocalText: (text) => editLocalText(dispatch, text),
     updateSnippet: (snippet) => updateSnippet(dispatch, snippet),
     addTagToSnippet: (tag) => {
         addTagToSnippet(dispatch, tag)

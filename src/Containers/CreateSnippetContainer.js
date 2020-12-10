@@ -6,7 +6,7 @@ import {
     createLocalSnippet,
     findSnippetById,
     editLocalSnippet,
-    addTagToSnippet, removeTagFromSnippet
+    addTagToSnippet, removeTagFromSnippet, editLocalText
 } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
 import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
@@ -51,8 +51,10 @@ class CreateSnippetContainer extends React.Component {
                     this.props.currentSnippet &&
                         <SnippetContainer
                             snippet={this.props.currentSnippet}
+                            text={this.props.text}
                             create={true}
                             editLocalSnippet={this.props.editLocalSnippet}
+                            editLocalText={this.props.editLocalText}
                             addTagToSnippet={this.props.addTagToSnippet}
                             removeTagFromSnippet={this.props.removeTagFromSnippet}
                             createSnippet={this.props.createSnippet}
@@ -67,6 +69,7 @@ class CreateSnippetContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => ({
     currentSnippet: state.snippetReducer.snippets[0],
+    text: state.snippetReducer.text,
     activeUser: state.userReducer.activeUser,
     gists: state.gistReducer.gists,
     users: state.userReducer.users
@@ -74,10 +77,11 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
-    createSnippet: (snippet) => createSnippet(dispatch, snippet),
+    createSnippet: (snippet, text) => createSnippet(dispatch, snippet, text),
     // createSnippetForCreator: (creator, snippet) => createSnippetForCreator(dispatch, creator, snippet),
     createLocalSnippet: (snippet) => {createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
+    editLocalText: (text) => editLocalText(dispatch, text),
     addTagToSnippet: (snippet, tag) => {
         addTagToSnippet(dispatch, snippet, tag)
     },
