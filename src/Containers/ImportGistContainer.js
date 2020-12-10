@@ -1,7 +1,7 @@
 import React from "react";
 import SnippetContainer from "./SnippetContainer";
 import {
-    addTagToSnippet, deleteSnippet,
+    addTagToSnippet, createLocalSnippet, createSnippet, deleteSnippet,
     editLocalSnippet,
     removeTagFromSnippet,
     updateSnippet
@@ -14,7 +14,22 @@ class ImportGistContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            requested: false
+            requested: false,
+            importSnippetTemplate: {
+                id: "",
+                gistId: "",
+                creator: "",
+                dateCreated: "",
+                lastModified: "",
+                title: "",
+                description: "",
+                codeText: "",
+                tags: [],
+                likes: [],
+                shareableURL: "",
+                privacy: false,
+                recommended: false
+            }
         };
     }
 
@@ -28,11 +43,42 @@ class ImportGistContainer extends React.Component {
 
     };
 
-    importGist() {
+    request() {
+        console.log("Requesting change")
+        this.setState({
+            requested: true
+        })
+        console.log("Requested", this.state.requested);
+    }
+
+    importGist(gistId) {
         // clear reducer snippets
         // call get snippet action
         // set requested to true
-        alert("Import!");
+        // alert("Import " + gistId);
+        this.props.getGistById(gistId)
+            .then(() => {
+                console.log("Got gist", this.props.gist)
+                let files = Object.keys(this.props.gist.files)
+                //console.log("Gist's files", files)
+                let fileName = files[0]
+                //console.log("First file", fileName)
+                let file = this.props.gist.files[fileName]
+                //console.log("File:", file)
+                this.props.getGistFile(file.raw_url).then(() => {
+                    this.state.importSnippetTemplate.gistId = gistId;
+                    this.state.importSnippetTemplate.creator = this.props.activeUser.username;
+                    this.state.importSnippetTemplate.title = fileName;
+                    this.state.importSnippetTemplate.description = this.props.gist.description;
+                    this.state.importSnippetTemplate.codeText = this.props.gistContent;
+                    this.props.createLocalSnippet(this.state.importSnippetTemplate);
+                    this.setState({
+                        requested: true
+                    })
+                    // this.state.
+                })
+            })
+
     };
 
     render () {
@@ -46,9 +92,9 @@ class ImportGistContainer extends React.Component {
                 }
                 {
                     (!this.state.requested) &&
-                        <div className="card col-12">
+                        <div className="card col-12 mt-3">
                             <div className="card-body">
-                                <div className="row mt-4">
+                                <div className="row">
                                     <label className="col-form-label d-none" htmlFor="importgistid">
                                         Import a Gist From GitHub
                                     </label>
@@ -56,25 +102,34 @@ class ImportGistContainer extends React.Component {
                                         <input
                                             id="importgistid"
                                             className="form-control col-12"
-                                            placeholder="Enter the ID of the Git Hub Gist"
+                                            placeholder="Enter the ID of a GitHub Gist"
                                         />
                                         <div className="input-group-append">
                                             <button
                                                 className="btn btn-success"
                                                 type="button"
-                                                onClick={() => this.importGist()}>Import
+                                                onClick={() => this.importGist(document.getElementById("importgistid").value)}>Import
                                             </button>
                                         </div>
                                     </div>
+                                    <button className="btn btn-dark" onClick={() => this.request()}>request</button>
                                 </div>
                             </div>
                         </div>
                 }
                 {
+                    this.state.requested &&
+                        <div>
+                            <h1>Yup</h1>
+                            <button className="btn btn-dark" onClick={() => this.request()}>request</button>
+                        </div>
+
+                }
+                {
                     (this.props.currentSnippet && this.state.requested) &&
                         <SnippetContainer
                             snippet={this.props.currentSnippet}
-                            edit={true}
+                            create={true}
                             singleview={true}
                             editLocalSnippet={this.props.editLocalSnippet}
                             updateSnippet={this.props.updateSnippet}
@@ -87,15 +142,19 @@ class ImportGistContainer extends React.Component {
             </div>
         )
     }
-}
+};
 
 const stateToPropertyMapper = (state) => ({
     currentSnippet: state.snippetReducer.snippets[0],
+    gist: state.gistReducer.gist,
+    gistContent: state.gistReducer.file,
     gists: state.gistReducer.gists,
     activeUser: state.userReducer.activeUser
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
+    createSnippet: (snippet) => createSnippet(dispatch, snippet),
+    createLocalSnippet: (snippet) => {console.log("Creating from import", snippet); createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     updateSnippet: (snippet) => updateSnippet(dispatch, snippet),
     addTagToSnippet: (tag) => {
@@ -105,7 +164,7 @@ const propertyToDispatchMapper = (dispatch) => ({
         removeTagFromSnippet(dispatch, tag)
     },
     deleteSnippet: (snippetId) => deleteSnippet(dispatch, snippetId),
-    getGistById: () => getGistById(dispatch),
+    getGistById: (gistId) => getGistById(dispatch, gistId),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl)
 })
 
