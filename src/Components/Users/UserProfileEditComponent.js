@@ -31,22 +31,22 @@ class UserProfileEditComponent extends Component {
     //     })
     // }
 
-    getUserData = () => {
-        if (fire.auth().currentUser) {
-            fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
-                .then((snapshot) => {
-                    this.state.user = snapshot.val()
-                    console.log(this.state.user)
-                    return Promise.resolve(snapshot.val())
-                })
-        }
-    }
+    // getUserData = () => {
+    //     if (fire.auth().currentUser) {
+    //         fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
+    //             .then((snapshot) => {
+    //                 this.state.user = snapshot.val()
+    //                 console.log(this.state.user)
+    //                 return Promise.resolve(snapshot.val())
+    //             })
+    //     }
+    // }
 
     componentDidMount() {
-        // this.props.getUser()
-        // console.log(this.props.user)
-        getUser().then((user) => console.log(user))
-        this.render()
+        // // this.props.getUser()
+        // // console.log(this.props.user)
+        // getUser().then((user) => console.log(user))
+        // this.render()
         this.render()
     }
 
