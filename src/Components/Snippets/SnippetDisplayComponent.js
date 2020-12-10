@@ -2,7 +2,7 @@ import React from "react"
 import {Link} from "react-router-dom";
 import TagComponent from "../TagComponent";
 
-const SnippetDisplayComponent = ({snippet, toggleLike, activeUser}) =>
+const SnippetDisplayComponent = ({snippet, toggleLike, activeUser, singleview}) =>
     <div className="card-body shadow hoverDiv">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -46,12 +46,29 @@ const SnippetDisplayComponent = ({snippet, toggleLike, activeUser}) =>
             <p className="col-12">{snippet.description}</p>
         </div>
         {/*Snippet Content*/}
-        <div className="p-3 col-12">
-            <pre className="text-wrap">
-                {snippet.codeText}
+        {
+            console.log("Displayed snippet:", snippet)
+        }
+        <div className="p-3 col-12 mb-2">
+            <pre className="col-12 border">
+                {
+                    (singleview) &&
+                        <code className="all">
+                            {snippet.codeText}
+                        </code>
+                }
+                {
+                    (!singleview) &&
+                        snippet.codeText.split(/\r?\n/).splice(0,5).map((line, index) =>
+                            <code key={index} className="some">
+                                {line+"\n"}
+                            </code>
+                        )
+                }
             </pre>
+            <Link to={`/snippet/${snippet._id}`} className="">More</Link>
         </div>
-        <div className="row col-12">
+        <div className="row col-12 mt-2">
             {/*Creator*/}
             <div className="col-3">
                 <h6>Created By: <a href="#">{snippet.creator}</a></h6>
