@@ -61,8 +61,8 @@ ReactDOM.render(
                         <TestSnippetDisplayPageContainer username="NameOfUser"/>
                     </Route>
                     <Route path="/snippet/:snippetId" exact component={SingleSnippetContainer}/>
-                    <Route path="/newsnippet/" exact component={CreateSnippetContainer}/>
-                    <Route path="/import_gist/" exact component={ImportGistContainer}/>
+                    <Route path="/newsnippet" exact component={CreateSnippetContainer}/>
+                    <Route path="/import_gist" exact component={ImportGistContainer}/>
                     <Route path="/login" exact component={LoginComponent}/>
                 {/*End of container*/}
                 </div>

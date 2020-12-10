@@ -28,6 +28,9 @@ const NavbarComponent = () =>
                         <Link className="nav-link" to="#">Starred</Link>
                     </li>
                     <li className="nav-item">
+                        <Link className="nav-link" to="/import_gist">Import</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="nav-link" to="/admin">Admin</Link>
                     </li>
                 </ul>
