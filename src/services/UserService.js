@@ -8,17 +8,26 @@ const headers = {
 }
 
 export const getUserUsername = (uid) => {
-//         fire.database().ref("/users/" + uid).once('value')
-//             .then((snapshot) => {
-//                 return Promise.resolve(snapshot.val().username)
-//             })
+        fire.database().ref("/users/" + uid).once('value')
+            .then((snapshot) => {
+                return Promise.resolve(snapshot.val().username)
+            })
 }
 
 export const getUserData = () => {
-    fire.database().ref("/users/" + fire.auth().currentUser.uid).once('value')
+
+    let user = fire.auth().currentUser
+    console.log(user.uid)
+
+    let username = ""
+
+    fire.database().ref("users/" + user.uid).once('value')
         .then((snapshot) => {
-            return (snapshot.val()["username"] === undefined ? null : snapshot.val())
-        })
+            console.log("HERE")
+            console.log(snapshot.val().username === undefined ? null : username = snapshot.val().username)
+        }).then(() => {return username})
+
+
 }
 
 
@@ -33,6 +42,14 @@ export const getTokenForUser = (uid) =>
         .then((snapshot) => {
             return snapshot.val()["paToken"]
         })
+
+export const isLoggedIn = () => {
+    if (fire.auth().currentUser) {
+        return true
+    } else {
+        return false
+    }
+}
 
 export const updateUser = (uid, newUser) =>
     fire.database().ref("/users/" + uid).set({

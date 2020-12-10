@@ -2,30 +2,45 @@ import React from "react";
 import {findAllUsers} from "../Actions/UserActions";
 import {connect} from "react-redux";
 import {findAllPublicSnippets} from "../Actions/SnippetActions";
-import {getUserUsername} from "../services/UserService";
+import {getUserData, getUserUsername, isLoggedIn} from "../services/UserService";
 import fire from "../config/db";
 // import {connect} from "react-redux";
 // import fire from "./../config/db";
 
 class LandingPageContainer extends React.Component {
-    uid;
 
     constructor() {
         super();
         this.state = {
+            user: "",
             username: "",
-            // user: null,
             snippets: []
         };
     }
 
+    getUserName () {
+        if (fire.auth().currentUser) {
+            fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
+                .then((snapshot) => {
+                    console.log(snapshot.val()["username"])
+                    this.state.username = snapshot.val()["username"]
+                }).then(() => {
+                this.render()
+            })
+        }
+    }
+
     componentDidMount() {
+        this.getUserName()
+
         this.props.findAllPublicSnippets()
-        // console.log(fire.auth().currentUser)
-        // this.uid = fire.auth().currentUser.uid
-        // console.log(this.uid)
-        //
-        // this.state.username = getUserUsername(this.uid)
+        console.log(isLoggedIn())
+        if (isLoggedIn()) {
+            // alert("Logged in")
+            this.state.loggedIn = true
+            this.getUserName()
+            this.render()
+        }
 
         this.render()
     }
@@ -56,7 +71,7 @@ class LandingPageContainer extends React.Component {
 
                     <div>
                         <div className="jumbotron text-center" style={{height: 200}}>
-                            <h1 className="display-4">Welcome back to CodeSaver, {this.state.username}!</h1>
+                            <h1 className="display-4">Welcome back to CodeSaver{" " + this.state.username}!</h1>
                         </div>
                         <div>
                             <h6 class="text-secondary">Updated On: {currentTime()}</h6>
@@ -80,8 +95,8 @@ class LandingPageContainer extends React.Component {
                         <h1 className="display-4">Coming Soon!</h1>
                     </div>
                 </div>
-                <button onClick={() => getUserUsername()}>Get Username</button>
-                <button onClick={() => console.log(this.state.username)}>Get Username</button>
+                <button onClick={() => console.log(this.getUserName())}>Get Username</button>
+                <button onClick={() => console.log(this.state)}>Get Username</button>
 
             </div>
         )
