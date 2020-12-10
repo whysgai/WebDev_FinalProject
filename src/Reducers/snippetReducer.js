@@ -16,7 +16,6 @@ const _ = require('lodash');
 const initialState = {
     snippets: [],
     text: "",
-    // currentSnippet: null,
     user: {id:"uid001", username:"Ms. Pac-Man"}
 }
 
@@ -28,7 +27,6 @@ const snippetReducer = (state = initialState, action = action) => {
                 snippets: [action.snippet]
             };
         case TOGGLE_LIKE:
-            console.log("New snippet in reducer:", action.snippet);
             let newSnippets = state.snippets.map(
                 (snippet) => snippet._id === action.snippet._id ? action.snippet : snippet
             )
@@ -36,7 +34,6 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
                 snippets: _.cloneDeep(newSnippets)
             }
-            console.log("Next State", nextState);
             return nextState;
         case EDIT_LOCAL_SNIPPET:
             return {
@@ -44,7 +41,6 @@ const snippetReducer = (state = initialState, action = action) => {
                 snippets: [action.snippet]
             };
         case EDIT_LOCAL_TEXT:
-            console.log("Reducer", action.text)
             return {
                 ...state,
                 text: action.text

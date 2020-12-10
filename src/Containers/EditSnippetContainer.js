@@ -8,7 +8,7 @@ import {
     updateSnippet
 } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
-import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
+import {getGistById, getGistFile} from "../Actions/GistActions";
 import {findAllUsers} from "../Actions/UserActions";
 
 class EditSnippetContainer extends React.Component {
@@ -69,18 +69,12 @@ const propertyToDispatchMapper = (dispatch) => ({
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     editLocalText: (text) => editLocalText(dispatch, text),
     updateSnippet: (snippet, text) => updateSnippet(dispatch, snippet, text),
-    addTagToSnippet: (tag) => {
-        addTagToSnippet(dispatch, tag)
-    },
-    removeTagFromSnippet: (tag) => {
-        removeTagFromSnippet(dispatch, tag)
-    },
+    addTagToSnippet: (tag) => addTagToSnippet(dispatch, tag),
+    removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
     deleteSnippet: (snippetId) => deleteSnippet(dispatch, snippetId),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
-    findAllUsers: () => findAllUsers(dispatch),
-
-
+    findAllUsers: () => findAllUsers(dispatch)
 })
 
 

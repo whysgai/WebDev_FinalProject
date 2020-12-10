@@ -14,9 +14,7 @@ export const TOGGLE_LIKE = "TOGGLE_LIKE";
 export const EDIT_LOCAL_TEXT ="EDIT_LOCAL_TEXT";
 
 export const createSnippet = (dispatch, snippet, text) => {
-    console.log("Adding text", text, "to snippet", snippet);
     snippet.codeText = text
-    console.log("All done", snippet)
     snippetServices.createSnippet(snippet)
         .then(snippet => dispatch({
                 type: CREATE_SNIPPET,
@@ -24,17 +22,6 @@ export const createSnippet = (dispatch, snippet, text) => {
             }
         ))
 }
-
-// export const createSnippetForCreator = (dispatch, creator, snippet) =>
-//     snippetServices.createSnippet(snippet)
-//         .then(snippet => {
-//                 dispatch({
-//                     type: CREATE_SNIPPET,
-//                     snippet
-//                 });
-//             }
-//
-//         )
 
 export const addTagToSnippet = (dispatch, tag) => {
     dispatch({
@@ -62,7 +49,6 @@ export const editLocalSnippet = (dispatch, snippet) => {
 }
 
 export const editLocalText = (dispatch, text) => {
-    console.log("Action new text", text)
     dispatch({
         type: EDIT_LOCAL_TEXT,
         text
@@ -70,9 +56,7 @@ export const editLocalText = (dispatch, text) => {
 }
 
 export const updateSnippet = (dispatch, snippet, text) => {
-    console.log("Adding update text", text, "to snippet", snippet);
     snippet.codeText = text
-    console.log("All done", snippet)
     snippetServices.updateSnippet(snippet)
 }
 

@@ -2,19 +2,16 @@ import React from "react";
 import SnippetContainer from "./SnippetContainer";
 import {
     createSnippet,
-    createSnippetForCreator,
     createLocalSnippet,
     findSnippetById,
     editLocalSnippet,
     addTagToSnippet, removeTagFromSnippet, editLocalText
 } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
-import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
+import {getGistById, getGistFile} from "../Actions/GistActions";
 import {findAllUsers} from "../Actions/UserActions";
 
 class CreateSnippetContainer extends React.Component {
-    // snippets, gists, getGistsForUser, users, findAllUsers, findAllSnippets
-
 
     constructor() {
         super();
@@ -78,16 +75,11 @@ const stateToPropertyMapper = (state) => ({
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
     createSnippet: (snippet, text) => createSnippet(dispatch, snippet, text),
-    // createSnippetForCreator: (creator, snippet) => createSnippetForCreator(dispatch, creator, snippet),
     createLocalSnippet: (snippet) => {createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     editLocalText: (text) => editLocalText(dispatch, text),
-    addTagToSnippet: (snippet, tag) => {
-        addTagToSnippet(dispatch, snippet, tag)
-    },
-    removeTagFromSnippet: (tag) => {
-        removeTagFromSnippet(dispatch, tag)
-    },
+    addTagToSnippet: (snippet, tag) => addTagToSnippet(dispatch, snippet, tag),
+    removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),

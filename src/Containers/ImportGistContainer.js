@@ -33,30 +33,16 @@ class ImportGistContainer extends React.Component {
         };
     }
 
-    componentDidMount() {
+    componentDidMount() { };
 
-        // const snippetId = this.props.match.params.snippetId
-        // this.props.findSnippetById(snippetId)
-    };
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-
-    };
+    componentDidUpdate(prevProps, prevState, snapshot) { };
 
     importGist(gistId) {
-        // clear reducer snippets
-        // call get snippet action
-        // set requested to true
-        // alert("Import " + gistId);
         this.props.getGistById(gistId)
             .then(() => {
-                console.log("Got gist", this.props.gist)
                 let files = Object.keys(this.props.gist.files)
-                //console.log("Gist's files", files)
                 let fileName = files[0]
-                //console.log("First file", fileName)
                 let file = this.props.gist.files[fileName]
-                //console.log("File:", file)
                 this.props.getGistFile(file.raw_url).then(() => {
                     this.state.importSnippetTemplate.gistId = gistId;
                     this.state.importSnippetTemplate.creator = this.props.activeUser.username;
@@ -67,7 +53,6 @@ class ImportGistContainer extends React.Component {
                     this.setState({
                         requested: true
                     })
-                    // this.state.
                 })
             })
 
@@ -141,16 +126,12 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     createSnippet: (snippet, text) => createSnippet(dispatch, snippet, text),
-    createLocalSnippet: (snippet) => {console.log("Creating from import", snippet); createLocalSnippet(dispatch, snippet)},
+    createLocalSnippet: (snippet) => createLocalSnippet(dispatch, snippet),
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     editLocalText: (text) => editLocalText(dispatch, text),
     updateSnippet: (snippet) => updateSnippet(dispatch, snippet),
-    addTagToSnippet: (tag) => {
-        addTagToSnippet(dispatch, tag)
-    },
-    removeTagFromSnippet: (tag) => {
-        removeTagFromSnippet(dispatch, tag)
-    },
+    addTagToSnippet: (tag) => addTagToSnippet(dispatch, tag),
+    removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
     deleteSnippet: (snippetId) => deleteSnippet(dispatch, snippetId),
     getGistById: (gistId) => getGistById(dispatch, gistId),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl)
