@@ -17,7 +17,7 @@ export const findAllUsers = (dispatch) => {
 export const getUserUsername = (dispatch) => {
     UserService.getUserUsername()
         .then(response => {
-            console.log(response)
+            console.log("Action response:", response)
             dispatch({
                 type: GET_USERNAME,
                 username: response

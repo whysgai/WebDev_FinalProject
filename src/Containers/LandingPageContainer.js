@@ -1,8 +1,8 @@
 import React from "react";
-import {findAllUsers} from "../Actions/UserActions";
+import {findAllUsers, getUserUsername} from "../Actions/UserActions";
 import {connect} from "react-redux";
 import {findAllPublicSnippets} from "../Actions/SnippetActions";
-import {getUserData, getUserUsername, isLoggedIn} from "../services/UserService";
+import {getUserData, isLoggedIn} from "../services/UserService";
 import fire from "../config/db";
 // import {connect} from "react-redux";
 // import fire from "./../config/db";
@@ -97,7 +97,7 @@ class LandingPageContainer extends React.Component {
                         <h1 className="display-4">Coming Soon!</h1>
                     </div>
                 </div>
-                <button onClick={() => console.log(getUserData())}>Get Username</button>
+                <button onClick={() => console.log(this.props.getUserUsername())}>Get Username</button>
                 <button onClick={() => console.log(this.state)}>Get Username</button>
 
             </div>
@@ -107,7 +107,7 @@ class LandingPageContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets,
-    // username: state.userReducer.username
+    username: state.userReducer.username
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
