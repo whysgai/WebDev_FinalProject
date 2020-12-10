@@ -18,6 +18,7 @@ export async function getUser(){
     let uid = await user.uid
     let userData = await fire.database().ref("/users/" + uid).once('value')
     console.log("Userdata in getUser", userData.val())
+    return Promise.resolve(userData.val())
 }
 
 export async function getUserUsername() {
@@ -26,35 +27,16 @@ export async function getUserUsername() {
     let uid = await user.uid
 
     let userData = await fire.database().ref("/users/" + uid).once('value')
-    console.log("Userdata in getUser", userData.val())
+    // console.log("Userdata in getUser", userData.val())
     return Promise.resolve(userData.val().username)
-
-    // callFirebase().then((user) => {
-    //     console.log("Then user", user)
-    // })
-    // return Promise.resolve(user)
-    // callFirebase().then((user) =>{
-    //     console.log(user)
-    // })
-
-    // callFirebase().then((user) => {
-    //     let response = fire.database().ref("/users/" + user.uid)
-    //         .once('value')
-    //     console.log(response.val())
-    //     return Promise.resolve(response.val().username)
-    // })
-
-
 }
 
-export const getUserData = () => {
-    if(fire.auth().currentUser){
-        fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
-            .then((snapshot) => {
-                console.log(snapshot.val()["username"])
-                return Promise.resolve(snapshot.val()["username"])
-            })
-    }
+export async function getUserData () {
+    let user = await fire.auth().currentUser
+    let uid = await user.uid
+    let userData = await fire.database().ref("/users/" + uid).once('value')
+    console.log("GetUserData", userData.val())
+    return Promise.resolve(userData.val())
 }
 
 

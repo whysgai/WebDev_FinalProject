@@ -28,7 +28,7 @@ export const getUserUsername = (dispatch) => {
 export const getUser = (dispatch) => {
     UserService.getUser()
         .then(user => {
-            console.log(user)
+            console.log("Get User user", user)
             dispatch({
                 type: GET_USER,
                 user: user

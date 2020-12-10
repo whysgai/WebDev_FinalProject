@@ -1,8 +1,8 @@
 import React from "react";
-import {findAllUsers, getUserUsername} from "../Actions/UserActions";
+import {findAllUsers, getUser, getUserUsername} from "../Actions/UserActions";
 import {connect} from "react-redux";
 import {findAllPublicSnippets} from "../Actions/SnippetActions";
-import {callFirebase, getUser, getUserData, isLoggedIn} from "../services/UserService";
+import {callFirebase, getUserData, isLoggedIn} from "../services/UserService";
 import fire from "../config/db";
 // import {connect} from "react-redux";
 // import fire from "./../config/db";
@@ -12,24 +12,10 @@ class LandingPageContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            user: "",
             username: "",
             snippets: []
         };
     }
-
-    // getUserName () {
-    //     if (fire.auth().currentUser) {
-    //         fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
-    //             .then((snapshot) => {
-    //                 console.log(snapshot.val()["username"])
-    //                 this.state.username = snapshot.val()["username"]
-    //             }).then(() => {
-    //             this.render()
-    //             return Promise.resolve(this.state.username)
-    //         })
-    //     }
-    // }
 
     componentDidMount() {
         // this.getUserName()
@@ -37,14 +23,8 @@ class LandingPageContainer extends React.Component {
         this.props.findAllPublicSnippets()
         isLoggedIn().then(() => this.props.getUserUsername()).then(() => this.render())
         // )
+        console.log(this.props.getUser())
 
-
-        // console.log(isLoggedIn())
-        // if (isLoggedIn()) {
-        //     alert("Logged in")
-        //     this.state.loggedIn = true
-        //     this.render()
-        // }
 
         this.render()
         // console.log(getUserData())
@@ -70,10 +50,8 @@ class LandingPageContainer extends React.Component {
 
         return (
             <div>
-                {console.log(isLoggedIn())}
                 {
                     this.state.user !== null &&
-
                     <div>
                         <div className="jumbotron text-center" style={{height: 200}}>
                             <h1 className="display-4">Welcome back to CodeSaver{" " + this.props.username}!</h1>
@@ -100,9 +78,9 @@ class LandingPageContainer extends React.Component {
                         <h1 className="display-4">Coming Soon!</h1>
                     </div>
                 </div>
-                <button onClick={() => callFirebase()}>Call firebase</button>
-                <button onClick={() => this.props.getUserUsername()}>Get Username</button>
-                <button onClick={() => getUser()}>Get User</button>
+                {/*<button onClick={() => callFirebase()}>Call firebase</button>*/}
+                <button onClick={() => console.log(this.state)}>Get User From State</button>
+                <button onClick={() => this.state.user = this.props.getUser()}>Get User</button>
             </div>
         )
     }
@@ -110,12 +88,14 @@ class LandingPageContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets,
-    username: state.userReducer.username
+    username: state.userReducer.username,
+    user: state.userReducer.user
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
     findAllPublicSnippets: () => findAllPublicSnippets(dispatch),
-    getUserUsername: () => getUserUsername(dispatch)
+    getUserUsername: () => getUserUsername(dispatch),
+    getUser: () => getUser(dispatch)
 })
 
 export default connect(stateToPropertyMapper, propertyToDispatchMapper)

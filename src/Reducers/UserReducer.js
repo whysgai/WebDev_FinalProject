@@ -1,4 +1,4 @@
-import {FIND_ALL_USERS, GET_USERNAME} from "../Actions/UserActions";
+import {FIND_ALL_USERS, GET_USERNAME, GET_USER} from "../Actions/UserActions";
 
 const initialState = {
     activeUser: {
@@ -6,13 +6,13 @@ const initialState = {
         username: "Ms. Pac-Man",
         token: "70f143af3d540e77de91e721e5c4e8960a181663"
     },
-    users: []
+    users: [],
+    user: []
 }
 
-const UserReducer = (state = initialState, action) => {
+const UserReducer = (state = [], action) => {
     switch (action.type) {
         case FIND_ALL_USERS:
-            console.log("Hit User Reducer", action.users)
             return {
                 ...state,
                 users: action.users
@@ -20,8 +20,13 @@ const UserReducer = (state = initialState, action) => {
         case GET_USERNAME:
             return {
                 ...state,
-
                 username: action.username
+            }
+        case GET_USER:
+            // console.log("Hit User Reducer", action.user)
+            return {
+                ...state,
+                user: action.user
             }
         default:
             return state;
