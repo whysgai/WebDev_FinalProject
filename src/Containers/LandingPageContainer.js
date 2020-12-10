@@ -2,7 +2,7 @@ import React from "react";
 import {findAllUsers, getUserUsername} from "../Actions/UserActions";
 import {connect} from "react-redux";
 import {findAllPublicSnippets} from "../Actions/SnippetActions";
-import {getUserData, isLoggedIn} from "../services/UserService";
+import {callFirebase, getUser, getUserData, isLoggedIn} from "../services/UserService";
 import fire from "../config/db";
 // import {connect} from "react-redux";
 // import fire from "./../config/db";
@@ -18,33 +18,35 @@ class LandingPageContainer extends React.Component {
         };
     }
 
-    getUserName () {
-        if (fire.auth().currentUser) {
-            fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
-                .then((snapshot) => {
-                    console.log(snapshot.val()["username"])
-                    this.state.username = snapshot.val()["username"]
-                }).then(() => {
-                this.render()
-                return Promise.resolve(this.state.username)
-            })
-        }
-    }
+    // getUserName () {
+    //     if (fire.auth().currentUser) {
+    //         fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
+    //             .then((snapshot) => {
+    //                 console.log(snapshot.val()["username"])
+    //                 this.state.username = snapshot.val()["username"]
+    //             }).then(() => {
+    //             this.render()
+    //             return Promise.resolve(this.state.username)
+    //         })
+    //     }
+    // }
 
     componentDidMount() {
-        this.getUserName()
+        // this.getUserName()
 
+        this.props.getUserUsername()
         this.props.findAllPublicSnippets()
-        console.log(isLoggedIn())
-        if (isLoggedIn()) {
-            // alert("Logged in")
-            this.state.loggedIn = true
-            this.getUserName()
-            this.render()
-        }
+
+        // console.log(isLoggedIn())
+        // if (isLoggedIn()) {
+        //     // alert("Logged in")
+        //     this.state.loggedIn = true
+        //     // this.getUserName()
+        //     this.render()
+        // }
 
         this.render()
-        console.log(getUserData())
+        // console.log(getUserData())
     }
 
     componentDidUpdate() {
@@ -97,9 +99,9 @@ class LandingPageContainer extends React.Component {
                         <h1 className="display-4">Coming Soon!</h1>
                     </div>
                 </div>
-                <button onClick={() => console.log(this.props.getUserUsername())}>Get Username</button>
-                <button onClick={() => console.log(this.state)}>Get Username</button>
-
+                <button onClick={() => callFirebase()}>Call firebase</button>
+                <button onClick={() => this.props.getUserUsername()}>Get Username</button>
+                <button onClick={() => getUser()}>Get User</button>
             </div>
         )
     }

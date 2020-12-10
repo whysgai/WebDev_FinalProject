@@ -6,11 +6,48 @@ import fire from "../config/db";
 const headers = {
     "Authorization": `Token 70f143af3d540e77de91e721e5c4e8960a181663`
 }
+
+
+export async function callFirebase(){
+    let user = await fire.auth().currentUser
+    console.log("User in call firebase", user)
+    return Promise.resolve(user)
+}
+
+export async function getUser(){
+    let user = await fire.auth().currentUser
+    let uid = await user.uid
+    let userData = await fire.database().ref("/users/" + uid).once('value')
+    console.log("Userdata in getUser", userData.val())
+
+    // return Promise.resolve(userData)
+}
+
+
 export async function getUserUsername() {
-    let response = await fire.database().ref("/users/" + fire.auth().currentUser.uid)
-        .once('value')
-    console.log(response.val())
-    return Promise.resolve(response.val().username)
+
+    let user = await fire.auth().currentUser
+    let uid = await user.uid
+    let userData = await fire.database().ref("/users/" + uid).once('value')
+    console.log("Userdata in getUser", userData.val())
+    return Promise.resolve(userData.val().username)
+
+    // callFirebase().then((user) => {
+    //     console.log("Then user", user)
+    // })
+    // return Promise.resolve(user)
+    // callFirebase().then((user) =>{
+    //     console.log(user)
+    // })
+
+    // callFirebase().then((user) => {
+    //     let response = fire.database().ref("/users/" + user.uid)
+    //         .once('value')
+    //     console.log(response.val())
+    //     return Promise.resolve(response.val().username)
+    // })
+
+
 }
 
 export const getUserData = () => {
@@ -54,16 +91,16 @@ export const updateUser = (uid, newUser) =>
         type: newUser.type
     })
 
-export const getUser = () => {
-    return new Promise((resolve, reject) => {
-        let user = fire.auth().currentUser
-        fire.database().ref("users/" + user.uid).once('value')
-            .then((snapshot) => {
-                console.log(snapshot.val())
-               return (snapshot.val())
-            })
-    })
-}
+// export const getUser = () => {
+//     return new Promise((resolve, reject) => {
+//         let user = fire.auth().currentUser
+//         fire.database().ref("users/" + user.uid).once('value')
+//             .then((snapshot) => {
+//                 console.log(snapshot.val())
+//                return (snapshot.val())
+//             })
+//     })
+// }
 
 
 export default {findAllUsers, getTokenForUser, updateUser, getUserUsername, getUser}
