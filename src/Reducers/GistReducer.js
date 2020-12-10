@@ -31,11 +31,13 @@ const gistReducer = (state = initialState, action = action) => {
             }
 
         case GET_GIST:
+            console.log("Reducer", action.gist)
             return {
                 ...state,
-                gist: action.response
+                gist: action.gist
             }
         case GET_FILE:
+            console.log("Reducer file", action.gistfile)
             return {
                 ...state,
                 file: action.gistfile

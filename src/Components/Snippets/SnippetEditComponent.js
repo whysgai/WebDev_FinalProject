@@ -4,7 +4,7 @@ import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
 import {Link} from "react-router-dom";
 
-const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, deleteSnippet, toggleLike, edit, create, activeUser}) =>
+const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, deleteSnippet, toggleLike, edit, create, activeUser}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -88,10 +88,11 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createS
                     theme: 'material',
                     lineNumbers: true
                 }}
-                onChange={(editor, data, value) => editLocalSnippet({
-                    ...snippet,
-                    codeText: value
-                })}
+                // onChange={(editor, data, value) => editLocalSnippet({
+                //     ...snippet,
+                //     codeText: value
+                // })}
+                onChange={(editor, data, value) => editLocalText(value)}
             />
         </div>
         {/*Tags*/}
@@ -140,7 +141,7 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createS
                 edit &&
                     <button className="btn btn-outline-info float-right col-2"
                             onClick={() => {
-                                updateSnippet(snippet)
+                                updateSnippet(snippet, text)
                             }}
                     >Save</button>
             }
@@ -155,11 +156,12 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createS
             }
             {
                 create &&
-                    <button className="btn btn-outline-info float-right col-2"
-                            onClick={() => {
-                                createSnippet(snippet)
-                            }}
-                    >Create</button>
+                    <Link className="btn btn-outline-info float-right col-2"
+                          to={"/search"}
+                          onClick={() => {
+                              createSnippet(snippet, text)
+                          }}
+                    >Create</Link>
             }
             <button className="btn btn-outline-dark float-right col-2"
                     onClick={() => createGistForUser(activeUser.token, snippet.title, snippet.description, snippet.codeText)}

@@ -8,11 +8,13 @@ export const FIND_ALL_PUBLIC_SNIPPETS = "FIND_ALL_PUBLIC_SNIPPETS";
 export const UPDATE_LOCAL_SNIPPET = "UPDATE_LOCAL_SNIPPET";
 export const EDIT_LOCAL_SNIPPET = "EDIT_LOCAL_SNIPPET"
 export const SEARCH_SNIPPET = "SEARCH_SNIPPET";
-export const ADD_TAG = "ADD_TAG"
-export const REMOVE_TAG = "REMOVE_TAG"
-export const TOGGLE_LIKE = "TOGGLE_LIKE"
+export const ADD_TAG = "ADD_TAG";
+export const REMOVE_TAG = "REMOVE_TAG";
+export const TOGGLE_LIKE = "TOGGLE_LIKE";
+export const EDIT_LOCAL_TEXT ="EDIT_LOCAL_TEXT";
 
-export const createSnippet = (dispatch, snippet) => {
+export const createSnippet = (dispatch, snippet, text) => {
+    snippet.codeText = text
     snippetServices.createSnippet(snippet)
         .then(snippet => dispatch({
                 type: CREATE_SNIPPET,
@@ -20,17 +22,6 @@ export const createSnippet = (dispatch, snippet) => {
             }
         ))
 }
-
-// export const createSnippetForCreator = (dispatch, creator, snippet) =>
-//     snippetServices.createSnippet(snippet)
-//         .then(snippet => {
-//                 dispatch({
-//                     type: CREATE_SNIPPET,
-//                     snippet
-//                 });
-//             }
-//
-//         )
 
 export const addTagToSnippet = (dispatch, tag) => {
     dispatch({
@@ -51,15 +42,23 @@ export const createLocalSnippet = (dispatch, snippet) => {
     })}
 
 export const editLocalSnippet = (dispatch, snippet) => {
-    console.log("Changed snippet ACTION", snippet);
     dispatch({
         type: EDIT_LOCAL_SNIPPET,
         snippet
     })
 }
 
-export const updateSnippet = (dispatch, snippet) =>
+export const editLocalText = (dispatch, text) => {
+    dispatch({
+        type: EDIT_LOCAL_TEXT,
+        text
+    })
+}
+
+export const updateSnippet = (dispatch, snippet, text) => {
+    snippet.codeText = text
     snippetServices.updateSnippet(snippet)
+}
 
 export const toggleLike = (dispatch, activeUser, likedSnippet) => {
     if (likedSnippet.likes.includes(activeUser.username)) {
