@@ -40,6 +40,7 @@ class EditSnippetContainer extends React.Component {
                         <SnippetContainer
                             snippet={this.props.currentSnippet}
                             edit={true}
+                            singleview={true}
                             editLocalSnippet={this.props.editLocalSnippet}
                             updateSnippet={this.props.updateSnippet}
                             addTagToSnippet={this.props.addTagToSnippet}
