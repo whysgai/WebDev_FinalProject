@@ -46,12 +46,18 @@ const SnippetDisplayComponent = ({snippet, toggleLike, activeUser}) =>
             <p className="col-12">{snippet.description}</p>
         </div>
         {/*Snippet Content*/}
-        <div className="p-3 col-12">
-            <pre className="text-wrap">
-                {snippet.codeText}
+        {
+            console.log("Displayed snippet:", snippet)
+        }
+        <div className="p-3 col-12 mb-2 border">
+            <pre>
+                <code>
+                    {snippet.codeText}
+                </code>
             </pre>
         </div>
-        <div className="row col-12">
+        <Link to={`/snippet/${snippet._id}`} className="">More</Link>
+        <div className="row col-12 mt-2">
             {/*Creator*/}
             <div className="col-3">
                 <h6>Created By: <a href="#">{snippet.creator}</a></h6>
