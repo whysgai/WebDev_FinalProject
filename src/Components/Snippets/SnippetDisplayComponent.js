@@ -50,7 +50,7 @@ const SnippetDisplayComponent = ({snippet, toggleLike, activeUser, singleview}) 
             console.log("Displayed snippet:", snippet)
         }
         <div className="p-3 col-12 mb-2">
-            <pre className="col-12 border">
+            <pre className="col-12 pt-2 pb-2 border">
                 {
                     (singleview) &&
                         <code className="all">

@@ -155,11 +155,12 @@ const SnippetEditComponent = ({snippet, editLocalSnippet, updateSnippet, createS
             }
             {
                 create &&
-                    <button className="btn btn-outline-info float-right col-2"
-                            onClick={() => {
-                                createSnippet(snippet)
-                            }}
-                    >Create</button>
+                    <Link className="btn btn-outline-info float-right col-2"
+                          to={"/search"}
+                          onClick={() => {
+                              createSnippet(snippet)
+                          }}
+                    >Create</Link>
             }
             <button className="btn btn-outline-dark float-right col-2"
                     onClick={() => createGistForUser(activeUser.token, snippet.title, snippet.description, snippet.codeText)}
