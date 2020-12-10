@@ -35,17 +35,16 @@ class LandingPageContainer extends React.Component {
         // this.getUserName()
 
         this.props.findAllPublicSnippets()
-        isLoggedIn().then(() => this.props.getUserUsername()
-        )
+        // isLoggedIn().then(() => this.props.getUserUsername()
+        // )
 
 
         // console.log(isLoggedIn())
-        // if (isLoggedIn()) {
-        //     alert("Logged in")
-        //     this.state.loggedIn = true
-        //     // this.getUserName()
-        //     this.render()
-        // }
+        if (isLoggedIn()) {
+            alert("Logged in")
+            this.state.loggedIn = true
+            this.render()
+        }
 
         this.render()
         // console.log(getUserData())
@@ -71,7 +70,7 @@ class LandingPageContainer extends React.Component {
 
         return (
             <div>
-                {console.log(this.props.snippets)}
+                {console.log(isLoggedIn())}
                 {
                     this.state.user !== null &&
 

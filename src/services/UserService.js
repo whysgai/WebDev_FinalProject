@@ -71,8 +71,8 @@ export const getTokenForUser = (uid) =>
         })
 
 export async function isLoggedIn() {
-    if (await fire.auth().currentUser) {
-        // await getUserUsername()
+    if (fire.auth().currentUser) {
+        await getUserUsername()
         return true
     } else {
         return false
