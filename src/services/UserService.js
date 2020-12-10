@@ -4,7 +4,17 @@
 import fire from "../config/db";
 
 const headers = {
-    "Authorization" : `Token 70f143af3d540e77de91e721e5c4e8960a181663`
+    "Authorization": `Token 70f143af3d540e77de91e721e5c4e8960a181663`
+}
+
+export const getUserUsername = () => {
+    if (!fire.auth().currentUser) {
+        return "Anonymous"
+    }
+    fire.database().ref("/users/" + fire.auth().currentUser.uid).once('value')
+        .then((snapshot) => {
+            return (snapshot.val()["username"] === undefined ? "Anonymous" : snapshot.val()["username"] )
+        })
 }
 
 export const findAllUsers = () =>
@@ -30,5 +40,4 @@ export const updateUser = (uid, newUser) =>
     })
 
 
-
-export default { findAllUsers, getTokenForUser, updateUser }
+export default {findAllUsers, getTokenForUser, updateUser}

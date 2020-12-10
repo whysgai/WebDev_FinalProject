@@ -2,6 +2,7 @@ import React from "react";
 import {findAllUsers} from "../Actions/UserActions";
 import {connect} from "react-redux";
 import {findAllPublicSnippets} from "../Actions/SnippetActions";
+import {getUserUsername} from "../services/UserService";
 // import {connect} from "react-redux";
 // import fire from "./../config/db";
 
@@ -16,11 +17,9 @@ class LandingPageContainer extends React.Component {
         };
     }
 
-
-
-
     componentDidMount() {
         this.props.findAllPublicSnippets()
+        console.log(getUserUsername())
         // this.render();
     }
 
