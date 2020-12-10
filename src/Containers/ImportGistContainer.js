@@ -43,14 +43,6 @@ class ImportGistContainer extends React.Component {
 
     };
 
-    request() {
-        console.log("Requesting change")
-        this.setState({
-            requested: true
-        })
-        console.log("Requested", this.state.requested);
-    }
-
     importGist(gistId) {
         // clear reducer snippets
         // call get snippet action
@@ -112,18 +104,9 @@ class ImportGistContainer extends React.Component {
                                             </button>
                                         </div>
                                     </div>
-                                    <button className="btn btn-dark" onClick={() => this.request()}>request</button>
                                 </div>
                             </div>
                         </div>
-                }
-                {
-                    this.state.requested &&
-                        <div>
-                            <h1>Yup</h1>
-                            <button className="btn btn-dark" onClick={() => this.request()}>request</button>
-                        </div>
-
                 }
                 {
                     (this.props.currentSnippet && this.state.requested) &&
@@ -136,6 +119,7 @@ class ImportGistContainer extends React.Component {
                             addTagToSnippet={this.props.addTagToSnippet}
                             removeTagFromSnippet={this.props.removeTagFromSnippet}
                             deleteSnippet={this.props.deleteSnippet}
+                            createSnippet={this.props.createSnippet}
                             activeUser={this.props.activeUser}
                         />
                 }
