@@ -12,7 +12,7 @@ import {connect} from "react-redux";
 import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
 import {findAllUsers} from "../Actions/UserActions";
 
-class SingleSnippetContainer extends React.Component {
+class CreateSnippetContainer extends React.Component {
     // snippets, gists, getGistsForUser, users, findAllUsers, findAllSnippets
 
 
@@ -92,4 +92,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
-(SingleSnippetContainer)
+(CreateSnippetContainer)
