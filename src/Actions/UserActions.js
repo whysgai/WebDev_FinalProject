@@ -2,6 +2,7 @@ import UserService from "../services/UserService";
 
 export const FIND_ALL_USERS = "FIND_ALL_USERS"
 export const GET_USERNAME = "GET_USERNAME"
+export const GET_USER = "GET_USER"
 
 export const findAllUsers = (dispatch) => {
     UserService.findAllUsers()
@@ -20,6 +21,17 @@ export const getUserUsername = (dispatch) => {
             dispatch({
                 type: GET_USERNAME,
                 username: response
+            })
+        })
+}
+
+export const getUser = (dispatch) => {
+    UserService.getUser()
+        .then(user => {
+            console.log(user)
+            dispatch({
+                type: GET_USER,
+                user: user
             })
         })
 }

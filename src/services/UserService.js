@@ -15,19 +15,13 @@ export const getUserUsername = (uid) => {
 }
 
 export const getUserData = () => {
-
-    let user = fire.auth().currentUser
-    console.log(user.uid)
-
-    let username = ""
-
-    fire.database().ref("users/" + user.uid).once('value')
-        .then((snapshot) => {
-            console.log("HERE")
-            console.log(snapshot.val().username === undefined ? null : username = snapshot.val().username)
-        }).then(() => {return username})
-
-
+    if(fire.auth().currentUser){
+        fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
+            .then((snapshot) => {
+                console.log(snapshot.val()["username"])
+                return Promise.resolve(snapshot.val()["username"])
+            })
+    }
 }
 
 
@@ -61,5 +55,16 @@ export const updateUser = (uid, newUser) =>
         type: newUser.type
     })
 
+export const getUser = () => {
+    return new Promise((resolve, reject) => {
+        let user = fire.auth().currentUser
+        fire.database().ref("users/" + user.uid).once('value')
+            .then((snapshot) => {
+                console.log(snapshot.val())
+               return (snapshot.val())
+            })
+    })
+}
 
-export default {findAllUsers, getTokenForUser, updateUser, getUserUsername}
+
+export default {findAllUsers, getTokenForUser, updateUser, getUserUsername, getUser}
