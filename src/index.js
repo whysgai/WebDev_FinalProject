@@ -24,11 +24,13 @@ import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
 import UserAdminListComponent from "./Components/Users/UserAdminListComponent";
 import LoginComponent from "./Components/LoginComponent";
 import LandingPageContainer from "./Containers/LandingPageContainer";
+import AuthReducer from "./Reducers/AuthReducer";
 
 const reducers = combineReducers({
     gistReducer: GistReducer,
     snippetReducer,
-    userReducer: UserReducer
+    userReducer: UserReducer,
+    authReducer: AuthReducer
 })
 
 const store = createStore(reducers)

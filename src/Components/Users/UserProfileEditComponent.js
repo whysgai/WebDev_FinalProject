@@ -10,8 +10,9 @@ class UserProfileEditComponent extends Component {
     constructor() {
         super()
         this.state = {
-
+            user: {}
         }
+
 
         // fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
         //     .then((snapshot) => {
@@ -43,17 +44,16 @@ class UserProfileEditComponent extends Component {
     // }
 
     componentDidMount() {
-        // // this.props.getUser()
-        // // console.log(this.props.user)
-        // getUser().then((user) => console.log(user))
-        // this.render()
-        this.render()
+        console.log(this.props.user)
+        console.log(this.props.uid)
+
     }
 
 
     render() {
         return (
             <div>
+                {console.log(this.state.user.username)}
                 <div className="card-body">
                     {/*<h3 className="card-title">Profile</h3>*/}
                     <div className="wbdv-message">
@@ -69,10 +69,13 @@ class UserProfileEditComponent extends Component {
                             <label htmlFor="username" className="col-sm-2 col-form-label">Username</label>
                             <div className="col-sm-10">
                                 <input className="form-control wbdv-field wbdv-username" id="username"
-                                       placeholder="username"
+                                       // placeholder="username"
                                        // readOnly="readonly"
-                                       // value={this.state.user.uid}
+                                    value={"hello"}
+                                       // value={this.state.user.username !== null ? this.state.user.email : "Pupppies"}
                                 />
+
+
                             </div>
                         </div>
                         <div className="form-group row">
@@ -131,7 +134,8 @@ class UserProfileEditComponent extends Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    user: state.userReducer.user
+    user: state.authReducer.user,
+    uid: state.authReducer.userUid,
 
 })
 

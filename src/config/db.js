@@ -13,5 +13,6 @@ let config = {
 };
 
 const fire = firebase.initializeApp(config);
+export const fireUser = firebase.auth().currentUser
 export default fire
 
