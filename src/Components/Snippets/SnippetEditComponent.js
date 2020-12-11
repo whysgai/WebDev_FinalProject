@@ -1,8 +1,12 @@
 import React from "react"
-import {UnControlled as CodeMirror} from 'react-codemirror2'
-import "../../styles/codemirror.css"
+import "../../styles/codemirror.css";
 import TagComponent from "../TagComponent";
 import {Link} from "react-router-dom";
+import {UnControlled as CodeMirror} from 'react-codemirror2'
+require('codemirror/mode/javascript/javascript');
+require('codemirror/theme/neo.css');
+
+require('codemirror/mode/javascript/javascript');
 
 const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, deleteSnippet, toggleLike, togglePrivacy, edit, create, activeUser}) =>
     <div className="card-body">
@@ -82,10 +86,11 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
             <label htmlFor="code_editor" />
             {/*CodeMirror2*/}
             <CodeMirror
+                className="col-12 border"
                 value={snippet.codeText}
                 options={{
-                    mode: 'JavaScript',
-                    theme: 'material',
+                    mode: 'javascript',
+                    theme: 'neo',
                     lineNumbers: true
                 }}
                 // onChange={(editor, data, value) => editLocalSnippet({
