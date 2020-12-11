@@ -3,7 +3,12 @@ import "../../styles/codemirror.css";
 import TagComponent from "../TagComponent";
 import {Link} from "react-router-dom";
 import {UnControlled as CodeMirror} from 'react-codemirror2'
+require('codemirror/mode/htmlmixed/htmlmixed');
+require('codemirror/mode/css/css');
 require('codemirror/mode/javascript/javascript');
+require('codemirror/mode/clike/clike');
+require('codemirror/mode/python/python');
+require('codemirror/mode/sql/sql');
 require('codemirror/theme/neo.css');
 
 require('codemirror/mode/javascript/javascript');
@@ -81,11 +86,11 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 value={snippet.language}
                 className="form-control" id="selectLanguage"
             >
-                <option value="">--Please choose an option--</option>
-                <option value="html">HTML</option>
+                <option value="">--Select language--</option>
+                <option value="htmlmixed">HTML</option>
                 <option value="css">CSS</option>
                 <option value="javascript">JavaScript</option>
-                <option value="java">Java</option>
+                {/*<option value="clike">Java</option>*/}
                 <option value="python">Python</option>
                 <option value="sql">SQL</option>
             </select>
@@ -97,7 +102,7 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 className="col-12 border"
                 value={snippet.codeText}
                 options={{
-                    mode: 'javascript',
+                    mode: `${snippet.language}`,
                     theme: 'neo',
                     lineNumbers: true
                 }}
