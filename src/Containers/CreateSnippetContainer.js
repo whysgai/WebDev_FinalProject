@@ -5,7 +5,7 @@ import {
     createLocalSnippet,
     findSnippetById,
     editLocalSnippet,
-    addTagToSnippet, removeTagFromSnippet, editLocalText
+    addTagToSnippet, removeTagFromSnippet, editLocalText, togglePrivacy
 } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
 import {getGistById, getGistFile} from "../Actions/GistActions";
@@ -28,7 +28,7 @@ class CreateSnippetContainer extends React.Component {
                 tags: [],
                 likes: [],
                 shareableURL: "",
-                privacy: false,
+                publicPost: true,
                 recommended: false
             }
         };
@@ -55,7 +55,7 @@ class CreateSnippetContainer extends React.Component {
                             addTagToSnippet={this.props.addTagToSnippet}
                             removeTagFromSnippet={this.props.removeTagFromSnippet}
                             createSnippet={this.props.createSnippet}
-                            // createSnippetForCreator={this.props.createSnippetForCreator}
+                            togglePrivacy={this.props.togglePrivacy}
                             activeUser={this.props.activeUser}
                         />
                 }
@@ -80,6 +80,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     editLocalText: (text) => editLocalText(dispatch, text),
     addTagToSnippet: (snippet, tag) => addTagToSnippet(dispatch, snippet, tag),
     removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
+    togglePrivacy: () => togglePrivacy(dispatch),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),

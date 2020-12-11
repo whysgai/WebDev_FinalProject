@@ -2,7 +2,7 @@ import React from "react"
 
 const TagComponent = ({tag, edit, removeTagFromSnippet}) =>
     <div>
-        <span className="badge badge-primary m-2">
+        <span className="btn btn-primary ml-2">
             <h6 className="d-inline">{tag}</h6>
             {
                 edit === true &&

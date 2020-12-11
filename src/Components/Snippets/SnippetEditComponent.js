@@ -4,7 +4,7 @@ import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
 import {Link} from "react-router-dom";
 
-const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, deleteSnippet, toggleLike, edit, create, activeUser}) =>
+const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, deleteSnippet, toggleLike, togglePrivacy, edit, create, activeUser}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -135,43 +135,65 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 </div>
             </div>
         </div>
-        <div className="row col-12">
-            <div className="col-5"/>
-            {
-                edit &&
-                    <button className="btn btn-outline-info float-right col-2"
+        <div className="row col-12 mt-2">
+            <div className="col-12">
+                {/*<div className="col-5"/>*/}
+                <div className="custom-control custom-switch d-inline col-2 ml-2">
+                    <input type="checkbox"
+                           className="custom-control-input mt-2"
+                           id="publicprivate"
+                           checked={snippet.publicPost}
+                           onChange={() => togglePrivacy()}
+                    />
+                    <label className="custom-control-label mt-2" htmlFor="publicprivate">
+                        {
+                            !snippet.publicPost &&
+                            <span>Private</span>
+                        }
+                        {
+                            snippet.publicPost &&
+                            <span>Public</span>
+                        }
+                    </label>
+                </div>
+
+                {
+                    edit &&
+                        <Link className="btn btn-outline-danger float-right col-1 ml-2"
+                              to={"/search"}
+                              onClick={() => {
+                                  deleteSnippet(snippet._id)
+                              }}
+                        >
+                            <span title="Delete snippet"><i className="fa fa-trash" aria-hidden="true"/></span>
+                        </Link>
+                }
+
+
+                <button className="btn btn-outline-dark float-right col-1 ml-2"
+                        onClick={() => createGistForUser(activeUser.token, snippet.title, snippet.description, snippet.codeText)}
+                >
+                    <span title="Export to GitHub"><i className="fa fa-upload" aria-hidden="true"/></span>
+                </button>
+                {
+                    edit &&
+                    <button className="btn btn-outline-info float-right col-2 ml-2"
                             onClick={() => {
                                 updateSnippet(snippet, text)
                             }}
                     >Save</button>
-            }
-            {
-                edit &&
-                    <Link className="btn btn-outline-danger float-right col-2"
-                          to={"/search"}
-                          onClick={() => {
-                              deleteSnippet(snippet._id)
-                          }}
-                    >Delete</Link>
-            }
-            {
-                create &&
-                    <Link className="btn btn-outline-info float-right col-2"
+                }
+                {
+                    create &&
+                    <Link className="btn btn-outline-info float-right col-2 ml-2"
                           to={"/search"}
                           onClick={() => {
                               createSnippet(snippet, text)
                           }}
                     >Create</Link>
-            }
-            <button className="btn btn-outline-dark float-right col-2"
-                    onClick={() => createGistForUser(activeUser.token, snippet.title, snippet.description, snippet.codeText)}
-            >
-                Export
-            </button>
-
+                }
+            </div>
         </div>
-
-
     </div>
 
 export default SnippetEditComponent

@@ -11,7 +11,8 @@ export const SEARCH_SNIPPET = "SEARCH_SNIPPET";
 export const ADD_TAG = "ADD_TAG";
 export const REMOVE_TAG = "REMOVE_TAG";
 export const TOGGLE_LIKE = "TOGGLE_LIKE";
-export const EDIT_LOCAL_TEXT ="EDIT_LOCAL_TEXT";
+export const EDIT_LOCAL_TEXT = "EDIT_LOCAL_TEXT";
+export const TOGGLE_PRIVACY = "TOGGLE_PRIVACY";
 
 export const createSnippet = (dispatch, snippet, text) => {
     snippet.codeText = text
@@ -72,6 +73,11 @@ export const toggleLike = (dispatch, activeUser, likedSnippet) => {
                 snippet: likedSnippet
             }
         ))
+}
+
+export const togglePrivacy = (dispatch) => {
+    console.log("Action toggle privacy")
+    dispatch({type: TOGGLE_PRIVACY})
 }
 
 export const deleteSnippet = (dispatch, snippetId) =>
