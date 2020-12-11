@@ -77,9 +77,7 @@ export const toggleLike = (dispatch, activeUser, likedSnippet) => {
 }
 
 export const toggleRecommended = (dispatch, snippet) => {
-    console.log("Action toggle recommended", snippet)
     snippet.recommended = !snippet.recommended;
-    console.log("Action toggled", snippet)
     snippetServices.updateSnippet(snippet)
         .then(snippet => dispatch({
             type: TOGGLE_RECOMMENDED,
@@ -89,7 +87,6 @@ export const toggleRecommended = (dispatch, snippet) => {
 }
 
 export const togglePrivacy = (dispatch) => {
-    console.log("Action toggle privacy")
     dispatch({type: TOGGLE_PRIVACY})
 }
 
@@ -100,7 +97,6 @@ export const deleteSnippet = (dispatch, snippetId) =>
                                       snippetId
                                   }
         ))
-
 
 export const findAllSnippets = (dispatch) =>
     snippetServices.findAllSnippets()
@@ -132,5 +128,3 @@ export const findSnippetById = (dispatch, snippetId) =>
                                         snippet: snippet
                                     }
         ))
-
-
