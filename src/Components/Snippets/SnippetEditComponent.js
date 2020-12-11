@@ -90,7 +90,7 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 <option value="htmlmixed">HTML</option>
                 <option value="css">CSS</option>
                 <option value="javascript">JavaScript</option>
-                {/*<option value="clike">Java</option>*/}
+                <option value="text/x-java">Java</option>
                 <option value="python">Python</option>
                 <option value="sql">SQL</option>
             </select>
@@ -104,7 +104,8 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 options={{
                     mode: `${snippet.language}`,
                     theme: 'neo',
-                    lineNumbers: true
+                    lineNumbers: true,
+                    linewrapping: true
                 }}
                 // onChange={(editor, data, value) => editLocalSnippet({
                 //     ...snippet,
