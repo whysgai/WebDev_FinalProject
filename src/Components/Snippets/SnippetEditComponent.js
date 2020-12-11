@@ -107,10 +107,6 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                     lineNumbers: true,
                     linewrapping: true
                 }}
-                // onChange={(editor, data, value) => editLocalSnippet({
-                //     ...snippet,
-                //     codeText: value
-                // })}
                 onChange={(editor, data, value) => editLocalText(value)}
             />
         </div>
@@ -139,7 +135,6 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 <div className="float-right">
                     <div className="tagBackground rounded row ">
                         {
-
                             (snippet.tags !== null && snippet.tags !== []) &&
                                 snippet.tags.map((tag, index) =>
                                     <TagComponent
@@ -187,8 +182,6 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                             <span title="Delete snippet"><i className="fa fa-trash" aria-hidden="true"/></span>
                         </Link>
                 }
-
-
                 <button className="btn btn-outline-dark float-right col-1 ml-2"
                         onClick={() => createGistForUser(activeUser.token, snippet.title, snippet.description, snippet.codeText)}
                 >
