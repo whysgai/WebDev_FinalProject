@@ -2,11 +2,12 @@ import React from "react"
 import {Link} from "react-router-dom";
 import TagComponent from "../TagComponent";
 
-const SnippetDisplayComponent = ({snippet, toggleLike, activeUser}) =>
+const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, activeUser, singleview}) =>
     <div className="card-body shadow hoverDiv">
         {/*Title and Timestamp*/}
         <div className="row col-12">
             <div className="col-8">
+                {snippet.recommended? <span className="mr-2"><i className="fa fa-certificate pr-3`" aria-hidden="true"/></span> : null}
                 <Link to={`/snippet/${snippet._id}`} className="h5">{snippet.title}</Link>
             </div>
             <div className="col-4 text-secondary">
@@ -46,12 +47,45 @@ const SnippetDisplayComponent = ({snippet, toggleLike, activeUser}) =>
             <p className="col-12">{snippet.description}</p>
         </div>
         {/*Snippet Content*/}
-        <div className="p-3 col-12">
-            <pre className="text-wrap">
-                {snippet.codeText}
+        {
+            console.log("Displayed snippet:", snippet)
+        }
+        <div className="p-3 col-12 mb-2">
+            <pre className="col-12 pt-2 pb-2 border">
+                {
+                    (singleview) &&
+                        <code className="all">
+                            {snippet.codeText}
+                        </code>
+                }
+                {
+                    (!singleview) &&
+                        snippet.codeText.split(/\r?\n/).splice(0,5).map((line, index) =>
+                            <code key={index} className="some">
+                                {line+"\n"}
+                            </code>
+                        )
+                }
             </pre>
+            <Link to={`/snippet/${snippet._id}`} className="">More...</Link>
+            {/*TODO: Hide if user is not admin/mod*/}
+            {
+                snippet.recommended &&
+                    <button className="btn btn-secondary float-right"
+                            onClick={() => toggleRecommended(snippet)}>
+                        Recommend <i className="fa fa-certificate" aria-hidden="true"/>
+                    </button>
+            }
+            {
+                !snippet.recommended &&
+                    <button className="btn btn-outline-secondary float-right"
+                            onClick={() => toggleRecommended(snippet)}>
+                        Recommend <i className="fa fa-certificate" aria-hidden="true"/>
+                    </button>
+            }
+
         </div>
-        <div className="row col-12">
+        <div className="row col-12 mt-2">
             {/*Creator*/}
             <div className="col-3">
                 <h6>Created By: <a href="#">{snippet.creator}</a></h6>

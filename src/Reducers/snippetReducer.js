@@ -7,15 +7,19 @@ import {
     EDIT_LOCAL_SNIPPET,
     ADD_TAG,
     REMOVE_TAG,
-    TOGGLE_LIKE
+    TOGGLE_LIKE,
+    EDIT_LOCAL_TEXT,
+    TOGGLE_PRIVACY,
+    TOGGLE_RECOMMENDED
 } from '../Actions/SnippetActions'
+import {whenMapStateToPropsIsMissing} from "react-redux/lib/connect/mapStateToProps";
 
 const _ = require('lodash');
 
 const initialState = {
     snippets: [],
-    // currentSnippet: null,
-    user: {id:"uid001", username:"Ms. Pac-Man"}
+    text: "",
+    // user: {id:"uid001", username:"Ms. Pac-Man"}
 }
 
 const snippetReducer = (state = initialState, action = action) => {
@@ -26,7 +30,6 @@ const snippetReducer = (state = initialState, action = action) => {
                 snippets: [action.snippet]
             };
         case TOGGLE_LIKE:
-            console.log("New snippet in reducer:", action.snippet);
             let newSnippets = state.snippets.map(
                 (snippet) => snippet._id === action.snippet._id ? action.snippet : snippet
             )
@@ -34,13 +37,34 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
                 snippets: _.cloneDeep(newSnippets)
             }
-            console.log("Next State", nextState);
             return nextState;
+        case TOGGLE_PRIVACY:
+            return {
+                ...state,
+                snippets: [{
+                    ...state.snippets[0],
+                    publicPost: !state.snippets[0].publicPost
+                }]
+            }
+        case TOGGLE_RECOMMENDED:
+            return {
+                ...state,
+                snippets: _.cloneDeep(
+                    state.snippets.map(snippet =>
+                        snippet._id === action.snippet._id ? action.snippet : snippet
+                    )
+                )
+            }
         case EDIT_LOCAL_SNIPPET:
             return {
                 ...state,
                 snippets: [action.snippet]
             };
+        case EDIT_LOCAL_TEXT:
+            return {
+                ...state,
+                text: action.text
+            }
         case ADD_TAG:
             let tags = []
             if (state.snippets[0].tags !== null) {
@@ -62,6 +86,7 @@ const snippetReducer = (state = initialState, action = action) => {
                     tags: state.snippets[0].tags.filter(tag => action.tag !== tag)
                 }]
             };
+
         case DELETE_SNIPPET:
             return {
                 ...state,

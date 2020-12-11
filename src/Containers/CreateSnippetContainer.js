@@ -2,19 +2,16 @@ import React from "react";
 import SnippetContainer from "./SnippetContainer";
 import {
     createSnippet,
-    createSnippetForCreator,
     createLocalSnippet,
     findSnippetById,
     editLocalSnippet,
-    addTagToSnippet, removeTagFromSnippet
+    addTagToSnippet, removeTagFromSnippet, editLocalText, togglePrivacy
 } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
-import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
+import {getGistById, getGistFile} from "../Actions/GistActions";
 import {findAllUsers} from "../Actions/UserActions";
 
-class SingleSnippetContainer extends React.Component {
-    // snippets, gists, getGistsForUser, users, findAllUsers, findAllSnippets
-
+class CreateSnippetContainer extends React.Component {
 
     constructor() {
         super();
@@ -31,7 +28,7 @@ class SingleSnippetContainer extends React.Component {
                 tags: [],
                 likes: [],
                 shareableURL: "",
-                privacy: false,
+                publicPost: true,
                 recommended: false
             }
         };
@@ -51,12 +48,14 @@ class SingleSnippetContainer extends React.Component {
                     this.props.currentSnippet &&
                         <SnippetContainer
                             snippet={this.props.currentSnippet}
+                            text={this.props.text}
                             create={true}
                             editLocalSnippet={this.props.editLocalSnippet}
+                            editLocalText={this.props.editLocalText}
                             addTagToSnippet={this.props.addTagToSnippet}
                             removeTagFromSnippet={this.props.removeTagFromSnippet}
                             createSnippet={this.props.createSnippet}
-                            // createSnippetForCreator={this.props.createSnippetForCreator}
+                            togglePrivacy={this.props.togglePrivacy}
                             activeUser={this.props.activeUser}
                         />
                 }
@@ -67,6 +66,7 @@ class SingleSnippetContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => ({
     currentSnippet: state.snippetReducer.snippets[0],
+    text: state.snippetReducer.text,
     activeUser: state.userReducer.activeUser,
     gists: state.gistReducer.gists,
     users: state.userReducer.users
@@ -74,16 +74,13 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
-    createSnippet: (snippet) => createSnippet(dispatch, snippet),
-    // createSnippetForCreator: (creator, snippet) => createSnippetForCreator(dispatch, creator, snippet),
+    createSnippet: (snippet, text) => createSnippet(dispatch, snippet, text),
     createLocalSnippet: (snippet) => {createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
-    addTagToSnippet: (snippet, tag) => {
-        addTagToSnippet(dispatch, snippet, tag)
-    },
-    removeTagFromSnippet: (tag) => {
-        removeTagFromSnippet(dispatch, tag)
-    },
+    editLocalText: (text) => editLocalText(dispatch, text),
+    addTagToSnippet: (snippet, tag) => addTagToSnippet(dispatch, snippet, tag),
+    removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
+    togglePrivacy: () => togglePrivacy(dispatch),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),
@@ -92,4 +89,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
-(SingleSnippetContainer)
+(CreateSnippetContainer)
