@@ -13,6 +13,7 @@ export const REMOVE_TAG = "REMOVE_TAG";
 export const TOGGLE_LIKE = "TOGGLE_LIKE";
 export const EDIT_LOCAL_TEXT = "EDIT_LOCAL_TEXT";
 export const TOGGLE_PRIVACY = "TOGGLE_PRIVACY";
+export const TOGGLE_RECOMMENDED = "TOGGLE_RECOMMENDED";
 
 export const createSnippet = (dispatch, snippet, text) => {
     snippet.codeText = text
@@ -73,6 +74,18 @@ export const toggleLike = (dispatch, activeUser, likedSnippet) => {
                 snippet: likedSnippet
             }
         ))
+}
+
+export const toggleRecommended = (dispatch, snippet) => {
+    console.log("Action toggle recommended", snippet)
+    snippet.recommended = !snippet.recommended;
+    console.log("Action toggled", snippet)
+    snippetServices.updateSnippet(snippet)
+        .then(snippet => dispatch({
+            type: TOGGLE_RECOMMENDED,
+            snippet
+        }))
+
 }
 
 export const togglePrivacy = (dispatch) => {

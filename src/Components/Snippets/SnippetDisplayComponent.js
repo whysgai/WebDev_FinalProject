@@ -2,7 +2,7 @@ import React from "react"
 import {Link} from "react-router-dom";
 import TagComponent from "../TagComponent";
 
-const SnippetDisplayComponent = ({snippet, toggleLike, activeUser, singleview}) =>
+const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, activeUser, singleview}) =>
     <div className="card-body shadow hoverDiv">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -68,17 +68,18 @@ const SnippetDisplayComponent = ({snippet, toggleLike, activeUser, singleview}) 
                 }
             </pre>
             <Link to={`/snippet/${snippet._id}`} className="">More...</Link>
+            {/*TODO: Hide if user is not admin/mod*/}
             {
                 snippet.recommended &&
                     <button className="btn btn-secondary float-right"
-                            onClick={() => {}}>
+                            onClick={() => toggleRecommended(snippet)}>
                         Recommend <i className="fa fa-certificate" aria-hidden="true"/>
                     </button>
             }
             {
                 !snippet.recommended &&
                     <button className="btn btn-outline-secondary float-right"
-                            onClick={() => {}}>
+                            onClick={() => toggleRecommended(snippet)}>
                         Recommend <i className="fa fa-certificate" aria-hidden="true"/>
                     </button>
             }

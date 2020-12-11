@@ -2,7 +2,7 @@ import React from "react"
 import SnippetEditComponent from "./SnippetEditComponent";
 import SnippetDisplayComponent from "./SnippetDisplayComponent";
 
-const SnippetComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, deleteSnippet, toggleLike, togglePrivacy, createGistForUser, edit, create, singleview, activeUser}) =>
+const SnippetComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, deleteSnippet, toggleLike, togglePrivacy, toggleRecommended, createGistForUser, edit, create, singleview, activeUser}) =>
     <div className="card mt-4 ">
         {
             console.log("Snippet:", snippet)
@@ -40,6 +40,7 @@ const SnippetComponent = ({snippet, text, editLocalSnippet, editLocalText, updat
                     toggleLike={toggleLike}
                     activeUser={activeUser}
                     singleview={singleview}
+                    toggleRecommended={toggleRecommended}
                 />
         }
 
