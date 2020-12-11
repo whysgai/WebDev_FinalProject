@@ -6,11 +6,11 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
     <div className="card-body shadow hoverDiv">
         {/*Title and Timestamp*/}
         <div className="row col-12">
-            <div className="col-8">
+            <div className="col-12 col-md-8">
                 {snippet.recommended? <span className="mr-2"><i className="fa fa-certificate pr-3`" aria-hidden="true"/></span> : null}
                 <Link to={`/snippet/${snippet._id}`} className="h5">{snippet.title}</Link>
             </div>
-            <div className="col-4 text-secondary">
+            <div className="col-12 col-lg-4 text-secondary">
                 <div className="float-right">
                     {
                         (!snippet.likes.includes(activeUser.username)) &&
@@ -87,11 +87,11 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
         </div>
         <div className="row col-12 mt-2">
             {/*Creator*/}
-            <div className="col-3">
+            <div className="col-12 col-md-3">
                 <h6>Created By: <a href="#">{snippet.creator}</a></h6>
             </div>
             {/*Tags*/}
-            <div className="col-9 text-secondary float-right">
+            <div className="col-12 col-md-9 text-secondary float-right">
                 <div className="float-right">
                     <div className="tagBackground rounded row ">
                         {
