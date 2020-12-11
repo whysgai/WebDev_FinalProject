@@ -2,11 +2,12 @@ import React from "react"
 import {Link} from "react-router-dom";
 import TagComponent from "../TagComponent";
 
-const SnippetDisplayComponent = ({snippet, toggleLike, activeUser, singleview}) =>
+const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, activeUser, singleview}) =>
     <div className="card-body shadow hoverDiv">
         {/*Title and Timestamp*/}
         <div className="row col-12">
             <div className="col-8">
+                {snippet.recommended? <span className="mr-2"><i className="fa fa-certificate pr-3`" aria-hidden="true"/></span> : null}
                 <Link to={`/snippet/${snippet._id}`} className="h5">{snippet.title}</Link>
             </div>
             <div className="col-4 text-secondary">
@@ -66,7 +67,23 @@ const SnippetDisplayComponent = ({snippet, toggleLike, activeUser, singleview}) 
                         )
                 }
             </pre>
-            <Link to={`/snippet/${snippet._id}`} className="">More</Link>
+            <Link to={`/snippet/${snippet._id}`} className="">More...</Link>
+            {/*TODO: Hide if user is not admin/mod*/}
+            {
+                snippet.recommended &&
+                    <button className="btn btn-secondary float-right"
+                            onClick={() => toggleRecommended(snippet)}>
+                        Recommend <i className="fa fa-certificate" aria-hidden="true"/>
+                    </button>
+            }
+            {
+                !snippet.recommended &&
+                    <button className="btn btn-outline-secondary float-right"
+                            onClick={() => toggleRecommended(snippet)}>
+                        Recommend <i className="fa fa-certificate" aria-hidden="true"/>
+                    </button>
+            }
+
         </div>
         <div className="row col-12 mt-2">
             {/*Creator*/}

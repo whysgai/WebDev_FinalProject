@@ -9,15 +9,17 @@ import {
     REMOVE_TAG,
     TOGGLE_LIKE,
     EDIT_LOCAL_TEXT,
-    TOGGLE_PRIVACY
+    TOGGLE_PRIVACY,
+    TOGGLE_RECOMMENDED
 } from '../Actions/SnippetActions'
+import {whenMapStateToPropsIsMissing} from "react-redux/lib/connect/mapStateToProps";
 
 const _ = require('lodash');
 
 const initialState = {
     snippets: [],
     text: "",
-    user: {id:"uid001", username:"Ms. Pac-Man"}
+    // user: {id:"uid001", username:"Ms. Pac-Man"}
 }
 
 const snippetReducer = (state = initialState, action = action) => {
@@ -37,13 +39,21 @@ const snippetReducer = (state = initialState, action = action) => {
             }
             return nextState;
         case TOGGLE_PRIVACY:
-            console.log("Toggling privacy")
             return {
                 ...state,
                 snippets: [{
                     ...state.snippets[0],
                     publicPost: !state.snippets[0].publicPost
                 }]
+            }
+        case TOGGLE_RECOMMENDED:
+            return {
+                ...state,
+                snippets: _.cloneDeep(
+                    state.snippets.map(snippet =>
+                        snippet._id === action.snippet._id ? action.snippet : snippet
+                    )
+                )
             }
         case EDIT_LOCAL_SNIPPET:
             return {
@@ -76,6 +86,7 @@ const snippetReducer = (state = initialState, action = action) => {
                     tags: state.snippets[0].tags.filter(tag => action.tag !== tag)
                 }]
             };
+
         case DELETE_SNIPPET:
             return {
                 ...state,
