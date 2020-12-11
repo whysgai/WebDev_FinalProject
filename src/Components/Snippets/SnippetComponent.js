@@ -2,11 +2,11 @@ import React from "react"
 import SnippetEditComponent from "./SnippetEditComponent";
 import SnippetDisplayComponent from "./SnippetDisplayComponent";
 
-const SnippetComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, deleteSnippet, toggleLike, createGistForUser, edit, create, singleview, activeUser}) =>
+const SnippetComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, deleteSnippet, toggleLike, togglePrivacy, createGistForUser, edit, create, singleview, activeUser}) =>
     <div className="card mt-4 ">
-        {/*{*/}
-        {/*    console.log("Snippet:", snippet)*/}
-        {/*}*/}
+        {
+            console.log("Snippet:", snippet)
+        }
         {/*{*/}
         {/*    console.log("ActiveUser from Snippet Component:", activeUser.username)*/}
         {/*}*/}
@@ -26,6 +26,7 @@ const SnippetComponent = ({snippet, text, editLocalSnippet, editLocalText, updat
                     removeTagFromSnippet={removeTagFromSnippet}
                     deleteSnippet={deleteSnippet}
                     toggleLike={toggleLike}
+                    togglePrivacy={togglePrivacy}
                     createGistForUser={createGistForUser}
                     edit={edit}
                     create={create}

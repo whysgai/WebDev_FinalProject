@@ -4,7 +4,7 @@ import "../../styles/codemirror.css"
 import TagComponent from "../TagComponent";
 import {Link} from "react-router-dom";
 
-const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, deleteSnippet, toggleLike, edit, create, activeUser}) =>
+const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, deleteSnippet, toggleLike, togglePrivacy, edit, create, activeUser}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
@@ -136,7 +136,7 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
             </div>
         </div>
         <div className="row col-12">
-            <div className="col-5"/>
+            {/*<div className="col-5"/>*/}
             {
                 edit &&
                     <button className="btn btn-outline-info float-right col-2"
@@ -163,6 +163,24 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                           }}
                     >Create</Link>
             }
+            <div className="custom-control custom-switch">
+                <input type="checkbox"
+                       className="custom-control-input"
+                       id="customSwitches"
+                       checked={snippet.publicPost}
+                       onChange={() => togglePrivacy()}
+                />
+                    <label className="custom-control-label" htmlFor="customSwitches">
+                        {
+                            !snippet.publicPost &&
+                                <span>Private</span>
+                        }
+                        {
+                            snippet.publicPost &&
+                                <span>Public</span>
+                        }
+                    </label>
+            </div>
             <button className="btn btn-outline-dark float-right col-2"
                     onClick={() => createGistForUser(activeUser.token, snippet.title, snippet.description, snippet.codeText)}
             >

@@ -3,7 +3,7 @@ import SnippetContainer from "./SnippetContainer";
 import {
     addTagToSnippet, createLocalSnippet, createSnippet, deleteSnippet,
     editLocalSnippet, editLocalText,
-    removeTagFromSnippet,
+    removeTagFromSnippet, togglePrivacy,
     updateSnippet
 } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
@@ -27,7 +27,7 @@ class ImportGistContainer extends React.Component {
                 tags: [],
                 likes: [],
                 shareableURL: "",
-                privacy: false,
+                publicPost: true,
                 recommended: false
             }
         };
@@ -105,6 +105,7 @@ class ImportGistContainer extends React.Component {
                             updateSnippet={this.props.updateSnippet}
                             addTagToSnippet={this.props.addTagToSnippet}
                             removeTagFromSnippet={this.props.removeTagFromSnippet}
+                            togglePrivacy={this.props.togglePrivacy}
                             deleteSnippet={this.props.deleteSnippet}
                             createSnippet={this.props.createSnippet}
                             activeUser={this.props.activeUser}
@@ -132,6 +133,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     updateSnippet: (snippet) => updateSnippet(dispatch, snippet),
     addTagToSnippet: (tag) => addTagToSnippet(dispatch, tag),
     removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
+    togglePrivacy: () => togglePrivacy(dispatch),
     deleteSnippet: (snippetId) => deleteSnippet(dispatch, snippetId),
     getGistById: (gistId) => getGistById(dispatch, gistId),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl)

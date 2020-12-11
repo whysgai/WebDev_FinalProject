@@ -8,7 +8,8 @@ import {
     ADD_TAG,
     REMOVE_TAG,
     TOGGLE_LIKE,
-    EDIT_LOCAL_TEXT
+    EDIT_LOCAL_TEXT,
+    TOGGLE_PRIVACY
 } from '../Actions/SnippetActions'
 
 const _ = require('lodash');
@@ -35,6 +36,15 @@ const snippetReducer = (state = initialState, action = action) => {
                 snippets: _.cloneDeep(newSnippets)
             }
             return nextState;
+        case TOGGLE_PRIVACY:
+            console.log("Toggling privacy")
+            return {
+                ...state,
+                snippets: [{
+                    ...state.snippets[0],
+                    publicPost: !state.snippets[0].publicPost
+                }]
+            }
         case EDIT_LOCAL_SNIPPET:
             return {
                 ...state,

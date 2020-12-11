@@ -4,7 +4,7 @@ import {
     addTagToSnippet, deleteSnippet,
     editLocalSnippet, editLocalText,
     findSnippetById,
-    removeTagFromSnippet,
+    removeTagFromSnippet, togglePrivacy,
     updateSnippet
 } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
@@ -47,6 +47,7 @@ class EditSnippetContainer extends React.Component {
                             updateSnippet={this.props.updateSnippet}
                             addTagToSnippet={this.props.addTagToSnippet}
                             removeTagFromSnippet={this.props.removeTagFromSnippet}
+                            togglePrivacy={this.props.togglePrivacy}
                             deleteSnippet={this.props.deleteSnippet}
                             activeUser={this.props.activeUser}
                         />
@@ -71,6 +72,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     updateSnippet: (snippet, text) => updateSnippet(dispatch, snippet, text),
     addTagToSnippet: (tag) => addTagToSnippet(dispatch, tag),
     removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
+    togglePrivacy: () => togglePrivacy(dispatch),
     deleteSnippet: (snippetId) => deleteSnippet(dispatch, snippetId),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
