@@ -71,17 +71,25 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
             />
         </div>
         {/*Snippet Content*/}
-        {/*<div className="form-group row col-12">*/}
-        {/*    <label htmlFor="exampleFormControlSelect1">Set Language:</label>*/}
-        {/*    <select className="form-control" id="exampleFormControlSelect1">*/}
-        {/*        <option>HTML</option>*/}
-        {/*        <option>CSS</option>*/}
-        {/*        <option>JavaScript</option>*/}
-        {/*        <option>Java</option>*/}
-        {/*        <option>Python</option>*/}
-        {/*        <option>SQL</option>*/}
-        {/*    </select>*/}
-        {/*</div>*/}
+        <div className="form-group row col-12">
+            <label htmlFor="selectLanguage">Set Language:</label>
+            <select
+                onChange={(event) => editLocalSnippet({
+                    ...snippet,
+                    language: event.target.value
+                })}
+                value={snippet.language}
+                className="form-control" id="selectLanguage"
+            >
+                <option value="">--Please choose an option--</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="javascript">JavaScript</option>
+                <option value="java">Java</option>
+                <option value="python">Python</option>
+                <option value="sql">SQL</option>
+            </select>
+        </div>
         <div className="row col-12">
             <label htmlFor="code_editor" />
             {/*CodeMirror2*/}
