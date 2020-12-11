@@ -135,7 +135,7 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 </div>
             </div>
         </div>
-        <div className="row col-12">
+        <div className="row col-12 mt-2">
             <div className="col-12">
                 {/*<div className="col-5"/>*/}
                 <div className="custom-control custom-switch d-inline col-2">
