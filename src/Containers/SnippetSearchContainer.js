@@ -8,15 +8,11 @@ import {findAllSnippets, searchSnippetsByTags, updateSearchTerms} from "../Actio
 class SnippetSearchContainer extends React.Component {
     constructor() {
         super();
-        this.state = {
-
-        };
+        this.state = { };
     }
 
     componentDidMount() {
-        // let terms = this.props.match.params.terms;
         if (this.props.match.params.terms) {
-            console.log("MOUNT there are terms, so we search", this.props.match.params.terms)
             this.props.updateSearchTerms(this.props.match.params.terms)
             this.props.searchSnippetsByTags(this.props.match.params.terms);
         }
@@ -24,7 +20,6 @@ class SnippetSearchContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.match.params.terms !== prevProps.match.params.terms) {
-            console.log("UPDATE there are terms, so we search", this.props.match.params.terms)
             this.props.updateSearchTerms(this.props.match.params.terms)
             this.props.searchSnippetsByTags(this.props.match.params.terms);
         }
@@ -57,11 +52,8 @@ const propertyToDispatchMapper = (dispatch) => ({
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),
-    searchSnippetsByTags: (tags) => {console.log(tags); searchSnippetsByTags(dispatch, tags)},
-    updateSearchTerms: (terms) => {
-        console.log("Container search terms", terms)
-        updateSearchTerms(dispatch, terms)
-    }
+    searchSnippetsByTags: (tags) => searchSnippetsByTags(dispatch, tags),
+    updateSearchTerms: (terms) => updateSearchTerms(dispatch, terms)
 })
 
 

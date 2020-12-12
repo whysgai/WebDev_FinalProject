@@ -94,18 +94,16 @@ export const togglePrivacy = (dispatch) => {
 export const deleteSnippet = (dispatch, snippetId) =>
     snippetServices.deleteSnippet(snippetId)
         .then(snippet => dispatch({
-                                      type: DELETE_SNIPPET,
-                                      snippetId
-                                  }
-        ))
+            type: DELETE_SNIPPET,
+            snippetId
+        }))
 
 export const findAllSnippets = (dispatch) =>
     snippetServices.findAllSnippets()
         .then(snippets => dispatch({
-                                       type: FIND_ALL_SNIPPETS,
-                                       snippets: snippets
-                                   }
-        ))
+            type: FIND_ALL_SNIPPETS,
+            snippets: snippets
+        }))
 
 export const findRecommendedSnippets = (dispatch) =>
     snippetServices.findRecommendedSnippets()
@@ -117,25 +115,23 @@ export const findRecommendedSnippets = (dispatch) =>
 export const searchSnippetsByTags = (dispatch, tags) =>
     snippetServices.searchSnippetsByTags(tags)
         .then(snippets => dispatch({
-                                        type: SEARCH_SNIPPET,
-                                        snippets: snippets
+            type: SEARCH_SNIPPET,
+            snippets: snippets
         }))
 
 export const findAllPublicSnippets = (dispatch) =>
     snippetServices.findAllPublicSnippets()
         .then(snippets => dispatch({
-                                       type: FIND_ALL_PUBLIC_SNIPPETS,
-                                       snippets: snippets
-                                   }
-        ))
+            type: FIND_ALL_PUBLIC_SNIPPETS,
+            snippets: snippets
+        }))
 
 export const findSnippetById = (dispatch, snippetId) =>
     snippetServices.findSnippetById(snippetId)
         .then(snippet => dispatch({
-                                        type: FIND_SNIPPET,
-                                        snippet: snippet
-                                    }
-        ))
+            type: FIND_SNIPPET,
+            snippet: snippet
+        }))
 
 export const updateSearchTerms = (dispatch, terms) =>
     dispatch({
