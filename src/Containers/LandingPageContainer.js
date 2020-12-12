@@ -8,6 +8,8 @@ import "./LandingPageComponent.css"
 // import fire from "./../config/db";
 import snippetPicture from "../assets/media/sample_snippet.PNG"
 import {Link} from "react-router-dom";
+import codePic from "../assets/media/computer_code.png"
+import valuesCode from "../assets/media/values_2.png"
 
 class LandingPageContainer extends React.Component {
 
@@ -63,14 +65,17 @@ class LandingPageContainer extends React.Component {
                 {
                     this.state.user == null &&
                         <div>
-                            <div className="jumbotron text-center" style={{height: 275}}>
-                                <h1 className="display-4">Welcome to CodeSaver!</h1>
+                            <div className=" text-center">
+                                <h1 className="display-3">Welcome to CodeSaver!</h1>
                                 <p className="lead">"We are on a mission to make your coding life simpler, more productive, and more efficient."</p>
-                                <p className="lead">
-                                    <a className="btn btn-primary btn-lg m-2" href="#" role="button">About Us</a>
-                                    <a className="btn btn-primary btn-lg m-2" href="#" role="button">Learn More</a>
-                                    <a className="btn btn-primary btn-lg m-2" href="#" role="button">Join Now</a>
-                                </p>
+                                {/*<p className="lead">*/}
+                                {/*    <a className="btn btn-primary btn-lg m-2" href="#" role="button">About Us</a>*/}
+                                {/*    <a className="btn btn-primary btn-lg m-2" href="#" role="button">Learn More</a>*/}
+                                {/*    <a className="btn btn-primary btn-lg m-2" href="#" role="button">Join Now</a>*/}
+                                {/*</p>*/}
+                            </div>
+                            <div className="text-center">
+                                <img src={codePic}/>
                             </div>
                             <div>
                                 <h2> About Us</h2>
@@ -81,6 +86,14 @@ class LandingPageContainer extends React.Component {
                                     is to build a reliable, efficient, and agile platform where people can come to save, organize,
                                     and share their code.
                                 </p>
+                            </div>
+
+                            <div
+                                className="text-center"
+                            >
+                                <img
+                                    className="text-center align-content-center"
+                                    src={valuesCode}/>
                             </div>
 
                             <div>
