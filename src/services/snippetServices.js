@@ -20,6 +20,10 @@ export const findAllSnippets = () =>
     fetch(`${SNIPPET_NODE_URL_2}/snippets`)
         .then(response => response.json());
 
+export const findRecommendedSnippets = () =>
+    fetch(`${SNIPPET_NODE_URL_2}/snippets/starred`)
+        .then(response => response.json());
+
 export const findAllPublicSnippets = () =>
     fetch(`${SNIPPET_NODE_URL_2}/snippets/public`)
         .then(response => response.json());
@@ -86,6 +90,7 @@ export default {
     findAllSnippets,
     findAllPublicSnippets,
     deleteSnippet,
-    searchSnippetsByTags
+    searchSnippetsByTags,
+    findRecommendedSnippets
 }
 

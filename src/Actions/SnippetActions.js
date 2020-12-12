@@ -106,6 +106,13 @@ export const findAllSnippets = (dispatch) =>
                                    }
         ))
 
+export const findRecommendedSnippets = (dispatch) =>
+    snippetServices.findRecommendedSnippets()
+        .then(snippets => dispatch({
+            type: FIND_ALL_SNIPPETS,
+            snippets: snippets
+        }))
+
 export const searchSnippetsByTags = (dispatch, tags) =>
     snippetServices.searchSnippetsByTags(tags)
         .then(snippets => dispatch({
