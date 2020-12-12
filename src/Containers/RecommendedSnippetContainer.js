@@ -5,39 +5,22 @@ import {
     createLocalSnippet,
     findSnippetById,
     editLocalSnippet,
-    addTagToSnippet, removeTagFromSnippet, editLocalText, togglePrivacy
+    addTagToSnippet, removeTagFromSnippet, editLocalText, togglePrivacy, findRecommendedSnippets
 } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
 import {getGistById, getGistFile} from "../Actions/GistActions";
 import {findAllUsers} from "../Actions/UserActions";
+import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
 
-class CreateSnippetContainer extends React.Component {
+class RecommendedSnippetContainer extends React.Component {
 
     constructor() {
         super();
-        this.state = {
-            newSnippetTemplate: {
-                id: "",
-                gistId: "newGist3",
-                creator: "",
-                dateCreated: "",
-                lastModified: "",
-                title: "Snippet title",
-                description: "Description and context of code",
-                codeText: "Add your snippet here...",
-                tags: [],
-                likes: [],
-                shareableURL: "",
-                publicPost: true,
-                recommended: false
-            }
-        };
+        this.state = { };
     }
 
     componentDidMount() {
-        let temp = this.state.newSnippetTemplate
-        temp.creator = this.props.activeUser.username
-        this.props.createLocalSnippet(temp)
+        this.props.findRecommendedSnippets()
     };
 
 
@@ -45,18 +28,9 @@ class CreateSnippetContainer extends React.Component {
         return (
             <div>
                 {
-                    this.props.currentSnippet &&
-                        <SnippetContainer
-                            snippet={this.props.currentSnippet}
-                            text={this.props.text}
-                            create={true}
-                            editLocalSnippet={this.props.editLocalSnippet}
-                            editLocalText={this.props.editLocalText}
-                            addTagToSnippet={this.props.addTagToSnippet}
-                            removeTagFromSnippet={this.props.removeTagFromSnippet}
-                            createSnippet={this.props.createSnippet}
-                            togglePrivacy={this.props.togglePrivacy}
-                            activeUser={this.props.activeUser}
+                    this.props.snippets &&
+                        <SnippetSearchListComponent
+                            snippets={this.props.snippets}
                         />
                 }
             </div>
@@ -65,6 +39,7 @@ class CreateSnippetContainer extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
+    snippets: state.snippetReducer.snippets,
     currentSnippet: state.snippetReducer.snippets[0],
     text: state.snippetReducer.text,
     activeUser: state.userReducer.activeUser,
@@ -73,6 +48,7 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
+    findRecommendedSnippets: () => findRecommendedSnippets(dispatch),
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
     createSnippet: (snippet, text) => createSnippet(dispatch, snippet, text),
     createLocalSnippet: (snippet) => {createLocalSnippet(dispatch, snippet)},
@@ -89,4 +65,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
-(CreateSnippetContainer)
+(RecommendedSnippetContainer)

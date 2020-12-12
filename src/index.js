@@ -24,6 +24,8 @@ import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
 import UserAdminListComponent from "./Components/Users/UserAdminListComponent";
 import LoginComponent from "./Components/LoginComponent";
 import LandingPageContainer from "./Containers/LandingPageContainer";
+import ImportGistContainer from "./Containers/ImportGistContainer";
+import RecommendedSnippetContainer from "./Containers/RecommendedSnippetContainer";
 
 const reducers = combineReducers({
     gistReducer: GistReducer,
@@ -60,7 +62,9 @@ ReactDOM.render(
                         <TestSnippetDisplayPageContainer username="NameOfUser"/>
                     </Route>
                     <Route path="/snippet/:snippetId" exact component={SingleSnippetContainer}/>
-                    <Route path="/newsnippet/" exact component={CreateSnippetContainer}/>
+                    <Route path="/newsnippet" exact component={CreateSnippetContainer}/>
+                    <Route path="/import_gist" exact component={ImportGistContainer}/>
+                    <Route path="/recommended" exact component={RecommendedSnippetContainer}/>
                     <Route path="/login" exact component={LoginComponent}/>
                 {/*End of container*/}
                 </div>

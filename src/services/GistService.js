@@ -1,7 +1,7 @@
 // const username = "group3person"
 // const password = "nicsalehwill3"
 
-const gistId = "3ca80de89acfaac051414ac0c308359b"
+//const gistId = "3ca80de89acfaac051414ac0c308359b"
 
 const headers = {
     "Authorization" : `Token 70f143af3d540e77de91e721e5c4e8960a181663`
@@ -51,7 +51,7 @@ export const deleteGist = (id) =>
             headers: headers
         })
 
-export const getGistById = () =>
+export const getGistById = (gistId) =>
     fetch(`https://api.github.com/gists/${gistId}`,
         {"method":"GET",
             "headers": headers})

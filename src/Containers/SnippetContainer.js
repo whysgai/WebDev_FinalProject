@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import SnippetComponent from "../Components/Snippets/SnippetComponent";
-import { toggleLike } from "../Actions/SnippetActions";
+import {toggleLike, toggleRecommended} from "../Actions/SnippetActions";
 import {createGistForUser} from "../Actions/GistActions";
 
 const stateToPropertyMapper = (state) => ({
@@ -10,7 +10,8 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     createGistForUser: (token, title, description, content) => createGistForUser(dispatch, token, title, description, content),
-    toggleLike: (activeUser, snippet) => toggleLike(dispatch, activeUser, snippet)
+    toggleLike: (activeUser, snippet) => toggleLike(dispatch, activeUser, snippet),
+    toggleRecommended: (snippet) => toggleRecommended(dispatch, snippet)
 })
 
 export default connect
