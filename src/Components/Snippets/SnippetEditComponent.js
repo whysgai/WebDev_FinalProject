@@ -11,8 +11,6 @@ require('codemirror/mode/python/python');
 require('codemirror/mode/sql/sql');
 require('codemirror/theme/neo.css');
 
-require('codemirror/mode/javascript/javascript');
-
 const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, updateSnippet, createSnippet, addTagToSnippet, removeTagFromSnippet, createGistForUser, deleteSnippet, toggleLike, togglePrivacy, edit, create, activeUser}) =>
     <div className="card-body">
         {/*Title and Timestamp*/}
