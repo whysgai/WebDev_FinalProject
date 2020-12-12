@@ -3,7 +3,7 @@
 const PrivacyPolicyComponent = () =>
 
     <div>
-        <h2>Privacy Policy of CodeSaver</h2>
+        <h2 className="m-3">Privacy Policy of CodeSaver</h2>
 
         <div className="bg-light p-3">
 

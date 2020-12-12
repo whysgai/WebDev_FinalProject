@@ -27,6 +27,8 @@ import LandingPageContainer from "./Containers/LandingPageContainer";
 import ImportGistContainer from "./Containers/ImportGistContainer";
 import RecommendedSnippetContainer from "./Containers/RecommendedSnippetContainer";
 import PrivacyPolicyComponent from "./Components/PrivacyPolicyComponent";
+import UserRegisterComponent from "./Components/Users/UserRegisterComponent";
+import UserLoginComponent from "./Components/Users/UserLoginComponent";
 
 const reducers = combineReducers({
     gistReducer: GistReducer,
@@ -67,7 +69,9 @@ ReactDOM.render(
                     <Route path="/import_gist" exact component={ImportGistContainer}/>
                     <Route path="/recommended" exact component={RecommendedSnippetContainer}/>
                     <Route path="/login" exact component={LoginComponent}/>
+                    <Route path="/login2" exact component={UserLoginComponent}/>
                     <Route path="/privacy" exact component={PrivacyPolicyComponent}/>
+                    <Route path="/register" exact component={UserRegisterComponent}/>
                 {/*End of container*/}
                 </div>
             </div>

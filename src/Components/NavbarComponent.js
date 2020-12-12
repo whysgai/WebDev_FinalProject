@@ -36,6 +36,12 @@ const NavbarComponent = () =>
                     <li className="nav-item">
                         <Link className="nav-link" to="/privacy">Privacy</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/register">Register</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/login2">Login</Link>
+                    </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     <Link className="nav-link" to="/login">
