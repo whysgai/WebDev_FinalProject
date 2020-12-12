@@ -34,6 +34,7 @@ class LoginComponent extends Component {
 
     login(e) {
         e.preventDefault();
+
         fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(() => this.props.setUser(fire.auth().currentUser))
             .then(() => this.props.setUID(this.props.user.uid))
@@ -42,6 +43,7 @@ class LoginComponent extends Component {
         }).catch((error) => {
             console.log(error);
         });
+
     }
 
     signup(e){

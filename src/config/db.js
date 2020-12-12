@@ -13,6 +13,9 @@ let config = {
 };
 
 const fire = firebase.initializeApp(config);
+fire.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+
 export const fireUser = firebase.auth().currentUser
+
 export default fire
 

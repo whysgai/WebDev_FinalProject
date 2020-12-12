@@ -79,7 +79,7 @@ class UserProfileEditComponent extends Component {
     render() {
         return (
             <div>
-                {console.log("Render")}
+                {console.log("Authenticated user", fire.auth().currentUser)}
                 <div className="card-body">
                     {/*<h3 className="card-title">Profile</h3>*/}
                     <div className="wbdv-message">
