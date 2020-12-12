@@ -55,7 +55,7 @@ ReactDOM.render(
                     <Route path="/admin" exact>
                         <UserAdminListComponent/>
                     </Route>
-                    <Route path="/profile" exact>
+                    <Route path={["/profile/:id","/profile"]} exact>
                         <UserSnippetsContainer/>
                     </Route>
                     <Route path="/concept_proof" exact>

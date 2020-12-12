@@ -4,32 +4,73 @@ import fire from "../../config/db";
 import {findAllPublicSnippets} from "../../Actions/SnippetActions";
 import {getUser, getUserUsername} from "../../services/UserService";
 import {connect} from "react-redux";
+import {setUID, setUser} from "../../Actions/AuthActions";
+import {getPublicUserData, getUserData} from "../../Actions/UserActions";
 
 class UserProfileEditComponent extends Component {
+
+    async getDataForUser(username) {
+        let userData = await fire.database().ref("/users/").once('value')
+        let displayedUser = await userData.forEach((user) => {
+            if (user.val().username === username) {
+                console.log(user.val().username)
+                displayedUser = user.val()
+                this.state.displayedUser = user.val()
+                console.log(this.state.displayedUser)
+                this.render()
+                Promise.resolve(displayedUser)
+
+            }
+        })
+    }
 
     constructor(props) {
         super(props)
 
         if (this.props.user === undefined) {
             this.state = {
-                user: {username: "user123", paToken: "Personal Access Token", email: "email@google.com", type: "USER"}
+                user: {username: "user123", paToken: "Personal Access Token", email: "email@google.com", type: "USER"},
+                displayedUser: {
+                    username: "user123",
+                    paToken: "Personal Access Token",
+                    email: "email@google.com",
+                    type: "USER"
+                }
+
             }
         } else {
             this.state = {
-                user: this.props.user
+                user: this.props.user,
+                displayedUser: {}
+                }
             }
         }
-    }
+
 
     async componentDidMount() {
 
         await this.props.user
+
+        if (fire.auth().currentUser === null) {
+            alert("You're not logged in")
+        }
 
         if (this.props.user !== undefined) {
             this.state.user = this.props.user
             console.log(this.state.user)
             this.render()
         }
+
+
+        await this.getDataForUser("etardis1234")
+            .then((user) => console.log(this.state.displayedUser))
+        .then(() => this.render())
+        .then(() => this.state.user = this.state.displayedUser)
+
+        if(this.state.displayedUser !== {}){
+            this.render()
+        }
+
 
 
     }
@@ -88,7 +129,8 @@ class UserProfileEditComponent extends Component {
                         <div className="form-group row">
                             <label htmlFor="role" className="col-sm-2 col-form-label">Role</label>
                             <div className="col-sm-10">
-                                <select className="custom-select wbdv-field wbdv-role" id="role" value={this.state.user.type}>
+                                <select className="custom-select wbdv-field wbdv-role" id="role"
+                                        value={this.state.user.type}>
                                     <option value="USER">User</option>
                                     <option value="ADMIN">Admin</option>
                                 </select>
@@ -113,13 +155,17 @@ class UserProfileEditComponent extends Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    // user: state.authReducer.user,
-    uid: state.authReducer.userUid,
+    displayedUser: state.userReducer.displayedUser,
+    userUID: state.authReducer.userUID,
     user: state.userReducer.user
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    getUser: () => getUser(dispatch)
+    getUser: () => getUser(dispatch),
+    setUser: (user) => setUser(dispatch, user),
+    setUID: (uid) => setUID(dispatch, uid),
+    getUserData: (uid) => getUserData(dispatch, uid),
+    getPublicUserData: (username) => getPublicUserData(dispatch, username)
 })
 
 export default connect(stateToPropertyMapper, propertyToDispatchMapper)

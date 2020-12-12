@@ -17,7 +17,24 @@ export async function getUser(uid){
 
     let userData = await fire.database().ref("/users/" + uid).once('value')
     console.log("Userdata in getUser", userData.val())
+
     return Promise.resolve(userData.val())
+}
+
+export async function getPublicUserData(username) {
+
+    let userData = await fire.database().ref("/users/").once('value')
+    await userData.forEach((user) => {
+        if (user.val().username === username) {
+            console.log(user.val())
+            console.log(user.val().username)
+
+            return Promise.resolve(user)
+        }
+    })
+    console.log("Userdata in getUser", userData.val())
+
+
 }
 
 export async function getUserUsername() {
@@ -71,4 +88,4 @@ export const updateUser = (uid, newUser) =>
     })
 
 
-export default {findAllUsers, getTokenForUser, updateUser, getUserUsername, getUser}
+export default {findAllUsers, getTokenForUser, updateUser, getUserUsername, getUser, getPublicUserData}

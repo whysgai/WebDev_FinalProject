@@ -46,3 +46,14 @@ export const getUser = (dispatch, uid) => {
             })
         })
 }
+
+export const getPublicUserData = (dispatch, username) => {
+    UserService.getPublicUserData(username)
+        .then(( user ) => {
+            console.log("user", user)
+            dispatch({
+                type: "GET_DISPLAYED_USER",
+                displayedUser: user
+            })
+        })
+}
