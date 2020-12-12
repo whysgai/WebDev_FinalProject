@@ -7,10 +7,7 @@ import {
     EDIT_LOCAL_SNIPPET,
     ADD_TAG,
     REMOVE_TAG,
-    TOGGLE_LIKE,
     EDIT_LOCAL_TEXT,
-    TOGGLE_PRIVACY,
-    TOGGLE_RECOMMENDED,
     UPDATE_TERMS
 } from '../Actions/SnippetActions'
 import {whenMapStateToPropsIsMissing} from "react-redux/lib/connect/mapStateToProps";
@@ -31,32 +28,6 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
                 snippets: [action.snippet]
             };
-        // case TOGGLE_LIKE:
-        //     let newSnippets = state.snippets.map(
-        //         (snippet) => snippet._id === action.snippet._id ? action.snippet : snippet
-        //     )
-        //     let nextState = {
-        //         ...state,
-        //         snippets: _.cloneDeep(newSnippets)
-        //     }
-        //     return nextState;
-        // case TOGGLE_PRIVACY:
-        //     return {
-        //         ...state,
-        //         snippets: [{
-        //             ...state.snippets[0],
-        //             publicPost: !state.snippets[0].publicPost
-        //         }]
-        //     }
-        // case TOGGLE_RECOMMENDED:
-        //     return {
-        //         ...state,
-        //         snippets: _.cloneDeep(
-        //             state.snippets.map(snippet =>
-        //                 snippet._id === action.snippet._id ? action.snippet : snippet
-        //             )
-        //         )
-        //     }
         case EDIT_LOCAL_SNIPPET:
             return {
                 ...state,
