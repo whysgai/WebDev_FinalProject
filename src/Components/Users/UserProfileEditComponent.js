@@ -47,13 +47,15 @@ class UserProfileEditComponent extends Component {
         }
 
 
+
+
     async componentDidMount() {
 
         await this.props.user
 
-        if (fire.auth().currentUser === null) {
-            alert("You're not logged in")
-        }
+        // if (fire.auth().currentUser === null) {
+        //     alert("You're not logged in")
+        // }
 
         if (this.props.user !== undefined) {
             this.state.user = this.props.user
