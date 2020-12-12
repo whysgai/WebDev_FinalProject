@@ -7,16 +7,30 @@ import {connect} from "react-redux";
 
 class UserProfileEditComponent extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-            user: {}
+    constructor(props) {
+        super(props)
+
+        if (this.props.user === undefined) {
+            this.state = {
+                user: {username: "user123", paToken: "Personal Access Token", email: "email@google.com", type: "USER"}
+            }
+        } else {
+            this.state = {
+                user: this.props.user
+            }
         }
     }
 
-    componentDidMount() {
-        console.log(this.props.user.username)
-        console.log(this.props.uid)
+    async componentDidMount() {
+
+        await this.props.user
+
+        if (this.props.user !== undefined) {
+            this.state.user = this.props.user
+            console.log(this.state.user)
+            this.render()
+        }
+
 
     }
 
@@ -24,6 +38,7 @@ class UserProfileEditComponent extends Component {
     render() {
         return (
             <div>
+                {console.log("Render")}
                 <div className="card-body">
                     {/*<h3 className="card-title">Profile</h3>*/}
                     <div className="wbdv-message">
@@ -39,46 +54,43 @@ class UserProfileEditComponent extends Component {
                             <label htmlFor="username" className="col-sm-2 col-form-label">Username</label>
                             <div className="col-sm-10">
                                 <input className="form-control wbdv-field wbdv-username" id="username"
-                                       // placeholder="username"
-                                       // readOnly="readonly"
-                                    value={this.props.user.username}
-                                       // value={this.state.user.username !== null ? this.state.user.email : "Pupppies"}
+                                       placeholder={this.state.user.username}
                                 />
 
 
                             </div>
                         </div>
-                        <div className="form-group row">
-                            <label htmlFor="githubId" className="col-sm-2 col-form-label">GitHub ID</label>
-                            <div className="col-sm-10">
-                                <input className="form-control" id="githubId" placeholder="GitHub ID"/>
-                            </div>
-                        </div>
+                        {/*<div className="form-group row">*/}
+                        {/*    <label htmlFor="githubId" className="col-sm-2 col-form-label">GitHub ID</label>*/}
+                        {/*    <div className="col-sm-10">*/}
+                        {/*        <input className="form-control" id="githubId" placeholder="GitHub ID"/>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                         <div className="form-group row">
                             <label htmlFor="paToken" className="col-sm-2 col-form-label">GitHub PA Token</label>
                             <div className="col-sm-10">
-                                <input className="form-control" id="paToken" placeholder={this.props.user.paToken}/>
+                                <input className="form-control" id="paToken" placeholder={this.state.user.paToken}/>
                             </div>
                         </div>
-                        <div className="form-group row">
-                            <label htmlFor="phone" className="col-sm-2 col-form-label">Phone</label>
-                            <div className="col-sm-10">
-                                <input className="form-control wbdv-field wbdv-phone" id="phone"
-                                       placeholder="(123) 867-5309"/>
-                            </div>
-                        </div>
+                        {/*<div className="form-group row">*/}
+                        {/*    <label htmlFor="phone" className="col-sm-2 col-form-label">Phone</label>*/}
+                        {/*    <div className="col-sm-10">*/}
+                        {/*        <input className="form-control wbdv-field wbdv-phone" id="phone"*/}
+                        {/*               placeholder="(123) 867-5309"/>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                         <div className="form-group row">
                             <label htmlFor="email" className="col-sm-2 col-form-label">Email</label>
                             <div className="col-sm-10">
-                                <input className="form-control" id="email" placeholder={this.props.user.email}/>
+                                <input className="form-control" id="email" placeholder={this.state.user.email}/>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label htmlFor="role" className="col-sm-2 col-form-label">Role</label>
                             <div className="col-sm-10">
-                                <select className="custom-select wbdv-field wbdv-role" id="role">
-                                    <option value="Developer">Faculty</option>
-                                    <option value="Moderator">Student</option>
+                                <select className="custom-select wbdv-field wbdv-role" id="role" value={this.state.user.type}>
+                                    <option value="USER">User</option>
+                                    <option value="ADMIN">Admin</option>
                                 </select>
                             </div>
                         </div>
@@ -93,7 +105,7 @@ class UserProfileEditComponent extends Component {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={() => this.getUser().then(user =>console.log(user))}>Get user data</button>
+                        <button onClick={() => this.getUser().then(user => console.log(user))}>Get user data</button>
                         <button onClick={() => console.log(this.state)}>Print state</button>
 
                     </form>

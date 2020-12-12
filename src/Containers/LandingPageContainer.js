@@ -12,13 +12,15 @@ class LandingPageContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            user: {},
+            user: {username: ""},
             snippets: []
         };
     }
 
     componentDidMount() {
-
+        if (this.props.user !== undefined) {
+            this.state.user = this.props.user
+        }
         this.props.findAllPublicSnippets()
         this.render()
     }
@@ -47,7 +49,7 @@ class LandingPageContainer extends React.Component {
                     this.state.user !== null &&
                     <div>
                         <div className="jumbotron text-center" style={{height: 200}}>
-                            <h1 className="display-4">Welcome back to CodeSaver{" " + this.props.user.username}!</h1>
+                            <h1 className="display-4">Welcome back to CodeSaver {this.state.user.username}!</h1>
                         </div>
                         <div>
                             <h6 class="text-secondary">Updated On: {currentTime()}</h6>

@@ -5,7 +5,7 @@ import { toggleLike } from "../Actions/SnippetActions";
 import {createGistForUser} from "../Actions/GistActions";
 
 const stateToPropertyMapper = (state) => ({
-    activeUser : state.userReducer.activeUser
+    activeUser : state.userReducer.user
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
