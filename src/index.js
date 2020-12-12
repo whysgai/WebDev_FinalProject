@@ -46,7 +46,8 @@ ReactDOM.render(
                         <LandingPageContainer/>
                     </Route>
                     <Route path={[
-                        '/search'
+                        '/search',
+                        '/search/:terms'
                     ]} exact>
                         <SnippetSearchContainer/>
                     </Route>
