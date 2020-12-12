@@ -1,4 +1,4 @@
-import {FIND_ALL_USERS, GET_USERNAME, GET_USER} from "../Actions/UserActions";
+import {FIND_ALL_USERS, GET_USERNAME, GET_USER, UPDATE_USER} from "../Actions/UserActions";
 
 const initialState = {
     users: [],
@@ -12,6 +12,15 @@ const UserReducer = (state = [], action) => {
             return {
                 ...state,
                 users: action.users
+            }
+
+        case UPDATE_USER:
+            console.log("Reducer", state.users)
+            return {
+                ...state,
+                users: state.users.map(user =>
+                    user.uid === action.user.uid ? action.user : user
+                )
             }
         case GET_USERNAME:
             return {

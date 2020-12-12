@@ -4,8 +4,8 @@ import UserAdminComponent from "./UserAdminComponent";
 import UserAdminRowComponent from "./UserAdminRowComponent";
 import fire from "../../config/db";
 import Loader from 'react-loader-spinner'
-import {findAllUsers} from "../../Actions/UserActions";
-import UserService, {updateUser} from "../../services/UserService";
+import {findAllUsers, updateUser} from "../../Actions/UserActions";
+import UserService from "../../services/UserService";
 
 class UserAdminListComponent extends React.Component {
 
@@ -57,7 +57,7 @@ class UserAdminListComponent extends React.Component {
                             this.props.users.map((user, index) =>
                                 <UserAdminRowComponent
                                     user={user}
-                                    updateUserRow={this.updateUserRow}
+                                    updateUserRow={this.props.updateUser}
                                     lockUser={this.lockUser}
                                     unlockUser={this.unlockUser}
                                 />
@@ -83,7 +83,8 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    findAllUsers: () => findAllUsers(dispatch)
+    findAllUsers: () => findAllUsers(dispatch),
+    updateUser: (user) => updateUser(dispatch, user)
 })
 
 export default connect(stateToPropertyMapper, propertyToDispatchMapper)

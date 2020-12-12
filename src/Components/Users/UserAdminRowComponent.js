@@ -101,7 +101,7 @@ export default class UserAdminRowComponent extends React.Component {
                     {
                         this.state.editing &&
                         <button className="btn btn-light" onClick={() => {
-                            this.props.updateUserRow(this.state.user.uid, this.state.user)
+                            this.props.updateUserRow(this.state.user)
 
                             this.setState({
                                 editing: false
