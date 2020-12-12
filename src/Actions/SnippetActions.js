@@ -71,7 +71,7 @@ export const toggleLike = (dispatch, activeUser, likedSnippet) => {
     }
     snippetServices.updateSnippet(likedSnippet)
         .then(() => dispatch({
-                type: TOGGLE_LIKE,
+                type: EDIT_LOCAL_SNIPPET,
                 snippet: likedSnippet
             }
         ))
@@ -81,14 +81,18 @@ export const toggleRecommended = (dispatch, snippet) => {
     snippet.recommended = !snippet.recommended;
     snippetServices.updateSnippet(snippet)
         .then(snippet => dispatch({
-            type: TOGGLE_RECOMMENDED,
+            type: EDIT_LOCAL_SNIPPET,
             snippet
         }))
 
 }
 
-export const togglePrivacy = (dispatch) => {
-    dispatch({type: TOGGLE_PRIVACY})
+export const togglePrivacy = (dispatch, snippet) => {
+    snippet.publicPost = !snippet.publicPost
+    dispatch({
+        type: EDIT_LOCAL_SNIPPET,
+        snippet
+    })
 }
 
 export const deleteSnippet = (dispatch, snippetId) =>

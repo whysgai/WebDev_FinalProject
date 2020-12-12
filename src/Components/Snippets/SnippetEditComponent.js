@@ -159,7 +159,7 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                            className="custom-control-input mt-2"
                            id="publicprivate"
                            checked={snippet.publicPost}
-                           onChange={() => togglePrivacy()}
+                           onChange={() => togglePrivacy(snippet)}
                     />
                     <label className="custom-control-label mt-2" htmlFor="publicprivate">
                         {
