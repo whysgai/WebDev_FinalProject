@@ -25,8 +25,19 @@ export const getUserUsername = (dispatch) => {
         })
 }
 
-export const getUser = (dispatch) => {
-    UserService.getUser()
+export const getUserData = (dispatch, uid) => {
+    UserService.getUser(uid)
+        .then(user => {
+            console.log("Get User user", user)
+            dispatch({
+                type: GET_USER,
+                user: user
+            })
+        })
+}
+
+export const getUser = (dispatch, uid) => {
+    UserService.getUser(uid)
         .then(user => {
             console.log("Get User user", user)
             dispatch({

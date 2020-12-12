@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import fire from "../config/db";
-import {getUser} from "../services/UserService";
+import fire, {fireUser} from "../config/db";
 import {connect} from "react-redux";
 import {setUID, setUser} from "../Actions/AuthActions";
+import {getUserData} from "../Actions/UserActions";
 
 //All firebase code *heavily* adapted from https://www.bennettnotes.com/react-login-with-google-firebase/
 
@@ -35,8 +35,9 @@ class LoginComponent extends Component {
     login(e) {
         e.preventDefault();
         fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then(() => this.props.setUser())
+            .then(() => this.props.setUser(fire.auth().currentUser))
             .then(() => this.props.setUID(this.props.user.uid))
+            .then(() => this.props.getUserData(this.props.user.uid))
             .then((u)=>{alert("You've been signed in")
         }).catch((error) => {
             console.log(error);
@@ -109,9 +110,9 @@ const stateToPropertyMapper = (state) => ({
 
 let uid;
 const propertyToDispatchMapper = (dispatch) => ({
-    setUser: () => setUser(dispatch, fire.auth().currentUser),
-    setUID: () => setUID(dispatch, uid)
-
+    setUser: (user) => setUser(dispatch, user),
+    setUID: (uid) => setUID(dispatch, uid),
+    getUserData: (uid) => getUserData(dispatch, uid)
 })
 
 export default connect(stateToPropertyMapper, propertyToDispatchMapper)

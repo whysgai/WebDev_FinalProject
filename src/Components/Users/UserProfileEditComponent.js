@@ -12,39 +12,10 @@ class UserProfileEditComponent extends Component {
         this.state = {
             user: {}
         }
-
-
-        // fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
-        //     .then((snapshot) => {
-        //         this.userSnapshot = snapshot.val()
-        //         this.state.user = this.userSnapshot
-        //         console.log(this.state.user)
-        //         return Promise.resolve(snapshot.val())
-        //     })
     }
 
-    // getUser = () => {
-    //     return new Promise((resolve, reject) => {
-    //         let user = fire.auth().currentUser;
-    //         this.state.user = user
-    //         console.log(user)
-    //         return user ? resolve(user) : reject(new Error('No user signed in'));
-    //     })
-    // }
-
-    // getUserData = () => {
-    //     if (fire.auth().currentUser) {
-    //         fire.database().ref("users/" + fire.auth().currentUser.uid).once('value')
-    //             .then((snapshot) => {
-    //                 this.state.user = snapshot.val()
-    //                 console.log(this.state.user)
-    //                 return Promise.resolve(snapshot.val())
-    //             })
-    //     }
-    // }
-
     componentDidMount() {
-        console.log(this.props.user)
+        console.log(this.props.userData)
         console.log(this.props.uid)
 
     }
@@ -53,7 +24,6 @@ class UserProfileEditComponent extends Component {
     render() {
         return (
             <div>
-                {console.log(this.state.user.username)}
                 <div className="card-body">
                     {/*<h3 className="card-title">Profile</h3>*/}
                     <div className="wbdv-message">
@@ -71,7 +41,7 @@ class UserProfileEditComponent extends Component {
                                 <input className="form-control wbdv-field wbdv-username" id="username"
                                        // placeholder="username"
                                        // readOnly="readonly"
-                                    value={"hello"}
+                                    value={this.props.user.username}
                                        // value={this.state.user.username !== null ? this.state.user.email : "Pupppies"}
                                 />
 
@@ -100,7 +70,7 @@ class UserProfileEditComponent extends Component {
                         <div className="form-group row">
                             <label htmlFor="email" className="col-sm-2 col-form-label">Email</label>
                             <div className="col-sm-10">
-                                <input className="form-control" id="email" placeholder="lane@dailyplanet.com"/>
+                                <input className="form-control" id="email" placeholder={this.props.user.email}/>
                             </div>
                         </div>
                         <div className="form-group row">
@@ -134,9 +104,9 @@ class UserProfileEditComponent extends Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    user: state.authReducer.user,
+    // user: state.authReducer.user,
     uid: state.authReducer.userUid,
-
+    user: state.userReducer.user
 })
 
 const propertyToDispatchMapper = (dispatch) => ({

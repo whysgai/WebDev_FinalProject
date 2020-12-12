@@ -9,11 +9,11 @@ export const setUser = (dispatch, user) => {
             })
         // })
 }
-export const setUID = (dispatch, ID) => {
-    console.log(ID, "Set User ID")
+export const setUID = (dispatch, uid) => {
+    console.log(uid, "Set User ID")
     dispatch({
         type: "SET_ID",
-        uid: ID
+        uid: uid
     })
     // })
 }

@@ -23,7 +23,6 @@ const UserReducer = (state = [], action) => {
                 username: action.username
             }
         case GET_USER:
-            // console.log("Hit User Reducer", action.user)
             return {
                 ...state,
                 user: action.user
