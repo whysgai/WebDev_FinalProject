@@ -14,6 +14,7 @@ export const TOGGLE_LIKE = "TOGGLE_LIKE";
 export const EDIT_LOCAL_TEXT = "EDIT_LOCAL_TEXT";
 export const TOGGLE_PRIVACY = "TOGGLE_PRIVACY";
 export const TOGGLE_RECOMMENDED = "TOGGLE_RECOMMENDED";
+export const UPDATE_TERMS = "UPDATE_TERMS";
 
 export const createSnippet = (dispatch, snippet, text) => {
     snippet.codeText = text
@@ -135,3 +136,9 @@ export const findSnippetById = (dispatch, snippetId) =>
                                         snippet: snippet
                                     }
         ))
+
+export const updateSearchTerms = (dispatch, terms) =>
+    dispatch({
+        type: UPDATE_TERMS,
+        terms
+    })

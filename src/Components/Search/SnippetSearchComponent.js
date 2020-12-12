@@ -1,6 +1,7 @@
 import React from "react";
 import SnippetSearchBarComponent from "./SnippetSearchBarComponent";
 import SnippetSearchListComponent from "./SnippetSearchListComponent";
+import {updateSearchTerms} from "../../Actions/SnippetActions";
 
 class SnippetSearchComponent extends React.Component {
     // snippets, gists, getGistsForUser, users, findAllUsers, findAllSnippets
@@ -41,6 +42,7 @@ class SnippetSearchComponent extends React.Component {
                         snippets={this.props.snippets}
                         terms={this.props.terms}
                         searchSnippetsByTags={this.props.searchSnippetsByTags}
+                        updateSearchTerms={this.props.updateSearchTerms}
                     />
                     <SnippetSearchListComponent snippets={this.props.snippets}/>
                 </div>

@@ -3,13 +3,13 @@ import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions"
 import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent";
 import {connect} from "react-redux";
 import {findAllUsers} from "../Actions/UserActions";
-import {findAllSnippets, searchSnippetsByTags} from "../Actions/SnippetActions";
+import {findAllSnippets, searchSnippetsByTags, updateSearchTerms} from "../Actions/SnippetActions";
 
 class SnippetSearchContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            terms: null
+
         };
     }
 
@@ -17,26 +17,16 @@ class SnippetSearchContainer extends React.Component {
         // let terms = this.props.match.params.terms;
         if (this.props.match.params.terms) {
             console.log("MOUNT there are terms, so we search", this.props.match.params.terms)
-            // this.setState({
-            //     ...this.state,
-            //     terms: this.props.match.params.terms
-            // })
-            this.state.terms = this.props.match.params.terms
-            console.log("Terms set in state are now", this.state.terms)
-            this.props.searchSnippetsByTags(this.state.terms);
+            this.props.updateSearchTerms(this.props.match.params.terms)
+            this.props.searchSnippetsByTags(this.props.match.params.terms);
         }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.match.params.terms !== prevProps.match.params.terms) {
             console.log("UPDATE there are terms, so we search", this.props.match.params.terms)
-            // this.setState({
-            //     ...this.state,
-            //     terms: this.props.match.params.terms
-            // })
-            this.state.terms = this.props.match.params.terms
-            console.log("Terms set in state are now", this.state.terms)
-            this.props.searchSnippetsByTags(this.state.terms);
+            this.props.updateSearchTerms(this.props.match.params.terms)
+            this.props.searchSnippetsByTags(this.props.match.params.terms);
         }
     }
 
@@ -45,8 +35,9 @@ class SnippetSearchContainer extends React.Component {
             <div>
                 <SnippetSearchComponent
                     snippets={this.props.snippets}
-                    terms={this.state.terms}
+                    terms={this.props.terms}
                     searchSnippetsByTags={this.props.searchSnippetsByTags}
+                    updateSearchTerms={this.props.updateSearchTerms}
                 />
             </div>
         )
@@ -55,6 +46,7 @@ class SnippetSearchContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets,
+    terms: state.snippetReducer.terms,
     gists: state.gistReducer.gists,
     activeUser: state.userReducer.activeUser
 })
@@ -65,7 +57,11 @@ const propertyToDispatchMapper = (dispatch) => ({
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),
-    searchSnippetsByTags: (tags) => {console.log(tags); searchSnippetsByTags(dispatch, tags)}
+    searchSnippetsByTags: (tags) => {console.log(tags); searchSnippetsByTags(dispatch, tags)},
+    updateSearchTerms: (terms) => {
+        console.log("Container search terms", terms)
+        updateSearchTerms(dispatch, terms)
+    }
 })
 
 

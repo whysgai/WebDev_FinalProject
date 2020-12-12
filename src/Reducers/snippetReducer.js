@@ -10,7 +10,8 @@ import {
     TOGGLE_LIKE,
     EDIT_LOCAL_TEXT,
     TOGGLE_PRIVACY,
-    TOGGLE_RECOMMENDED
+    TOGGLE_RECOMMENDED,
+    UPDATE_TERMS
 } from '../Actions/SnippetActions'
 import {whenMapStateToPropsIsMissing} from "react-redux/lib/connect/mapStateToProps";
 
@@ -19,6 +20,7 @@ const _ = require('lodash');
 const initialState = {
     snippets: [],
     text: "",
+    terms: "",
     // user: {id:"uid001", username:"Ms. Pac-Man"}
 }
 
@@ -112,6 +114,11 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
             snippets: action.snippets
             };
+        case UPDATE_TERMS:
+            return {
+                ...state,
+                terms: action.terms
+            }
         default:
             return state;
     }
