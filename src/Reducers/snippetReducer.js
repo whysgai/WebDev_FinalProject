@@ -1,16 +1,14 @@
 import {
-    CREATE_SNIPPET, DELETE_SNIPPET,
-    FIND_ALL_PUBLIC_SNIPPETS,
-    FIND_ALL_SNIPPETS,
+    CREATE_SNIPPET,
+    FIND_SNIPPETS,
     FIND_SNIPPET,
-    SEARCH_SNIPPET,
     EDIT_LOCAL_SNIPPET,
+    EDIT_LOCAL_TEXT,
     ADD_TAG,
     REMOVE_TAG,
-    EDIT_LOCAL_TEXT,
+    DELETE_SNIPPET,
     UPDATE_TERMS
 } from '../Actions/SnippetActions'
-import {whenMapStateToPropsIsMissing} from "react-redux/lib/connect/mapStateToProps";
 
 const _ = require('lodash');
 
@@ -18,7 +16,6 @@ const initialState = {
     snippets: [],
     text: "",
     terms: "",
-    // user: {id:"uid001", username:"Ms. Pac-Man"}
 }
 
 const snippetReducer = (state = initialState, action = action) => {
@@ -69,12 +66,7 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
                 snippets: state.snippets.filter(snippet => snippet._id !== action.snippetId)
             };
-        case FIND_ALL_SNIPPETS:
-            return {
-                ...state,
-                snippets: action.snippets
-            };
-        case FIND_ALL_PUBLIC_SNIPPETS:
+        case FIND_SNIPPETS:
             return {
                 ...state,
                 snippets: action.snippets
@@ -84,11 +76,6 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
                 snippets: [action.snippet]
             }
-        case SEARCH_SNIPPET:
-            return {
-                ...state,
-            snippets: action.snippets
-            };
         case UPDATE_TERMS:
             return {
                 ...state,
