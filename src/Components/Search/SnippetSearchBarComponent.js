@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 //
 // const tagFromField = document.getElementById('searchtags')
 
-const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByTags}) =>
+const SnippetSearchBarComponent = ({findAllSnippets, snippets, terms, searchSnippetsByTags}) =>
     <div className="row">
         <div className="col-10">
             <div className="row mt-4">
@@ -16,14 +16,14 @@ const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByT
                     <input
                         id="searchtags"
                         className="form-control col-12"
-                        // value = ""
+                        // defaultValue={`${!terms || terms === "" ? "" : terms}`}
                         placeholder="Search by tags (eg: python+js+import)"
                     />
                     <div className="input-group-append">
                         <Link
                             className="btn btn-outline-secondary"
                             type="button"
-                            onClick={() => {searchSnippetsByTags(document.getElementById("searchtags").value)}}
+                            // onClick={() => {searchSnippetsByTags(document.getElementById("searchtags").value)}}
                             to={`/search${document.getElementById("searchtags") ? "/" + document.getElementById("searchtags").value : ""}`}
                         >
                             Search

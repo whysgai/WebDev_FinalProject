@@ -8,13 +8,35 @@ import {findAllSnippets, searchSnippetsByTags} from "../Actions/SnippetActions";
 class SnippetSearchContainer extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            terms: null
+        };
     }
 
     componentDidMount() {
         // let terms = this.props.match.params.terms;
         if (this.props.match.params.terms) {
-            this.props.searchSnippetsByTags(this.props.match.params.terms);
+            console.log("MOUNT there are terms, so we search", this.props.match.params.terms)
+            // this.setState({
+            //     ...this.state,
+            //     terms: this.props.match.params.terms
+            // })
+            this.state.terms = this.props.match.params.terms
+            console.log("Terms set in state are now", this.state.terms)
+            this.props.searchSnippetsByTags(this.state.terms);
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.terms !== prevProps.match.params.terms) {
+            console.log("UPDATE there are terms, so we search", this.props.match.params.terms)
+            // this.setState({
+            //     ...this.state,
+            //     terms: this.props.match.params.terms
+            // })
+            this.state.terms = this.props.match.params.terms
+            console.log("Terms set in state are now", this.state.terms)
+            this.props.searchSnippetsByTags(this.state.terms);
         }
     }
 
@@ -23,6 +45,7 @@ class SnippetSearchContainer extends React.Component {
             <div>
                 <SnippetSearchComponent
                     snippets={this.props.snippets}
+                    terms={this.state.terms}
                     searchSnippetsByTags={this.props.searchSnippetsByTags}
                 />
             </div>
