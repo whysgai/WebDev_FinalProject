@@ -25,7 +25,7 @@ const NavbarComponent = () =>
                         <Link className="nav-link" to="/mysnippets">My Snippets</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="#">Starred</Link>
+                        <Link className="nav-link" to="/recommended">Starred</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/import_gist">Import</Link>
