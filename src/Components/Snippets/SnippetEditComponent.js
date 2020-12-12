@@ -62,56 +62,58 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 </div>
             </div>
         </div>
-        {/*Snippet Description*/}
-        <div className="row col-12 input-group">
-            <div className="input-group-prepend">
-                <label className="input-group-text" htmlFor="snippet_description">Description:</label>
+        <div className="col-12 mt-2">
+            {/*Snippet Description*/}
+            <div className="row col-12 input-group">
+                <div className="input-group-prepend">
+                    <label className="input-group-text" htmlFor="snippet_description">Description:</label>
+                </div>
+                <input className="form-control" id="snippet_description"
+                       placeholder={snippet.description}
+                       onChange={(event) => editLocalSnippet({
+                           ...snippet,
+                           description: event.target.value
+                       })}
+                />
             </div>
-            <input className="form-control" id="snippet_description"
-                   placeholder={snippet.description}
-                   onChange={(event) => editLocalSnippet({
-                       ...snippet,
-                       description: event.target.value
-                   })}
-            />
-        </div>
-        {/*Snippet Content*/}
-        <div className="form-group row col-12">
-            <label htmlFor="selectLanguage">Set Language:</label>
-            <select
-                onChange={(event) => editLocalSnippet({
-                    ...snippet,
-                    language: event.target.value
-                })}
-                value={snippet.language}
-                className="form-control" id="selectLanguage"
-            >
-                <option value="">--Select language--</option>
-                <option value="htmlmixed">HTML</option>
-                <option value="css">CSS</option>
-                <option value="javascript">JavaScript</option>
-                <option value="text/x-java">Java</option>
-                <option value="python">Python</option>
-                <option value="sql">SQL</option>
-            </select>
-        </div>
-        <div className="row col-12">
-            <label htmlFor="code_editor" />
-            {/*CodeMirror2*/}
-            <CodeMirror
-                className="col-12 border"
-                value={snippet.codeText}
-                options={{
-                    mode: `${snippet.language}`,
-                    theme: 'neo',
-                    lineNumbers: true,
-                    linewrapping: true
-                }}
-                onChange={(editor, data, value) => editLocalText(value)}
-            />
+            {/*Snippet Content*/}
+            <div className="form-group row col-12 mt-2">
+                <label htmlFor="selectLanguage" className="d-none">Set Language:</label>
+                <select
+                    onChange={(event) => editLocalSnippet({
+                        ...snippet,
+                        language: event.target.value
+                    })}
+                    value={snippet.language}
+                    className="form-control" id="selectLanguage"
+                >
+                    <option value="">--Select language--</option>
+                    <option value="htmlmixed">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="text/x-java">Java</option>
+                    <option value="python">Python</option>
+                    <option value="sql">SQL</option>
+                </select>
+            </div>
+            <div className="row col-12">
+                <label htmlFor="code_editor" />
+                {/*CodeMirror2*/}
+                <CodeMirror
+                    className="col-12 border"
+                    value={snippet.codeText}
+                    options={{
+                        mode: `${snippet.language}`,
+                        theme: 'neo',
+                        lineNumbers: true,
+                        linewrapping: true
+                    }}
+                    onChange={(editor, data, value) => editLocalText(value)}
+                />
+            </div>
         </div>
         {/*Tags*/}
-        <div className="row col-12">
+        <div className="row col-12 mt-2">
             <div className="col-4 input-group">
                 <div className="input-group-prepend">
                     <label className="input-group-text" htmlFor="tag_input">Add tag:</label>
@@ -132,19 +134,21 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 </div>
             </div>
             <div className="col-8 text-secondary float-right">
-                <div className="float-right">
-                    <div className="tagBackground rounded row ">
-                        {
-                            (snippet.tags !== null && snippet.tags !== []) &&
-                                snippet.tags.map((tag, index) =>
-                                    <TagComponent
-                                        key={index}
-                                        tag={tag}
-                                        edit={true}
-                                        removeTagFromSnippet={removeTagFromSnippet}
-                                    />
-                                )
-                        }
+                <div className="col-12">
+                    <div className="float-right">
+                        <div className="tagBackground rounded row ">
+                            {
+                                (snippet.tags !== null && snippet.tags !== []) &&
+                                    snippet.tags.map((tag, index) =>
+                                        <TagComponent
+                                            key={index}
+                                            tag={tag}
+                                            edit={true}
+                                            removeTagFromSnippet={removeTagFromSnippet}
+                                        />
+                                    )
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
