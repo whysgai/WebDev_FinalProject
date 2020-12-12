@@ -1,9 +1,13 @@
 import React from 'react'
-import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
+// import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
 import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent";
 import {connect} from "react-redux";
-import {findAllUsers} from "../Actions/UserActions";
-import {findAllSnippets, searchSnippetsByTags, updateSearchTerms} from "../Actions/SnippetActions";
+// import {findAllUsers} from "../Actions/UserActions";
+import {
+    // findAllSnippets,
+    searchSnippetsByTags,
+    updateSearchTerms
+} from "../Actions/SnippetActions";
 
 class SnippetSearchContainer extends React.Component {
     constructor() {
@@ -42,16 +46,16 @@ class SnippetSearchContainer extends React.Component {
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets,
     terms: state.snippetReducer.terms,
-    gists: state.gistReducer.gists,
-    activeUser: state.userReducer.activeUser
+    // gists: state.gistReducer.gists,
+    // activeUser: state.userReducer.activeUser
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    findAllSnippets: () => findAllSnippets(dispatch),
-    getGistsForUser: () => getGistsForUser(dispatch),
-    getGistById: () => getGistById(dispatch),
-    getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
-    findAllUsers: () => findAllUsers(dispatch),
+    // findAllSnippets: () => findAllSnippets(dispatch),
+    // getGistsForUser: () => getGistsForUser(dispatch),
+    // getGistById: () => getGistById(dispatch),
+    // getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
+    // findAllUsers: () => findAllUsers(dispatch),
     searchSnippetsByTags: (tags) => searchSnippetsByTags(dispatch, tags),
     updateSearchTerms: (terms) => updateSearchTerms(dispatch, terms)
 })
