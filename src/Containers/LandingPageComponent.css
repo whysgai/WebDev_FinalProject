@@ -157,12 +157,7 @@ header h1 {
 .cd-timeline-img.cd-picture {
   background: #4f63ff;
 }
-.cd-timeline-img.cd-movie {
-  background: #c03b44;
-}
-.cd-timeline-img.cd-location {
-  background: #f0ca45;
-}
+
 @media only screen and (min-width: 1170px) {
   .cd-timeline-img {
     width: 60px;
@@ -238,10 +233,10 @@ header h1 {
 .cd-timeline-content {
   position: relative;
   margin-left: 60px;
-  background: #ffffff;
+  background: #fdfdfd;
   border-radius: 0.25em;
   padding: 1em;
-  box-shadow: 0 3px 0 #d7e4ed;
+  box-shadow: 3px 3px 3px #d7e4ed;
 }
 .cd-timeline-content::after {
   clear: both;

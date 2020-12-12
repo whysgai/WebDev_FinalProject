@@ -134,7 +134,7 @@ class LandingPageContainer extends React.Component {
 
                                     <div className="cd-timeline-content">
                                         <h2>Save & Share</h2>
-                                        <p>Save your snippet for future use. You have the option of sharing your snippets publicly, or keeping them private.</p>
+                                        <p>Save your snippet for future use. You have the option of sharing your snippets publicly, or keeping them private. CodeSave is also fully integrated with GitHub allowing you to post and get Github Gists.</p>
                                         <span className="cd-date"><h3>Save</h3></span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
                                              fill="currentColor" className="bi bi-github" viewBox="0 0 16 16">
