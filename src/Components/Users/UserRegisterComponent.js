@@ -119,13 +119,13 @@ class UserRegisterComponent extends Component {
                                 <button
                                     onClick={this.signup}
                                     // style={{marginLeft: '25px'}}
-                                    className="btn btn-success col-md-5 col-12 mr-2 ml-3">
+                                    className="btn btn-primary col-md-5 col-12 mr-2 ml-3">
                                     Register
                                 </button>
                                 <button
                                     type="submit"
                                     onClick={this.login}
-                                    className="btn btn-outline-success col-md-5 col-12">
+                                    className="btn btn-outline-primary col-md-5 col-12">
                                     Login
                                 </button>
                             </div>
