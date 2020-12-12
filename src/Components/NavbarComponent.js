@@ -33,6 +33,9 @@ const NavbarComponent = () =>
                     <li className="nav-item">
                         <Link className="nav-link" to="/admin">Admin</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/privacy">Privacy</Link>
+                    </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     <Link className="nav-link" to="/login">

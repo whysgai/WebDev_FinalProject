@@ -11,13 +11,11 @@ class LandingPageContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            user: "alkhalifas",
-            // user: null,
+            // user: "alkhalifas",
+            user: null,
             snippets: []
         };
     }
-
-
 
 
     componentDidMount() {
