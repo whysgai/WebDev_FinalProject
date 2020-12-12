@@ -12,22 +12,15 @@ class LandingPageContainer extends React.Component {
     constructor() {
         super();
         this.state = {
-            username: "",
+            user: {},
             snippets: []
         };
     }
 
     componentDidMount() {
-        // this.getUserName()
 
         this.props.findAllPublicSnippets()
-        isLoggedIn().then(() => this.props.getUserUsername()).then(() => this.render())
-        // )
-        console.log(this.props.getUser())
-
-
         this.render()
-        // console.log(getUserData())
     }
 
     componentDidUpdate() {
@@ -54,7 +47,7 @@ class LandingPageContainer extends React.Component {
                     this.state.user !== null &&
                     <div>
                         <div className="jumbotron text-center" style={{height: 200}}>
-                            <h1 className="display-4">Welcome back to CodeSaver{" " + this.props.username}!</h1>
+                            <h1 className="display-4">Welcome back to CodeSaver{" " + this.props.user.username}!</h1>
                         </div>
                         <div>
                             <h6 class="text-secondary">Updated On: {currentTime()}</h6>
@@ -88,7 +81,6 @@ class LandingPageContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets,
-    username: state.userReducer.username,
     user: state.userReducer.user
 })
 

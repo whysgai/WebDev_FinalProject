@@ -13,6 +13,7 @@ export async function callFirebase(){
 }
 
 export async function getUser(uid){
+
     let userData = await fire.database().ref("/users/" + uid).once('value')
     console.log("Userdata in getUser", userData.val())
     return Promise.resolve(userData.val())

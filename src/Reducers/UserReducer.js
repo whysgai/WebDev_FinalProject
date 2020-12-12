@@ -7,7 +7,7 @@ const initialState = {
         token: "70f143af3d540e77de91e721e5c4e8960a181663"
     },
     users: [],
-    user: []
+    user: {username: ""}
 }
 
 const UserReducer = (state = [], action) => {

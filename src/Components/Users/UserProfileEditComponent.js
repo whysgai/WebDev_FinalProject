@@ -15,7 +15,7 @@ class UserProfileEditComponent extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.userData)
+        console.log(this.props.user.username)
         console.log(this.props.uid)
 
     }
@@ -57,7 +57,7 @@ class UserProfileEditComponent extends Component {
                         <div className="form-group row">
                             <label htmlFor="paToken" className="col-sm-2 col-form-label">GitHub PA Token</label>
                             <div className="col-sm-10">
-                                <input className="form-control" id="paToken" placeholder="Token"/>
+                                <input className="form-control" id="paToken" placeholder={this.props.user.paToken}/>
                             </div>
                         </div>
                         <div className="form-group row">
