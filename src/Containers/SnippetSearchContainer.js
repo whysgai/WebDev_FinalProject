@@ -31,7 +31,7 @@ class SnippetSearchContainer extends React.Component {
                 <SnippetSearchComponent
                     snippets={this.props.snippets}
                     terms={this.props.terms}
-                    searchSnippetsByTags={this.props.searchSnippetsByTags}
+                    // searchSnippetsByTags={this.props.searchSnippetsByTags}
                     updateSearchTerms={this.props.updateSearchTerms}
                 />
             </div>
