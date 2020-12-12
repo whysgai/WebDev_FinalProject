@@ -2,6 +2,7 @@ import React from "react";
 import {findAllUsers} from "../Actions/UserActions";
 import {connect} from "react-redux";
 import {findAllPublicSnippets} from "../Actions/SnippetActions";
+import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
 // import {connect} from "react-redux";
 // import fire from "./../config/db";
 
@@ -55,6 +56,7 @@ class LandingPageContainer extends React.Component {
                         <div>
                             <h6 class="text-secondary">Updated On: {currentTime()}</h6>
                         </div>
+                        <SnippetSearchListComponent snippets={this.props.snippets}/>
                     </div>
                 }
                 {
@@ -69,11 +71,11 @@ class LandingPageContainer extends React.Component {
                         </p>
                     </div>
                 }
-                <div>
-                    <div className=" text-center">
-                        <h1 className="display-4">Coming Soon!</h1>
-                    </div>
-                </div>
+                {/*<div>*/}
+                {/*    <div className=" text-center">*/}
+                {/*        <h1 className="display-4">Coming Soon!</h1>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
 
             </div>
         )
