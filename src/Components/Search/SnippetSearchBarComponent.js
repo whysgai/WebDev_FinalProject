@@ -20,11 +20,14 @@ const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByT
                         placeholder="Search by tags (eg: python+js+import)"
                     />
                     <div className="input-group-append">
-                        <button
+                        <Link
                             className="btn btn-outline-secondary"
                             type="button"
-                            onClick={() => {searchSnippetsByTags(document.getElementById("searchtags").value)}}>Search
-                        </button>
+                            onClick={() => {searchSnippetsByTags(document.getElementById("searchtags").value)}}
+                            to={`/search${document.getElementById("searchtags") ? "/" + document.getElementById("searchtags").value : ""}`}
+                        >
+                            Search
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -32,7 +35,7 @@ const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByT
 
         <div className="col-2 row mt-4 ml-1">
             <Link className="btn btn-primary float-right" to="/newsnippet">
-                New Snippet <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                New Snippet <i className="fa fa-pencil-square-o" aria-hidden="true"/>
             </Link>
         </div>
 

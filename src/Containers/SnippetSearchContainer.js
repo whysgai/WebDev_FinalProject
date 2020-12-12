@@ -1,3 +1,4 @@
+import React from 'react'
 import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
 import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent";
 import {connect} from "react-redux";
@@ -11,16 +12,19 @@ class SnippetSearchContainer extends React.Component {
     }
 
     componentDidMount() {
-        let terms = this.props.match.params.terms;
-        if (terms) {
-            this.props.searchSnippetsByTags(terms);
+        // let terms = this.props.match.params.terms;
+        if (this.props.match.params.terms) {
+            this.props.searchSnippetsByTags(this.props.match.params.terms);
         }
     }
 
     render () {
         return (
             <div>
-                <SnippetSearchComponent snippets={this.props.snippets}/>
+                <SnippetSearchComponent
+                    snippets={this.props.snippets}
+                    searchSnippetsByTags={this.props.searchSnippetsByTags}
+                />
             </div>
         )
     }
