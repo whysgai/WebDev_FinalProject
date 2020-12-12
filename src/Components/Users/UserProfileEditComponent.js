@@ -105,9 +105,6 @@ class UserProfileEditComponent extends Component {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={() => this.getUser().then(user => console.log(user))}>Get user data</button>
-                        <button onClick={() => console.log(this.state)}>Print state</button>
-
                     </form>
 
                 </div>

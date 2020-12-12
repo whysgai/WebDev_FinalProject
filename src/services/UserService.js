@@ -2,6 +2,7 @@
 // const password = "nicsalehwill3"
 
 import fire from "../config/db";
+import {setUID, setUser} from "../Actions/AuthActions";
 const headers = {
     "Authorization": `Token 70f143af3d540e77de91e721e5c4e8960a181663`
 }
