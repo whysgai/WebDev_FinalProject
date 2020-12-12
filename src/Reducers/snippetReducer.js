@@ -60,7 +60,11 @@ const snippetReducer = (state = initialState, action = action) => {
         case EDIT_LOCAL_SNIPPET:
             return {
                 ...state,
-                snippets: [action.snippet]
+                snippets: _.cloneDeep(
+                    state.snippets.map(snippet =>
+                        snippet._id === action.snippet._id ? action.snippet : snippet
+                    )
+                )
             };
         case EDIT_LOCAL_TEXT:
             return {
