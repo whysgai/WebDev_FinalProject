@@ -67,8 +67,8 @@ ReactDOM.render(
                     <Route path="/import_gist" exact component={ImportGistContainer}/>
                     <Route path="/recommended" exact component={RecommendedSnippetContainer}/>
                     <Route path="/favorites" exact component={FavoriteSnippetsContainer}/>
-                    <Route path="/login" exact component={LoginComponent}/>
-                    <Route path="/login2" exact component={UserLoginComponent}/>
+                    <Route path="/login" exact component={UserLoginComponent}/>
+                    <Route path="/login2" exact component={LoginComponent}/>
                     <Route path="/privacy" exact component={PrivacyPolicyComponent}/>
                     <Route path="/register" exact component={UserRegisterComponent}/>
                 {/*End of container*/}

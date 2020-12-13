@@ -22,7 +22,7 @@ class LoginComponent extends Component {
     logout(e) {
         e.preventDefault();
         fire.auth().signOut()
-            .then(() => window.location.replace("http://localhost:3000/"))
+            .then(() => window.location.replace("/"))
     }
 
     handleChange(e) {
@@ -32,7 +32,7 @@ class LoginComponent extends Component {
     login(e) {
         e.preventDefault();
         fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then((u) => window.location.replace("http://localhost:3000/"))
+            .then((u) => window.location.replace("/"))
             .catch((error) => {
                 alert(error);
             });
