@@ -29,6 +29,7 @@ import RecommendedSnippetContainer from "./Containers/RecommendedSnippetContaine
 import PrivacyPolicyComponent from "./Components/PrivacyPolicyComponent";
 import UserRegisterComponent from "./Components/Users/UserRegisterComponent";
 import UserLoginComponent from "./Components/Users/UserLoginComponent";
+import FavoriteSnippetsContainer from "./Containers/FavoriteSnippetsContainer";
 
 const reducers = combineReducers({
     gistReducer: GistReducer,
@@ -70,6 +71,7 @@ ReactDOM.render(
                     <Route path="/newsnippet" exact component={CreateSnippetContainer}/>
                     <Route path="/import_gist" exact component={ImportGistContainer}/>
                     <Route path="/recommended" exact component={RecommendedSnippetContainer}/>
+                    <Route path="/favorites" exact component={FavoriteSnippetsContainer}/>
                     <Route path="/login" exact component={LoginComponent}/>
                     <Route path="/login2" exact component={UserLoginComponent}/>
                     <Route path="/privacy" exact component={PrivacyPolicyComponent}/>

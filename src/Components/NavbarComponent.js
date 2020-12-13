@@ -25,7 +25,10 @@ const NavbarComponent = () =>
                         <Link className="nav-link" to="/mysnippets">My Snippets</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/recommended">Starred</Link>
+                        <Link className="nav-link" to="/recommended">Recommended</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/favorites">Bookmarked</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/import_gist">Import</Link>
