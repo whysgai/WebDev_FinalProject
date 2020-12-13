@@ -1,7 +1,7 @@
+
 import firebase from 'firebase/app'
 import "firebase/auth";
 import "firebase/database"
-
 
 let config = {
     apiKey: "AIzaSyCxca_YXuGnWgCDtfjCftOmwVLdaDv8iRo",
@@ -14,5 +14,8 @@ let config = {
 };
 
 const fire = firebase.initializeApp(config);
-export default fire
+fire.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
+export const fireUser = firebase.auth().currentUser
+
+export default fire

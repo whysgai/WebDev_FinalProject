@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import fire from "../../config/db";
-import {findAllPublicSnippets} from "../../Actions/SnippetActions";
+import fire from "../config/db";
 import {connect} from "react-redux";
-import {getUser} from "../../Actions/UserActions";
+import {getUser} from "../Actions/UserActions";
 
-class UserProfileEditComponent extends Component {
+class UserProfileContainer extends Component {
 
     constructor(props) {
         super(props)
@@ -18,10 +17,9 @@ class UserProfileEditComponent extends Component {
     }
 
 
-    async componentDidMount() {
-        const username = this.props.match.params.username
-        await this.props.getUser(username)
-        this.state.user = await this.props.user
+    componentDidMount() {
+        this.props.getUser("etardis")
+        console.log("Component did mount", this.props.user)
         this.render()
 
     }
@@ -122,7 +120,7 @@ const
 export default connect(stateToPropertyMapper, propertyToDispatchMapper)
 
 (
-    UserProfileEditComponent
+    UserProfileContainer
 )
 
 

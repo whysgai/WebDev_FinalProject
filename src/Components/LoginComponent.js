@@ -40,7 +40,8 @@ class LoginComponent extends Component {
     signup(e){
         e.preventDefault();
         fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then((u)=>{
+            .then((user)=>{
+                user.displayName = this.state.name
                 fire.database().ref('users/' + fire.auth().currentUser.uid).set({
                     username: this.state.name,
                     uid: fire.auth().currentUser.uid,

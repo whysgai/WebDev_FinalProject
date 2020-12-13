@@ -1,21 +1,36 @@
-import {FIND_ALL_USERS} from "../Actions/UserActions";
+import {FIND_ALL_USERS, GET_USER, UPDATE_USER} from "../Actions/UserActions";
 
 const initialState = {
-    activeUser: {
-        id: "uid001",
-        username: "Ms. Pac-Man",
-        token: "70f143af3d540e77de91e721e5c4e8960a181663"
-    },
-    users: []
+    users: [],
+    user: {},
+    displayedUser: {}
 }
 
 const UserReducer = (state = initialState, action) => {
     switch (action.type) {
         case FIND_ALL_USERS:
-            console.log("Hit User Reducer", action.users)
             return {
                 ...state,
                 users: action.users
+            }
+
+        case UPDATE_USER:
+            console.log("Reducer", state.users)
+            return {
+                ...state,
+                users: state.users.map(user =>
+                    user.uid === action.user.uid ? action.user : user
+                )
+            }
+        case GET_USER:
+            return {
+                ...state,
+                user: action.user
+            }
+        case "GET_DISPLAYED_USER":
+            return {
+                ...state,
+                displayedUser: action.user
             }
         default:
             return state;

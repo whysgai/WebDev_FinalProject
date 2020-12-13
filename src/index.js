@@ -30,6 +30,8 @@ import PrivacyPolicyComponent from "./Components/PrivacyPolicyComponent";
 import UserRegisterComponent from "./Components/Users/UserRegisterComponent";
 import UserLoginComponent from "./Components/Users/UserLoginComponent";
 import FavoriteSnippetsContainer from "./Containers/FavoriteSnippetsContainer";
+import UserProfileEditComponent from "./Components/Users/UserProfileEditComponent";
+import UserProfileContainer from "./Containers/UserProfileContainer";
 
 const reducers = combineReducers({
     gistReducer: GistReducer,
@@ -61,9 +63,9 @@ ReactDOM.render(
                     <Route path="/admin" exact>
                         <UserAdminListComponent/>
                     </Route>
-                    <Route path="/user_snippets" exact>
-                        <UserSnippetsContainer/>
-                    </Route>
+                    <Route path={["/profile/:username"]} exact component={UserProfileEditComponent}/>
+                    <Route path={"/profile"} exact component={UserProfileContainer}/>
+
                     <Route path="/concept_proof" exact>
                         <TestSnippetDisplayPageContainer username="NameOfUser"/>
                     </Route>
