@@ -21,17 +21,18 @@ class UserLoginComponent extends Component {
 
     logout(e) {
         e.preventDefault();
-        fire.auth().signOut().then(() => alert("You've been logged out"));
+        fire.auth().signOut()
+            .then(() => window.location.replace("http://localhost:3000/"))
     }
 
     login(e) {
         e.preventDefault();
-        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{alert("You've been signed in")
-        }).catch((error) => {
-            console.log(error);
-        });
+        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then((u) => window.location.replace("http://localhost:3000/"))
+            .catch((error) => {
+                alert(error);
+            });
     }
-
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
@@ -51,7 +52,7 @@ class UserLoginComponent extends Component {
                 });
 
             })
-            .then(() => {alert("User created")})
+            .then(() => window.location.replace("http://localhost:3000/"))
             .catch((error) => {
                 alert(error);
             })

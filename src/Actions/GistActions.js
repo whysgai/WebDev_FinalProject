@@ -25,8 +25,8 @@ export const updateGist = (dispatch, id, title, description, content) =>
     GistService.updateGist(id, title, description, content)
         .then(response => dispatch({type: UPDATE_GIST, response}))
 
-export const getGistById = (dispatch, gistId) =>
-    GistService.getGistById(gistId)
+export const getGistById = (dispatch, gistId, token) =>
+    GistService.getGistById(gistId, token)
         .then(response => {
             console.log("ACtion", response)
             dispatch({type: GET_GIST, gist: response})

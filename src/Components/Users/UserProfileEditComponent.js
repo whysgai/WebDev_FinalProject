@@ -31,8 +31,6 @@ const UserProfileEditComponent = ({user, updateUser, updateLocalUser}) => {
                                    //     username: event.target.value
                                    // })}
                             />
-
-
                         </div>
                     </div>
                     <div className="form-group row">

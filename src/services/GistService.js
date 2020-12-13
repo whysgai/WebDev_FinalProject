@@ -51,10 +51,12 @@ export const deleteGist = (id) =>
             headers: headers
         })
 
-export const getGistById = (gistId) =>
+export const getGistById = (gistId,token) =>
     fetch(`https://api.github.com/gists/${gistId}`,
         {"method":"GET",
-            "headers": headers})
+            headers: {
+                "Authorization" : `Token ${token}`
+            }})
         .then(response => response.json())
 
 export const getGistFile = (fileUrl) =>

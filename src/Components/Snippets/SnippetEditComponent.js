@@ -185,8 +185,9 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                         </Link>
                 }
                 <button className="btn btn-outline-dark float-right col-12 col-md-1 ml-2"
-                        onClick={() => createGistForUser(activeUser.paToken, snippet.title, snippet.description, snippet.codeText)}
-                >
+
+                        onClick={() => createGistForUser(activeUser.paToken, snippet.title, snippet.description, snippet.codeText)}>
+
                     <span title="Export to GitHub"><i className="fa fa-upload" aria-hidden="true"/></span>
                 </button>
                 {
