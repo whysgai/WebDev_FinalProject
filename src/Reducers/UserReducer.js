@@ -25,12 +25,12 @@ const UserReducer = (state = initialState, action) => {
         case GET_USER:
             return {
                 ...state,
-                user: action.user
+                displayedUser: action.user
             }
         case GET_USER_BY_UID:
             return {
                 ...state,
-                authenticatedUser: action.user
+                user: action.user
             }
         case "GET_DISPLAYED_USER":
             return {

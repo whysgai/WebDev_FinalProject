@@ -6,40 +6,39 @@ import {getAuth, getUser, getUserByUID} from "../Actions/UserActions";
 import UserProfileEditComponent from "../Components/Users/UserProfileEditComponent";
 import UserProfileDisplayComponent from "../Components/Users/UserProfileDisplayComponent";
 
-class UserProfileContainer extends Component {
+class UserProfileDisplayContainer extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            user: {username: "user123", paToken: "Personal Access Token", email: "email@google.com", type: "USER"},
-        }
+
     }
 
     async loadingWrapper(){
         const username = this.props.match.params.username
-        await username !== undefined ? this.props.getUser(username) : console.log()
-        this.state.user = this.props.user
-        // this.props.getUserByUID(fireUID)
+        this.props.getUser(username)
     }
 
     componentDidMount() {
-        this.loadingWrapper().then(() => this.render())
-        console.log("Component did mount", this.props.user)
+        this.loadingWrapper().then(() => console.log(this.props.user), this.render())
+        this.render()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
         this.render()
     }
 
     render() {
         return (
             <div>
-                {console.log(fire.auth().currentUser)}
-                <UserProfileDisplayComponent user={this.state.user}/>
+                {console.log("render", this.props.user)}
+                <UserProfileDisplayComponent user={this.props.displayedUser}/>
             </div>)
     }
 }
 
 const
     stateToPropertyMapper = (state) => ({
-        authenticatedUser: state.userReducer.authenticatedUser,
+        displayedUser: state.userReducer.displayedUser,
         // userUID: state.authReducer.userUID,
 
         user: state.userReducer.user
@@ -50,15 +49,13 @@ const
         getUser: (username) => getUser(dispatch, username),
         getUserByUID: (uid) => getUserByUID(dispatch, uid),
         getAuth: () => getAuth(dispatch)
-        // setUser: (user) => setUser(dispatch, user),
-        // setUID: (uid) => setUID(dispatch, uid),
-        // getUserData: (uid) => getUserData(dispatch, uid),
+
     })
 
 export default connect(stateToPropertyMapper, propertyToDispatchMapper)
 
 (
-    UserProfileContainer
+    UserProfileDisplayContainer
 )
 
 
