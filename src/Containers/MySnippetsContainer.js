@@ -1,28 +1,47 @@
 import React from "react"
 import { connect } from "react-redux"
-import MySnippetsComponent from "../Components/MySnippetsComponent";
-import {createSnippet, deleteSnippet, findAllPublicSnippets, findAllSnippets} from "../Actions/SnippetActions";
-import {createGistForUser, deleteGist, updateGist} from "../Actions/GistActions";
+import { findSnippetsByCreator } from "../Actions/SnippetActions";
+import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
 
 class MySnippetsContainer extends React.Component{
 
+    constructor() {
+        super();
+        this.state = { };
+    }
+
+    componentDidMount() {
+        this.props.findSnippetsByCreator(this.props.activeUser.username)
+    };
+
+
+    render () {
+        return (
+            <div>
+                {
+                    this.props.snippets &&
+                        <div>
+                            <h2 className="mt-2">{this.props.activeUser.username}'s Snippets:</h2>
+                            <SnippetSearchListComponent
+                                snippets={this.props.snippets}
+                            />
+                        </div>
+                }
+            </div>
+        )
+    }
 }
 
+
 const stateToPropertyMapper = (state) => ({
-    snippets: state.snippetReducer.snippets
+    snippets: state.snippetReducer.snippets,
+    activeUser: state.userReducer.activeUser
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    createSnippet: () => createSnippet(dispatch),
-    createGistForUser: () => createGistForUser(dispatch),
-    deleteGist: (id) => deleteGist(dispatch, id),
-    updateGist: (id) => updateGist(dispatch, id),
-    findAllSnippets: () => findAllSnippets(dispatch),
-    findAllPublicSnippets: () => findAllPublicSnippets(dispatch),
-    deleteSnippet: (snippetId) => deleteSnippet(snippetId, dispatch)
-
+    findSnippetsByCreator: (username) => findSnippetsByCreator(dispatch, username)
 })
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
-(MySnippetsComponent)
+(MySnippetsContainer)

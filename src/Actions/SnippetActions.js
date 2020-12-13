@@ -140,6 +140,13 @@ export const findSnippetById = (dispatch, snippetId) =>
             snippet: snippet
         }))
 
+export const findSnippetsByCreator = (dispatch, username) =>
+    snippetServices.findSnippetsByCreator(username)
+        .then(snippets => dispatch({
+            type: FIND_SNIPPETS,
+            snippets: snippets
+        }))
+
 export const updateSearchTerms = (dispatch, terms) =>
     dispatch({
         type: UPDATE_TERMS,

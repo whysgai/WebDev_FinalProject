@@ -55,7 +55,7 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                             </button>
                     }
                 </div>
-                <div className="float-right ">
+                <div className="float-right mt-1">
                     <h6>Published: {snippet.dateCreated}</h6>
                 </div>
             </div>

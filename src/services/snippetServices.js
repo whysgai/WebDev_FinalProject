@@ -10,6 +10,11 @@ export const findSnippetById = (snippetId) =>
         .then(response => response.json());
 
 
+export const findSnippetsByCreator = (username) =>
+    fetch(`${SNIPPET_NODE_URL_2}/${username}/snippets`)
+        .then(response => response.json());
+
+
 export const findAllSnippets = () =>
     fetch(`${SNIPPET_NODE_URL_2}/snippets`)
         .then(response => response.json());
@@ -19,9 +24,11 @@ export const findRecommendedSnippets = () =>
     fetch(`${SNIPPET_NODE_URL_2}/snippets/starred`)
         .then(response => response.json());
 
+
 export const findFavoriteSnippets = (username) =>
     fetch(`${SNIPPET_NODE_URL_2}/${username}/likes`)
         .then(response => response.json());
+
 
 export const findAllPublicSnippets = () =>
     fetch(`${SNIPPET_NODE_URL_2}/snippets/public`)
@@ -68,6 +75,7 @@ export default {
     createSnippet,
     updateSnippet,
     findSnippetById,
+    findSnippetsByCreator,
     findAllSnippets,
     findAllPublicSnippets,
     deleteSnippet,
