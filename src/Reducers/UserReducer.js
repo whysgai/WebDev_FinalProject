@@ -14,13 +14,18 @@ const UserReducer = (state = initialState, action) => {
                 users: action.users
             }
 
+        // case UPDATE_USER:
+        //     return {
+        //         ...state,
+        //         users: state.users.map(user =>
+        //             user.uid === action.user.uid ? action.user : user
+        //         )
+        //     }
         case UPDATE_USER:
-            console.log("Reducer", state.users)
+            console.log("Updated user to", action.user)
             return {
                 ...state,
-                users: state.users.map(user =>
-                    user.uid === action.user.uid ? action.user : user
-                )
+                activeUser: action.user
             }
         case GET_USER:
             return {

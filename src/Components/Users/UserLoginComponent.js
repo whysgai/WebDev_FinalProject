@@ -115,10 +115,11 @@ class UserLoginComponent extends Component {
                                 </button>
 
                                 <button
-                                    onClick={this.signup}
+
+                                    // onClick={this.signup}
                                     // style={{marginLeft: '25px'}}
                                     className="btn col-md-5 col-12 mr-2 btn-outline-primary">
-                                    Register
+                                    <Link to="/register">Register</Link>
                                 </button>
 
                             </div>
@@ -128,16 +129,26 @@ class UserLoginComponent extends Component {
                                 />
                                 <p className="text-center"> Coming Soon:</p>
 
-                                <div className="col-12">
-                                    <a href="#" className="fb btn">
+                                <div className="col-12 text-center">
+
+                                    <a href="#"
+                                       className="fb btn btn-primary col-7 m-2" >
                                         <i className="fa fa-facebook fa-fw"></i> Login with Facebook
                                     </a>
-                                    <a href="#" className="twitter btn">
+
+                                    <a href="#"
+                                       className="google btn btn-warning col-7 m-2"
+                                       style={{backgroundColor: "orange"}}>
+                                        <i className="fa fa-google fa-fw"></i> Login with Google+
+                                    </a>
+
+                                    <a href="#"
+                                       className="twitter btn btn-primary col-7 m-2">
                                         <i className="fa fa-twitter fa-fw"></i> Login with Twitter
                                     </a>
-                                    <a href="#" className="google btn"><i className="fa fa-google fa-fw">
-                                    </i> Login with Google+
-                                    </a>
+
+
+
                                 </div>
                             </div>
 

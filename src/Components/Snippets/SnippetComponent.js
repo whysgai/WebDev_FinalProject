@@ -7,9 +7,9 @@ const SnippetComponent = ({snippet, text, editLocalSnippet, editLocalText, updat
         {
             console.log("Snippet:", snippet)
         }
-        {/*{*/}
-        {/*    console.log("ActiveUser from Snippet Component:", activeUser.username)*/}
-        {/*}*/}
+        {
+            console.log("ActiveUser from Snippet Component:", activeUser)
+        }
         {/*{*/}
         {/*    console.log("Creator from Snippet:", snippet.creator)*/}
         {/*}*/}

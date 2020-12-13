@@ -1,13 +1,12 @@
 import React from 'react'
-// import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
 import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent";
 import {connect} from "react-redux";
-// import {findAllUsers} from "../Actions/UserActions";
 import {
-    // findAllSnippets,
     searchSnippetsByTags,
     updateSearchTerms
 } from "../Actions/SnippetActions";
+import {getCookie} from "../config/db";
+import {getUserByUID} from "../Actions/UserActions";
 
 class SnippetSearchContainer extends React.Component {
     constructor() {
@@ -16,16 +15,22 @@ class SnippetSearchContainer extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.match.params.terms) {
-            this.props.updateSearchTerms(this.props.match.params.terms)
-            this.props.searchSnippetsByTags(this.props.match.params.terms);
-        }
+        let fireUID = getCookie("uid")
+        this.props.getUserByUID(fireUID).then(() => {
+            if (this.props.match.params.terms) {
+                this.props.updateSearchTerms(this.props.match.params.terms)
+                this.props.searchSnippetsByTags(this.props.match.params.terms);
+            }
+        })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.match.params.terms !== prevProps.match.params.terms) {
-            this.props.updateSearchTerms(this.props.match.params.terms)
-            this.props.searchSnippetsByTags(this.props.match.params.terms);
+            let fireUID = getCookie("uid")
+            this.props.getUserByUID(fireUID).then(() => {
+                this.props.updateSearchTerms(this.props.match.params.terms);
+                this.props.searchSnippetsByTags(this.props.match.params.terms);
+            })
         }
     }
 
@@ -35,8 +40,8 @@ class SnippetSearchContainer extends React.Component {
                 <SnippetSearchComponent
                     snippets={this.props.snippets}
                     terms={this.props.terms}
-                    // searchSnippetsByTags={this.props.searchSnippetsByTags}
                     updateSearchTerms={this.props.updateSearchTerms}
+                    activeUser={this.props.activeUser}
                 />
             </div>
         )
@@ -46,20 +51,14 @@ class SnippetSearchContainer extends React.Component {
 const stateToPropertyMapper = (state) => ({
     snippets: state.snippetReducer.snippets,
     terms: state.snippetReducer.terms,
-    // gists: state.gistReducer.gists,
-    // activeUser: state.userReducer.activeUser
+    activeUser: state.userReducer.activeUser
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    // findAllSnippets: () => findAllSnippets(dispatch),
-    // getGistsForUser: () => getGistsForUser(dispatch),
-    // getGistById: () => getGistById(dispatch),
-    // getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
-    // findAllUsers: () => findAllUsers(dispatch),
+    getUserByUID: (uid) => getUserByUID(dispatch, uid),
     searchSnippetsByTags: (tags) => searchSnippetsByTags(dispatch, tags),
     updateSearchTerms: (terms) => updateSearchTerms(dispatch, terms)
 })
-
 
 export default connect (stateToPropertyMapper, propertyToDispatchMapper)
 (SnippetSearchContainer)
