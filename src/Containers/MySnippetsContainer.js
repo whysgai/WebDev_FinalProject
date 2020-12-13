@@ -2,7 +2,7 @@ import React from "react"
 import {connect} from "react-redux"
 import {findSnippetsByCreator} from "../Actions/SnippetActions";
 import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
-import {fireUID} from "../config/db";
+import {fireUID, getCookie} from "../config/db";
 import {getUserByUID} from "../Actions/UserActions";
 
 class MySnippetsContainer extends React.Component {
@@ -12,24 +12,11 @@ class MySnippetsContainer extends React.Component {
         this.state = {snippets: {}};
     }
 
-    async loadingWrapper() {
-        let uid = await fireUID
-        await this.props.getUserByUID(uid)
-        this.state.activeUser = this.props.activeUser
-    }
 
     componentDidMount() {
-        console.log("fire uid", fireUID)
-        //Make sure the user is in the reducer
-        this.loadingWrapper().then(() => console.log(this.props.activeUser))
-
-        //Find the snippets for the user after it's in the reducer
-        //Render it
-        // this.props.getUserByUID(fireUID)
-        //     .then(() =>this.props.findSnippetsByCreator(this.props.activeUser.username))
-        //     .then(() => this.render())
-        // this.loadingWrapper().then((user) => this.props.findSnippetsByCreator(activeUser.username))
-        //     .then(() => this.render())
+        let fireUID = getCookie("uid")
+        this.props.getUserByUID(fireUID).then(() => this.props.findSnippetsByCreator(this.props.activeUser.username))
+        this.render()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
