@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import fire, {fireUID, fireUser} from "../config/db";
+import fire, {fireUID, fireUser, getCookie} from "../config/db";
 import {connect} from "react-redux";
 import {getAuth, getUser, getUserByUID} from "../Actions/UserActions";
 import UserProfileEditComponent from "../Components/Users/UserProfileEditComponent";
@@ -20,7 +20,9 @@ class UserProfileEditContainer extends Component {
     }
 
     componentDidMount() {
-        this.loadingWrapper().then(() => this.render())
+        let fireUID = getCookie("test")
+        this.props.getUserByUID(fireUID)
+        this.render()
     }
 
 
