@@ -39,19 +39,10 @@ class LandingPageContainer extends React.Component {
         this.props.findAllPublicSnippets()
         this.render()
         {console.log("this.fireUID CDM: ", uid)}
-
     }
-
-
-
-    // componentDidMount() {
-    //     this.props.findAllPublicSnippets()
-    //     // this.render();
-    // }
 
     componentDidUpdate() {
         // this.props.findAllPublicSnippets()
-        this.render();
     }
 
 
@@ -83,7 +74,7 @@ class LandingPageContainer extends React.Component {
                         <div>
                             <h6 class="text-secondary">Updated On: {currentTime()}</h6>
                         </div>
-                        <SnippetSearchListComponent snippets={this.props.snippets}/>
+                        <SnippetSearchListComponent snippets={this.props.snippets} activeUser={this.props.activeUser}/>
                     </div>
                 }
                 {/*//Not Logged in*/}
