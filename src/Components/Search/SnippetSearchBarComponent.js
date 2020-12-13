@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 
-const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByTags}) =>
+const SnippetSearchBarComponent = ({terms, updateSearchTerms}) =>
     <div className="row col-12">
         <div className="col-12 col-md-8">
             <div className="row mt-4">
