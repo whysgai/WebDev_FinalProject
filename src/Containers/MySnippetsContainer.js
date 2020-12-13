@@ -1,31 +1,43 @@
 import React from "react"
-import { connect } from "react-redux"
-import { findSnippetsByCreator } from "../Actions/SnippetActions";
+import {connect} from "react-redux"
+import {findSnippetsByCreator} from "../Actions/SnippetActions";
 import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
+import {fireUID} from "../config/db";
+import {getUserByUID} from "../Actions/UserActions";
 
-class MySnippetsContainer extends React.Component{
+class MySnippetsContainer extends React.Component {
 
     constructor() {
         super();
-        this.state = { };
+        this.state = {snippets: {}};
+    }
+
+    async loadingWrapper() {
+            await this.props.getUserByUID(fireUID)
+        this.state.user = this.props.user
+        return await Promise.resolve(this.props.activeUser)
     }
 
     componentDidMount() {
-        this.props.findSnippetsByCreator(this.props.activeUser.username)
-    };
 
+        this.loadingWrapper().then((user) => this.props.findSnippetsByCreator(user.username))
+            .then(() => this.render())
+    }
 
-    render () {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.render()
+    }
+
+    render() {
         return (
             <div>
                 {
-                    this.props.snippets &&
-                        <div>
-                            <h2 className="mt-2">{this.props.activeUser.username}'s Snippets:</h2>
-                            <SnippetSearchListComponent
-                                snippets={this.props.snippets}
-                            />
-                        </div>
+                    <div>
+                        <h2 className="mt-2">My Snippets:</h2>
+                        <SnippetSearchListComponent
+                            snippets={this.props.snippets ? this.props.snippets : this.state.snippets}
+                        />
+                    </div>
                 }
             </div>
         )
@@ -39,7 +51,9 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    findSnippetsByCreator: (username) => findSnippetsByCreator(dispatch, username)
+    findSnippetsByCreator: (username) => findSnippetsByCreator(dispatch, username),
+    getUserByUID: (uid) => getUserByUID(dispatch, uid),
+
 })
 
 export default connect
