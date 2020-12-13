@@ -28,6 +28,16 @@ export async function getUser(username) {
         }))
 }
 
+export async function getUserByUID(uid) {
+    return Promise.resolve(fire.database().ref("/users/" + uid).once('value')
+        .then(data => {
+            console.log("GetUserByIDSERVICE", data.val())
+            return Promise.resolve(data.val())
+        })
+    )
+}
+
+
 export async function getAuth() {
     console.log("GET AUTH", fireUser)
     return Promise.resolve(await fireUser)
@@ -51,4 +61,4 @@ export const updateUser = (uid, newUser) =>
     })
 
 
-export default {findAllUsers, getTokenForUser, updateUser, getUser, getAuth}
+export default {findAllUsers, getTokenForUser, updateUser, getUser, getAuth, getUserByUID}
