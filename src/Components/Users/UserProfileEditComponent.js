@@ -109,9 +109,6 @@ const UserProfileEditComponent = ({user, updateUser, updateLocalUser}) =>
                     src={profilePic}/>
             </div>
         </div>
-
-
-
     </div>
 
 

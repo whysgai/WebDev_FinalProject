@@ -16,6 +16,12 @@ class MySnippetsContainer extends React.Component {
         let fireUID = getCookie("uid")
         this.props.getUserByUID(fireUID).then(() => this.props.findSnippetsByCreator(this.props.activeUser.username))
         // this.render()
+
+        if (fireUID === "") {
+            console.log("reaching conditional")
+            window.location.href = '/login'
+        }
+
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
