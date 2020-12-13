@@ -66,9 +66,9 @@ ReactDOM.render(
                     <Route path={["/profile/:username"]} exact component={UserProfileDisplayContainer}/>
                     <Route path={"/profile"} exact component={UserProfileEditContainer}/>
 
-                    <Route path="/concept_proof" exact>
-                        <TestSnippetDisplayPageContainer username="NameOfUser"/>
-                    </Route>
+                    {/*<Route path="/concept_proof" exact>*/}
+                    {/*    <TestSnippetDisplayPageContainer username="NameOfUser"/>*/}
+                    {/*</Route>*/}
                     <Route path="/snippet/:snippetId" exact component={SingleSnippetContainer}/>
                     <Route path="/newsnippet" exact component={CreateSnippetContainer}/>
                     <Route path="/import_gist" exact component={ImportGistContainer}/>
