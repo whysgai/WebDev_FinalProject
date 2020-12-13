@@ -12,7 +12,6 @@ class FavoriteSnippetsContainer extends React.Component {
         this.state = { };
     }
 
-
     componentDidMount() {
         let fireUID = getCookie("uid")
         this.props.getUserByUID(fireUID).then(() => this.props.findFavoriteSnippets(this.props.activeUser.username))
@@ -46,7 +45,6 @@ const propertyToDispatchMapper = (dispatch) => ({
     findFavoriteSnippets: (username) => findFavoriteSnippets(dispatch, username),
     getUserByUID: (uid) => getUserByUID(dispatch, uid),
 })
-
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
