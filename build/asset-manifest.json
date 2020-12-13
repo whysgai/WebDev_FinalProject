@@ -1,23 +1,33 @@
 {
   "files": {
-    "main.css": "/static/css/main.1aeddcd8.chunk.css",
-    "main.js": "/static/js/main.0d1b4202.chunk.js",
-    "main.js.map": "/static/js/main.0d1b4202.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.27efcdd3.js",
-    "runtime-main.js.map": "/static/js/runtime-main.27efcdd3.js.map",
-    "static/js/2.9be65262.chunk.js": "/static/js/2.9be65262.chunk.js",
-    "static/js/2.9be65262.chunk.js.map": "/static/js/2.9be65262.chunk.js.map",
-    "static/js/3.d4e34580.chunk.js": "/static/js/3.d4e34580.chunk.js",
-    "static/js/3.d4e34580.chunk.js.map": "/static/js/3.d4e34580.chunk.js.map",
+    "main.css": "/static/css/main.1f855625.chunk.css",
+    "main.js": "/static/js/main.5285a24a.chunk.js",
+    "main.js.map": "/static/js/main.5285a24a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8662bbee.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8662bbee.js.map",
+    "static/css/2.441805c7.chunk.css": "/static/css/2.441805c7.chunk.css",
+    "static/js/2.e862f060.chunk.js": "/static/js/2.e862f060.chunk.js",
+    "static/js/2.e862f060.chunk.js.map": "/static/js/2.e862f060.chunk.js.map",
+    "static/js/3.abdd6eec.chunk.js": "/static/js/3.abdd6eec.chunk.js",
+    "static/js/3.abdd6eec.chunk.js.map": "/static/js/3.abdd6eec.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.1aeddcd8.chunk.css.map": "/static/css/main.1aeddcd8.chunk.css.map",
-    "static/js/2.9be65262.chunk.js.LICENSE.txt": "/static/js/2.9be65262.chunk.js.LICENSE.txt",
-    "static/media/logo.2d27ead7.svg": "/static/media/logo.2d27ead7.svg"
+    "static/css/2.441805c7.chunk.css.map": "/static/css/2.441805c7.chunk.css.map",
+    "static/css/main.1f855625.chunk.css.map": "/static/css/main.1f855625.chunk.css.map",
+    "static/js/2.e862f060.chunk.js.LICENSE.txt": "/static/js/2.e862f060.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.f691f37e.woff",
+    "static/media/laptop_food.e6b4ecb3.png": "/static/media/laptop_food.e6b4ecb3.png",
+    "static/media/logo.2d27ead7.svg": "/static/media/logo.2d27ead7.svg",
+    "static/media/people_computer_2_small.6c3c2ea5.PNG": "/static/media/people_computer_2_small.6c3c2ea5.PNG",
+    "static/media/people_computer_small.411eb33b.jpg": "/static/media/people_computer_small.411eb33b.jpg",
+    "static/media/sample_snippet.5fb934cc.PNG": "/static/media/sample_snippet.5fb934cc.PNG",
+    "static/media/timeline.3ef4894b.png": "/static/media/timeline.3ef4894b.png",
+    "static/media/values_2.a0fa492f.png": "/static/media/values_2.a0fa492f.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.27efcdd3.js",
-    "static/js/2.9be65262.chunk.js",
-    "static/css/main.1aeddcd8.chunk.css",
-    "static/js/main.0d1b4202.chunk.js"
+    "static/js/runtime-main.8662bbee.js",
+    "static/css/2.441805c7.chunk.css",
+    "static/js/2.e862f060.chunk.js",
+    "static/css/main.1f855625.chunk.css",
+    "static/js/main.5285a24a.chunk.js"
   ]
 }
