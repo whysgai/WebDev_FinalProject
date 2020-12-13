@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import UserAdminRowComponent from "../Components/Users/UserAdminRowComponent";
 
 import Loader from 'react-loader-spinner'
-import {administerUser, findAllUsers, updateUser} from "../Actions/UserActions";
+import {administerUser, findAllUsers, getUserByUID, updateUser} from "../Actions/UserActions";
 import {getCookie} from "../config/db";
 
 
@@ -62,6 +62,7 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     findAllUsers: () => findAllUsers(dispatch),
+    getUserByUID: (uid) => getUserByUID(dispatch, uid),
     administerUser: (user) => administerUser(dispatch, user)
 })
 
