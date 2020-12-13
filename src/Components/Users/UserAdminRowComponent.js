@@ -33,19 +33,7 @@ export default class UserAdminRowComponent extends React.Component {
                         !this.state.editing &&
                         <p>{this.props.user.username}</p>
                     }
-                    {
-                        this.state.editing &&
-                        <input
-                            className="form-control"
-                            onChange={(event) => {
-                                const newUsername = event.target.value;
-                                this.setState(prevState => ({
-                                    user: {...prevState.user, username: newUsername}
-                                }))
-                            }
-                            }
-                            value={this.state.user.username}/>
-                    }
+
                 </td>
                 {/*<td>{*/}
                 {/*    !this.state.editing &&*/}
@@ -70,27 +58,6 @@ export default class UserAdminRowComponent extends React.Component {
 
                 {/*//------------------------------------------- Delete Button -------------------------------------//*/}
                 <td>
-
-                    {
-                        this.state.user.locked ?
-                            <button
-                                onClick={() => {
-                                    this.state.user["locked"]= false
-                                    this.props.unlockUser(this.props.user)
-                                }}
-                                className="btn btn-danger">
-                                Lock
-                            </button> :
-                            <button
-                                onClick={() => {
-                                    this.state.user["locked"]= true
-                                    this.props.lockUser(this.props.user)
-                                }}
-                                className="btn btn-danger">
-                                Unlock
-                            </button>
-                    }
-
 
                     {
                         !this.state.editing &&

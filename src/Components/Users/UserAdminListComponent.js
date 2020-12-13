@@ -19,20 +19,14 @@ class UserAdminListComponent extends React.Component {
         this.render();
     }
     componentDidUpdate() {
-        this.props.findAllUsers()
         this.render();
     }
 
-    lockUser = (user) => {
-        UserService.updateUser(user.uid,user)
-    };
-
-    unlockUser = (user) => {
-        UserService.updateUser(user.uid,user)
-    };
 
     updateUserRow = (uid, user) => {
         UserService.updateUser(uid,user)
+        this.props.findAllUsers()
+
 
     };
 
