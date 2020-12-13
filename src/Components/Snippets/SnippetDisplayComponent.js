@@ -37,7 +37,7 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
                             </button>
                     }
                 </div>
-                <div className="float-right">
+                <div className="float-right mt-1">
                     <h6>Published: {snippet.dateCreated}</h6>
                 </div>
             </div>
@@ -67,25 +67,26 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
                         )
                 }
             </pre>
-            <Link to={`/snippet/${snippet._id}`} className="">More...</Link>
+        </div>
+        <div className="col-12 mb-2">
+            <Link to={`/snippet/${snippet._id}`} className={`${singleview ? "d-none" : ""}`}>More...</Link>
             {/*TODO: Hide if user is not admin/mod*/}
             {
                 snippet.recommended &&
-                    <button className="btn btn-secondary float-right"
+                    <button className={`btn btn-outline-secondary ${singleview ? "" : "float-right"}`}
                             onClick={() => toggleRecommended(snippet)}>
                         Recommend <i className="fa fa-certificate" aria-hidden="true"/>
                     </button>
             }
             {
                 !snippet.recommended &&
-                    <button className="btn btn-outline-secondary float-right"
+                    <button className={`btn btn-outline-secondary ${singleview ? "" : "float-right"}`}
                             onClick={() => toggleRecommended(snippet)}>
                         Recommend <i className="fa fa-certificate" aria-hidden="true"/>
                     </button>
             }
-
         </div>
-        <div className="row col-12 mt-2">
+        <div className="row col-12 mt-4">
             {/*Creator*/}
             <div className="col-12 col-md-3">
                 <h6>Created By: <a href="#">{snippet.creator}</a></h6>
