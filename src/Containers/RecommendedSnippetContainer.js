@@ -1,8 +1,9 @@
 import React from "react";
 import { findRecommendedSnippets } from "../Actions/SnippetActions";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
-import {fireUID} from "../config/db";
+import { getCookie } from "../config/db";
+import { getUserByUID } from "../Actions/UserActions";
 
 class RecommendedSnippetContainer extends React.Component {
 
@@ -11,13 +12,9 @@ class RecommendedSnippetContainer extends React.Component {
         this.state = { };
     }
 
-    async loadingWrapper() {
-        await this.props.findRecommendedSnippets()
-    }
-
     componentDidMount() {
-        this.loadingWrapper().then(() => this.render()
-        )
+        let fireUID = getCookie("uid")
+        this.props.getUserByUID(fireUID).then(() => this.props.findRecommendedSnippets())
     }
     render () {
         return (
@@ -26,6 +23,7 @@ class RecommendedSnippetContainer extends React.Component {
                     this.props.snippets &&
                         <SnippetSearchListComponent
                             snippets={this.props.snippets}
+                            activeUser={this.props.activeUser}
                         />
                 }
             </div>
@@ -34,14 +32,14 @@ class RecommendedSnippetContainer extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    snippets: state.snippetReducer.snippets
+    snippets: state.snippetReducer.snippets,
+    activeUser: state.userReducer.activeUser
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    findRecommendedSnippets: () => findRecommendedSnippets(dispatch)
-
+    findRecommendedSnippets: () => findRecommendedSnippets(dispatch),
+    getUserByUID: (uid) => getUserByUID(dispatch, uid)
 })
-
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
