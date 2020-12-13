@@ -3,14 +3,17 @@ import {findAllUsers} from "../Actions/UserActions";
 import {connect} from "react-redux";
 import {findAllPublicSnippets} from "../Actions/SnippetActions";
 import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
-import "./LandingPageComponent.css"
+// import "./LandingPageComponent2.css"
 // import {connect} from "react-redux";
 // import fire from "./../config/db";
 import snippetPicture from "../assets/media/sample_snippet.PNG"
 import {Link} from "react-router-dom";
 import codePic from "../assets/media/computer_code.png"
 import valuesCode from "../assets/media/values_2.png"
+import timeline from "../assets/media/timeline.png"
 import StatisticsCounter from "../Components/StatisticsCounter";
+import { Dimensions } from 'react';
+
 
 class LandingPageContainer extends React.Component {
 
@@ -34,6 +37,7 @@ class LandingPageContainer extends React.Component {
         this.render();
     }
 
+
     render() {
         function currentTime() {
             let n =  new Date();
@@ -46,6 +50,9 @@ class LandingPageContainer extends React.Component {
 
             return  m + "/" + d + "/" + y + " " + h + ":" + min + ":" + s;
         }
+
+
+
 
         return (
             <div>
@@ -110,55 +117,64 @@ class LandingPageContainer extends React.Component {
                             </div>
 
 
-                            <section id="cd-timeline" className="cd-container">
-                                <div className="cd-timeline-block">
-                                    <div className="cd-timeline-img cd-picture">
-                                        <i className="fas fa-file-alt"></i>
+                            {/*<section id="cd-timeline" className="cd-container">*/}
+                            {/*    <div className="cd-timeline-block">*/}
+                            {/*        <div className="cd-timeline-img cd-picture">*/}
+                            {/*            <i className="fas fa-file-alt"></i>*/}
 
-                                    </div>
+                            {/*        </div>*/}
 
-                                    <div className="cd-timeline-content">
-                                        <h2>Register For a Free Account</h2>
-                                        <p>Registering for an account is easy, and takes less than 60 seconds to complete. Please visit our privacy page for more information.</p>
-                                        <span className="cd-date"><h3>Register</h3></span>
-                                        <a className="btn btn-primary btn-lg m-2" href="#" role="button">Join Now</a>
-                                    </div>
-                                </div>
+                            {/*        <div className="cd-timeline-content">*/}
+                            {/*            <h2>Register For a Free Account</h2>*/}
+                            {/*            <p>Registering for an account is easy, and takes less than 60 seconds to complete. Please visit our privacy page for more information.</p>*/}
+                            {/*            <span className="cd-date"><h3>Register</h3></span>*/}
+                            {/*            <a className="btn btn-primary btn-lg m-2" href="#" role="button">Join Now</a>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
 
-                                <div className="cd-timeline-block">
-                                    <div className="cd-timeline-img cd-picture">
-                                        <i className="fas fa-file-alt"></i>
+                            {/*    <div className="cd-timeline-block">*/}
+                            {/*        <div className="cd-timeline-img cd-picture">*/}
+                            {/*            <i className="fas fa-file-alt"></i>*/}
 
-                                    </div>
+                            {/*        </div>*/}
 
-                                    <div className="cd-timeline-content">
-                                        <h2>Create Snippet</h2>
-                                        <p>Creating snippets is easy! CodeSave currently supports a number of popular languages within our online IDE such as Python and Javascript.</p>
-                                        {/*<img src="../assets/media/sample_snippet.png"></img>*/}
-                                        <img src={snippetPicture} />
-                                        {/*<img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" />*/}
-                                        <span className="cd-date"><h3>Create</h3></span>
-                                    </div>
-                                </div>
+                            {/*        <div className="cd-timeline-content">*/}
+                            {/*            <h2>Create Snippet</h2>*/}
+                            {/*            <p>Creating snippets is easy! CodeSave currently supports a number of popular languages within our online IDE such as Python and Javascript.</p>*/}
+                            {/*            /!*<img src="../assets/media/sample_snippet.png"></img>*!/*/}
+                            {/*            <img src={snippetPicture} />*/}
+                            {/*            /!*<img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" />*!/*/}
+                            {/*            <span className="cd-date"><h3>Create</h3></span>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
 
-                                <div className="cd-timeline-block">
-                                    <div className="cd-timeline-img cd-picture">
-                                        <i className="fas fa-file-alt"></i>
+                            {/*    <div className="cd-timeline-block">*/}
+                            {/*        <div className="cd-timeline-img cd-picture">*/}
+                            {/*            <i className="fas fa-file-alt"></i>*/}
 
-                                    </div>
+                            {/*        </div>*/}
 
-                                    <div className="cd-timeline-content">
-                                        <h2>Save & Share</h2>
-                                        <p>Save your snippet for future use. You have the option of sharing your snippets publicly, or keeping them private. CodeSave is also fully integrated with GitHub allowing you to post and get Github Gists.</p>
-                                        <span className="cd-date"><h3>Save</h3></span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"
-                                             fill="currentColor" className="bi bi-github" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </section>
+                            {/*        <div className="cd-timeline-content">*/}
+                            {/*            <h2>Save & Share</h2>*/}
+                            {/*            <p>Save your snippet for future use. You have the option of sharing your snippets publicly, or keeping them private. CodeSave is also fully integrated with GitHub allowing you to post and get Github Gists.</p>*/}
+                            {/*            <span className="cd-date"><h3>Save</h3></span>*/}
+                            {/*            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"*/}
+                            {/*                 fill="currentColor" className="bi bi-github" viewBox="0 0 16 16">*/}
+                            {/*                <path fill-rule="evenodd"*/}
+                            {/*                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>*/}
+                            {/*            </svg>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
+                            {/*</section>*/}
+
+
+                            <div
+                                className="text-center"
+                            >
+                                <img
+                                    className="text-center align-content-center col-lg-12 col-md-6 col-sm-3"
+                                    src={timeline}/>
+                            </div>
 
 
                             <div className="row text-center ">
