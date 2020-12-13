@@ -3,14 +3,14 @@ import {Link} from "react-router-dom";
 import TagComponent from "../TagComponent";
 
 const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, activeUser, singleview}) =>
-    <div className="card-body shadow hoverDiv">
+    <div className="card-body shadow hoverDiv rounded">
         {/*Title and Timestamp*/}
         <div className="row col-12">
-            <div className="col-8">
+            <div className="col-12 col-md-8">
                 {snippet.recommended? <span className="mr-2"><i className="fa fa-certificate pr-3`" aria-hidden="true"/></span> : null}
                 <Link to={`/snippet/${snippet._id}`} className="h5">{snippet.title}</Link>
             </div>
-            <div className="col-4 text-secondary">
+            <div className="col-12 col-lg-4 text-secondary">
                 <div className="float-right">
                     {
                         (!snippet.likes.includes(activeUser.username)) &&
@@ -37,7 +37,7 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
                             </button>
                     }
                 </div>
-                <div className="float-right">
+                <div className="float-right mt-1">
                     <h6>Published: {snippet.dateCreated}</h6>
                 </div>
             </div>
@@ -59,7 +59,7 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
                         </code>
                 }
                 {
-                    (!singleview) &&
+                    (!singleview && snippet.codeText) &&
                         snippet.codeText.split(/\r?\n/).splice(0,5).map((line, index) =>
                             <code key={index} className="some">
                                 {line+"\n"}
@@ -67,31 +67,32 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
                         )
                 }
             </pre>
-            <Link to={`/snippet/${snippet._id}`} className="">More...</Link>
+        </div>
+        <div className="col-12 mb-2">
+            <Link to={`/snippet/${snippet._id}`} className={`${singleview ? "d-none" : ""}`}>More...</Link>
             {/*TODO: Hide if user is not admin/mod*/}
             {
                 snippet.recommended &&
-                    <button className="btn btn-secondary float-right"
+                    <button className={`btn btn-outline-secondary ${singleview ? "" : "float-right"}`}
                             onClick={() => toggleRecommended(snippet)}>
                         Recommend <i className="fa fa-certificate" aria-hidden="true"/>
                     </button>
             }
             {
                 !snippet.recommended &&
-                    <button className="btn btn-outline-secondary float-right"
+                    <button className={`btn btn-outline-secondary ${singleview ? "" : "float-right"}`}
                             onClick={() => toggleRecommended(snippet)}>
                         Recommend <i className="fa fa-certificate" aria-hidden="true"/>
                     </button>
             }
-
         </div>
-        <div className="row col-12 mt-2">
+        <div className="row col-12 mt-4">
             {/*Creator*/}
-            <div className="col-3">
+            <div className="col-12 col-md-3">
                 <h6>Created By: <a href="#">{snippet.creator}</a></h6>
             </div>
             {/*Tags*/}
-            <div className="col-9 text-secondary float-right">
+            <div className="col-12 col-md-9 text-secondary float-right">
                 <div className="float-right">
                     <div className="tagBackground rounded row ">
                         {

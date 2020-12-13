@@ -1,4 +1,3 @@
-import UserService from "../services/GistService";
 import GistService from "../services/GistService";
 
 // export const LOGIN_GITHUB = "LOGIN_GITHUB"

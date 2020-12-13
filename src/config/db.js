@@ -1,7 +1,7 @@
+
 import firebase from 'firebase/app'
 import "firebase/auth";
 import "firebase/database"
-
 
 let config = {
     apiKey: "AIzaSyCxca_YXuGnWgCDtfjCftOmwVLdaDv8iRo",
@@ -14,5 +14,20 @@ let config = {
 };
 
 const fire = firebase.initializeApp(config);
-export default fire
+fire.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
+export let fireUID
+
+firebase.auth().onAuthStateChanged((user) =>{
+    if(user){
+        fireUID = user.uid
+        console.log(fireUID)
+    }else{
+        console.log("user is null")
+    }
+});
+
+
+export const fireUser = firebase.auth().currentUser
+
+export default fire

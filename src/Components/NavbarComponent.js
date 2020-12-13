@@ -19,13 +19,16 @@ const NavbarComponent = () =>
                         <Link className="nav-link" to="/search">Search <span className="sr-only">(current)</span></Link>
                     </li>
                     <li className="nav-item">
-                         <Link className="nav-link" to="/user_snippets">Profile</Link>
+                         <Link className="nav-link" to="/profile">Profile</Link>
                     </li>
                     <li>
                         <Link className="nav-link" to="/mysnippets">My Snippets</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="#">Starred</Link>
+                        <Link className="nav-link" to="/recommended">Recommended</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/favorites">Bookmarked</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/import_gist">Import</Link>
@@ -33,10 +36,19 @@ const NavbarComponent = () =>
                     <li className="nav-item">
                         <Link className="nav-link" to="/admin">Admin</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/privacy">Privacy</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/register">Register</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/login2">Login</Link>
+                    </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
                     <Link className="nav-link" to="/login">
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">User</button>
+                    <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">User</button>
                     </Link>
                 </form>
             </div>
