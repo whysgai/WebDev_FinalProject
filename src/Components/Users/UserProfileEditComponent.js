@@ -104,8 +104,8 @@ const UserProfileEditComponent = ({user, updateUser, updateLocalUser}) =>
                 className="text-center col-6"
             >
                 <img
-                    style = {{height: 400}}
-                    className="text-center align-content-center"
+                    // style = {{height: 400}}
+                    className="text-center align-content-center col-lg-12 col-md-6 col-sm-3"
                     src={profilePic}/>
             </div>
         </div>
