@@ -15,7 +15,7 @@ class MySnippetsContainer extends React.Component {
     componentDidMount() {
         let fireUID = getCookie("uid")
         this.props.getUserByUID(fireUID).then(() => this.props.findSnippetsByCreator(this.props.activeUser.username))
-        this.render()
+        // this.render()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
