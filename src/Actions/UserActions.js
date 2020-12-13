@@ -52,8 +52,8 @@ export const getUser = (dispatch, username) => {
         })
 }
 
-export const getUserByUID = (dispatch, uid) => {
-    UserService.getUserByUID(uid)
+export async function getUserByUID (dispatch, uid) {
+    await UserService.getUserByUID(uid)
         .then(user => {
             console.log("Get User by ID", user)
             dispatch({

@@ -29,6 +29,7 @@ export async function getUser(username) {
 }
 
 export async function getUserByUID(uid) {
+    console.log("uid in service", uid)
     return Promise.resolve(fire.database().ref("/users/" + uid).once('value')
         .then(data => {
             console.log("GetUserByIDSERVICE", data.val())
