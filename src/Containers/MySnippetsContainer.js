@@ -13,15 +13,23 @@ class MySnippetsContainer extends React.Component {
     }
 
     async loadingWrapper() {
-            await this.props.getUserByUID(fireUID)
-        this.state.user = this.props.user
-        return await Promise.resolve(this.props.activeUser)
+        let uid = await fireUID
+        await this.props.getUserByUID(uid)
+        this.state.activeUser = this.props.activeUser
     }
 
     componentDidMount() {
+        console.log("fire uid", fireUID)
+        //Make sure the user is in the reducer
+        this.loadingWrapper().then(() => console.log(this.props.activeUser))
 
-        this.loadingWrapper().then((user) => this.props.findSnippetsByCreator(user.username))
-            .then(() => this.render())
+        //Find the snippets for the user after it's in the reducer
+        //Render it
+        // this.props.getUserByUID(fireUID)
+        //     .then(() =>this.props.findSnippetsByCreator(this.props.activeUser.username))
+        //     .then(() => this.render())
+        // this.loadingWrapper().then((user) => this.props.findSnippetsByCreator(activeUser.username))
+        //     .then(() => this.render())
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
