@@ -8,7 +8,7 @@ import SnippetSearchListComponent from "../Components/Search/SnippetSearchListCo
 // import fire from "./../config/db";
 import snippetPicture from "../assets/media/sample_snippet.PNG"
 import {Link} from "react-router-dom";
-import codePic from "../assets/media/computer_code.png"
+import codePic from "../assets/media/laptop_food.png"
 import valuesCode from "../assets/media/values_2.png"
 import timeline from "../assets/media/timeline.png"
 import StatisticsCounter from "../Components/StatisticsCounter";
@@ -74,7 +74,7 @@ class LandingPageContainer extends React.Component {
                     this.state.user == null &&
                         <div>
                             <div className=" text-center">
-                                <h1 className="display-3">Welcome to CodeSaver</h1>
+                                <h1 className="display-1 mt-5">Welcome to CodeSaver</h1>
                                 <p className="lead">"We are on a mission to make your coding life simpler, more productive, and more efficient."</p>
                                 {/*<p className="lead">*/}
                                 {/*    <a className="btn btn-primary btn-lg m-2" href="#" role="button">About Us</a>*/}
@@ -83,11 +83,13 @@ class LandingPageContainer extends React.Component {
                                 {/*</p>*/}
                             </div>
                             <div className="text-center">
-                                <img src={codePic}/>
+                                <img
+                                    className=" col-lg-9 col-md-6 col-sm-3"
+                                    src={codePic}/>
                             </div>
                             {/*<StatisticsCounter/>*/}
                             <div>
-                                <h2> About Us</h2>
+                                <h1  className=" mt-5"> About Us</h1>
                                 <p  className="lead ">
                                     CodeSaver is an American technology company founded by three Students from Northeastern
                                     University in Boston Massachusetts. CodeSaver was founded on the three principles of
@@ -106,7 +108,7 @@ class LandingPageContainer extends React.Component {
                             </div>
 
                             <div>
-                                <h2>How it Works</h2>
+                                <h1 className=" mt-5">How it Works</h1>
                                 <p  className="lead ">
                                     CodeSaver is an American technology company founded by three Students from Northeastern
                                     University in Boston Massachusetts. CodeSaver was founded on the three principles of

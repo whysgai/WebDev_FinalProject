@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import TagComponent from "../TagComponent";
 
 const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, activeUser, singleview}) =>
-    <div className="card-body shadow hoverDiv">
+    <div className="card-body shadow hoverDiv rounded">
         {/*Title and Timestamp*/}
         <div className="row col-12">
             <div className="col-12 col-md-8">
