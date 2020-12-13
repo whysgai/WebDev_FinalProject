@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fire from "../../config/db";
-import registerPic from "../../assets/media/people_computer.jpg"
+import registerPic from "../../assets/media/people_computer_small.jpg"
 
 class UserRegisterComponent extends Component {
     constructor(props) {

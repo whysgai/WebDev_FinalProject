@@ -10,6 +10,7 @@ import snippetPicture from "../assets/media/sample_snippet.PNG"
 import {Link} from "react-router-dom";
 import codePic from "../assets/media/computer_code.png"
 import valuesCode from "../assets/media/values_2.png"
+import StatisticsCounter from "../Components/StatisticsCounter";
 
 class LandingPageContainer extends React.Component {
 
@@ -66,7 +67,7 @@ class LandingPageContainer extends React.Component {
                     this.state.user == null &&
                         <div>
                             <div className=" text-center">
-                                <h1 className="display-3">Welcome to CodeSaver!</h1>
+                                <h1 className="display-3">Welcome to CodeSaver</h1>
                                 <p className="lead">"We are on a mission to make your coding life simpler, more productive, and more efficient."</p>
                                 {/*<p className="lead">*/}
                                 {/*    <a className="btn btn-primary btn-lg m-2" href="#" role="button">About Us</a>*/}
@@ -77,6 +78,7 @@ class LandingPageContainer extends React.Component {
                             <div className="text-center">
                                 <img src={codePic}/>
                             </div>
+                            {/*<StatisticsCounter/>*/}
                             <div>
                                 <h2> About Us</h2>
                                 <p  className="lead ">
@@ -101,7 +103,7 @@ class LandingPageContainer extends React.Component {
                                 <p  className="lead ">
                                     CodeSaver is an American technology company founded by three Students from Northeastern
                                     University in Boston Massachusetts. CodeSaver was founded on the three principles of
-                                    making coding life simple, more efficient, and more productive. Our objective as a company
+                                    making the coding experience simple, more efficient, and more productive. Our objective as a company
                                     is to build a reliable, efficient, and agile platform where people can come to save, organize,
                                     and share their code.
                                 </p>

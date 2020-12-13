@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fire from "../../config/db";
-import loginPic from "../../assets/media/people_computer_2.png"
+import loginPic from "../../assets/media/people_computer_2_small.PNG"
+import "./LoginComponent.css"
 
 class UserLoginComponent extends Component {
     constructor(props) {
@@ -64,20 +65,18 @@ class UserLoginComponent extends Component {
                         <h2 className="m-3">Login</h2>
 
                         <form>
-                            <div className="form-group">
-                                <label htmlFor="name">Username</label>
-                                <input value={this.state.name} onChange={this.handleChange} name="name"
-                                       className="form-control" id="name"
-                                       placeholder="Enter Username"/>
-                            </div>
+                            {/*<div className="form-group">*/}
+                            {/*    <label htmlFor="name">Username</label>*/}
+                            {/*    <input value={this.state.name} onChange={this.handleChange} name="name"*/}
+                            {/*           className="form-control" id="name"*/}
+                            {/*           placeholder="Enter Username"/>*/}
+                            {/*</div>*/}
 
                             <div className="form-group">
                                 <label htmlFor="exampleInputEmail1">Email address</label>
                                 <input value={this.state.email} onChange={this.handleChange} type="email" name="email"
                                        className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                                        placeholder="Enter Email"/>
-                                <small id="emailHelp" className="form-text text-muted">We'll never share your email with
-                                    anyone else.</small>
                             </div>
 
                             <div className="form-group">
@@ -87,24 +86,24 @@ class UserLoginComponent extends Component {
                                        placeholder="Password"/>
                             </div>
 
-                            <div className="form-group">
-                                <label htmlFor="paToken">Personal Access Token</label>
-                                <input value={this.state.paToken} onChange={this.handleChange} type="password"
-                                       name="paToken"
-                                       className="form-control" id="paToken" placeholder="Personal Access Token"/>
-                                <small id="emailHelp" className="form-text text-muted">You can find your PA Token in your GitHub account.</small>
-                            </div>
+                            {/*<div className="form-group">*/}
+                            {/*    <label htmlFor="paToken">Personal Access Token</label>*/}
+                            {/*    <input value={this.state.paToken} onChange={this.handleChange} type="password"*/}
+                            {/*           name="paToken"*/}
+                            {/*           className="form-control" id="paToken" placeholder="Personal Access Token"/>*/}
+                            {/*    <small id="emailHelp" className="form-text text-muted">You can find your PA Token in your GitHub account.</small>*/}
+                            {/*</div>*/}
 
-                            <div className="form-group">
-                                <label htmlFor="type">Type</label>
-                                <input
-                                    value={this.state.type}
-                                    onChange={this.handleChange}
-                                    name="type"
-                                    className="form-control"
-                                    id="type"
-                                    placeholder="USER, ADMIN, MOD"/>
-                            </div>
+                            {/*<div className="form-group">*/}
+                            {/*    <label htmlFor="type">Type</label>*/}
+                            {/*    <input*/}
+                            {/*        value={this.state.type}*/}
+                            {/*        onChange={this.handleChange}*/}
+                            {/*        name="type"*/}
+                            {/*        className="form-control"*/}
+                            {/*        id="type"*/}
+                            {/*        placeholder="USER, ADMIN, MOD"/>*/}
+                            {/*</div>*/}
 
                             <div className="row">
                                 <button
@@ -121,6 +120,24 @@ class UserLoginComponent extends Component {
                                     Register
                                 </button>
 
+                            </div>
+                            <div>
+                                <hr
+                                    className="m-3 mt-5 mb-3"
+                                />
+                                <p className="text-center"> Coming Soon:</p>
+
+                                <div className="col-12">
+                                    <a href="#" className="fb btn">
+                                        <i className="fa fa-facebook fa-fw"></i> Login with Facebook
+                                    </a>
+                                    <a href="#" className="twitter btn">
+                                        <i className="fa fa-twitter fa-fw"></i> Login with Twitter
+                                    </a>
+                                    <a href="#" className="google btn"><i className="fa fa-google fa-fw">
+                                    </i> Login with Google+
+                                    </a>
+                                </div>
                             </div>
 
 
