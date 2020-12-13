@@ -28,7 +28,7 @@ class UserLoginComponent extends Component {
         e.preventDefault();
         fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{alert("You've been signed in")
         }).catch((error) => {
-            console.log(error);
+            alert(error);
         });
     }
 
