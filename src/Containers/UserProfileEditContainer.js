@@ -20,7 +20,7 @@ class UserProfileEditContainer extends Component {
     }
 
     componentDidMount() {
-        let fireUID = getCookie("test")
+        let fireUID = getCookie("uid")
         this.props.getUserByUID(fireUID)
         this.render()
     }

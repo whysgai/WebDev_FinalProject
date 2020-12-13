@@ -42,8 +42,8 @@ export function getCookie(cname) {
 
 firebase.auth().onAuthStateChanged((user) =>{
     if(user){
-        setCookie("test", user.uid, 1)
-        console.log(getCookie("test"))
+        setCookie("uid", user.uid, 1)
+        console.log(getCookie("uid"))
         fireUID = user.uid
     }else{
         console.log("user is null")
