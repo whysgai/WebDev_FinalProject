@@ -58,9 +58,8 @@ ReactDOM.render(
                     exact
                     component={SnippetSearchContainer}
                     />
-                     <Route path="/mysnippets" exact>
-                        <MySnippetsContainer/>
-                     </Route>
+                     <Route path="/mysnippets" exact component={MySnippetsContainer}/>
+
                     <Route path="/admin" exact>
                         <UserAdminListComponent/>
                     </Route>

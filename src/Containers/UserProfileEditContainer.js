@@ -17,20 +17,17 @@ class UserProfileEditContainer extends Component {
 
     async loadingWrapper(){
         await this.props.getUserByUID(fireUID)
-        this.state.user = this.props.user
     }
 
     componentDidMount() {
         this.loadingWrapper().then(() => this.render())
-        console.log("Component did mount", this.props.user)
-        this.render()
     }
+
 
     render() {
         return (
             <div>
-                {console.log(this.props.user)}
-                <UserProfileEditComponent user={this.props.activeUser}/>
+                <UserProfileEditComponent user={this.props.user !== null ? this.props.user : this.state.user}/>
             </div>)
     }
 }
@@ -38,7 +35,7 @@ class UserProfileEditContainer extends Component {
 const
     stateToPropertyMapper = (state) => ({
         activeUser: state.userReducer.activeUser,
-        user: state.userReducer.user
+        user: state.userReducer.activeUser
     })
 
 const
