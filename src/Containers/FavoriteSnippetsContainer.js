@@ -11,7 +11,6 @@ class FavoriteSnippetsContainer extends React.Component {
     }
 
     componentDidMount() {
-        console.log("Mount!")
         this.props.findFavoriteSnippets(this.props.activeUser.username)
     };
 

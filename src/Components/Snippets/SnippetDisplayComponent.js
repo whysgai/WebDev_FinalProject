@@ -59,7 +59,7 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
                         </code>
                 }
                 {
-                    (!singleview) &&
+                    (!singleview && snippet.codeText) &&
                         snippet.codeText.split(/\r?\n/).splice(0,5).map((line, index) =>
                             <code key={index} className="some">
                                 {line+"\n"}
