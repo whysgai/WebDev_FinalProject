@@ -5,10 +5,8 @@ import "font-awesome/css/font-awesome.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './styles/index.css';
 import './styles/style.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {combineReducers, createStore} from "redux";
-import gistReducer from "./Reducers/GistReducer";
 import snippetReducer from "./Reducers/snippetReducer";
 import {Provider} from "react-redux"
 import NavBarContainer from "./Containers/NavbarContainer";
@@ -21,7 +19,7 @@ import GistReducer from "./Reducers/GistReducer";
 import UserReducer from "./Reducers/UserReducer";
 import SingleSnippetContainer from "./Containers/EditSnippetContainer";
 import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
-import UserAdminListComponent from "./Components/Users/UserAdminListComponent";
+import UserAdminListContainer from "./Containers/UserAdminListContainer";
 import LoginComponent from "./Components/LoginComponent";
 import LandingPageContainer from "./Containers/LandingPageContainer";
 import ImportGistContainer from "./Containers/ImportGistContainer";
@@ -30,7 +28,6 @@ import PrivacyPolicyComponent from "./Components/PrivacyPolicyComponent";
 import UserRegisterComponent from "./Components/Users/UserRegisterComponent";
 import UserLoginComponent from "./Components/Users/UserLoginComponent";
 import FavoriteSnippetsContainer from "./Containers/FavoriteSnippetsContainer";
-import UserProfileEditComponent from "./Components/Users/UserProfileEditComponent";
 import UserProfileEditContainer from "./Containers/UserProfileEditContainer";
 import UserProfileDisplayContainer from "./Containers/UserProfileDisplayContainer";
 
@@ -61,14 +58,10 @@ ReactDOM.render(
                      <Route path="/mysnippets" exact component={MySnippetsContainer}/>
 
                     <Route path="/admin" exact>
-                        <UserAdminListComponent/>
+                        <UserAdminListContainer/>
                     </Route>
                     <Route path={["/profile/:username"]} exact component={UserProfileDisplayContainer}/>
                     <Route path={"/profile"} exact component={UserProfileEditContainer}/>
-
-                    {/*<Route path="/concept_proof" exact>*/}
-                    {/*    <TestSnippetDisplayPageContainer username="NameOfUser"/>*/}
-                    {/*</Route>*/}
                     <Route path="/snippet/:snippetId" exact component={SingleSnippetContainer}/>
                     <Route path="/newsnippet" exact component={CreateSnippetContainer}/>
                     <Route path="/import_gist" exact component={ImportGistContainer}/>

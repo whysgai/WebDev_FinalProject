@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
-import fire, {fireUID, fireUser, getCookie} from "../config/db";
+import { getCookie } from "../config/db";
 import {connect} from "react-redux";
-import {getAuth, getUser, getUserByUID, updateLocalUser, updateUser} from "../Actions/UserActions";
+import { getUserByUID, updateLocalUser, updateUser } from "../Actions/UserActions";
 import UserProfileEditComponent from "../Components/Users/UserProfileEditComponent";
-import UserProfileDisplayComponent from "../Components/Users/UserProfileDisplayComponent";
 
 class UserProfileEditContainer extends Component {
 
@@ -14,10 +12,6 @@ class UserProfileEditContainer extends Component {
             user: {username: "user123", paToken: "Personal Access Token", email: "email@google.com", type: "USER"},
         }
     }
-
-    // async loadingWrapper(){
-    //     await this.props.getUserByUID(fireUID)
-    // }
 
     componentDidMount() {
         let fireUID = getCookie("uid")
@@ -40,15 +34,12 @@ class UserProfileEditContainer extends Component {
 
 const
     stateToPropertyMapper = (state) => ({
-        activeUser: state.userReducer.activeUser,
-        // user: state.userReducer.activeUser
+        activeUser: state.userReducer.activeUser
     })
 
 const
     propertyToDispatchMapper = (dispatch) => ({
-        // getUser: (username) => getUser(dispatch, username),
         getUserByUID: (uid) => getUserByUID(dispatch, uid),
-        // getAuth: () => getAuth(dispatch),
         updateUser: (user) => updateUser(dispatch, user),
         updateLocalUser: (user) => updateLocalUser(dispatch, user)
     })
