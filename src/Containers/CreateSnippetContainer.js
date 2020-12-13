@@ -80,7 +80,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     editLocalText: (text) => editLocalText(dispatch, text),
     addTagToSnippet: (snippet, tag) => addTagToSnippet(dispatch, snippet, tag),
     removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
-    togglePrivacy: () => togglePrivacy(dispatch),
+    togglePrivacy: (snippet) => togglePrivacy(dispatch, snippet),
     getGistById: () => getGistById(dispatch),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     findAllUsers: () => findAllUsers(dispatch),

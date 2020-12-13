@@ -1,19 +1,14 @@
 import {
-    CREATE_SNIPPET, DELETE_SNIPPET,
-    FIND_ALL_PUBLIC_SNIPPETS,
-    FIND_ALL_SNIPPETS,
+    CREATE_SNIPPET,
+    FIND_SNIPPETS,
     FIND_SNIPPET,
-    SEARCH_SNIPPET,
     EDIT_LOCAL_SNIPPET,
+    EDIT_LOCAL_TEXT,
     ADD_TAG,
     REMOVE_TAG,
-    TOGGLE_LIKE,
-    EDIT_LOCAL_TEXT,
-    TOGGLE_PRIVACY,
-    TOGGLE_RECOMMENDED,
+    DELETE_SNIPPET,
     UPDATE_TERMS
 } from '../Actions/SnippetActions'
-import {whenMapStateToPropsIsMissing} from "react-redux/lib/connect/mapStateToProps";
 
 const _ = require('lodash');
 
@@ -21,7 +16,6 @@ const initialState = {
     snippets: [],
     text: "",
     terms: "",
-    // user: {id:"uid001", username:"Ms. Pac-Man"}
 }
 
 const snippetReducer = (state = initialState, action = action) => {
@@ -31,24 +25,7 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
                 snippets: [action.snippet]
             };
-        case TOGGLE_LIKE:
-            let newSnippets = state.snippets.map(
-                (snippet) => snippet._id === action.snippet._id ? action.snippet : snippet
-            )
-            let nextState = {
-                ...state,
-                snippets: _.cloneDeep(newSnippets)
-            }
-            return nextState;
-        case TOGGLE_PRIVACY:
-            return {
-                ...state,
-                snippets: [{
-                    ...state.snippets[0],
-                    publicPost: !state.snippets[0].publicPost
-                }]
-            }
-        case TOGGLE_RECOMMENDED:
+        case EDIT_LOCAL_SNIPPET:
             return {
                 ...state,
                 snippets: _.cloneDeep(
@@ -56,11 +33,6 @@ const snippetReducer = (state = initialState, action = action) => {
                         snippet._id === action.snippet._id ? action.snippet : snippet
                     )
                 )
-            }
-        case EDIT_LOCAL_SNIPPET:
-            return {
-                ...state,
-                snippets: [action.snippet]
             };
         case EDIT_LOCAL_TEXT:
             return {
@@ -94,12 +66,7 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
                 snippets: state.snippets.filter(snippet => snippet._id !== action.snippetId)
             };
-        case FIND_ALL_SNIPPETS:
-            return {
-                ...state,
-                snippets: action.snippets
-            };
-        case FIND_ALL_PUBLIC_SNIPPETS:
+        case FIND_SNIPPETS:
             return {
                 ...state,
                 snippets: action.snippets
@@ -109,11 +76,6 @@ const snippetReducer = (state = initialState, action = action) => {
                 ...state,
                 snippets: [action.snippet]
             }
-        case SEARCH_SNIPPET:
-            return {
-                ...state,
-            snippets: action.snippets
-            };
         case UPDATE_TERMS:
             return {
                 ...state,

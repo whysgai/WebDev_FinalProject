@@ -3,18 +3,13 @@ import snippetServices from "../services/snippetServices";
 export const CREATE_SNIPPET = "CREATE_SNIPPET";
 export const DELETE_SNIPPET = "DELETE_SNIPPET";
 export const FIND_SNIPPET = "FIND_SNIPPET";
-export const FIND_ALL_SNIPPETS = "FIND_ALL_SNIPPETS";
-export const FIND_ALL_PUBLIC_SNIPPETS = "FIND_ALL_PUBLIC_SNIPPETS";
-export const UPDATE_LOCAL_SNIPPET = "UPDATE_LOCAL_SNIPPET";
 export const EDIT_LOCAL_SNIPPET = "EDIT_LOCAL_SNIPPET"
-export const SEARCH_SNIPPET = "SEARCH_SNIPPET";
 export const ADD_TAG = "ADD_TAG";
 export const REMOVE_TAG = "REMOVE_TAG";
-export const TOGGLE_LIKE = "TOGGLE_LIKE";
 export const EDIT_LOCAL_TEXT = "EDIT_LOCAL_TEXT";
-export const TOGGLE_PRIVACY = "TOGGLE_PRIVACY";
 export const TOGGLE_RECOMMENDED = "TOGGLE_RECOMMENDED";
 export const UPDATE_TERMS = "UPDATE_TERMS";
+export const FIND_SNIPPETS = "FIND_SNIPPETS"
 
 export const createSnippet = (dispatch, snippet, text) => {
     snippet.codeText = text
@@ -71,7 +66,7 @@ export const toggleLike = (dispatch, activeUser, likedSnippet) => {
     }
     snippetServices.updateSnippet(likedSnippet)
         .then(() => dispatch({
-                type: TOGGLE_LIKE,
+                type: EDIT_LOCAL_SNIPPET,
                 snippet: likedSnippet
             }
         ))
@@ -81,14 +76,18 @@ export const toggleRecommended = (dispatch, snippet) => {
     snippet.recommended = !snippet.recommended;
     snippetServices.updateSnippet(snippet)
         .then(snippet => dispatch({
-            type: TOGGLE_RECOMMENDED,
+            type: EDIT_LOCAL_SNIPPET,
             snippet
         }))
 
 }
 
-export const togglePrivacy = (dispatch) => {
-    dispatch({type: TOGGLE_PRIVACY})
+export const togglePrivacy = (dispatch, snippet) => {
+    snippet.publicPost = !snippet.publicPost
+    dispatch({
+        type: EDIT_LOCAL_SNIPPET,
+        snippet
+    })
 }
 
 export const deleteSnippet = (dispatch, snippetId) =>
@@ -101,28 +100,28 @@ export const deleteSnippet = (dispatch, snippetId) =>
 export const findAllSnippets = (dispatch) =>
     snippetServices.findAllSnippets()
         .then(snippets => dispatch({
-            type: FIND_ALL_SNIPPETS,
+            type: FIND_SNIPPETS,
             snippets: snippets
         }))
 
 export const findRecommendedSnippets = (dispatch) =>
     snippetServices.findRecommendedSnippets()
         .then(snippets => dispatch({
-            type: FIND_ALL_SNIPPETS,
+            type: FIND_SNIPPETS,
             snippets: snippets
         }))
 
 export const searchSnippetsByTags = (dispatch, tags) =>
     snippetServices.searchSnippetsByTags(tags)
         .then(snippets => dispatch({
-            type: SEARCH_SNIPPET,
+            type: FIND_SNIPPETS,
             snippets: snippets
         }))
 
 export const findAllPublicSnippets = (dispatch) =>
     snippetServices.findAllPublicSnippets()
         .then(snippets => dispatch({
-            type: FIND_ALL_PUBLIC_SNIPPETS,
+            type: FIND_SNIPPETS,
             snippets: snippets
         }))
 
