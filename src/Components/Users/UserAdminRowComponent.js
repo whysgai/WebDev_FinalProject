@@ -35,24 +35,6 @@ export default class UserAdminRowComponent extends React.Component {
                     }
 
                 </td>
-                {/*<td>{*/}
-                {/*    !this.state.editing &&*/}
-                {/*    <p>{this.props.user.email}</p>*/}
-                {/*}*/}
-                {/*    {*/}
-                {/*        this.state.editing &&*/}
-                {/*        <input*/}
-                {/*            className="form-control"*/}
-                {/*            onChange={(event) => {*/}
-                {/*                const newEmail = event.target.value;*/}
-                {/*                this.setState(prevState => ({*/}
-                {/*                    user: {...prevState.user, email: newEmail}*/}
-                {/*                }))*/}
-                {/*            }*/}
-                {/*            }*/}
-                {/*            value={this.state.user.email}/>*/}
-                {/*    }</td>*/}
-
 
                 <td><p>{this.props.user.email}</p></td>
 

@@ -27,8 +27,6 @@ const UserProfileEditComponent = ({user}) => {
                             <input className="form-control wbdv-field wbdv-username" id="username"
                                    placeholder={user.username}
                             />
-
-
                         </div>
                     </div>
                     {/*<div className="form-group row">*/}
