@@ -22,13 +22,13 @@ class UserLoginComponent extends Component {
     logout(e) {
         e.preventDefault();
         fire.auth().signOut()
-            .then(() => window.location.replace("http://localhost:3000/"))
+            .then(() => window.location.replace("/"))
     }
 
     login(e) {
         e.preventDefault();
         fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-            .then((u) => window.location.replace("http://localhost:3000/"))
+            .then((u) => window.location.replace("/"))
             .catch((error) => {
                 alert(error);
             });
@@ -52,7 +52,7 @@ class UserLoginComponent extends Component {
                 });
 
             })
-            .then(() => window.location.replace("http://localhost:3000/"))
+            .then(() => window.location.replace("/"))
             .catch((error) => {
                 alert(error);
             })

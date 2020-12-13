@@ -43,11 +43,11 @@ const NavbarComponent = () =>
                         <Link className="nav-link" to="/register">Register</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/login2">Login</Link>
+                        <Link className="nav-link" to="/login">Login</Link>
                     </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
-                    <Link className="nav-link" to="/login">
+                    <Link className="nav-link" to="/login2">
                     <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">User</button>
                     </Link>
                 </form>

@@ -50,7 +50,10 @@ class UserRegisterComponent extends Component {
                 });
 
             })
-            .then(() => {alert("User created")})
+            .then(() => {
+                alert("Welcome to CodeSnippets!")
+                window.location.replace("/")
+            })
             .catch((error) => {
                 alert(error);
             })
