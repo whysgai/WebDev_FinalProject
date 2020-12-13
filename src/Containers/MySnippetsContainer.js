@@ -30,6 +30,7 @@ class MySnippetsContainer extends React.Component {
                         <h2 className="mt-2">My Snippets:</h2>
                         <SnippetSearchListComponent
                             snippets={this.props.snippets ? this.props.snippets : this.state.snippets}
+                            activeUser={this.props.activeUser}
                         />
                     </div>
                 }
