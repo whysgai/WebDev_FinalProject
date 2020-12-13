@@ -92,7 +92,7 @@ export const togglePrivacy = (dispatch, snippet) => {
 
 export const deleteSnippet = (dispatch, snippetId) =>
     snippetServices.deleteSnippet(snippetId)
-        .then(snippet => dispatch({
+        .then(() => dispatch({
             type: DELETE_SNIPPET,
             snippetId
         }))
@@ -116,7 +116,7 @@ export const findFavoriteSnippets = (dispatch, username) =>
         .then(snippets => dispatch({
                 type: FIND_SNIPPETS,
                 snippets: snippets
-        })
+        }))
 
 
 export const searchSnippetsByTags = (dispatch, tags) =>
