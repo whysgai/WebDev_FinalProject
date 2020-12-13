@@ -1,13 +1,13 @@
 import React from 'react'
 import SnippetContainer from "../../Containers/SnippetContainer";
 
-const SnippetSearchListComponent = ({snippets}) =>
+const SnippetSearchListComponent = ({snippets, activeUser}) =>
     <div>
         {
             snippets.length > 0 &&
                 snippets.map((snippet, index)=>
                     <div key={index}>
-                        <SnippetContainer snippet={snippet}/>
+                        <SnippetContainer snippet={snippet} activeUser={activeUser}/>
                     </div>
                 )
         }

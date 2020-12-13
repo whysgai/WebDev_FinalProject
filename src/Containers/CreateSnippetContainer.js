@@ -7,9 +7,9 @@ import {
     editLocalSnippet,
     addTagToSnippet, removeTagFromSnippet, editLocalText, togglePrivacy
 } from "../Actions/SnippetActions";
-import {connect} from "react-redux";
-import {getGistById, getGistFile} from "../Actions/GistActions";
-import {findAllUsers} from "../Actions/UserActions";
+import { connect } from "react-redux";
+import { getUserByUID } from "../Actions/UserActions";
+import { getCookie } from "../config/db";
 
 class CreateSnippetContainer extends React.Component {
 
@@ -37,9 +37,9 @@ class CreateSnippetContainer extends React.Component {
     componentDidMount() {
         let temp = this.state.newSnippetTemplate
         temp.creator = this.props.activeUser.username
-        this.props.createLocalSnippet(temp)
+        let fireUID = getCookie("uid")
+        this.props.getUserByUID(fireUID).then(() => this.props.createLocalSnippet(temp))
     };
-
 
     render () {
         return (
@@ -68,24 +68,20 @@ const stateToPropertyMapper = (state) => ({
     currentSnippet: state.snippetReducer.snippets[0],
     text: state.snippetReducer.text,
     activeUser: state.userReducer.activeUser,
-    gists: state.gistReducer.gists,
     users: state.userReducer.users
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
+    getUserByUID: (uid) => getUserByUID(dispatch, uid),
     createSnippet: (snippet, text) => createSnippet(dispatch, snippet, text),
     createLocalSnippet: (snippet) => {createLocalSnippet(dispatch, snippet)},
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     editLocalText: (text) => editLocalText(dispatch, text),
     addTagToSnippet: (snippet, tag) => addTagToSnippet(dispatch, snippet, tag),
     removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
-    togglePrivacy: (snippet) => togglePrivacy(dispatch, snippet),
-    getGistById: () => getGistById(dispatch),
-    getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
-    findAllUsers: () => findAllUsers(dispatch),
+    togglePrivacy: (snippet) => togglePrivacy(dispatch, snippet)
 })
-
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)

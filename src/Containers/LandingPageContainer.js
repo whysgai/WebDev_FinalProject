@@ -26,7 +26,6 @@ class LandingPageContainer extends React.Component {
         };
     }
 
-
     componentDidMount() {
         this.props.findAllPublicSnippets()
         // this.render();
@@ -50,9 +49,6 @@ class LandingPageContainer extends React.Component {
 
             return  m + "/" + d + "/" + y + " " + h + ":" + min + ":" + s;
         }
-
-
-
 
         return (
             <div>

@@ -2,10 +2,8 @@ import UserService from "../services/UserService";
 
 export const FIND_ALL_USERS = "FIND_ALL_USERS"
 export const GET_USER = "GET_USER"
-export const GET_AUTH= "GET_AUTH"
-
+export const GET_AUTH = "GET_AUTH"
 export const GET_USER_BY_UID = "GET_USER_BY_UID"
-
 export const UPDATE_USER = "UPDATE_USER"
 
 export const findAllUsers = (dispatch) => {
@@ -20,6 +18,7 @@ export const findAllUsers = (dispatch) => {
 }
 
 export const updateUser = (dispatch, user) => {
+    console.log("Action updating user", user)
     UserService.updateUser(user.uid, user)
         .then(() => {
             dispatch({
@@ -28,6 +27,16 @@ export const updateUser = (dispatch, user) => {
             })
         })
 }
+
+export const updateLocalUser = (dispatch, user) => {
+    console.log("ACTION update local user", user)
+    dispatch({
+        type: UPDATE_USER,
+        user: user
+    })
+}
+
+
 
 export const getAuth = (dispatch) => {
     UserService.getAuth()
@@ -52,8 +61,8 @@ export const getUser = (dispatch, username) => {
         })
 }
 
-export const getUserByUID = (dispatch, uid) => {
-    UserService.getUserByUID(uid)
+export async function getUserByUID (dispatch, uid) {
+    await UserService.getUserByUID(uid)
         .then(user => {
             console.log("Get User by ID", user)
             dispatch({

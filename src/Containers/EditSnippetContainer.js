@@ -8,8 +8,8 @@ import {
     updateSnippet
 } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
-import {getGistById, getGistFile} from "../Actions/GistActions";
-import {findAllUsers} from "../Actions/UserActions";
+import { getUserByUID } from "../Actions/UserActions";
+import { getCookie } from "../config/db";
 
 class EditSnippetContainer extends React.Component {
 
@@ -20,7 +20,8 @@ class EditSnippetContainer extends React.Component {
 
     componentDidMount() {
         const snippetId = this.props.match.params.snippetId
-        this.props.findSnippetById(snippetId)
+        let fireUID = getCookie("uid")
+        this.props.getUserByUID(fireUID).then(() => this.props.findSnippetById(snippetId))
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -61,24 +62,20 @@ const stateToPropertyMapper = (state) => ({
     currentSnippet: state.snippetReducer.snippets[0],
     text: state.snippetReducer.text,
     snippets: state.snippetReducer.snippets,
-    gists: state.gistReducer.gists,
     activeUser: state.userReducer.activeUser
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetById: (snippetId) => findSnippetById(dispatch, snippetId),
+    getUserByUID: (uid) => getUserByUID(dispatch, uid),
     editLocalSnippet: (snippet) => editLocalSnippet(dispatch, snippet),
     editLocalText: (text) => editLocalText(dispatch, text),
     updateSnippet: (snippet, text) => updateSnippet(dispatch, snippet, text),
     addTagToSnippet: (tag) => addTagToSnippet(dispatch, tag),
     removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
     togglePrivacy: (snippet) => togglePrivacy(dispatch, snippet),
-    deleteSnippet: (snippetId) => deleteSnippet(dispatch, snippetId),
-    getGistById: () => getGistById(dispatch),
-    getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
-    findAllUsers: () => findAllUsers(dispatch)
+    deleteSnippet: (snippetId) => deleteSnippet(dispatch, snippetId)
 })
-
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)

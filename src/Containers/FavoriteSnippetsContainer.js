@@ -1,7 +1,9 @@
 import React from "react";
 import { findFavoriteSnippets } from "../Actions/SnippetActions";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
+import { getCookie } from "../config/db";
+import { getUserByUID } from "../Actions/UserActions";
 
 class FavoriteSnippetsContainer extends React.Component {
 
@@ -11,9 +13,9 @@ class FavoriteSnippetsContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.findFavoriteSnippets(this.props.activeUser.username)
-    };
-
+        let fireUID = getCookie("uid")
+        this.props.getUserByUID(fireUID).then(() => this.props.findFavoriteSnippets(this.props.activeUser.username))
+    }
 
     render () {
         return (
@@ -24,6 +26,7 @@ class FavoriteSnippetsContainer extends React.Component {
                             <h2 className="mt-2">Bookmarked Snippets:</h2>
                             <SnippetSearchListComponent
                                 snippets={this.props.snippets}
+                                activeUser={this.props.activeUser}
                             />
                         </div>
 
@@ -39,10 +42,9 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    findFavoriteSnippets: (username) => findFavoriteSnippets(dispatch, username)
-
+    findFavoriteSnippets: (username) => findFavoriteSnippets(dispatch, username),
+    getUserByUID: (uid) => getUserByUID(dispatch, uid),
 })
-
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
