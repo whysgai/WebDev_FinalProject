@@ -1,7 +1,7 @@
 // const username = "group3person"
 // const password = "nicsalehwill3"
 
-import fire from "../config/db";
+import fire, {fireUser} from "../config/db";
 
 const headers = {
     "Authorization": `Token 70f143af3d540e77de91e721e5c4e8960a181663`
@@ -28,6 +28,12 @@ export async function getUser(username) {
         }))
 }
 
+export async function getAuth() {
+    console.log("GET AUTH", fireUser)
+    return Promise.resolve(await fireUser)
+}
+
+
 export const getTokenForUser = (uid) =>
     fire.database().ref("/users/" + uid).once('value')
         .then((snapshot) => {
@@ -45,4 +51,4 @@ export const updateUser = (uid, newUser) =>
     })
 
 
-export default {findAllUsers, getTokenForUser, updateUser, getUser}
+export default {findAllUsers, getTokenForUser, updateUser, getUser, getAuth}

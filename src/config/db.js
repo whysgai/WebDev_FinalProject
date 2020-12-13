@@ -16,6 +16,18 @@ let config = {
 const fire = firebase.initializeApp(config);
 fire.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
 
+export let fireUID
+
+firebase.auth().onAuthStateChanged((user) =>{
+    if(user){
+        fireUID = user.uid
+        console.log(fireUID)
+    }else{
+        console.log("user is null")
+    }
+});
+
+
 export const fireUser = firebase.auth().currentUser
 
 export default fire

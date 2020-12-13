@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import fire from "../config/db";
+import fire, {fireUser} from "../config/db";
 import {connect} from "react-redux";
-import {getUser} from "../Actions/UserActions";
+import {getAuth, getUser} from "../Actions/UserActions";
 import UserProfileEditComponent from "../Components/Users/UserProfileEditComponent";
+import UserProfileDisplayComponent from "../Components/Users/UserProfileDisplayComponent";
 
 class UserProfileContainer extends Component {
 
@@ -14,27 +15,24 @@ class UserProfileContainer extends Component {
         }
     }
 
-
-    async userWrapper(){
+    async loadingWrapper(){
         const username = this.props.match.params.username
-        await this.props.getUser(username)
+        await username !== undefined ? this.props.getUser(username) : this.props.getUser("etardis")
         this.state.user = this.props.user
     }
 
     componentDidMount() {
-        this.userWrapper().then(() => this.render())
-
-
-        // this.props.getUser("etardis")
+        this.loadingWrapper().then(() => this.render())
         console.log("Component did mount", this.props.user)
         this.render()
-
+        this.props.getAuth()
     }
 
     render() {
         return (
             <div>
-                <UserProfileEditComponent user={this.props.user}/>
+                {console.log(fire.auth().currentUser)}
+                <UserProfileDisplayComponent user={this.props.user}/>
             </div>)
     }
 }
@@ -49,6 +47,7 @@ const
 const
     propertyToDispatchMapper = (dispatch) => ({
         getUser: (username) => getUser(dispatch, username),
+        getAuth: () => getAuth(dispatch)
         // setUser: (user) => setUser(dispatch, user),
         // setUID: (uid) => setUID(dispatch, uid),
         // getUserData: (uid) => getUserData(dispatch, uid),
