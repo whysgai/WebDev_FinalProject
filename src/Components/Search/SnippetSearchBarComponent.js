@@ -1,9 +1,9 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 
-const SnippetSearchBarComponent = ({terms, updateSearchTerms}) =>
-    <div className="row">
-        <div className="col-10">
+const SnippetSearchBarComponent = ({findAllSnippets, snippets, searchSnippetsByTags}) =>
+    <div className="row col-12">
+        <div className="col-12 col-md-8">
             <div className="row mt-4">
                 <label className="col-form-label d-none" htmlFor="searchtags">
                     Search by Tag
@@ -28,9 +28,14 @@ const SnippetSearchBarComponent = ({terms, updateSearchTerms}) =>
                 </div>
             </div>
         </div>
-        <div className="col-2 row mt-4 ml-1">
-            <Link className="btn btn-primary float-right" to="/newsnippet">
-                New Snippet <i className="fa fa-pencil-square-o" aria-hidden="true"/>
+        <div className="col-12 col-md-2 row mt-4 ml-1">
+            <Link className="btn btn-primary float-right col-12" to="/newsnippet">
+                New <i className="fa fa-pencil-square-o" aria-hidden="true"/>
+            </Link>
+        </div>
+        <div className="col-12 col-md-2 row mt-4 ml-1">
+            <Link className="btn btn-secondary float-right col-12" to="/import_gist">
+                Import  <i className="fa fa-download" aria-hidden="true"/>
             </Link>
         </div>
     </div>

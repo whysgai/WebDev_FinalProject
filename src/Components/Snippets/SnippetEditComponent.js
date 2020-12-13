@@ -15,7 +15,7 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
     <div className="card-body">
         {/*Title and Timestamp*/}
         <div className="row col-12">
-            <div className="col-8 input-group">
+            <div className="col-12 col-md-8 input-group">
                 <div className="input-group-prepend">
                     <label className="input-group-text" htmlFor="snippet_title">Title:</label>
                 </div>
@@ -28,34 +28,34 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                        })}
                 />
             </div>
-            <div className="col-4 text-secondary">
+            <div className="col-12 col-lg-4 text-secondary">
                 <div className="float-right">
                     {
                         (!snippet.likes.includes(activeUser.username)) &&
-                        <button className="btn btn-outline-dark btn-like ml-2" onClick={() => {
-                            console.log("In component User", activeUser.username, "liked snippet", snippet);
-                            toggleLike(activeUser, snippet)
-                        }}>
-                                <span className="fa-stack">
-                                    <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
-                                    <i className="fa fa-code fa-stack-1x text-white" aria-hidden="true"/>
-                                </span>
-                        </button>
+                            <button className="btn btn-outline-dark btn-like ml-2" onClick={() => {
+                                console.log("In component User", activeUser.username, "liked snippet", snippet);
+                                toggleLike(activeUser, snippet)
+                            }}>
+                                    <span className="fa-stack">
+                                        <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
+                                        <i className="fa fa-code fa-stack-1x text-white" aria-hidden="true"/>
+                                    </span>
+                            </button>
                     }
                     {
                         (snippet.likes.includes(activeUser.username)) &&
-                        <button className="btn btn-dark btn-like ml-2" onClick={() => {
-                            console.log("In component User", activeUser.username, "liked snippet", snippet);
-                            toggleLike(activeUser, snippet)
-                        }}>
-                                <span className="fa-stack">
-                                    <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
-                                    <i className="fa fa-code fa-stack-1x text-dark font-weight-bold" aria-hidden="true"/>
-                                </span>
-                        </button>
+                            <button className="btn btn-dark btn-like ml-2" onClick={() => {
+                                console.log("In component User", activeUser.username, "liked snippet", snippet);
+                                toggleLike(activeUser, snippet)
+                            }}>
+                                    <span className="fa-stack">
+                                        <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
+                                        <i className="fa fa-code fa-stack-1x text-dark font-weight-bold" aria-hidden="true"/>
+                                    </span>
+                            </button>
                     }
                 </div>
-                <div className=" float-right ">
+                <div className="float-right ">
                     <h6>Published: {snippet.dateCreated}</h6>
                 </div>
             </div>
@@ -151,9 +151,9 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 </div>
             </div>
         </div>
+        {/*Bottom buttons*/}
         <div className="row col-12 mt-2">
             <div className="col-12">
-                {/*<div className="col-5"/>*/}
                 <div className="custom-control custom-switch d-inline col-2 ml-2">
                     <input type="checkbox"
                            className="custom-control-input mt-2"
@@ -175,7 +175,7 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
 
                 {
                     edit &&
-                        <Link className="btn btn-outline-danger float-right col-1 ml-2"
+                        <Link className="btn btn-outline-danger float-right col-12 col-md-1 ml-2"
                               to={"/search"}
                               onClick={() => {
                                   deleteSnippet(snippet._id)
@@ -184,14 +184,14 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                             <span title="Delete snippet"><i className="fa fa-trash" aria-hidden="true"/></span>
                         </Link>
                 }
-                <button className="btn btn-outline-dark float-right col-1 ml-2"
+                <button className="btn btn-outline-dark float-right col-12 col-md-1 ml-2"
                         onClick={() => createGistForUser(activeUser.token, snippet.title, snippet.description, snippet.codeText)}
                 >
                     <span title="Export to GitHub"><i className="fa fa-upload" aria-hidden="true"/></span>
                 </button>
                 {
                     edit &&
-                    <button className="btn btn-outline-info float-right col-2 ml-2"
+                    <button className="btn btn-outline-info float-right col-12 col-md-2 ml-2"
                             onClick={() => {
                                 updateSnippet(snippet, text)
                             }}
@@ -199,7 +199,7 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                 }
                 {
                     create &&
-                    <Link className="btn btn-outline-info float-right col-2 ml-2"
+                    <Link className="btn btn-outline-info float-right col-12 col-md-2 ml-2"
                           to={"/search"}
                           onClick={() => {
                               createSnippet(snippet, text)
