@@ -140,7 +140,7 @@ const propertyToDispatchMapper = (dispatch) => ({
     removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
     togglePrivacy: (snippet) => togglePrivacy(dispatch, snippet),
     deleteSnippet: (snippetId) => deleteSnippet(dispatch, snippetId),
-    getGistById: (gistId) => getGistById(dispatch, gistId),
+    getGistById: (gistId, token) => getGistById(dispatch, gistId, token),
     getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
     getUserByUID: (uid) => getUserByUID(dispatch, uid),
 })
