@@ -2,7 +2,7 @@ import {FIND_ALL_USERS, GET_USER, UPDATE_USER, GET_USER_BY_UID} from "../Actions
 
 const initialState = {
     users: [],
-    authenticatedUser: {},
+    activeUser: {},
     displayedUser: {}
 }
 
@@ -30,7 +30,7 @@ const UserReducer = (state = initialState, action) => {
         case GET_USER_BY_UID:
             return {
                 ...state,
-                authenticatedUser: action.user
+                activeUser: action.user
             }
         case "GET_DISPLAYED_USER":
             return {

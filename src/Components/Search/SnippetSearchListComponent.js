@@ -3,9 +3,6 @@ import SnippetContainer from "../../Containers/SnippetContainer";
 
 const SnippetSearchListComponent = ({snippets}) =>
     <div>
-        {/*{*/}
-        {/*    console.log(snippets)*/}
-        {/*}*/}
         {
             snippets.length > 0 &&
                 snippets.map((snippet, index)=>

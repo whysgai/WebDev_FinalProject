@@ -30,14 +30,14 @@ class UserProfileEditContainer extends Component {
         return (
             <div>
                 {console.log(this.props.user)}
-                <UserProfileEditComponent user={this.props.authenticatedUser}/>
+                <UserProfileEditComponent user={this.props.activeUser}/>
             </div>)
     }
 }
 
 const
     stateToPropertyMapper = (state) => ({
-        authenticatedUser: state.userReducer.authenticatedUser,
+        activeUser: state.userReducer.activeUser,
         user: state.userReducer.user
     })
 
@@ -46,9 +46,6 @@ const
         getUser: (username) => getUser(dispatch, username),
         getUserByUID: (uid) => getUserByUID(dispatch, uid),
         getAuth: () => getAuth(dispatch)
-        // setUser: (user) => setUser(dispatch, user),
-        // setUID: (uid) => setUID(dispatch, uid),
-        // getUserData: (uid) => getUserData(dispatch, uid),
     })
 
 export default connect(stateToPropertyMapper, propertyToDispatchMapper)

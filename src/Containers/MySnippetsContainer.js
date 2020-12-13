@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { findSnippetsByCreator } from "../Actions/SnippetActions";
 import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
+import {fireUID} from "../config/db";
 
 class MySnippetsContainer extends React.Component{
 
@@ -10,9 +11,18 @@ class MySnippetsContainer extends React.Component{
         this.state = { };
     }
 
+    async loadingWrapper(){
+        if(this.props.activeUser === {}){
+            await this.props.getUserByUID(fireUID)
+        }
+    }
+
     componentDidMount() {
-        this.props.findSnippetsByCreator(this.props.activeUser.username)
-    };
+        this.loadingWrapper().then(() => this.props.findSnippetsByCreator(this.props.activeUser.username)
+        )
+        this.render()
+    }
+
 
 
     render () {
@@ -21,7 +31,7 @@ class MySnippetsContainer extends React.Component{
                 {
                     this.props.snippets &&
                         <div>
-                            <h2 className="mt-2">{this.props.activeUser.username}'s Snippets:</h2>
+                            {/*<h2 className="mt-2">{this.props.activeUser.username}'s Snippets:</h2>*/}
                             <SnippetSearchListComponent
                                 snippets={this.props.snippets}
                             />
