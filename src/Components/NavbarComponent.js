@@ -1,7 +1,7 @@
 import React from "react"
 import {Link} from "react-router-dom";
 
-const NavbarComponent = () =>
+const NavbarComponent = ({activeUser}) =>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
             <span className="fa-stack fa-lg">
@@ -21,21 +21,37 @@ const NavbarComponent = () =>
                     <li className="nav-item">
                          <Link className="nav-link" to="/profile">Profile</Link>
                     </li>
-                    <li>
-                        <Link className="nav-link" to="/mysnippets">My Snippets</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/recommended">Recommended</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/favorites">Bookmarked</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/import_gist">Import</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/admin">Admin</Link>
-                    </li>
+
+
+                    {
+                        <li>
+                            <Link className="nav-link" to="/mysnippets">My Snippets</Link>
+                        </li>
+                    }
+                    {
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/recommended">Recommended</Link>
+                        </li>
+                    }
+                    {
+                        (activeUser && activeUser.type === "USER") &&
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/favorites">Bookmarked</Link>
+                        </li>
+                    }
+                    {
+                        (activeUser) &&
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/import_gist">Import</Link>
+                        </li>
+                    }
+                    {
+                        (activeUser && activeUser.type === "ADMIN") &&
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/admin">Admin</Link>
+                        </li>
+                    }
+
                     <li className="nav-item">
                         <Link className="nav-link" to="/privacy">Privacy</Link>
                     </li>
