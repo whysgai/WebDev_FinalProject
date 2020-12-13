@@ -70,20 +70,24 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
         </div>
         <div className="col-12 mb-2">
             <Link to={`/snippet/${snippet._id}`} className={`${singleview ? "d-none" : ""}`}>More...</Link>
-            {/*TODO: Hide if user is not admin/mod*/}
             {
-                snippet.recommended &&
-                    <button className={`btn btn-outline-secondary ${singleview ? "" : "float-right"}`}
-                            onClick={() => toggleRecommended(snippet)}>
-                        Recommend <i className="fa fa-certificate" aria-hidden="true"/>
-                    </button>
-            }
-            {
-                !snippet.recommended &&
-                    <button className={`btn btn-outline-secondary ${singleview ? "" : "float-right"}`}
-                            onClick={() => toggleRecommended(snippet)}>
-                        Recommend <i className="fa fa-certificate" aria-hidden="true"/>
-                    </button>
+                (activeUser.type === "ADMIN") &&
+                    <div>
+                        {
+                            snippet.recommended &&
+                                <button className={`btn btn-outline-secondary ${singleview ? "" : "float-right"}`}
+                                        onClick={() => toggleRecommended(snippet)}>
+                                    Recommend <i className="fa fa-certificate" aria-hidden="true"/>
+                                </button>
+                        }
+                        {
+                            !snippet.recommended &&
+                                <button className={`btn btn-outline-secondary ${singleview ? "" : "float-right"}`}
+                                        onClick={() => toggleRecommended(snippet)}>
+                                    Recommend <i className="fa fa-certificate" aria-hidden="true"/>
+                                </button>
+                        }
+                    </div>
             }
         </div>
         <div className="row col-12 mt-4">

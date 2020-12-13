@@ -185,26 +185,30 @@ const SnippetEditComponent = ({snippet, text, editLocalSnippet, editLocalText, u
                         </Link>
                 }
                 <button className="btn btn-outline-dark float-right col-12 col-md-1 ml-2"
-                        onClick={() => createGistForUser(activeUser.token, snippet.title, snippet.description, snippet.codeText)}
+                        onClick={() => createGistForUser(activeUser.paToken, snippet.title, snippet.description, snippet.codeText)}
                 >
                     <span title="Export to GitHub"><i className="fa fa-upload" aria-hidden="true"/></span>
                 </button>
                 {
                     edit &&
-                    <button className="btn btn-outline-info float-right col-12 col-md-2 ml-2"
-                            onClick={() => {
-                                updateSnippet(snippet, text)
-                            }}
-                    >Save</button>
+                        <button className="btn btn-outline-info float-right col-12 col-md-2 ml-2"
+                                onClick={() => {
+                                    updateSnippet(snippet, text)
+                                }}
+                        >
+                            Save
+                        </button>
                 }
                 {
                     create &&
-                    <Link className="btn btn-outline-info float-right col-12 col-md-2 ml-2"
-                          to={"/search"}
-                          onClick={() => {
-                              createSnippet(snippet, text)
-                          }}
-                    >Create</Link>
+                        <Link className="btn btn-outline-info float-right col-12 col-md-2 ml-2"
+                              to={"/search"}
+                              onClick={() => {
+                                  createSnippet(snippet, text)
+                              }}
+                        >
+                            Create
+                        </Link>
                 }
             </div>
         </div>

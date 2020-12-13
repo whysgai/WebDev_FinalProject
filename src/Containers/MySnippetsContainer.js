@@ -15,7 +15,7 @@ class MySnippetsContainer extends React.Component {
     componentDidMount() {
         let fireUID = getCookie("uid")
         this.props.getUserByUID(fireUID).then(() => this.props.findSnippetsByCreator(this.props.activeUser.username))
-        this.render()
+        // this.render()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -30,6 +30,7 @@ class MySnippetsContainer extends React.Component {
                         <h2 className="mt-2">My Snippets:</h2>
                         <SnippetSearchListComponent
                             snippets={this.props.snippets ? this.props.snippets : this.state.snippets}
+                            activeUser={this.props.activeUser}
                         />
                     </div>
                 }

@@ -13,16 +13,16 @@ class SnippetContainer extends React.Component {
         this.state = {};
     }
 
-    async loadingWrapper() {
-        await this.props.getUserByUID(fireUID)
-        await this.props.findSnippetsByCreator(this.props.activeUser.username)
-        this.state.user = this.props.user
-    }
+    // async loadingWrapper() {
+    //     await this.props.getUserByUID(fireUID)
+    //     await this.props.findSnippetsByCreator(this.props.activeUser.username)
+    //     this.state.user = this.props.user
+    // }
 
     componentDidMount() {
-        this.loadingWrapper().then(() => console.log(this.props), this.render()
-        )
-        this.render()
+        // this.loadingWrapper().then(() => console.log(this.props), this.render()
+        // )
+        // this.render()
     }
 
     render() {
@@ -31,7 +31,7 @@ class SnippetContainer extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    activeUser : state.userReducer.activeUser
+    // activeUser : state.userReducer.activeUser
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
