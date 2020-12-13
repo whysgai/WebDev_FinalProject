@@ -38,7 +38,6 @@ export async function getUserByUID(uid) {
     )
 }
 
-
 export async function getAuth() {
     console.log("GET AUTH", fireUser)
     return Promise.resolve(await fireUser)

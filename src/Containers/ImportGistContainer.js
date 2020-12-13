@@ -8,6 +8,8 @@ import {
 } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
 import {getGistById, getGistFile, getGistsForUser} from "../Actions/GistActions";
+import {getCookie} from "../config/db";
+import {getUserByUID} from "../Actions/UserActions";
 
 class ImportGistContainer extends React.Component {
 
@@ -33,12 +35,16 @@ class ImportGistContainer extends React.Component {
         };
     }
 
-    componentDidMount() { };
+    componentDidMount() {
+        let fireUID = getCookie("uid")
+        this.props.getUserByUID(fireUID)
+        this.render()
+    }
 
     componentDidUpdate(prevProps, prevState, snapshot) { };
 
     importGist(gistId) {
-        this.props.getGistById(gistId)
+        this.props.getGistById(gistId, this.props.activeUser.paToken)
             .then(() => {
                 let files = Object.keys(this.props.gist.files)
                 let fileName = files[0]
@@ -55,7 +61,6 @@ class ImportGistContainer extends React.Component {
                     })
                 })
             })
-
     };
 
     render () {
@@ -135,10 +140,10 @@ const propertyToDispatchMapper = (dispatch) => ({
     removeTagFromSnippet: (tag) => removeTagFromSnippet(dispatch, tag),
     togglePrivacy: (snippet) => togglePrivacy(dispatch, snippet),
     deleteSnippet: (snippetId) => deleteSnippet(dispatch, snippetId),
-    getGistById: (gistId) => getGistById(dispatch, gistId),
-    getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl)
+    getGistById: (gistId, token) => getGistById(dispatch, gistId, token),
+    getGistFile: (fileUrl) => getGistFile(dispatch, fileUrl),
+    getUserByUID: (uid) => getUserByUID(dispatch, uid),
 })
-
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)

@@ -46,6 +46,7 @@ firebase.auth().onAuthStateChanged((user) =>{
         console.log(getCookie("uid"))
         fireUID = user.uid
     }else{
+        setCookie("uid", "", 1)
         console.log("user is null")
     }
 });
