@@ -1,7 +1,7 @@
 import React from "react"
 import {Link} from "react-router-dom";
 
-const NavbarComponent = ({activeUser}) =>
+const NavbarComponent = ({activeUser, logout}) =>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
             <span className="fa-stack fa-lg">
@@ -58,14 +58,14 @@ const NavbarComponent = ({activeUser}) =>
                                 <Link className="nav-link" to="/profile">Profile</Link>
                                 <Link className="nav-link" to="/newsnippet">New Snippet</Link>
                                 <Link className="nav-link" to="/import_gist">Import Gist</Link>
-                                <Link className="nav-link" to="#">Logout</Link>
+                                <Link className="nav-link" to="#" onClick={(event) => logout(event)}>Logout</Link>
                             </div>
                         </div>
                 }
                 {
                     !activeUser.username &&
                         <form className="form-inline my-2 my-lg-0">
-                            <Link className="btn btn-outline-primary my-2 my-sm-0" to="/login">
+                            <Link className="btn btn-outline-primary my-2 my-sm-0" to="/login2">
                                 Login/Register
                             </Link>
                         </form>

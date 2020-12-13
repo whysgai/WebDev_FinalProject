@@ -3,12 +3,19 @@ import { connect } from "react-redux";
 import NavbarComponent from "../Components/NavbarComponent";
 import {getCookie} from "../config/db";
 import {getUserByUID} from "../Actions/UserActions";
+import fire from "../config/db";
 
 class NavbarContainer extends React.Component {
 
     constructor() {
         super();
         this.state = { };
+    }
+
+    logout(e) {
+        e.preventDefault();
+        fire.auth().signOut()
+            .then(() => window.location.replace("/"))
     }
 
     componentDidMount() {
@@ -22,6 +29,7 @@ class NavbarContainer extends React.Component {
                 {
                     <NavbarComponent
                         activeUser={this.props.activeUser}
+                        logout={this.logout}
                     />
                 }
             </div>
