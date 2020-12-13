@@ -9,21 +9,23 @@ class MySnippetsContainer extends React.Component {
 
     constructor() {
         super();
-        this.state = {};
+        this.state = {snippets: {}};
     }
 
     async loadingWrapper() {
             await this.props.getUserByUID(fireUID)
-            await this.props.findSnippetsByCreator(this.props.activeUser.username)
         this.state.user = this.props.user
-
+        return await Promise.resolve(this.props.activeUser)
     }
 
     componentDidMount() {
-        this.loadingWrapper().then(() => console.log(this.props), this.render()
-        )
-        this.render()
 
+        this.loadingWrapper().then((user) => this.props.findSnippetsByCreator(user.username))
+            .then(() => this.render())
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.render()
     }
 
     render() {
@@ -33,7 +35,7 @@ class MySnippetsContainer extends React.Component {
                     <div>
                         <h2 className="mt-2">My Snippets:</h2>
                         <SnippetSearchListComponent
-                            snippets={this.props.snippets}
+                            snippets={this.props.snippets ? this.props.snippets : this.state.snippets}
                         />
                     </div>
                 }

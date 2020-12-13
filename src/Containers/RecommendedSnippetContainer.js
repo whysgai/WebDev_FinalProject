@@ -2,6 +2,7 @@ import React from "react";
 import { findRecommendedSnippets } from "../Actions/SnippetActions";
 import {connect} from "react-redux";
 import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
+import {fireUID} from "../config/db";
 
 class RecommendedSnippetContainer extends React.Component {
 
@@ -10,11 +11,14 @@ class RecommendedSnippetContainer extends React.Component {
         this.state = { };
     }
 
+    async loadingWrapper() {
+        await this.props.findRecommendedSnippets()
+    }
+
     componentDidMount() {
-        this.props.findRecommendedSnippets()
-    };
-
-
+        this.loadingWrapper().then(() => this.render()
+        )
+    }
     render () {
         return (
             <div>
@@ -35,6 +39,7 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     findRecommendedSnippets: () => findRecommendedSnippets(dispatch)
+
 })
 
 
