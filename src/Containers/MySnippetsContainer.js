@@ -40,7 +40,6 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     findSnippetsByCreator: (username) => findSnippetsByCreator(dispatch, username)
-
 })
 
 export default connect
