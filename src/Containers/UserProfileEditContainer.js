@@ -30,7 +30,7 @@ class UserProfileEditContainer extends Component {
         return (
             <div>
                 {console.log(this.props.user)}
-                <UserProfileEditComponent user={this.state.user}/>
+                <UserProfileEditComponent user={this.props.authenticatedUser}/>
             </div>)
     }
 }
@@ -38,8 +38,6 @@ class UserProfileEditContainer extends Component {
 const
     stateToPropertyMapper = (state) => ({
         authenticatedUser: state.userReducer.authenticatedUser,
-        // userUID: state.authReducer.userUID,
-
         user: state.userReducer.user
     })
 
