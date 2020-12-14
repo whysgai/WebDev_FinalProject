@@ -61,7 +61,7 @@ const NavbarComponent = ({activeUser, logout}) =>
                 {
                     !activeUser.username &&
                         <form className="form-inline my-2 my-lg-0">
-                            <Link className="btn btn-outline-primary my-2 my-sm-0" to="/login2">
+                            <Link className="btn btn-outline-primary my-2 my-sm-0" to="/login">
                                 Login/Register
                             </Link>
                         </form>
