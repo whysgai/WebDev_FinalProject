@@ -1,5 +1,5 @@
 import React from "react";
-import {findAllUsers} from "../Actions/UserActions";
+import {findAllUsers, getUserByUID} from "../Actions/UserActions";
 import {connect} from "react-redux";
 import {findAllPublicSnippets} from "../Actions/SnippetActions";
 import SnippetSearchListComponent from "../Components/Search/SnippetSearchListComponent";
@@ -14,27 +14,35 @@ import timeline from "../assets/media/timeline.png"
 import StatisticsCounter from "../Components/StatisticsCounter";
 import { Dimensions } from 'react';
 import "./LandingPageContainer.css"
+import {getCookie} from "../config/db";
 
+let uid = "";
 
 class LandingPageContainer extends React.Component {
 
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         // user: "alkhalifas",
+    //         user: null,
+    //         snippets: []
+    //     };
+    // }
+
     constructor() {
         super();
-        this.state = {
-            // user: "alkhalifas",
-            user: null,
-            snippets: []
-        };
+        this.state = {snippets: {}};
     }
 
     componentDidMount() {
+        uid = getCookie("uid")
         this.props.findAllPublicSnippets()
-        // this.render();
+        this.render()
+        {console.log("this.fireUID CDM: ", uid)}
     }
 
     componentDidUpdate() {
         // this.props.findAllPublicSnippets()
-        this.render();
     }
 
 
@@ -53,22 +61,25 @@ class LandingPageContainer extends React.Component {
 
         return (
             <div>
-                {console.log(this.props.snippets)}
+                {console.log("this.fireUID: ", this.props.activeUser.username)}
+                {console.log("uid: ", uid)}
+                {/*//Is logged in*/}
                 {
-                    this.state.user !== null &&
+                    (uid !== ""  || uid.length > 0) &&
 
                     <div>
                         <div className="jumbotron text-center" style={{height: 200}}>
-                            <h1 className="display-4">Welcome back to CodeSaver, {this.state.user}!</h1>
+                            <h1 className="display-4">Welcome back to CodeSaver!</h1>
                         </div>
                         <div>
                             <h6 class="text-secondary">Updated On: {currentTime()}</h6>
                         </div>
-                        <SnippetSearchListComponent snippets={this.props.snippets}/>
+                        <SnippetSearchListComponent snippets={this.props.snippets} activeUser={this.props.activeUser}/>
                     </div>
                 }
+                {/*//Not Logged in*/}
                 {
-                    this.state.user == null &&
+                    (uid === ""  || uid.length === 0) &&
                         <div>
                             <div className=" text-center">
                                 <h1 className="display-1 mt-5">Welcome to CodeSaver</h1>
@@ -209,12 +220,14 @@ class LandingPageContainer extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    snippets: state.snippetReducer.snippets
-})
+    snippets: state.snippetReducer.snippets,
+    activeUser: state.userReducer.activeUser
+});
 
 const propertyToDispatchMapper = (dispatch) => ({
-    findAllPublicSnippets: () => findAllPublicSnippets(dispatch)
-})
+    findAllPublicSnippets: () => findAllPublicSnippets(dispatch),
+    getUserByUID: (uid) => getUserByUID(dispatch, uid),
+});
 
 export default connect(stateToPropertyMapper, propertyToDispatchMapper)
 (LandingPageContainer)

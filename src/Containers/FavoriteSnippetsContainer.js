@@ -29,7 +29,6 @@ class FavoriteSnippetsContainer extends React.Component {
                                 activeUser={this.props.activeUser}
                             />
                         </div>
-
                 }
             </div>
         )
