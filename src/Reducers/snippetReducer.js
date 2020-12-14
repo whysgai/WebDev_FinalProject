@@ -67,6 +67,7 @@ const snippetReducer = (state = initialState, action = action) => {
                 snippets: state.snippets.filter(snippet => snippet._id !== action.snippetId)
             };
         case FIND_SNIPPETS:
+            console.log("REDUCER: ", action.snippets)
             return {
                 ...state,
                 snippets: action.snippets
