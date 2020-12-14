@@ -4,8 +4,6 @@ import './App.css';
 import React, { Component } from 'react';
 import './App.css';
 
-import SnippetSearchComponent from "./Containers/SnippetSearchContainer";
-import LoginComponent from "./Components/LoginComponent";
 import fire from "./config/db";
 
 class App extends Component {
@@ -35,7 +33,7 @@ class App extends Component {
   }
   render() {
     return (
-        <div>{this.state.user ? ( <SnippetSearchComponent/>) : (<LoginComponent />)}</div>)
+        <div></div>)
   }
 }
 
