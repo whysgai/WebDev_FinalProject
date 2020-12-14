@@ -25,7 +25,7 @@ snippets to GitHub via the GitHub Gists API.
 
 ## Built With:
 
-![Alt text](./src/assets/media/stack.PNG)
+![Alt text](./src/assets/media/stack.png)
 
 ## Highlighted Features
 
