@@ -16,6 +16,7 @@ import {Dimensions} from 'react';
 import "./LandingPageContainer.css"
 import {getCookie} from "../config/db";
 
+let uid = "";
 
 let uid = "";
 
@@ -44,6 +45,13 @@ class LandingPageContainer extends React.Component {
         }
     }
 
+
+
+    // componentDidMount() {
+    //     this.props.findAllPublicSnippets()
+    //     // this.render();
+    // }
+
     componentDidUpdate() {
         // this.props.findAllPublicSnippets()
     }
@@ -70,6 +78,7 @@ class LandingPageContainer extends React.Component {
                 {
                     (uid !== "" || uid.length > 0) &&
 
+
                     <div>
                         <div className="jumbotron text-center" style={{height: 200}}>
                             <h1 className="display-4">Welcome back to CodeSaver!</h1>
@@ -82,48 +91,10 @@ class LandingPageContainer extends React.Component {
                 }
                 {/*//Not Logged in*/}
                 {
-                    (uid === "" || uid.length === 0) &&
-                    <div>
-                        <div className=" text-center">
-                            <h1 className="display-1 mt-5">Welcome to CodeSaver</h1>
-                            <p className="lead">"We are on a mission to make your coding life simpler, more productive,
-                                and more efficient."</p>
-                            {/*<p className="lead">*/}
-                            {/*    <a className="btn btn-primary btn-lg m-2" href="#" role="button">About Us</a>*/}
-                            {/*    <a className="btn btn-primary btn-lg m-2" href="#" role="button">Learn More</a>*/}
-                            {/*    <a className="btn btn-primary btn-lg m-2" href="#" role="button">Join Now</a>*/}
-                            {/*</p>*/}
-                        </div>
-                        <div className="text-center">
-                            <img
-                                className=" col-lg-9 col-md-6 col-sm-3"
-                                src={codePic}/>
-                        </div>
-                        {/*<StatisticsCounter/>*/}
-                        <div>
-                            <h1 className=" mt-5"> About Us</h1>
-                            <p className="lead ">
-                                CodeSaver is an American technology company founded by three Students from Northeastern
-                                University in Boston Massachusetts. CodeSaver was founded on the three principles of
-                                making coding life simple, more efficient, and more productive. Our objective as a
-                                company
-                                is to build a reliable, efficient, and agile platform where people can come to save,
-                                organize,
-                                and share their code.
-                            </p>
-                        </div>
-
-                        <div
-                            className="text-center"
-                        >
-                            <img
-                                className="text-center align-content-center"
-                                src={valuesCode}/>
-                        </div>
-
+                    (uid === ""  || uid.length === 0) &&
                         <div>
                             <h1 className=" mt-5">How it Works</h1>
-                            <p className="lead ">
+                            <p className="lead">
                                 CodeSaver is an American technology company founded by three Students from Northeastern
                                 University in Boston Massachusetts. CodeSaver was founded on the three principles of
                                 making the coding experience simple, more efficient, and more productive. Our objective
