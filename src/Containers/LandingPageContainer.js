@@ -15,6 +15,7 @@ import StatisticsCounter from "../Components/StatisticsCounter";
 import { Dimensions } from 'react';
 import {getCookie} from "../config/db";
 import "./LandingPageContainer.css"
+import {getCookie} from "../config/db";
 
 let uid = "";
 
@@ -40,6 +41,13 @@ class LandingPageContainer extends React.Component {
         this.render()
         {console.log("this.fireUID CDM: ", uid)}
     }
+
+
+
+    // componentDidMount() {
+    //     this.props.findAllPublicSnippets()
+    //     // this.render();
+    // }
 
     componentDidUpdate() {
         // this.props.findAllPublicSnippets()
