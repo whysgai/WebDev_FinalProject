@@ -10,12 +10,12 @@ Saleh Alkhalifa, Will Cohen, Nic Shepard
 
 ## What is CodeSaver?
 
-CodeSaver is an application developed for the purpose of helping developers of 
+CodeSaver is an application designed for the purpose of helping developers of 
 various computer languages save, find and recycle their code with ease. The 
-platform includes a number of features that allow users to find, read, and edit code 
-which are saved in the form of snippets. Users can create and edit their own 
-snippets, search snippets by tag/topic, view and save other users snippets, and 
-view admin-recommended snippets. They can also import snippets from, and export
+platform includes a number of features that allow users to find, read, and edit code
+saved in snippets. Users can create and edit their own 
+snippets, search snippets by tag/topic, view and save other users' snippets, and 
+view admin-recommended snippets. They can also import snippets from and export
 snippets to GitHub via the GitHub Gists API.
 
 ## Meet the Team:
