@@ -15,17 +15,13 @@ import {combineReducers, createStore} from "redux";
 import snippetReducer from "./Reducers/snippetReducer";
 import {Provider} from "react-redux"
 import NavBarContainer from "./Containers/NavbarContainer";
-import TestSnippetDisplayPageContainer from "./Containers/TestSnippetDisplayPageContainer"
-import SnippetContainer from "./Containers/SnippetContainer";
 import SnippetSearchContainer from "./Containers/SnippetSearchContainer";
-import UserSnippetsContainer from "./Containers/UserSnippetsContainer";
 import MySnippetsContainer from "./Containers/MySnippetsContainer";
 import GistReducer from "./Reducers/GistReducer";
 import UserReducer from "./Reducers/UserReducer";
 import SingleSnippetContainer from "./Containers/EditSnippetContainer";
 import CreateSnippetContainer from "./Containers/CreateSnippetContainer";
 import UserAdminListContainer from "./Containers/UserAdminListContainer";
-import LoginComponent from "./Components/LoginComponent";
 import LandingPageContainer from "./Containers/LandingPageContainer";
 import ImportGistContainer from "./Containers/ImportGistContainer";
 import RecommendedSnippetContainer from "./Containers/RecommendedSnippetContainer";
@@ -75,7 +71,6 @@ ReactDOM.render(
                     <Route path="/recommended" exact component={RecommendedSnippetContainer}/>
                     <Route path="/favorites" exact component={FavoriteSnippetsContainer}/>
                     <Route path="/login" exact component={UserLoginComponent}/>
-                    <Route path="/login2" exact component={LoginComponent}/>
                     <Route path="/privacy" exact component={PrivacyPolicyComponent}/>
                     <Route path="/register" exact component={UserRegisterComponent}/>
                 {/*End of container*/}

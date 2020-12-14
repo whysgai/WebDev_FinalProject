@@ -35,9 +35,13 @@ class CreateSnippetContainer extends React.Component {
     }
 
     componentDidMount() {
+        let fireUID = getCookie("uid")
+        if (fireUID === "") {
+            console.log("reaching conditional")
+            window.location.href = '/login'
+        }
         let temp = this.state.newSnippetTemplate
         temp.creator = this.props.activeUser.username
-        let fireUID = getCookie("uid")
         this.props.getUserByUID(fireUID).then(() => this.props.createLocalSnippet(temp))
     };
 

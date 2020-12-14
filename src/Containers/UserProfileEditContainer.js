@@ -15,9 +15,12 @@ class UserProfileEditContainer extends Component {
 
     componentDidMount() {
         let fireUID = getCookie("uid")
+        if (fireUID === "") {
+            console.log("reaching conditional")
+            window.location.href = '/login'
+        }
         this.props.getUserByUID(fireUID)
     }
-
 
     logout(e) {
         e.preventDefault();
