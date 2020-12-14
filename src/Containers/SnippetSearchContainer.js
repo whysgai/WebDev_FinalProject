@@ -2,6 +2,7 @@ import React from 'react'
 import SnippetSearchComponent from "../Components/Search/SnippetSearchComponent";
 import {connect} from "react-redux";
 import {
+    clearSearch,
     searchSnippetsByTags,
     updateSearchTerms
 } from "../Actions/SnippetActions";
@@ -18,8 +19,10 @@ class SnippetSearchContainer extends React.Component {
         let fireUID = getCookie("uid")
         this.props.getUserByUID(fireUID).then(() => {
             if (this.props.match.params.terms) {
-                this.props.updateSearchTerms(this.props.match.params.terms)
+                this.props.updateSearchTerms(this.props.match.params.terms);
                 this.props.searchSnippetsByTags(this.props.match.params.terms);
+            } else {
+                this.props.clearSearch();
             }
         })
     }
@@ -57,7 +60,8 @@ const stateToPropertyMapper = (state) => ({
 const propertyToDispatchMapper = (dispatch) => ({
     getUserByUID: (uid) => getUserByUID(dispatch, uid),
     searchSnippetsByTags: (tags) => searchSnippetsByTags(dispatch, tags),
-    updateSearchTerms: (terms) => updateSearchTerms(dispatch, terms)
+    updateSearchTerms: (terms) => updateSearchTerms(dispatch, terms),
+    clearSearch: () => clearSearch(dispatch)
 })
 
 export default connect (stateToPropertyMapper, propertyToDispatchMapper)

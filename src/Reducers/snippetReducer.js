@@ -7,7 +7,8 @@ import {
     ADD_TAG,
     REMOVE_TAG,
     DELETE_SNIPPET,
-    UPDATE_TERMS
+    UPDATE_TERMS,
+    CLEAR_SNIPPETS
 } from '../Actions/SnippetActions'
 
 const _ = require('lodash');
@@ -60,7 +61,6 @@ const snippetReducer = (state = initialState, action = action) => {
                     tags: state.snippets[0].tags.filter(tag => action.tag !== tag)
                 }]
             };
-
         case DELETE_SNIPPET:
             return {
                 ...state,
@@ -81,6 +81,11 @@ const snippetReducer = (state = initialState, action = action) => {
             return {
                 ...state,
                 terms: action.terms
+            }
+        case CLEAR_SNIPPETS:
+            return {
+                ...state,
+                snippets: []
             }
         default:
             return state;

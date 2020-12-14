@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import fire from "../../config/db";
 import loginPic from "../../assets/media/people_computer_2_small.PNG"
-import "./LoginComponent.css"
+import "../../styles/LoginComponent.css"
 
 class UserLoginComponent extends Component {
     constructor(props) {
