@@ -9,7 +9,8 @@ export const REMOVE_TAG = "REMOVE_TAG";
 export const EDIT_LOCAL_TEXT = "EDIT_LOCAL_TEXT";
 export const TOGGLE_RECOMMENDED = "TOGGLE_RECOMMENDED";
 export const UPDATE_TERMS = "UPDATE_TERMS";
-export const FIND_SNIPPETS = "FIND_SNIPPETS"
+export const FIND_SNIPPETS = "FIND_SNIPPETS";
+export const CLEAR_SNIPPETS = "CLEAR_SNIPPETS";
 
 export const createSnippet = (dispatch, snippet, text) => {
     snippet.codeText = text
@@ -151,4 +152,9 @@ export const updateSearchTerms = (dispatch, terms) =>
     dispatch({
         type: UPDATE_TERMS,
         terms
+    })
+
+export const clearSearch = (dispatch) =>
+    dispatch({
+        type: CLEAR_SNIPPETS
     })

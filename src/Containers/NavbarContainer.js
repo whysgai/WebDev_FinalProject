@@ -30,7 +30,6 @@ class NavbarContainer extends React.Component {
                     <NavbarComponent
                         activeUser={this.props.activeUser}
                         logout={this.logout}
-
                     />
                 }
             </div>
@@ -41,6 +40,7 @@ class NavbarContainer extends React.Component {
 const stateToPropertyMapper = (state) => ({
     activeUser: state.userReducer.activeUser
 });
+
 
 const propertyToDispatchMapper =(dispatch) => ({
     getUserByUID: (uid) => getUserByUID(dispatch, uid),

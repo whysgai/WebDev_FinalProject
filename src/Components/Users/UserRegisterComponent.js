@@ -109,13 +109,15 @@ class UserRegisterComponent extends Component {
 
                             <div className="form-group">
                                 <label htmlFor="type">Type</label>
-                                <input
-                                    value={this.state.type}
-                                    onChange={this.handleChange}
-                                    name="type"
-                                    className="form-control"
-                                    id="type"
-                                    placeholder="USER, ADMIN, MOD"/>
+                                <select className="custom-select wbdv-field wbdv-role" id="role"
+                                        id="type"
+                                        value="USER"
+                                        onChange={this.handleChange}
+                                >
+                                    <option value="USER">User</option>
+                                    <option value="ADMIN">Admin</option>
+                                </select>
+                                <small id="emailHelp" className="form-text text-muted">We are leaving this here to allow graders to create USER and ADMIN accounts as desired.</small>
                             </div>
 
                             <div className="row">
