@@ -93,7 +93,7 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
         <div className="row col-12 mt-4">
             {/*Creator*/}
             <div className="col-12 col-md-3">
-                <h6>Created By: <a href="#">{snippet.creator}</a></h6>
+                <h6>Created By: <Link to={`/profile/${snippet.creator}`}>{snippet.creator}</Link></h6>
             </div>
             {/*Tags*/}
             <div className="col-12 col-md-9 text-secondary float-right">
