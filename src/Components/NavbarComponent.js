@@ -15,6 +15,9 @@ const NavbarComponent = ({activeUser, logout}) =>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav mr-auto">
+                    {/*{console.log("activeUser: ", activeUser)}*/}
+                    {/*{console.log("Reached Navbar")}*/}
+
                     <li className="nav-item active">
                         <Link className="nav-link" to="/search">Search</Link>
                     </li>
@@ -24,6 +27,9 @@ const NavbarComponent = ({activeUser, logout}) =>
                                 <Link className="nav-link" to="/mysnippets">My Snippets</Link>
                             </li>
                     }
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/recommended">Recommended</Link>
+                    </li>
                     {
                         (activeUser.username) &&
                             <li className="nav-item">
