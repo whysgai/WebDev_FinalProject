@@ -30,7 +30,6 @@ class NavbarContainer extends React.Component {
                     <NavbarComponent
                         activeUser={this.props.activeUser}
                         logout={this.logout}
-
                     />
                 }
             </div>
