@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import profilePic from "../../assets/media/portfolio.png";
 
-const UserProfileEditComponent = ({user, updateUser, updateLocalUser}) =>
+const UserProfileEditComponent = ({user, updateUser, updateLocalUser, logout}) =>
 
     <div>
         <div>
@@ -88,7 +88,7 @@ const UserProfileEditComponent = ({user, updateUser, updateLocalUser}) =>
                                 >
                                     Update
                                 </button>
-                                <Link to="/"
+                                <Link to="/" onClick={logout}
                                       className="btn btn-outline-danger btn-block wbdv-button wbdv-logout">Logout</Link>
                                 <div className="row">
                                     <div className="alertFld wbdv-message"></div>

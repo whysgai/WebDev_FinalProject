@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { getCookie } from "../config/db";
+import fire, { getCookie } from "../config/db";
 import {connect} from "react-redux";
 import { getUserByUID, updateLocalUser, updateUser } from "../Actions/UserActions";
 import UserProfileEditComponent from "../Components/Users/UserProfileEditComponent";
@@ -19,12 +19,19 @@ class UserProfileEditContainer extends Component {
     }
 
 
+    logout(e) {
+        e.preventDefault();
+        fire.auth().signOut()
+            .then(() => window.location.replace("/"))
+    }
+
     render() {
         return (
             <div>
                 <UserProfileEditComponent
                     user={this.props.activeUser !== null ? this.props.activeUser : this.state.activeUser}
                     updateUser={this.props.updateUser}
+                    logout={this.logout}
                     updateLocalUser={this.props.updateLocalUser}
                 />
             </div>

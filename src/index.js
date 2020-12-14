@@ -35,11 +35,13 @@ import UserLoginComponent from "./Components/Users/UserLoginComponent";
 import FavoriteSnippetsContainer from "./Containers/FavoriteSnippetsContainer";
 import UserProfileEditContainer from "./Containers/UserProfileEditContainer";
 import UserProfileDisplayContainer from "./Containers/UserProfileDisplayContainer";
+import GroupReducer from "./Reducers/GroupReducer";
 
 const reducers = combineReducers({
     gistReducer: GistReducer,
     snippetReducer,
-    userReducer: UserReducer
+    userReducer: UserReducer,
+    groupReducer: GroupReducer,
 })
 
 const store = createStore(reducers)
