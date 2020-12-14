@@ -70,6 +70,7 @@ class LandingPageContainer extends React.Component {
         return (
             <div>
                 {console.log("this.fireUID: ", this.props.activeUser.username)}
+                {console.log("uid: ", uid)}
                 {/*//Is logged in*/}
                 {
                     (uid !== ""  || uid.length > 0) &&
