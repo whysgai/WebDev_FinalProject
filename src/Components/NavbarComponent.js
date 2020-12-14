@@ -25,7 +25,6 @@ const NavbarComponent = ({activeUser, logout}) =>
                                 <Link className="nav-link" to="/mysnippets">My Snippets</Link>
                             </li>
                     }
-
                     {
                         (activeUser.username) &&
                             <li className="nav-item">
@@ -41,8 +40,6 @@ const NavbarComponent = ({activeUser, logout}) =>
                                 <Link className="nav-link" to="/admin">Admin</Link>
                             </li>
                     }
-
-
                     <li className="nav-item">
                         <Link className="nav-link" to="/privacy">Privacy</Link>
                     </li>
