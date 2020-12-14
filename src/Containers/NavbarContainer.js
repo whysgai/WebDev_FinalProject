@@ -22,17 +22,12 @@ class NavbarContainer extends React.Component {
                 {
                     <NavbarComponent
                         activeUser={this.props.activeUser}
-                        // fireUID={this.props.fireUID}
                     />
                 }
             </div>
         )
     }
-
-
-
 }
-
 
 const stateToPropertyMapper = (state) => ({
     activeUser: state.userReducer.activeUser
