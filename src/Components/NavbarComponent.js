@@ -60,14 +60,13 @@ const NavbarComponent = ({activeUser, logout}) =>
                                 <Link className="nav-link" to="/newsnippet">New Snippet</Link>
                                 <Link className="nav-link" to="/import_gist">Import Gist</Link>
                                 <Link className="nav-link" to="#" onClick={(event) => logout(event)}>Logout</Link>
-
                             </div>
                         </div>
                 }
                 {
                     !activeUser.username &&
                         <form className="form-inline my-2 my-lg-0">
-                            <Link className="btn btn-outline-primary my-2 my-sm-0" to="/login">
+                            <Link className="btn btn-outline-primary my-2 my-sm-0" to="/login2">
                                 Login/Register
                             </Link>
                         </form>
