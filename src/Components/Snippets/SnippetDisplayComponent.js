@@ -6,11 +6,11 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
     <div className="card-body shadow hoverDiv rounded">
         {/*Title and Timestamp*/}
         <div className="row col-12">
-            <div className="col-12 col-md-8">
+            <div className="col-12 col-md-6 col-lg-7">
                 {snippet.recommended? <span className="mr-2"><i className="fa fa-certificate pr-3`" aria-hidden="true"/></span> : null}
                 <Link to={`/snippet/${snippet._id}`} className="h5">{snippet.title}</Link>
             </div>
-            <div className="col-12 col-lg-4 text-secondary">
+            <div className="col-12 col-lg-5 col-md-6 text-secondary">
                 <div className="float-right">
                     {
                         (!snippet.likes.includes(activeUser.username)) &&
@@ -72,7 +72,7 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
             <Link to={`/snippet/${snippet._id}`} className={`${singleview ? "d-none" : ""}`}>More...</Link>
             {
                 (activeUser.type === "ADMIN") &&
-                    <div>
+                    <span>
                         {
                             snippet.recommended &&
                                 <button className={`btn btn-outline-secondary ${singleview ? "" : "float-right"}`}
@@ -87,7 +87,7 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
                                     Recommend <i className="fa fa-certificate" aria-hidden="true"/>
                                 </button>
                         }
-                    </div>
+                    </span>
             }
         </div>
         <div className="row col-12 mt-4">
