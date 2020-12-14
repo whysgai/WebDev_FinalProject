@@ -11,32 +11,36 @@ const SnippetDisplayComponent = ({snippet, toggleLike, toggleRecommended, active
                 <Link to={`/snippet/${snippet._id}`} className="h5">{snippet.title}</Link>
             </div>
             <div className="col-12 col-lg-5 col-md-6 text-secondary">
-                <div className="float-right">
-                    {
-                        (!snippet.likes.includes(activeUser.username)) &&
-                            <button className="btn btn-outline-dark btn-like ml-2" onClick={() => {
-                                console.log("In component User", activeUser.username, "liked snippet", snippet);
-                                toggleLike(activeUser, snippet)
-                            }}>
-                                <span className="fa-stack">
-                                    <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
-                                    <i className="fa fa-code fa-stack-1x text-white" aria-hidden="true"/>
-                                </span>
-                            </button>
-                    }
-                    {
-                        (snippet.likes.includes(activeUser.username)) &&
-                            <button className="btn btn-dark btn-like ml-2" onClick={() => {
-                                console.log("In component User", activeUser.username, "liked snippet", snippet);
-                                toggleLike(activeUser, snippet)
-                            }}>
-                                <span className="fa-stack">
-                                    <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
-                                    <i className="fa fa-code fa-stack-1x text-dark font-weight-bold" aria-hidden="true"/>
-                                </span>
-                            </button>
-                    }
-                </div>
+                {
+                    activeUser.username &&
+                        <div className="float-right">
+                            {
+                                (!snippet.likes.includes(activeUser.username)) &&
+                                <button className="btn btn-outline-dark btn-like ml-2" onClick={() => {
+                                    console.log("In component User", activeUser.username, "liked snippet", snippet);
+                                    toggleLike(activeUser, snippet)
+                                }}>
+                                            <span className="fa-stack">
+                                                <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
+                                                <i className="fa fa-code fa-stack-1x text-white" aria-hidden="true"/>
+                                            </span>
+                                </button>
+                            }
+                            {
+                                (snippet.likes.includes(activeUser.username)) &&
+                                <button className="btn btn-dark btn-like ml-2" onClick={() => {
+                                    console.log("In component User", activeUser.username, "liked snippet", snippet);
+                                    toggleLike(activeUser, snippet)
+                                }}>
+                                            <span className="fa-stack">
+                                                <i className="fa fa-bookmark fa-stack-2x" aria-hidden="true"/>
+                                                <i className="fa fa-code fa-stack-1x text-dark font-weight-bold"
+                                                   aria-hidden="true"/>
+                                            </span>
+                                </button>
+                            }
+                        </div>
+                }
                 <div className="float-right mt-1">
                     <h6>Published: {snippet.dateCreated}</h6>
                 </div>
