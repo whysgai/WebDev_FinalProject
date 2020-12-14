@@ -16,8 +16,6 @@ const NavbarComponent = ({activeUser, logout}) =>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav mr-auto">
-                    {/*{console.log("activeUser: ", activeUser)}*/}
-                    {/*{console.log("Reached Navbar")}*/}
                     <li className="nav-item active">
                         <Link className="nav-link" to="/search">Search</Link>
                     </li>
@@ -27,6 +25,7 @@ const NavbarComponent = ({activeUser, logout}) =>
                                 <Link className="nav-link" to="/mysnippets">My Snippets</Link>
                             </li>
                     }
+
                     {
                         (activeUser.username) &&
                             <li className="nav-item">
@@ -37,16 +36,7 @@ const NavbarComponent = ({activeUser, logout}) =>
                         <Link className="nav-link" to="/recommended">Recommended</Link>
                     </li>
                     {
-                        (activeUser && activeUser.type === "USER") &&
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/favorites">Bookmarked</Link>
-                            </li>
-                    }
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/import_gist">Import</Link>
-                    </li>
-                    {
-                        (activeUser && activeUser.type === "ADMIN") &&
+                        (activeUser.username && activeUser.type === "ADMIN") &&
                             <li className="nav-item">
                                 <Link className="nav-link" to="/admin">Admin</Link>
                             </li>
@@ -56,6 +46,7 @@ const NavbarComponent = ({activeUser, logout}) =>
                     <li className="nav-item">
                         <Link className="nav-link" to="/privacy">Privacy</Link>
                     </li>
+
                 </ul>
                 {
                     activeUser.username &&
@@ -69,6 +60,7 @@ const NavbarComponent = ({activeUser, logout}) =>
                                 <Link className="nav-link" to="/newsnippet">New Snippet</Link>
                                 <Link className="nav-link" to="/import_gist">Import Gist</Link>
                                 <Link className="nav-link" to="#" onClick={(event) => logout(event)}>Logout</Link>
+
                             </div>
                         </div>
                 }
