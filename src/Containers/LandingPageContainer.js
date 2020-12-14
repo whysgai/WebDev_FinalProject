@@ -45,13 +45,6 @@ class LandingPageContainer extends React.Component {
         }
     }
 
-
-
-    // componentDidMount() {
-    //     this.props.findAllPublicSnippets()
-    //     // this.render();
-    // }
-
     componentDidUpdate() {
         // this.props.findAllPublicSnippets()
     }
