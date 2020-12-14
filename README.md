@@ -5,8 +5,6 @@
 <a href="https://github.com/whysgai/WebDev_FinalProject">Client Repo</a> | 
 <a href="https://github.com/alkhalifas/cs5610-f20-server-node-alkhalifas">Server Repo</a> 
 
-**Engineers:**  
-Saleh Alkhalifa, Will Cohen, Nic Shepard
 
 ## What is CodeSaver?
 
