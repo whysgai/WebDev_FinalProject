@@ -16,6 +16,7 @@ import {Dimensions} from 'react';
 import "./LandingPageContainer.css"
 import {getCookie} from "../config/db";
 
+
 let uid = "";
 
 class LandingPageContainer extends React.Component {
