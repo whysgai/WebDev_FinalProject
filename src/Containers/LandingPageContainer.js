@@ -12,11 +12,9 @@ import codePic from "../assets/media/laptop_food.png"
 import valuesCode from "../assets/media/values_2.png"
 import timeline from "../assets/media/timeline.png"
 import StatisticsCounter from "../Components/StatisticsCounter";
-import {Dimensions} from 'react';
-import "./LandingPageContainer.css"
+import { Dimensions } from 'react';
+import "../styles/LandingPageContainer.css"
 import {getCookie} from "../config/db";
-
-let uid = "";
 
 let uid = "";
 
