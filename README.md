@@ -1,18 +1,30 @@
-# WebDev_FinalProject
+## CodeSaver
+<a href="https://github.com/whysgai/WebDev_FinalProject">Client Repo</a> 
+<a href="https://github.com/alkhalifas/cs5610-f20-server-node-alkhalifas">Server Repo</a> 
 
-#### Link to Project Description: https://docs.google.com/document/d/1HNgkga5b5QaIDwB88s8lOXTS17sbORyj_jSKOKZuZdk/edit
-#### Client deployment: https://dashboard.heroku.com/apps/cs5610-fa20-codesaver-view
+**Engineers:**  
+Saleh Al-Khalifa, Will Cohen, Nic Shepard
 
-### React app name: codesaver
+## Our Product
 
-### State the problem you are trying to solve
-The use of code-based applications within the workplace has seen a surge over the recent years allowing for increased efficiency amongst employees. This surge has created a gap when it comes to the communication of best practices and information sharing in the form of code-snippets and scripts. Keeping track of small, infrequently-used but efficient and important elements of code is difficult and often left to trawling through browser history or old projects. Current platforms are either cost prohibitive or lacking in necessary functionality a company may require. 
-### State the overall strategy of how you intend to solve the problem
-Utilizing the previously-existing API from GitHub’s Gist, we plan to extend the functionality to implement critically lacking features with a user-friendly and responsive front-end platform. Specifically, we plan to introduce features such as tagging and searching of code snippets, as well as the other saves, shares, and likes typically expected of a social platform. We would implement this through a combination of local and remote storage. Our proposed product would include two types of end users: developers and administrators that would mirror the hierarchical structure of a workplace. Managers/moderators, for instance, can display best practice scripts and control access to sensitive code, while standard developers can both consume and produce code snippets for their individual and team-level use. Both users share the goal of making sure that important, but often obscure and specific scripts and snippets can be saved and searched for when the need arises. Anonymous users would be able to search and view code snippets marked as public, but could not produce their own or view private snippets.
- 
-### One of the main requirements is to work with data available from some public, free, Web API. Provide a brief description of the Web API you intend to use
-We will be using Github’s Gists API provided here. This API will provide the storage and core functionality that our product’s GUI will interact with. The API allows for full REST interactions allowing for data to be both retrieved and stored. Additional features will be implemented using a relational database. 
+This website is an application developed for the purpose of helping developers of 
+various computer languages save, find and recycle their code with ease. The 
+platform includes a number of features that allow users to find, read, and edit code 
+which are saved in the form of snippets. Users can create and edit their own 
+snippets, search snippets by tag/topic, like snippets, view other users snippets, and 
+view admin-recommended snippets. They can also import snippets from, and export
+snippets to GitHub Gists.
 
-####
-Github OAuth app client id: be6df06a30f90f7386f9
-Github OAuth app client secret: 82022dfb78848ddf16a31afc20e25f9777d1b001
+## Screenshots 
+
+## Test Users
+- Admin User: admin@codesaver.com / password123
+- User One:  user1@codesaver.com / password123
+- User Two:  user2@codesaver.com / password123
+- Gist User:  gistuser@codesaver.com / password123
+
+## Test Github
+- group3person / nicsalehwill3
+
+
+
