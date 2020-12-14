@@ -68,5 +68,7 @@ To access CodeSaver online, please visit [this url.](https://cs5610-project-grou
 ## Test Github
 - group3person / nicsalehwill3
 
+## Backend UML Diagram:
 
+![Alt text](./src/assets/media/uml.PNG)
 
