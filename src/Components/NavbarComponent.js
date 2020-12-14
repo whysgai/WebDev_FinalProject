@@ -9,43 +9,33 @@ const NavbarComponent = ({activeUser}) =>
                 <i className="fa fa-code fa-stack-1x text-white" aria-hidden="true"/>
             </span>
             <Link className="navbar-brand" to="/">CodeSaver</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"/>
             </button>
-            <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav mr-auto">
-                    {/*{console.log("activeUser: ", activeUser)}*/}
-                    {/*{console.log("Reached Navbar")}*/}
                     <li className="nav-item active">
-                        <Link className="nav-link" to="/search">Search <span className="sr-only">(current)</span></Link>
+                        <Link className="nav-link" to="/search">Search</Link>
                     </li>
                     {
-                        (activeUser && activeUser.type === "USER") &&
+                        (activeUser.username) &&
                             <li className="nav-item">
-                                <Link className="nav-link" to="/profile">Profile</Link>
+                                <Link className="nav-link" to="/mysnippets">My Snippets</Link>
                             </li>
                     }
+
                     {
-                        (activeUser && activeUser.type === "USER") &&
-                            <li>
-                                <Link className="nav-link" to="/mysnippets">My Snippets</Link>
+                        (activeUser.username) &&
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/favorites">Bookmarked</Link>
                             </li>
                     }
                     <li className="nav-item">
                         <Link className="nav-link" to="/recommended">Recommended</Link>
                     </li>
                     {
-                        (activeUser && activeUser.type === "USER") &&
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/favorites">Bookmarked</Link>
-                            </li>
-                    }
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/import_gist">Import</Link>
-                    </li>
-                    {
-                        (activeUser && activeUser.type === "ADMIN") &&
+                        (activeUser.username && activeUser.type === "ADMIN") &&
                             <li className="nav-item">
                                 <Link className="nav-link" to="/admin">Admin</Link>
                             </li>
@@ -56,43 +46,24 @@ const NavbarComponent = ({activeUser}) =>
                         <Link className="nav-link" to="/privacy">Privacy</Link>
                     </li>
 
-
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/register">Register</Link>
-                    </li>
-
-
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/login2">Login</Link>
-                    </li>
                 </ul>
                 {
-                    activeUser &&
-                        // <div className="nav-item dropdown float-right">
-                        //     <span className="btn btn-outline-primary dropdown-toggle" id="navbarDropdownMenuLink"
-                        //           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        //         {activeUser.username}
-                        //     </span>
-                        //     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        //         <a className="dropdown-item" href="#">Action</a>
-                        //         <a className="dropdown-item" href="#">Another action</a>
-                        //         <a className="dropdown-item" href="#">Something else here</a>
-                        //     </div>
-                        // </div>
+                    activeUser.username &&
                         <div className="dropdown">
-                            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            <button className="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown button
+                                {activeUser.username}
                             </button>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a className="dropdown-item" href="#">Action</a>
-                                <a className="dropdown-item" href="#">Another action</a>
-                                <a className="dropdown-item" href="#">Something else here</a>
+                                <Link className="nav-link" to="/profile">Profile</Link>
+                                <Link className="nav-link" to="/newsnippet">New Snippet</Link>
+                                <Link className="nav-link" to="/import_gist">Import Gist</Link>
+                                <Link className="nav-link" to="#">Logout</Link>
                             </div>
                         </div>
                 }
                 {
-                    !activeUser &&
+                    !activeUser.username &&
                         <form className="form-inline my-2 my-lg-0">
                             <Link className="btn btn-outline-primary my-2 my-sm-0" to="/login">
                                 Login/Register
