@@ -39,7 +39,6 @@ class NavbarContainer extends React.Component {
 
 const stateToPropertyMapper = (state) => ({
     activeUser: state.userReducer.activeUser
-
 });
 
 const propertyToDispatchMapper =(dispatch) => ({
