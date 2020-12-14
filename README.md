@@ -70,5 +70,5 @@ To access CodeSaver online, please visit [this url.](https://cs5610-project-grou
 
 ## Backend UML Diagram:
 
-![Alt text](./src/assets/media/uml.PNG)
+![Alt text](./src/assets/media/uml.png)
 
