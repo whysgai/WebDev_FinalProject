@@ -17,6 +17,12 @@ class UserAdminListContainer extends React.Component {
     componentDidMount() {
         let fireUID = getCookie("uid")
         this.props.getUserByUID(fireUID).then(() => this.props.findAllUsers())
+        console.log("fireUID: ", fireUID)
+
+        if (fireUID === "") {
+            console.log("reaching conditional")
+            window.location.href = '/login'
+        }
     }
     componentDidUpdate() {
     }
