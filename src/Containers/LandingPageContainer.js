@@ -41,13 +41,6 @@ class LandingPageContainer extends React.Component {
         {console.log("this.fireUID CDM: ", uid)}
     }
 
-
-
-    // componentDidMount() {
-    //     this.props.findAllPublicSnippets()
-    //     // this.render();
-    // }
-
     componentDidUpdate() {
         // this.props.findAllPublicSnippets()
     }

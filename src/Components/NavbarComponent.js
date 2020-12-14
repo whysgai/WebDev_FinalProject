@@ -42,7 +42,6 @@ const NavbarComponent = ({activeUser, logout}) =>
                     <li className="nav-item">
                         <Link className="nav-link" to="/privacy">Privacy</Link>
                     </li>
-
                 </ul>
                 {
                     activeUser.username &&

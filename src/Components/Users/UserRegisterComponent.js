@@ -129,7 +129,7 @@ class UserRegisterComponent extends Component {
                                     type="submit"
                                     // onClick={this.login}
                                     className="btn btn-outline-primary col-md-5 col-12">
-                                    <Link to="/login2">Login</Link>
+                                    <Link to="/login">Login</Link>
                                 </button>
                             </div>
 
