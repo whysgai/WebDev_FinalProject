@@ -17,7 +17,6 @@ const UserProfileDisplayComponent = ({user, snippets}) => {
     const calcHr = (numSnip) => {
         return (numSnip*12) / 60
     };
-
     return (
         <div>
             <h2 className="m-3">Profile Page: {user.username}</h2>
@@ -41,11 +40,10 @@ const UserProfileDisplayComponent = ({user, snippets}) => {
                         <h3>Total Snippets: {snippets.length}</h3>
                         <h3>Time Saved: {calcMin(snippets.length)} min</h3>
                         <h3>Time Saved: {calcHr(snippets.length)} hr</h3>
-
                     </div>
                 </div>
             </div>
         </div>
-
+    )
 }
 export default UserProfileDisplayComponent
