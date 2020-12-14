@@ -15,43 +15,42 @@ const NavbarComponent = ({activeUser}) =>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
+                    {/*{console.log("activeUser: ", activeUser)}*/}
+                    {/*{console.log("Reached Navbar")}*/}
+
                     <li className="nav-item active">
                         <Link className="nav-link" to="/search">Search <span className="sr-only">(current)</span></Link>
                     </li>
-                    <li className="nav-item">
-                         <Link className="nav-link" to="/profile">Profile</Link>
-                    </li>
-
-
                     {
+                        (activeUser && activeUser.type === "USER") &&
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/profile">Profile</Link>
+                        </li>
+                    }
+                    {
+                        (activeUser && activeUser.type === "USER") &&
                         <li>
                             <Link className="nav-link" to="/mysnippets">My Snippets</Link>
                         </li>
                     }
-                    {
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/recommended">Recommended</Link>
-                        </li>
-                    }
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/recommended">Recommended</Link>
+                    </li>
                     {
                         (activeUser && activeUser.type === "USER") &&
                         <li className="nav-item">
                             <Link className="nav-link" to="/favorites">Bookmarked</Link>
                         </li>
                     }
-                    {
-                        (activeUser) &&
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/import_gist">Import</Link>
-                        </li>
-                    }
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/import_gist">Import</Link>
+                    </li>
                     {
                         (activeUser && activeUser.type === "ADMIN") &&
                         <li className="nav-item">
                             <Link className="nav-link" to="/admin">Admin</Link>
                         </li>
                     }
-
                     <li className="nav-item">
                         <Link className="nav-link" to="/privacy">Privacy</Link>
                     </li>
