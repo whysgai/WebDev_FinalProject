@@ -13,6 +13,7 @@ import valuesCode from "../assets/media/values_2.png"
 import timeline from "../assets/media/timeline.png"
 import StatisticsCounter from "../Components/StatisticsCounter";
 import { Dimensions } from 'react';
+import "./LandingPageContainer.css"
 
 
 class LandingPageContainer extends React.Component {
@@ -167,11 +168,20 @@ class LandingPageContainer extends React.Component {
 
 
                             <div
-                                className="text-center"
+                                className="text-center specialContainer"
                             >
                                 <img
                                     className="text-center align-content-center col-lg-12 col-md-6 col-sm-3"
                                     src={timeline}/>
+
+                                <button
+                                    className="btn col-md-2 text-white mr-2 btn-primary">
+                                    <Link
+                                        className="text-white"
+                                        to="/register">Register</Link>
+                                </button>
+
+
                             </div>
 
 
