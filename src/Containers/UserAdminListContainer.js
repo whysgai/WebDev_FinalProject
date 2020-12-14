@@ -5,7 +5,7 @@ import UserAdminRowComponent from "../Components/Users/UserAdminRowComponent";
 import Loader from 'react-loader-spinner'
 import {administerUser, findAllUsers, getUserByUID, updateUser} from "../Actions/UserActions";
 import {getCookie} from "../config/db";
-import {getAllGroups} from "../Actions/GroupActions";
+import {createGroup, getAllGroups} from "../Actions/GroupActions";
 
 class UserAdminListContainer extends React.Component {
 
@@ -16,7 +16,6 @@ class UserAdminListContainer extends React.Component {
 
     componentDidMount() {
         this.props.getAllGroups().then(() => console.log(this.props.groups))
-
 
         let fireUID = getCookie("uid")
         this.props.getUserByUID(fireUID).then(() => this.props.findAllUsers())
@@ -74,7 +73,8 @@ const propertyToDispatchMapper = (dispatch) => ({
     findAllUsers: () => findAllUsers(dispatch),
     getUserByUID: (uid) => getUserByUID(dispatch, uid),
     administerUser: (user) => administerUser(dispatch, user),
-    getAllGroups: () => getAllGroups(dispatch)
+    getAllGroups: () => getAllGroups(dispatch),
+    createGroup: (group) => createGroup(dispatch, group)
 })
 
 export default connect(stateToPropertyMapper, propertyToDispatchMapper)

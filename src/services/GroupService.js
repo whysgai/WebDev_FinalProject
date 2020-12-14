@@ -10,4 +10,12 @@ export async function getAllGroups() {
     )
 }
 
-export default {getAllGroups}
+export const createGroup = (group) =>
+    fire.database().ref("/groups").push({
+        groupName: "Company",
+        license: "Enterprise",
+        active: true,
+        members: {}
+    })
+
+export default {getAllGroups, createGroup}
