@@ -9,3 +9,7 @@ export const getAllGroups = (dispatch) =>
 export const createGroup = (dispatch, group) =>
     GroupService.createGroup(group)
         .then(group => dispatch({type: CREATE_GROUP, group: group}))
+
+export const administerGroup = (dispatch, group) =>
+    GroupService.getAllGroups()
+        .then(group => dispatch({type: CREATE_GROUP, group: group}))
