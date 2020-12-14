@@ -42,6 +42,7 @@ const stateToPropertyMapper = (state) => ({
     activeUser: state.userReducer.activeUser
 });
 
+
 const propertyToDispatchMapper =(dispatch) => ({
     getUserByUID: (uid) => getUserByUID(dispatch, uid),
 });

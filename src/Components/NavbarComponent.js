@@ -2,6 +2,7 @@ import React from "react"
 import {Link} from "react-router-dom";
 
 const NavbarComponent = ({activeUser, logout}) =>
+
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container">
             <span className="fa-stack fa-lg">
@@ -39,6 +40,7 @@ const NavbarComponent = ({activeUser, logout}) =>
                                 <Link className="nav-link" to="/admin">Admin</Link>
                             </li>
                     }
+
                     <li className="nav-item">
                         <Link className="nav-link" to="/privacy">Privacy</Link>
                     </li>
