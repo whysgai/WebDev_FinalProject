@@ -17,7 +17,6 @@ const NavbarComponent = ({activeUser, logout}) =>
                 <ul className="navbar-nav mr-auto">
                     {/*{console.log("activeUser: ", activeUser)}*/}
                     {/*{console.log("Reached Navbar")}*/}
-
                     <li className="nav-item active">
                         <Link className="nav-link" to="/search">Search</Link>
                     </li>
@@ -45,10 +44,11 @@ const NavbarComponent = ({activeUser, logout}) =>
                                 <Link className="nav-link" to="/admin">Admin</Link>
                             </li>
                     }
+
+
                     <li className="nav-item">
                         <Link className="nav-link" to="/privacy">Privacy</Link>
                     </li>
-
                 </ul>
                 {
                     activeUser.username &&

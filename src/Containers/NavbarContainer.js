@@ -29,7 +29,10 @@ class NavbarContainer extends React.Component {
                 {
                     <NavbarComponent
                         activeUser={this.props.activeUser}
+<<<<<<< HEAD
                         logout={this.logout}
+=======
+>>>>>>> b7602c3 (Fix: resolve merge conflict)
                     />
                 }
             </div>
