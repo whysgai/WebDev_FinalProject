@@ -15,8 +15,6 @@ snippets, search snippets by tag/topic, like snippets, view other users snippets
 view admin-recommended snippets. They can also import snippets from, and export
 snippets to GitHub Gists.
 
-## Screenshots 
-
 ## Test Users
 - Admin User: admin@codesaver.com / password123
 - User One:  user1@codesaver.com / password123
